@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import org.eclipse.tags.shaded.org.apache.xpath.operations.String;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -9,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
-	
 	static final Logger logger = LoggerFactory.getLogger(PageController.class);
-
+	//sfesfsfsefsewqrrqwrqㄴㅇㅁㄴㄴㅇㅁ
 	@RequestMapping("/{step}")
 	// @PathVariable : 경로변수
 	public String viewPage(@PathVariable String step) {
