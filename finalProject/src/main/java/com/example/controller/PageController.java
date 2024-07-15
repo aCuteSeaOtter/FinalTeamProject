@@ -14,7 +14,7 @@ public class PageController {
 	// @PathVariable : 경로변수
 	public String viewPage(@PathVariable String step) {
 		logger.info(step + "경로 들어옴");
-		return "/" + step;
+		return step;
 	}
 
 }
