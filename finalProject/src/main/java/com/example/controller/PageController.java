@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
 	static final Logger logger = LoggerFactory.getLogger(PageController.class);
-	//sfesfsfsefse
+	//sfesfsfsefsewqrrqwrq
 	@RequestMapping("/{step}")
 	// @PathVariable : 경로변수
 	public String viewPage(@PathVariable String step) {
