@@ -70,7 +70,7 @@
     <header class="w-100 flaot-left header-con main-box position-relative">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index">
             <figure class="mb-0">
               <img src="assets/images/logo-icon.png" alt="logo-icon">
             </figure>
@@ -85,46 +85,46 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link p-0" href="index.html">Home</a>
+                <a class="nav-link p-0" href="index">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link p-0" href="about.html">About Us</a>
+                <a class="nav-link p-0" href="about">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link p-0" href="destinations.html">Destination</a>
+                <a class="nav-link p-0" href="destinations">Destination</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <a class="dropdown-item" href="booking.html">Booking</a>
-                  <a class="dropdown-item" href="faq.html">Faq</a>
-                  <a class="dropdown-item" href="contact.html">Contact</a>
-                  <a class="dropdown-item" href="team.html">Team</a>
-                  <a class="dropdown-item" href="service.html">Service</a>
-                  <a class="dropdown-item" href="testimonial.html">Testimonial</a>
+                  <a class="dropdown-item" href="booking">Booking</a>
+                  <a class="dropdown-item" href="faq">Faq</a>
+                  <a class="dropdown-item" href="contact">Contact</a>
+                  <a class="dropdown-item" href="team">Team</a>
+                  <a class="dropdown-item" href="service">Service</a>
+                  <a class="dropdown-item" href="testimonial">Testimonial</a>
 
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle p-0" href="blog.html" id="navbarDropdown4" role="button"
+                <a class="nav-link dropdown-toggle p-0" href="blog" id="navbarDropdown4" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                  <a class="dropdown-item" href="blog.html">Blog</a>
-                  <a class="dropdown-item" href="load-more.html">Load More</a>
-                  <a class="dropdown-item" href="single-blog.html">Single Blog</a>
-                  <a class="dropdown-item" href="one-column.html">One Column</a>
-                  <a class="dropdown-item" href="two-column.html">Two Column</a>
-                  <a class="dropdown-item" href="three-column.html">Three Column</a>
-                  <a class="dropdown-item" href="three-colum-sidbar.html">Three Column Sidbar</a>
-                  <a class="dropdown-item" href="four-column.html">Four Column</a>
-                  <a class="dropdown-item" href="six-colum-full-wide.html">Six Column</a>
+                  <a class="dropdown-item" href="blog">Blog</a>
+                  <a class="dropdown-item" href="load-more">Load More</a>
+                  <a class="dropdown-item" href="single-blog">Single Blog</a>
+                  <a class="dropdown-item" href="one-column">One Column</a>
+                  <a class="dropdown-item" href="two-column">Two Column</a>
+                  <a class="dropdown-item" href="three-column">Three Column</a>
+                  <a class="dropdown-item" href="three-colum-sidbar">Three Column Sidbar</a>
+                  <a class="dropdown-item" href="four-column">Four Column</a>
+                  <a class="dropdown-item" href="six-colum-full-wide">Six Column</a>
                 </div>
               </li>
             </ul>
             <div class="header-contact">
               <ul class="list-unstyled mb-0">
-                <li><a href="contact.html" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
+                <li><a href="contact" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
                     Live Chat</a></li>
                 <!-- list unstyled -->
               </ul>
@@ -152,7 +152,7 @@
               </p>
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                 <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="index">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Destinations</li>
                 </ol>
               </div>
@@ -191,7 +191,7 @@
               <span class="d-block text-uppercase">
                 Venezia, Itlay
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Rialto Bridge</h4>
               </a>
@@ -208,7 +208,7 @@
               <span class="d-block text-uppercase">
                 Island, New Zealand
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   South Island</h4>
               </a>
@@ -228,7 +228,7 @@
               <span class="d-block text-uppercase">
                 Skye, scotland
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Floating City</h4>
               </a>
@@ -245,7 +245,7 @@
               <span class="d-block text-uppercase">
                 National Park, USA
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Glacier National Park</h4>
               </a>
@@ -265,7 +265,7 @@
               <span class="d-block text-uppercase">
                 Rio de Janeiro, Brazil
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Brazil City</h4>
               </a>
@@ -282,7 +282,7 @@
               <span class="d-block text-uppercase">
                 New York, NY
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   New York City</h4>
               </a>
@@ -303,7 +303,7 @@
               <span class="d-block text-uppercase">
                 Venezia, Itlay
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Rialto Bridge</h4>
               </a>
@@ -320,7 +320,7 @@
               <span class="d-block text-uppercase">
                 Island, New Zealand
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   South Island</h4>
               </a>
@@ -340,7 +340,7 @@
               <span class="d-block text-uppercase">
                 Skye, scotland
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Floating City</h4>
               </a>
@@ -357,7 +357,7 @@
               <span class="d-block text-uppercase">
                 National Park, USA
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Glacier National Park</h4>
               </a>
@@ -377,7 +377,7 @@
               <span class="d-block text-uppercase">
                 Rio de Janeiro, Brazil
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   Brazil City</h4>
               </a>
@@ -394,7 +394,7 @@
               <span class="d-block text-uppercase">
                 New York, NY
               </span>
-              <a href="destinations.html">
+              <a href="destinations">
                 <h4>Enjoy the beauty of the
                   New York City</h4>
               </a>
@@ -449,7 +449,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -464,7 +464,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -477,7 +477,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -492,7 +492,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -506,7 +506,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -521,7 +521,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -535,7 +535,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -550,7 +550,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -563,7 +563,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -578,7 +578,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -592,7 +592,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -607,7 +607,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -627,7 +627,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -642,7 +642,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -655,7 +655,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -670,7 +670,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -684,7 +684,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -699,7 +699,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -713,7 +713,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -728,7 +728,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -741,7 +741,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -756,7 +756,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -770,7 +770,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -785,7 +785,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -805,7 +805,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -820,7 +820,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -833,7 +833,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -848,7 +848,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -862,7 +862,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -877,7 +877,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -891,7 +891,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -906,7 +906,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -919,7 +919,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -934,7 +934,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -948,7 +948,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -963,7 +963,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -983,7 +983,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -998,7 +998,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -1011,7 +1011,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -1026,7 +1026,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -1040,7 +1040,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -1055,7 +1055,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -1069,7 +1069,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
-                  <h6><a href="destinations.html">Africa – Amazing African Safari</a></h6>
+                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -1084,7 +1084,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -1097,7 +1097,7 @@
               <div class="item">
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations.html">China – Suzhou and Zhouzhuang</a></h6>
+                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -1112,7 +1112,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -1126,7 +1126,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
-                  <h6><a href="destinations.html">Argentina – Great Diving Trip</a></h6>
+                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
                   <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
@@ -1141,7 +1141,7 @@
                       /Person
                     </span>
                     <div class="grey-btn d-inline-block">
-                      <a href="booking.html" class="d-inline-block">View Availability</a>
+                      <a href="booking" class="d-inline-block">View Availability</a>
                     </div>
 
                     <!-- package btn con -->
@@ -1175,7 +1175,7 @@
                 Unforgetable Tour?
               </h2>
               <div class="green-btn d-inline-block">
-                <a href="booking.html" class="d-inline-block">Book Your Tours</a>
+                <a href="booking" class="d-inline-block">Book Your Tours</a>
               </div>
             </div>
           </div>
@@ -1234,7 +1234,7 @@
       <div class="middle-portion">
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 footer-logo-con">
-            <a href="index.html">
+            <a href="index">
               <figure class="footer-logo">
                 <img src="assets/images/footer-logo.png" class="img-fluid" alt="">
               </figure>
@@ -1253,10 +1253,10 @@
               <h4 class="heading">Quick Links</h4>
               <hr class="line">
               <ul class="list-unstyled mb-0">
-                <li><a href="index.html" class="text-size-16 text text-decoration-none">Home</a></li>
-                <li><a href="service.html" class="text-size-16 text text-decoration-none">Services</a></li>
-                <li><a href="about.html" class="text-size-16 text text-decoration-none">About Us</a></li>
-                <li><a href="blog.html" class="text-size-16 text text-decoration-none">Latest News</a></li>
+                <li><a href="index" class="text-size-16 text text-decoration-none">Home</a></li>
+                <li><a href="service" class="text-size-16 text text-decoration-none">Services</a></li>
+                <li><a href="about" class="text-size-16 text text-decoration-none">About Us</a></li>
+                <li><a href="blog" class="text-size-16 text text-decoration-none">Latest News</a></li>
                 <li><a href="#" class="text-size-16 text text-decoration-none">Terms & Conditions</a></li>
                 <li><a href="#" class="text-size-16 text text-decoration-none mb-0">Privacy Policy</a></li>
               </ul>
@@ -1268,10 +1268,10 @@
               <hr class="line">
               <ul class="list-unstyled mb-0">
                 <li><a href="#" class="text-size-16 text text-decoration-none">Support</a></li>
-                <li><a href="contact.html" class="text-size-16 text text-decoration-none">Contact Us</a></li>
+                <li><a href="contact" class="text-size-16 text text-decoration-none">Contact Us</a></li>
                 <li><a href="#" class="text-size-16 text text-decoration-none">Knowledge Base</a></li>
-                <li><a href="about.html" class="text-size-16 text text-decoration-none">About Us</a></li>
-                <li><a href="faq.html" class="text-size-16 text text-decoration-none">FAQ</a></li>
+                <li><a href="about" class="text-size-16 text text-decoration-none">About Us</a></li>
+                <li><a href="faq" class="text-size-16 text text-decoration-none">FAQ</a></li>
                 <li><a href="#" class="text-size-16 text text-decoration-none mb-0">Partnerships</a></li>
               </ul>
             </div>
