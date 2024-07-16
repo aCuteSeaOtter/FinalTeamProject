@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LikeDAO">
+	
+	 <select id="getLikeStatus" parameterType="map" resultType="int">
+        SELECT status
+        FROM good
+        WHERE bno = #{bno} AND id = #{id}
+        LIMIT 1
+    </select>
+
+    <insert id="insertLike" parameterType="LikeVO">
+        INSERT INTO good (bno, id, status)
+        VALUES (#{bno}, #{id}, #{status})
+    </insert>
+
+    <update id="updateLike" parameterType="LikeVO">
+        UPDATE good
+        SET status = #{status}
+        WHERE bno = #{bno} AND id = #{id}
+    </update>
+
+    <delete id="deleteLike" parameterType="map">
+        DELETE FROM good
+        WHERE bno = #{bno} AND id = #{id}
+    </delete>
+
+    <select id="countLikes" parameterType="int" resultType="int">
+        SELECT COUNT(*)
+        FROM good
+        WHERE bno = #{bno}
+    </select>
+	
+	<select id="existsById" parameterType="String" resultType="int">
+        SELECT COUNT(*)
+        FROM member1
+        WHERE id = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.FileDAO">
+
+	<!-- board_file에 입력 -->
+	<insert id="insertFile" parameterType="FileVO">
+		insert into board_file
+		(
+			originFilename
+			, filename
+			, filepath
+		)
+		values(
+			#{originFilename}
+			, #{filename}
+			, #{filepath}
+		)
+	</insert>
+	
+	<!-- board_file에서 키값 검색 -->
+	<select id="selectFile" parameterType="FileVO" resultType="FileVO">
+		SELECT *
+		FROM board_file
+		WHERE fileid=#{fileid}
+	</select>
+	
+	<!-- 최신 자동증가수 값을 얻어온다면 -->
+	<select id="selectId" resultType="int">
+		SELECT fileid
+		FROM board_file
+		ORDER BY fileid desc
+		limit 1
+	</select>
+</mapper>

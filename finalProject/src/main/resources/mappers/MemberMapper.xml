@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.MemberDAO">
+
+	<select id="getMemberList" resultType="MemberVO">
+		SELECT *
+		FROM MEMBER1
+		ORDER BY ID DESC
+	</select>
+	
+	<insert id="insertMember" parameterType="MemberVO">
+		INSERT INTO MEMBER1( ID, PASS, NAME)
+		VALUES( #{id}, #{pass}, #{name})
+	</insert>
+	
+	<select id="getMember" parameterType="MemberVO" resultType="MemberVO">
+		SELECT *
+		FROM MEMBER1
+		WHERE ID=#{id}
+	</select>
+	
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE MEMBER1 SET
+		PASS = #{pass},
+		NAME = #{name}
+		WHERE ID = #{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="MemberVO">
+		DELETE FROM MEMBER1
+		WHERE ID = #{id}
+	</delete>
+	
+	<!-- 로그인 -->
+	<select id="checkLogin" parameterType="MemberVO"
+			resultType="MemberVO">
+		SELECT *
+		FROM MEMBER1
+		WHERE ID=#{id} AND PASS=#{pass} 
+	</select>
+	
+</mapper>
