@@ -1,0 +1,105 @@
+@charset "UTF-8";
+body {
+        font-family: Arial, sans-serif;
+    }
+    table {
+        width: 70%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+    td {
+        background-color: #fff;
+    }
+    h1 {
+        color: #333;
+    }
+    .reply-form, .reply-list {
+        margin-top: 20px;
+    }
+    .reply-input, textarea {
+        width: 70%;
+        height: 60px;
+        padding: 8px;
+        margin-top: 8px;
+    }
+    .reply-comment {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    .reply-form label {
+        display: block;
+        margin-top: 10px;
+    }
+    .reply-form input[type="text"], .reply-form textarea {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-top: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .reply-form input[type="button"] {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .reply-form input[type="button"]:hover {
+        background-color: #45a049;
+    }
+    .action-links a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #0066cc;
+    }
+    .action-links a:hover {
+        text-decoration: underline;
+    }
+    
+    .like-button, .hate-button{
+    	width:34px;
+    }
+    
+       /* 댓글 및 대댓글의 기본 스타일 CSS */
+   .comment-content {
+       padding: 10px;
+       border-bottom: 1px solid #ddd;
+   }
+
+   /* 내용과 날짜 위치 변경 */
+   .comment-info {
+       display: flex;
+       justify-content: space-between;
+       font-size: 0.9em;
+       color: #555;
+   }
+   
+   /* 댓쓴이 글씨체 두껍게 */
+   .comment-writer {
+       font-weight: bold;
+   }
+   
+   /* 날짜 글씨 색깔 변경 */
+   .comment-date {
+       color: #999;
+   }
+
+   /* 내용과 날짜 위치 변경 */
+   .comment-info2 {
+       overflow: hidden;
+   }
+   
+   span.comment-text{
+   		cursor: pointer;
+   }

@@ -1,5 +1,6 @@
+<%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ko">
 
 <head>
   <title>Travel | Home </title>
@@ -90,6 +91,11 @@
               <li class="nav-item">
                 <a class="nav-link p-0" href="about">About Us</a>
               </li>
+			  
+			  <li class="nav-item">
+			  	<a class="nav-link p-0" href="/member/login">가상 로그인</a>
+			  </li>
+			  
               <li class="nav-item">
                 <a class="nav-link p-0" href="destinations">Destination</a>
               </li>

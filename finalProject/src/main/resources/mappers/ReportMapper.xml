@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReportDAO">
+
+	<insert id="insertReport" parameterType="ReportVO">
+		INSERT INTO report(REPORTID, REPORTREASON, REPORTTYPE,REPORTDATE,SEQ, RNO, RCNO)
+		VALUES(#{reportId}, #{reportReason}, #{reportType},sysdate(), #{seq}, IFNULL(#{rno},NULL), IFNULL(#{rcno},NULL))
+	</insert>
+	
+</mapper>
