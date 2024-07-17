@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'tway';
+    src: url('../fonts/tway_fly.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+ 
+.add-btn {
+	width: 100%; 
+	background-color: #1ec28b; 
+	border: solid 2px #1ec28b; 
+	color: white;
+	font-family: 'tway';
+}
+
+
+.btn {
+	font-family: 'tway';
+}
+
+
+.calendarImg {
+	width: 25px;
+	height: 25px;
+}
+
+
+#map {
+	width: 100%;
+	height: 740px;
+}
