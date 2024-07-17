@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.Member2DAO">
+	<insert id="registForm" parameterType="com.example.domain.Member2VO">
+	    INSERT INTO member2 (memberemail, memberpass, memberbirth, membergender, membernickname, memberregdate)
+	    VALUES (
+	      	#{memberemail}
+	       ,#{memberpass}
+	       ,#{memberbirth}
+	       ,#{membergender}
+	       ,#{membernickname}
+	       ,now()
+	    )
+	</insert>
+
+   <!-- 회원 로그인 확인 -->
+<select id="loginForm" parameterType="Member2VO" resultType="Member2VO">
+    SELECT * FROM member2
+    WHERE memberemail=#{memberemail}
+    LIMIT 1
+</select>
+
+	<update id="updateForm" parameterType="com.example.domain.Member2VO">
+	
+	UPDATE member2
+	SET memberemail=#{memberemail}, memberpass=#{memberpass},membernickname=#{membernickname} 
+	WHERE memberemail=#{memberemail}	
+	
+	</update>
+	
+	
+	<delete	id="deleteForm" parameterType="String">
+	
+	DELETE
+	FROM member2
+	WHERE memberemail=#{memberemail}
+	
+	</delete>
+
+</mapper>
