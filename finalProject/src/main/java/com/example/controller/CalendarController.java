@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("calendar")
 public class CalendarController {
 	static final Logger logger = LoggerFactory.getLogger(CalendarController.class);
-	
+	 
 	@RequestMapping("/{step}")
 	// @PathVariable : 경로변수
 	public String viewPage(@PathVariable String step) {
