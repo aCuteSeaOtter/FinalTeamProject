@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("plan")
-public class PageController {
-	static final Logger logger = LoggerFactory.getLogger(PageController.class);
+@RequestMapping("calendar")
+public class CalendarController {
+	static final Logger logger = LoggerFactory.getLogger(CalendarController.class);
 	
 	@RequestMapping("/{step}")
 	// @PathVariable : 경로변수
@@ -18,8 +18,8 @@ public class PageController {
 		return step;
 	}
 	
-	@RequestMapping("/plan")
-	public String plan() {
-		return "plan/plan";
+	@RequestMapping("/calendar")
+	public String calendar() {
+		return "calendar/calendar";
 	}
 }
