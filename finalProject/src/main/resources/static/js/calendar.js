@@ -1,6 +1,6 @@
 $(function() {
     // ** $변수명 : jQuery에서 구분하기 위해 사용
-
+ 
     // 현재 날짜를 가져옴
     let currentDate = new Date();
     let viewYear    = currentDate.getFullYear();

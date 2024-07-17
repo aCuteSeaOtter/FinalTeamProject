@@ -8,6 +8,6 @@
 		SELECT "local_name"
 		FROM "local"
 		WHERE "local_name" = #{keyword, jdbcType=VARCHAR}
-	</select>
+	</select> 
 
 </mapper>

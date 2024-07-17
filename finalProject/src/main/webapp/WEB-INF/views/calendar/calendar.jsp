@@ -8,7 +8,7 @@
     <title>Calendar</title>
     <link rel="stylesheet" type="text/css" href="../css/calendar.css">
 </head>
-<body>
+<body> 
 
 
     <div class="wrapper">

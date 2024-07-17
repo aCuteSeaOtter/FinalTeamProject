@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-/**
+/** 
  DAO와 Mapper 연결
  	[1] Mapper에서
  		<mapper namespace="com.example.dao.BoardDAO">

@@ -17,7 +17,7 @@ public class CalendarController {
 		logger.info(step + "경로 들어옴");
 		return step;
 	}
-	
+	 
 	@RequestMapping("/calendar")
 	public String calendar() {
 		return "calendar/calendar";

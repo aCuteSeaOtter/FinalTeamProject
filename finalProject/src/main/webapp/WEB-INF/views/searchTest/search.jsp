@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-
+ 
 	<div>
 		<form action="searchData" method="post">
 			<input type="text" name="keyword"/><input type="submit" value="검색"/>

@@ -18,4 +18,4 @@ public class SearchServiceImpl implements SearchService {
 	public String searchData(String keyword) {
 		return searchDAO.searchData(keyword);
 	}
-}
+} 
