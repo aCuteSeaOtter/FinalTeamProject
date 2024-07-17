@@ -45,6 +45,21 @@
 	overflow: auto;
 }
 
+/* 스크롤바의 폭 너비 */
+.scrollBox::-webkit-scrollbar {
+    width: 10px;  
+}
+
+.scrollBox::-webkit-scrollbar-thumb {
+    background: rgba(30, 194, 139); /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.scrollBox::-webkit-scrollbar-track {
+    background: rgba(30, 194, 139, .1);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
 .scrollBox > div > div {
 	margin-bottom: 10px;
 }
