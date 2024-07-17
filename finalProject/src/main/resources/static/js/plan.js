@@ -16,5 +16,5 @@ $(function() {
 	    } else {
 	        $(this).attr('src', noneSel); // src 속성을 변경
 	    }
-	});
+	}); 
 }) 
