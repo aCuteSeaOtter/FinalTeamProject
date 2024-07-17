@@ -3,7 +3,7 @@ package com.example.domain;
 import lombok.Data;
 
 //** 
-@Data
+@Data 
 public class PlanVO {
 
 	private int attr_id;

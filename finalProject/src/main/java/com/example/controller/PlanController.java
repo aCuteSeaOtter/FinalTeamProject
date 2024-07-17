@@ -17,7 +17,7 @@ public class PlanController {
 	
 	@Autowired
 	private PlanService planService;
-	
+	 
 	@RequestMapping("/addAttr")
 	public List<PlanVO> addAttr(Model m) {
 		List<PlanVO> result = planService.addAttr(m);

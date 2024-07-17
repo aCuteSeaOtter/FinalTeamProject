@@ -9,7 +9,7 @@ $(function() {
     // 현재 연도와 월을 표시하는 요소를 선택하고 초기화
     let $currentDate = $(".current-date");
     $currentDate.html(`${viewYear}년 ${viewMonth}월`);
-
+ 
     // 날짜를 표시할 요소와 이전/다음 버튼 요소를 선택
     let $daysTag = $(".days");
     let $prevBtn = $("#prev");

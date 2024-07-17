@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 import com.example.domain.PlanVO;
 
-/** 
+/**  
  DAO와 Mapper 연결
  	[1] Mapper에서
  		<mapper namespace="com.example.dao.BoardDAO">

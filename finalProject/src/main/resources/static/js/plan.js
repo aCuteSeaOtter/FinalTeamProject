@@ -15,6 +15,6 @@ $(function() {
 	        $(this).attr('src', sel); // src 속성을 변경
 	    } else {
 	        $(this).attr('src', noneSel); // src 속성을 변경
-	    }
+	    } 
 	}); 
 }) 
