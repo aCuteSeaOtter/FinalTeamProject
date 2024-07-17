@@ -56,7 +56,7 @@
         <div class="row">
           <div class="col-12">
             <div class="logo-wrapper">
-              <a href="index.html">
+              <a href="index">
                 <figure class="banner-logo mb-0 d-inline-block">
                   <img src="assets/images/logo-icon.png" alt="logo-icon" class="img-fluid">
                 </figure>

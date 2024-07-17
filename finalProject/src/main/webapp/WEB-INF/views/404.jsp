@@ -60,7 +60,7 @@
               <h1>Oops! <br> Page Not Found</h1>
               <p>The link you’re trying to access is probably broken, <br> or the page has been removed.</p>
               <div class="green-btn d-inline-block">
-                <a href="index.html" class="d-inline-block">Back to Home</a>
+                <a href="index" class="d-inline-block">Back to Home</a>
               </div>
               <!-- coming banner content -->
             </div>
