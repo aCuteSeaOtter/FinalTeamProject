@@ -3,7 +3,7 @@ $(function() {
 		/* 일정 추가를 위한 팝업창 */
 		showPopup();
 		function showPopup() { window.open("planPopup", "a", "width=1200, height=800, top=50"); }
-	});
+	}); 
 	
 	const selectBox = $(".selectBox");
 	const noneSel = '../images/plan/none_select.svg';

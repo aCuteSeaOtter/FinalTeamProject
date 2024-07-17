@@ -39,7 +39,7 @@
 	cursor: pointer;
 }
 
-.scrollBox {
+.scrollBox { 
 	margin-bottom: 100px;
 	height: 100px;
 	overflow: auto;

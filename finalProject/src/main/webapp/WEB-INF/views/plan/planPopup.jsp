@@ -79,7 +79,7 @@
 	    <div class="container">
 	      <div class="row">
 	        <div class="col-lg-4">
-	        <div class="selectedLocal">제주</div>
+	        <div class="selectedLocal">제주</div> 
 	        <div style="margin-bottom: 10px">2024.07.16(수) ~ 2024.07.18(금)</div>
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="../images/plan/search.png"/></div><hr/>
 	        
