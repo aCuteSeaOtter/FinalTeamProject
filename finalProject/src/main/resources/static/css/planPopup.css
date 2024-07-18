@@ -10,7 +10,26 @@
 .selectedLocal {
 	color: black;
 	font-family: 'tway';
+	font-size: 30px;
+}
+
+.selectedCnt {
+	color: black;
+	font-family: 'tway';
+	font-size: 30px;
+	display: inline-block;
+}
+
+.deleteAll {
+	color: red;
+	font-family: 'tway';
 	font-size: 20px;
+	display: inline-block;
+	float: right;
+}
+
+.deleteAll:hover {
+	cursor: pointer;
 }
 
 .search {
