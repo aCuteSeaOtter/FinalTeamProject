@@ -1,14 +1,14 @@
 package com.example.service;
 
-import com.example.domain.Member2VO;
+import com.example.domain.MemberVO;
 
 public interface MemberService {
 
-	void registForm(Member2VO member2VO);
-	Member2VO loginForm(Member2VO member2VO);
-	void updateForm(Member2VO member2VO);
-	void deleteForm(Member2VO member2VO);
+	void registForm(MemberVO member2VO);
+	MemberVO loginForm(MemberVO member2VO);
+	void updateForm(MemberVO member2VO);
+	void deleteForm(MemberVO member2VO);
 
-	Member2VO savecontact(Member2VO member2VO);
+	MemberVO savecontact(MemberVO member2VO);
 }
  

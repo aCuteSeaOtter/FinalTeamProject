@@ -247,7 +247,7 @@
           to Contact
         </h2>
          heading title 
-      </div> 
+      </div>W
 -->     
  <div class="row">
         <div class="col-12">

@@ -48,7 +48,7 @@
       <div></div>
       <div></div>
     </div>
-  </div> 
+  </div>
   <!-- OUTER BG WRAPPER -->
   <div class="bg-outer-wrapper float-left w-100">
     <!-- TOP BAR SECTION -->

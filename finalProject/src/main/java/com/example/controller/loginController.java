@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.example.domain.Member2VO;
+import com.example.domain.MemberVO;
 import com.example.service.MemberService;
 
 import jakarta.servlet.http.HttpSession;
@@ -40,12 +40,12 @@ public class loginController {
 	
 	
 	
-//	@RequestMapping("/{step}")
-//	// @PathVariable : 경로변수
-//	public String viewPage(@PathVariable String step) {
-//		logger.info(step + "경로 들어옴");
-//		return step;
-//	}
+	@RequestMapping("/{step}")
+	// @PathVariable : 경로변수
+	public String viewPage(@PathVariable String step) {
+		logger.info(step + "경로 들어옴");
+		return step;
+	}
 
 	@RequestMapping("/index")
 	public void index(){
@@ -79,7 +79,7 @@ public class loginController {
 	
 	//회원가입 요청 처리
 	@RequestMapping("/regist")
-	public String registMember(@ModelAttribute("member2VO") Member2VO member2VO, 
+	public String registMember(@ModelAttribute("member2VO") MemberVO member2VO, 
 							@RequestParam("year")@DateTimeFormat(pattern="yyyy") int year,
                             @RequestParam("month") @DateTimeFormat(pattern="MM") int month,
                             @RequestParam("day") @DateTimeFormat(pattern="dd") int day)
@@ -114,17 +114,17 @@ public class loginController {
 	
 	// 로그인을 위해 아이디와 비밀번호를 입력하고 로그인 버튼을 눌렸을 때
 	@PostMapping("/loginsuccess")
-	public String checkLogin(Member2VO member2VO, Model m, HttpSession session)
+	public String checkLogin(MemberVO member2VO, Model m, HttpSession session)
 	{
 		
 		
-		Member2VO member = (Member2VO)session.getAttribute("session");
+		MemberVO member = (MemberVO)session.getAttribute("session");
 		System.out.println("이메일:"+member2VO.getMemberemail());
 		System.out.println("비밀번호:" + member2VO.getMemberpass());
 		System.out.println("닉네임: " + member2VO.getMembernickname());
 		System.out.println("성별: " + member2VO.getMembergender());
 		System.out.println("생일: " + member2VO.getMemberbirth());
-		Member2VO result = memberService.loginForm(member2VO);
+		MemberVO result = memberService.loginForm(member2VO);
 		System.out.println("결과" + result);
 		
 		
@@ -142,7 +142,7 @@ public class loginController {
 	}	 
 		
 	@RequestMapping("/savecontact")
-	public String savecontact(@Valid  Member2VO member2VO, BindingResult bindingResult) {
+	public String savecontact(@Valid  MemberVO member2VO, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "contact";
 		}
