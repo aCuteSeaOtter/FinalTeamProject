@@ -132,21 +132,10 @@
 	        
 	        
 	        <div class="col-lg-8">
-	        <div style="margin-bottom: 10px">&nbsp&nbsp</div>
-	        <div><input type="button" class="btn" value="숙소" style="width: 100%"></input></div><hr/>
+	        <div class="selectedCnt">3</div>
+	        <div class="deleteAll">모든 항목 삭제</div>
 	          
-	          <div id="map">
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb3a8076d2603f3df36081d8e29ae823"></script>
-				<script>
-			      var container = document.getElementById("map");
-			      var options = {
-			        center: new kakao.maps.LatLng(37.552811217, 126.93794821),
-			        level: 3,
-			      };
-			
-			      var map = new kakao.maps.Map(container, options);
-			    </script>
-	          </div>
+	          
 	          
 	          <!-- col -->
 	        </div>
