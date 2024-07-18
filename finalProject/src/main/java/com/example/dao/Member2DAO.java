@@ -14,3 +14,4 @@ public interface Member2DAO {
 	Member2VO checklogin(Member2VO member2VO);
 	
 }
+ 

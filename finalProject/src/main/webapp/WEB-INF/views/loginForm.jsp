@@ -130,13 +130,13 @@
                 </div>
               </li>
             </ul>
-            <div class="header-contact">
+<!--            <div class="header-contact">
               <ul class="list-unstyled mb-0">
                 <li><a href="contact" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
                     회원가입</a></li>
-                <!-- list unstyled -->
+                 list unstyled 
               </ul>
-              <!-- header contact -->
+               header contact -->
             </div>
             <!--  -->
           </div>
@@ -157,14 +157,14 @@
          <!--     <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
                 incididunt
                 ut labore et dolore.
-              </p>
+              </p>-->
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                <ol class="breadcrumb mb-0">
+           <!--     <ol class="breadcrumb mb-0">
                   <li class="breadcrumb-item"><a href="index">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Contact</li>
                 </ol>-->
               </div>
-              <!-- sub banner inner con -->
+              <!-- sub banner inner --> 
             </div>
             <!-- col-lg-6 -->
           </div>
@@ -259,16 +259,16 @@
                   <div class="row">
 					
 					<div class="col-12"><!--12-->
-					  <div class="form-group">
-					    <label>Your Email</label>
+					  <div class="login-group">
+					    <label>이메일</label>
 					    <input type="email" style="width:250px; height:50px;"name="memberemail" placeholder="Enter Your Email Address"
 					      id="email"required>
 					  </div>
 					</div>
 					
 					<div class="col-12">
-                      <div class="form-group">
-                        <label>Your password</label>
+                      <div class="login-group">
+                        <label>비밀번호</label>
                         <input type="password" style="width:250px;"class="form_style" placeholder="Enter Your passwords" name="memberpass"
                           id="fname"required>
                       </div>
@@ -276,7 +276,7 @@
 					          <div class="col-6">
 					            <div class="manage-button">
 					              <button type="submit" name="submit"
-					                class="register_now text-white text-decoration-none w-100">
+					                class="login_now text-white text-decoration-none w-100">
 					               로그인</button>
 							 </div>
 					          </div>

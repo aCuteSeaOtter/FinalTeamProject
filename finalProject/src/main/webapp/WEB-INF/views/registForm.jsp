@@ -6,7 +6,7 @@
 <html lang="zxx">
 
 <head>
-  <title>Travel | Join </title>
+  <title>Travel | Join us</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -57,11 +57,14 @@
     <div class="w-100 float-left top-bar-con main-box">
       <div class="container">
         <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-     <!--  <div class="left-con">
+<!--          <div class="left-con">
             <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i> help@traveltrek.com</a>
              left con 
-          </div>-->
-         <!-- <div class="right-con"><a href="loginForm"> 로그인</a> right con </div>-->
+          </div>
+          <div class="right-con"><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1 (0800) 123
+              456</a>
+             right con 
+          </div> -->
           <!-- top bar inner con -->
         </div>
         <!-- container -->
@@ -131,14 +134,15 @@
                 </div>
               </li>
             </ul>
-            <!--<div class="header-contact">
-             <ul class="list-unstyled mb-0">
-                <li><a href="registForm" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
-                   회원가입</a></li>
-                 list unstyled 
+            <div class="header-contact">
+              <ul class="list-unstyled mb-0">
+               <!-- <li><a href="contact" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
+                    Live Chat</a></li> -->
+                <!-- list unstyled -->
               </ul>
-             
-            </div> -->
+              <!-- header contact -->
+            </div>
+            <!--  -->
           </div>
         </nav>
         <!-- container -->
@@ -146,7 +150,7 @@
       <!-- header-con -->
     </header>
     <!-- BANNER SECTION -->
-    <!--<section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
+    <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
       <img alt="vector" class="vector1  img-fluid position-absolute" src="assets/images/vector1.png">
       <img alt="vector" class="vector2 img-fluid position-absolute" src="assets/images/vector2.png">
       <div class="container">
@@ -154,7 +158,7 @@
           <div class="col-lg-7">
             <div class="sub-banner-inner-con padding-bottom">
               <h1>Join Us</h1>
-              <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
+         <!--     <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
                 incididunt
                 ut labore et dolore.
               </p>
@@ -163,20 +167,20 @@
                   <li class="breadcrumb-item"><a href="index">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Contact</li>
                 </ol>-->
-           <!--   </div>-->
-              <!-- sub banner inner con 
+              </div>
+              <!-- sub banner inner con -->
             </div>
-             col-lg-6
+            <!-- col-lg-6 -->
           </div>
-           row
+          <!-- row -->
         </div>
-         container
+        <!-- container -->
       </div>
 
-     banner con
-    </section>-->
+      <!-- banner con -->
+    </section>
     <!-- bg outer wrapper -->
-<!--  </div>-->
+  </div>
   <!-- TALK TO US SECTION -->
   <!--<section
     class="float-left w-100 about-travel-con talk-to-us-con position-relative main-box padding-top padding-bottom">
@@ -235,11 +239,11 @@
      about travel con 
   </section>-->
   <!-- CONTACT FORM SECTION  -->
-  <!--<section class="float-left w-100 talk-width-our-team-con position-relative main-box padding-top padding-bottom">
+  <section class="float-left w-100 talk-width-our-team-con position-relative main-box padding-top padding-bottom">
   <img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s"
       src="assets/images/vector11.png">
     <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="assets/images/vector9.png">-->
+      src="assets/images/vector9.png">
  <!--   <div class="container wow bounceInUp" data-wow-duration="2s">
       <div class="heading-title text-center">
         <h4 class="text-uppercase">Talk with our team</h4>
@@ -251,8 +255,8 @@
 -->     
  <div class="row">
         <div class="col-12">
-          <div class="register-box">
-            <form action="regist" method="POST">
+          <div class="join-box">
+            <form action="joinForm" method="POST">
               <div class="row">
                 <div class="col-lg-15 col-md-15 col-sm-20 col-20">
 					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
@@ -261,7 +265,7 @@
 					<div class="col-12"><!--12-->
 					  <div class="form-group">
 					    <label>이메일</label>
-					    <input type="email" style="width:250px; height:50px;"name="memberemail" placeholder="Enter Your Email Address"
+					    <input type="email" style="width:200px; height:30px;"name="memberemail" placeholder="Enter Your Email Address"
 					      id="email"required>
 					  </div>
 					</div>
@@ -269,25 +273,25 @@
 					<div class="col-12">
                       <div class="form-group">
                         <label>비밀번호</label>
-                        <input type="password" style="width:250px;"class="form_style" placeholder="Enter Your passwords" name="memberpass"
-                          id="fname"required>
+                        <input type="password" style="width:180px; height:30px;"class="form_style" placeholder="Enter Your passwords" name="memberpass"
+                          id="fname" minlength="6" required>
                       </div>
                     </div>
 
-					<div class="col-6"><!--12-->
-					  <div class="form-group">
+					<div class="col-10"><!--6--><!--12-->
+					  <div class="form-birth">
 					    <label>생년월일</label>
-						<br/>
-						<select name="year" 	id="year" style="width:90px; height:50px;" required></select>년
-						<select name="month"	id="month"style="width:100px; height:50px;"	required></select>월
-						<select name="day"		id="day"  style="width:100px; height:50px;"required></select>일
+						
+						<select name="year" 	id="year" style="width:60px; height:30px;" required></select>년
+						<select name="month"	id="month"style="width:50px; height:30px;"	required></select>월
+						<select name="day"		id="day"  style="width:50px; height:30px;"required></select>일
 					  </div>
 					</div>
 
-					<div class="col-12">
+					<div class="col-10"><!--12-->
 					 <div class="form-group fon-con">
 					<label>닉네임</label>
-					<input type="text" style="width:200px;"class="mb-md-0 form_style" placeholder="Enter Your nickname"
+					<input type="text" style="width:150px; height:30px;"class="mb-md-0 form_style" placeholder="Enter Your nickname"
 					 name="membernickname"required>
 					  </div>
 					  </div>
@@ -299,28 +303,30 @@
 					<label for="male">남</label>
 				<input type="radio" style="width:20px; height:20px;"id="male" name="membergender" value="male" required>
 			<label for="female">여</label>
-			<input type="radio" style="width:20px; height:20px;" id="female" name="membergender" value="female"required></div>
+			<input type="radio" style="width:20px; height:20px;" id="female" name="membergender" value="female"required>						  </div>
 				</div>
 				</div>
 									
                 </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-group mb-0">
+                 <div class="row2">
+                    <div class="col-10"><!--12-->
+                      <div class="form-group1 mb-0">
                         <label for="agree">이용약관:</label>
-						<input type="checkbox" style="width:20px; height:20px;" required>
+						<input type="checkbox" style="width:20px; height:20px;"name="memberregdate" value="확인" required>
 						<br/> 
 						  <textarea class="form_style" placeholder="이용약관" rows="5" name="msg"></textarea>
                       </div> 
                     </div>
-                    <div class="col-12">
-                      <div class="manage-button">
+                    
+					<div class="col-10"><!--12-->
+                    <div class="join">
+						  <div class="join-button">
                         <button type="submit" name="submit"
-                          class="register_now text-white text-decoration-none w-100">
+                          class="join_now text-white text-decoration-none w-100">
                          가입하기</button>
-						 
+						 </div>
                       </div>
                     </div>
                   </div>
@@ -330,7 +336,7 @@
           </div>
         </div>
   
-   <!-- </section>-->
+    </section>
   <!-- MAP SECTION -->
 <!--  <div class="float-left w-100 contact-map-con position-relative main-box">
     <div class="container-fluid p-0 wow bounceInUp" data-wow-duration="2s">
@@ -503,8 +509,28 @@
   		    $('#day').append('<option value="' + i + '">' + i + '</option>');
   		  }
 
-  		});
+}); // end of ready function
+
+		
 </script>
+
+<script>
+	
+	document.addEventListener('DOMContentLoaded', function() {
+	    document.querySelector('form').addEventListener('submit', function(event) {
+	        // 비밀번호 입력란
+	        var passwordInput = document.getElementById('fname');
+	        var password = passwordInput.value;
+	        
+	        // 비밀번호의 길이 확인 (6자리 이상인지)
+	        if (password.length < 6) {
+	            alert('비밀번호는 최소 6자리 이상이어야 합니다.');
+	            event.preventDefault(); // 폼 제출 막기
+	        }
+	    });
+	});
+
+	</script>
   
   
 </body>

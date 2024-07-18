@@ -11,3 +11,4 @@ public interface MemberService {
 
 	Member2VO savecontact(Member2VO member2VO);
 }
+ 

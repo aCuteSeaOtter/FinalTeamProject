@@ -75,6 +75,8 @@ public class PageController {
 	public void contact() {
 		
 	}
+	
+	
 	//회원가입 요청 처리
 	@RequestMapping("/regist")
 	public String registMember(@ModelAttribute("member2VO") Member2VO member2VO, 

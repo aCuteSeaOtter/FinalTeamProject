@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	
-	
+	 
 	@Override
 	@Transactional
 	public void registForm(Member2VO member2vo) {
