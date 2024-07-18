@@ -78,19 +78,19 @@
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 	    <div class="container">
 	      <div class="row">
-	        <div class="col-lg-4">
+	        <div class="col-lg-5">
 	        <div class="selectedLocal">제주</div> 
 	        <div style="margin-bottom: 10px">2024.07.16(수) ~ 2024.07.18(금)</div>
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="../images/plan/search.png"/></div><hr/>
 	        
-	        <div class="scrollBox">
+	        
+        	<div>
 	        	<div>
-		        	<div>
-		        		<span>DAY 1</span> 
-		        		<span>&nbsp&nbsp7/16 수</span> 
-		        	</div> 
-		        </div>
-		        
+	        		<span>DAY 1</span> 
+	        		<span>&nbsp&nbsp7/16 수</span> 
+	        	</div> 
+	        </div> 
+		    <div class="scrollBox">
 		        <div class="divBlock">
 		        	<div class="location">
 		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
@@ -106,8 +106,8 @@
 		        	<div class="location">
 		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
 		        		<div class="contentBox">
-				        	<div class="localTitle" style="color: black">여기여기여기 0</div>
-				        	<div>저기저기 0</div>
+				        	<div class="localTitle" style="color: black">여기여기여기 1</div>
+				        	<div>저기저기 1</div>
 		        		</div>
 				        <img class="selectBox" src="../images/plan/none_select.svg">
 			        </div>
@@ -117,12 +117,13 @@
 		        	<div class="location">
 		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
 		        		<div class="contentBox">
-				        	<div class="localTitle" style="color: black">여기여기여기 0</div>
-				        	<div>저기저기 0</div>
+				        	<div class="localTitle">여기여기여기 2</div>
+				        	<div>저기저기 2</div>
 		        		</div>
 				        <img class="selectBox" src="../images/plan/none_select.svg">
 			        </div>
 		        </div>
+		        
 	        </div>
 	        
 	          <!-- col -->
@@ -131,9 +132,16 @@
 	        
 	        
 	        
-	        <div class="col-lg-8">
-	        <div class="selectedCnt">3</div>
-	        <div class="deleteAll">모든 항목 삭제</div>
+	        <div class="col-lg-7 selectedDiv">
+	        	<div>
+			        <div class="selectedCnt">3</div>
+			        <div class="deleteAll">모든 항목 삭제</div>
+	        	</div>
+	        	<div class="selectedScrollBox">
+			        
+			        <!-- 선택한 일정이 추가되는 영역 -->
+			        
+				</div>
 	          
 	          
 	          
