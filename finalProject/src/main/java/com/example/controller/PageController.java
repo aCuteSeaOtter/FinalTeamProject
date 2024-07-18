@@ -17,9 +17,4 @@ public class PageController {
 		logger.info(step + "경로 들어옴");
 		return step;
 	}
-	
-	@RequestMapping("/plan")
-	public String plan() {
-		return "plan/plan";
-	}
 }
