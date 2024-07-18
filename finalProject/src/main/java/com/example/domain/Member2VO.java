@@ -25,4 +25,4 @@ public class Member2VO{
     private Date memberregdate;
 
 }
- 
+   

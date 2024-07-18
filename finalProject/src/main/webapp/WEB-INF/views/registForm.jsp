@@ -508,10 +508,10 @@
   		  for (i = 1; i <= 31; i++) {
   		    $('#day').append('<option value="' + i + '">' + i + '</option>');
   		  }
-
+ 
 }); // end of ready function
 
-		
+		  
 </script>
 
 <script>

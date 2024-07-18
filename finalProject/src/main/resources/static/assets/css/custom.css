@@ -62,7 +62,7 @@ Headings: "Jost", sans-serif;
 	justify-content:center;
 	align-items:center;
 }
-.join-box .join_now {
+.join-box .join_now { 
     font-size: 11px;
     line-height: 18px;
     font-weight: 300;

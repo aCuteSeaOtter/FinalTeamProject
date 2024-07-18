@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void updateForm(Member2VO member2vo) {
 		
-		
+		 
 	}
 
 	@Override

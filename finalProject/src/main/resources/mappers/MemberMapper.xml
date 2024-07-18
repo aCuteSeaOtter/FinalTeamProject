@@ -21,7 +21,7 @@
     WHERE memberemail=#{memberemail}
     LIMIT 1
 </select>
-
+ 
 	<update id="updateForm" parameterType="com.example.domain.Member2VO">
 	
 	UPDATE member2
