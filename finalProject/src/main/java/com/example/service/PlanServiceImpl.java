@@ -17,7 +17,11 @@ public class PlanServiceImpl implements PlanService {
 	@Autowired
 	private PlanDAO planDAO;
 	
-	public List<PlanVO> addAttr(Model m) {
-		return planDAO.addAttr(m);
+	/*
+	 * public List<PlanVO> addAttr(Model m) { return planDAO.addAttr(m); }
+	 */
+	
+	public List<PlanVO> selectAttrList(Model m) {
+		return planDAO.selectAttrList(m);
 	}
 } 

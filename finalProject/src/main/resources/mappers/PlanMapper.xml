@@ -4,9 +4,14 @@
  
 <mapper namespace="com.example.dao.PlanDAO">
 	
-	<select id="addAttr" parameterType="com.example.domain.PlanVO" resultType="com.example.domain.PlanVO">
+	<!-- <select id="addAttr" parameterType="com.example.domain.PlanVO" resultType="com.example.domain.PlanVO">
 		SELECT *
-		FROM "attr"
+		FROM attr
+	</select>  -->
+	
+	<select id="selectAttrList" parameterType="com.example.domain.PlanVO" resultType="com.example.domain.PlanVO">
+		SELECT *
+		FROM attr
 	</select> 
 
 </mapper>

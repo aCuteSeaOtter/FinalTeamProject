@@ -5,9 +5,9 @@
 <mapper namespace="com.example.dao.SearchDAO">
 	 
 	<select id="searchData" parameterType="java.lang.String" resultType="java.lang.String">
-		SELECT "local_name"
-		FROM "local"
-		WHERE "local_name" = #{keyword, jdbcType=VARCHAR}
+		SELECT local_name
+		FROM local
+		WHERE local_name = #{keyword, jdbcType=VARCHAR}
 	</select> 
 
 </mapper>

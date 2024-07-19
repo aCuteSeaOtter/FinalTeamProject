@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head> 
@@ -84,45 +85,35 @@
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="../images/plan/search.png"/></div><hr/>
 	        
 	        
-        	<div>
-	        	<div>
-	        		<span>DAY 1</span> 
-	        		<span>&nbsp&nbsp7/16 수</span> 
-	        	</div> 
-	        </div> 
 		    <div class="scrollBox">
+		    
+		    	<!-- 명소 출력 시작 -->
+		    	
 		        <div class="divBlock">
 		        	<div class="location">
 		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
 		        		<div class="contentBox">
-				        	<div class="localTitle" style="color: black">여기여기여기 0</div>
+				        	<div class="localTitle">여기여기여기 0</div>
 				        	<div>저기저기 0</div>
 		        		</div>
 				        <img class="selectBox" src="../images/plan/none_select.svg">
 			        </div>
 		        </div>
 		        
-		        <div class="divBlock">
+	        <c:forEach items="${attrList }" var="attr">
+				<div class="divBlock">
 		        	<div class="location">
 		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
 		        		<div class="contentBox">
-				        	<div class="localTitle" style="color: black">여기여기여기 1</div>
-				        	<div>저기저기 1</div>
+				        	<div class="localTitle">${attr.ATTR_NAME }</div>
+				        	<div>저기저기 0</div>
 		        		</div>
 				        <img class="selectBox" src="../images/plan/none_select.svg">
 			        </div>
 		        </div>
+			</c:forEach>
 		        
-		        <div class="divBlock">
-		        	<div class="location">
-		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
-		        		<div class="contentBox">
-				        	<div class="localTitle">여기여기여기 2</div>
-				        	<div>저기저기 2</div>
-		        		</div>
-				        <img class="selectBox" src="../images/plan/none_select.svg">
-			        </div>
-		        </div>
+		        <!-- 명소 출력 끝 -->
 		        
 	        </div>
 	        
@@ -133,8 +124,14 @@
 	        
 	        
 	        <div class="col-lg-7 selectedDiv">
+		        <div>
+		        	<div>
+		        		<span>DAY 1</span> 
+		        		<span>&nbsp&nbsp7/16 수</span> 
+		        	</div> 
+		        </div> 
 	        	<div>
-			        <div class="selectedCnt">3</div>
+			        <div class="selectedCnt">0</div>
 			        <div class="deleteAll">모든 항목 삭제</div>
 	        	</div>
 	        	<div class="selectedScrollBox">

@@ -149,69 +149,22 @@
 	      <div class="row">
 	        <div class="col-lg-4">
 	        <div style="margin-bottom: 10px">2024.07.16(수) ~ 2024.07.18(금)&nbsp&nbsp<img alt="calendar" class="calendarImg" src="../images/plan/calendar.png"></div>
-	        <div><input type="button" class="btn" value="항공" style="width: 100%"></input></div><hr/>
+	        <input type="button" class="habtn btn" value="숙소"></input>
+	        <input type="button" class="habtn btn" value="항공"></input><hr/>
 	        
-	        <div style="margin-bottom: 100px">
+	        <div class="dayBlock">
 	        	<div>
-		        	<div style="margin-bottom: 10px">
-		        		<span style="color: black">DAY 1</span> 
+		        	<div>
+		        		<span>DAY 1</span> 
 		        		<span>&nbsp&nbsp7/16 수</span> 
-		        		<input type="button" class="btn" value="편집" style="float: right"></input>
+		        		<input type="button" class="editBtn btn" value="편집"></input>
 		        	</div>
 		        </div>
 		        
-		        <div style="margin-bottom: 10px">
+		        <div>
 		        	<div>
-			        	<div style="color: black">여기여기여기 0</div>
+			        	<div>여기여기여기 0</div>
 			        	<div>저기저기 0</div>
-			        </div>
-			        <div>
-			        	<div style="color: black">여기여기여기 0</div>
-			        	<div>저기저기 0</div>
-			        </div>
-		        </div>
-		        <input type="button" class="add-btn btn" value="장소 추가"></input>
-	        </div>
-	        
-	        <div style="margin-bottom: 100px">
-	        	<div>
-		        	<div style="margin-bottom: 10px">
-		        		<span style="color: black">DAY 2</span> 
-		        		<span>&nbsp&nbsp7/17 목</span> 
-		        		<input type="button" class="btn" value="편집" style="float: right"></input>
-		        	</div>
-		        </div>
-		        
-		        <div style="margin-bottom: 10px">
-		        	<div>
-			        	<div style="color: black">여기여기여기 1</div>
-			        	<div>저기저기 1</div>
-			        </div>
-			        <div>
-			        	<div style="color: black">여기여기여기 1</div>
-			        	<div>저기저기 1</div>
-			        </div>
-		        </div>
-		        <input type="button" class="add-btn btn" value="장소 추가"></input>
-	        </div>
-	        
-	        <div style="margin-bottom: 100px">
-	        	<div>
-		        	<div style="margin-bottom: 10px">
-		        		<span style="color: black">DAY 3</span> 
-		        		<span>&nbsp&nbsp7/18 금</span> 
-		        		<input type="button" class="btn" value="편집" style="float: right"></input>
-		        	</div>
-		        </div>
-		        
-		        <div style="margin-bottom: 10px">
-		        	<div>
-			        	<div style="color: black">여기여기여기 2</div>
-			        	<div>저기저기 2</div>
-			        </div>
-			        <div>
-			        	<div style="color: black">여기여기여기 2</div>
-			        	<div>저기저기 2</div>
 			        </div>
 		        </div>
 		        <input type="button" class="add-btn btn" value="장소 추가"></input>
@@ -223,9 +176,8 @@
 	        
 	        
 	        
-	        <div class="col-lg-8">
-	        <div style="margin-bottom: 10px">&nbsp&nbsp</div>
-	        <div><input type="button" class="btn" value="숙소" style="width: 100%"></input></div><hr/>
+	        <div class="col-lg-8 mapBlock">
+	        <div>&nbsp&nbsp</div>
 	          
 	          <div id="map">
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb3a8076d2603f3df36081d8e29ae823"></script>
