@@ -97,7 +97,7 @@
 		    <artifactId>osdt_core</artifactId>
 		    <version>21.3.0.0</version>
 		</dependency>
-		<!--  https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert -->
+		<!--   https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert -->
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_cert</artifactId>
