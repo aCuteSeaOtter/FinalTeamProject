@@ -12,5 +12,6 @@ public class PlanVO {
 	private String attr_name;
 	private String info_title;
 	private String info_content;
+	private int attrimg_id;
 }
 

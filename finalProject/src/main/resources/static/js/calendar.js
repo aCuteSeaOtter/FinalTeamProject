@@ -7,13 +7,13 @@ $(function() {
     let viewMonth   = currentDate.getMonth() + 1;
 
     // 현재 연도와 월을 표시하는 요소를 선택하고 초기화
-    let $currentDate = $(".current-date");
-    $currentDate.html(`${viewYear}년 ${viewMonth}월`);
+    let current_date = $(".current-date");
+    current_date.html(`${viewYear}년 ${viewMonth}월`);
  
     // 날짜를 표시할 요소와 이전/다음 버튼 요소를 선택
-    let $daysTag = $(".days");
-    let $prevBtn = $("#prev");
-    let $nextBtn = $("#next");
+    let daysTag = $(".days");
+    let prevBtn = $("#prev");
+    let nextBtn = $("#next");
 
     // 일정 시작일, 종료일
     let startDate = null;
@@ -27,13 +27,13 @@ $(function() {
     // 선택한 범위에 포함된 날짜를 가져옴
     let selectedDates = [];
 
-    let $startDay;
-    let $endDay;
+    let startDay;
+    let endDay;
 
     // 달력을 렌더링하는 함수
     let renderCalendar = () => {
         // 현재 연도와 월을 화면에 표시
-        $currentDate.html(`${viewYear}년 ${viewMonth}월`);
+        current_date.html(`${viewYear}년 ${viewMonth}월`);
 
         // 이번 달의 첫 번째 날의 요일을 가져옴
         let firstDayOfMonth = new Date(viewYear, viewMonth - 1, 1).getDay();
@@ -62,10 +62,10 @@ $(function() {
         }
 
         // 최종적으로 날짜를 $daysTag에 설정
-        $daysTag.html(liTag);
+        daysTag.html(liTag);
 
         // 이전 달, 다음 달 버튼의 클릭 이벤트 핸들러 설정
-        $prevBtn.off('click').on('click', function() {
+        prevBtn.off('click').on('click', function() {
             viewMonth -= 1; // 이전 달로 이동
 
             if (viewMonth < 1) {
@@ -75,7 +75,7 @@ $(function() {
             renderCalendar();
         });
 
-        $nextBtn.off('click').on('click', function() {
+        nextBtn.off('click').on('click', function() {
             viewMonth += 1; // 다음 달로 이동
 
             if (viewMonth > 12) {
@@ -86,7 +86,7 @@ $(function() {
         });
 
         // 각 날짜를 클릭했을 때의 처리
-        $daysTag.find("li").click(function () {
+        daysTag.find("li").click(function () {
             if ($(this).hasClass('inactiv')) return; // 이전 달의 날짜를 클릭 시, 아무 동작도 하지 않음
         
             // 만약 startDate와 endDate가 이미 선택되어 있다면 초기화
@@ -122,8 +122,8 @@ $(function() {
                     endDate   = selectedDate[0];
                 }
 
-                $startDay = $("li.selected-range").eq(0);
-                $endDay = $("li.selected-range").last();
+                startDay = $("li.selected-range").eq(0);
+                endDay = $("li.selected-range").last();
         
                 // 시작일과 종료일 사이의 모든 날짜에 대해 'selected-range' 클래스를 추가
                 if (startDate <= endDate) {
@@ -135,7 +135,7 @@ $(function() {
                         let day = current.getDate();
                         let month = current.getMonth() + 1;
                         let year = current.getFullYear();
-                        $daysTag.find("li").each(function () {
+                        daysTag.find("li").each(function () {
                             if (parseInt($(this).text()) === day && !$(this).hasClass('inactiv')) {
                                 if ((year === viewYear && month === viewMonth) || 
                                     (viewMonth === 12 && month === 1 && year === viewYear + 1)) {
@@ -160,7 +160,7 @@ $(function() {
         });
 
         // 이번 달의 날짜 중 오늘 이전의 날짜에 inactiv 클래스 추가
-        $daysTag.find("li").each(function() {
+        daysTag.find("li").each(function() {
             let day = parseInt($(this).text());
             if (isNaN(day)) return; // 숫자가 아닌 경우 (첫 번째 빈 칸 등) skip
 

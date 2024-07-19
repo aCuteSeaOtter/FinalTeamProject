@@ -18,17 +18,40 @@ public class PlanController {
 	@Autowired
 	private PlanService planService;
 	 
-	@RequestMapping("/addAttr")
-	public List<PlanVO> addAttr(Model m) {
-		List<PlanVO> result = planService.addAttr(m);
-		m.addAttribute("attr", result);
+	/*
+	 * @RequestMapping("/addAttr") public List<PlanVO> addAttr(Model m) {
+	 * List<PlanVO> result = planService.addAttr(m); m.addAttribute("attr", result);
+	 * return result; }
+	 */
+	
+	@RequestMapping("/planPopup")
+	public List<PlanVO> selectAttrList(Model m) {
+		System.out.println("신호옴");
+		List<PlanVO> result = planService.selectAttrList(m);
+		m.addAttribute("attrList", result);
 		return result;
 	}
 	
-	@RequestMapping("/planPopup")
-	public String popup() {
-		return "plan/planPopup";
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @RequestMapping("/planPopup") public String popup(Model m) { return
+	 * "plan/planPopup"; }
+	 */
 	
 	@RequestMapping("/plan")
 	public String search() {

@@ -6,6 +6,32 @@
     font-style: normal;
 }
 
+
+.dayBlock {
+	margin-bottom: 65px;
+}
+
+
+.dayBlock > div {
+	margin-bottom: 30px;
+}
+
+
+.dayBlock > div:nth-child(2) > div, .dayBlock > div:nth-child(2) {
+	margin-bottom: 10px;
+}
+
+
+.dayBlock > div > div > span:nth-child(1), .dayBlock > div:nth-child(2) > div > div:nth-child(1) {
+	color: black;
+}
+
+
+.dayBlock > div > div > span {
+	font-size: 18px;
+	font-family: 'tway';
+} 
+
   
 .add-btn {
 	width: 100%; 
@@ -16,8 +42,16 @@
 }
 
 
-.btn {
+.habtn {
 	font-family: 'tway';
+	display: inline-block;
+	width: 49%;
+}
+
+
+.editBtn {
+	font-family: 'tway';
+	float: right;
 }
 
 
@@ -30,4 +64,9 @@
 #map {
 	width: 100%;
 	height: 740px;
+}
+
+
+.mapBlock > div:nth-child(1) {
+	margin-bottom: 12px;
 }
