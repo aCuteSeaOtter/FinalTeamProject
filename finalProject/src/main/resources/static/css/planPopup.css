@@ -14,7 +14,7 @@
 }
 
 .selectedDiv > div:nth-child(1) {
-	margin-bottom: 10px;
+	margin-bottom: 14px;
 }
 
 .selectedCnt {
@@ -173,6 +173,12 @@
 
 .deleteItem:hover {
 	cursor: pointer;
+}
+
+.selectedDiv input[type=button] {
+	float: right; 
+	position: relative; 
+	top: -10px;
 }
 
 .selectedScrollBox { 

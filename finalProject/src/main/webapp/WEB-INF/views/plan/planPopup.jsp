@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <head> 
-  <title>planPopup</title>
+  <title>planPopup</title> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -75,7 +75,6 @@
     <!-- bg outer wrapper -->
   </div>
   <!-- TOP DESTINATIONS SECTION -->
-  
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 	    <div class="container">
 	      <div class="row">
@@ -87,26 +86,15 @@
 	        
 		    <div class="scrollBox">
 		    
-		    	<!-- 명소 출력 시작 -->
-		    	
-		        <div class="divBlock">
-		        	<div class="location">
-		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
-		        		<div class="contentBox">
-				        	<div class="localTitle">여기여기여기 0</div>
-				        	<div>저기저기 0</div>
-		        		</div>
-				        <img class="selectBox" src="../images/plan/none_select.svg">
-			        </div>
-		        </div>
-		        
+		    <!-- 명소 출력 시작 -->
 	        <c:forEach items="${attrList }" var="attr">
 				<div class="divBlock">
 		        	<div class="location">
 		        		<img class="thumbnail" src="../images/plan/test.jpg"/>
 		        		<div class="contentBox">
-				        	<div class="localTitle">${attr.ATTR_NAME }</div>
-				        	<div>저기저기 0</div>
+		        			<input type="hidden" class="attrId" value="${attr.attr_id }"/>
+				        	<div class="localTitle">${attr.attr_name }</div>
+				        	<div>카테고리(명소, 식당, 카페), 주소</div>
 		        		</div>
 				        <img class="selectBox" src="../images/plan/none_select.svg">
 			        </div>
@@ -128,6 +116,7 @@
 		        	<div>
 		        		<span>DAY 1</span> 
 		        		<span>&nbsp&nbsp7/16 수</span> 
+		        		<input type="button" class="btn btn-secondary save-btn" value="저장"></input>
 		        	</div> 
 		        </div> 
 	        	<div>
@@ -146,10 +135,7 @@
 	        </div>
 	        
 	        
-	        <!-- <div class="col-lg-3">
-	          <input type="text" style="width: 100%"></input>
-	          col
-	        </div> -->
+          
 	        
 	        <!-- row -->
 	      </div>
