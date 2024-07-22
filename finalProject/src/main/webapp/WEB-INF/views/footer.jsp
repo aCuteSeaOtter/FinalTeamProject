@@ -6,38 +6,38 @@
 	
 <!-- FOOTER SECTION -->
   <section class="float-left w-100 position-relative main-box footer-con">
-    <img alt="vector" class="vector8 img-fluid position-absolute" src="assets/images/vector8.png">
+    <img alt="vector" class="vector8 img-fluid position-absolute" src="/assets/images/vector8.png">
     <div class="container">
       <div class="partner-con">
         <ul class="mb-0 list-unstyled d-flex align-items-center justify-content-between">
           <li>
             <figure class="mb-0">
-              <img class="img-fluid" src="assets/images/partner-logo-1.png" alt="icon">
+              <img class="img-fluid" src="/assets/images/partner-logo-1.png" alt="icon">
             </figure>
           </li>
           <li>
             <figure class="mb-0">
-              <img class="img-fluid" src="assets/images/partner-logo-2.png" alt="icon">
+              <img class="img-fluid" src="/assets/images/partner-logo-2.png" alt="icon">
             </figure>
           </li>
           <li class="img-mb">
             <figure class="mb-0">
-              <img class="img-fluid" src="assets/images/partner-logo-3.png" alt="icon">
+              <img class="img-fluid" src="/assets/images/partner-logo-3.png" alt="icon">
             </figure>
           </li>
           <li>
             <figure class="mb-0">
-              <img class="img-fluid" src="assets/images/partner-logo-4.png" alt="icon">
+              <img class="img-fluid" src="/assets/images/partner-logo-4.png" alt="icon">
             </figure>
           </li>
           <li>
             <figure class="mb-0">
-              <img class="img-fluid" src="assets/images/partner-logo-5.png" alt="icon">
+              <img class="img-fluid" src="/assets/images/partner-logo-5.png" alt="icon">
             </figure>
           </li>
           <li>
             <figure class="mb-0">
-              <img class="img-fluid" src="assets/images/partner-logo-6.png" alt="icon">
+              <img class="img-fluid" src="/assets/images/partner-logo-6.png" alt="icon">
             </figure>
           </li>
         </ul>
@@ -48,13 +48,13 @@
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 footer-logo-con">
             <a href="index">
               <figure class="footer-logo">
-                <img src="assets/images/footer-logo.png" class="img-fluid" alt="">
+                <img src="/assets/images/footer-logo.png" class="img-fluid" alt="">
               </figure>
             </a>
             <p class="text-size-16 footer-text">Lorem ipsum dolor sit amet, consectetur adipiscing elitsed do eiusmod
               tempororem ipsum dolor sit am econsect ametconsectetetur adipiscing.</p>
             <figure class="mb-0 payment-icon">
-              <img src="assets/images/payment-card.png" class="img-fluid" alt="">
+              <img src="/assets/images/payment-card.png" class="img-fluid" alt="">
             </figure>
           </div>
           <div class="col-lg-1 col-md-1 col-sm-6 col-12 d-lg-block d-none">

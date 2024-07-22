@@ -4,24 +4,19 @@
 <mapper namespace="ReplyDAO">
 
 	<insert id="insertReply" parameterType="ReplyVO">
-		INSERT INTO reply2(bno, reply, replyer, replydate)
-		VALUES(#{bno}, #{reply}, #{replyer}, sysdate())
-		<!-- 오라클
-		INSERT INTO reply(rno, bno, reply, replyer, replydate)
-		VALUES(reply_seq.nextval, #{bno}, #{reply}, #{replyer}, sysdate) -->
-	</insert>
+        INSERT INTO reply (reply_id, comment_id, reply_content, member_email, reply_regdate)
+        VALUES (reply_id_seq.NEXTVAL, #{comment_id}, #{reply_content}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'))
+    </insert>
 
-	<select id='selectAllReply' parameterType='int' resultType='ReplyVO'>
-		SELECT * FROM reply2 WHERE bno=#{bno}
-	</select>
-	
-	<delete id='deleteReply' parameterType='int'>
-		DELETE FROM reply2 WHERE rno=#{rno}
-	</delete>
-	
-	<update id="updateReply" parameterType="ReplyVO">
-		UPDATE REPLY2 SET
-		REPLY = #{reply}
-		WHERE RNO = #{rno}
-	</update>
+    <select id="selectAllReply" parameterType="int" resultType="Map">
+        SELECT r.*, m.member_nickname
+        FROM reply r
+        INNER JOIN member m
+        ON r.member_email = m.member_email
+        WHERE r.comment_id = #{comment_id}
+    </select>
+    
+    <delete id="deleteReply" parameterType='int'>
+    	DELETE FROM reply WHERE reply_id = #{reply_id}
+    </delete>
 </mapper>

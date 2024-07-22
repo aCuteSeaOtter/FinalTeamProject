@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class ReplyVO {
-	private int rno;			// 댓글번호
-	private int bno;			// 게시글번호 ( 댓글이 달릴 게시글 )
-	private String reply;		// 댓글내용
-	private String replyer;		// 댓글작성자
-	private String replydate;	// 댓글작성일
+	
+	private int reply_id;		// 대댓글번호
+	private String member_email;	// 대댓글작성자
+	private int comment_id;		// 댓글번호 ( 대댓글이 달릴 댓글 )
+	private String reply_content;	// 대댓글내용
+	private String reply_regdate ;	// 대댓글작성일
 }

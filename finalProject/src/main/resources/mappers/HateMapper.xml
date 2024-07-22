@@ -3,38 +3,39 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="HateDAO">
-	
-	<select id="getHateStatus" parameterType="map" resultType="int">
-        SELECT status
+   
+   <select id="getHateStatus" parameterType="map" resultType="int">
+        SELECT hate_state
         FROM hate
-        WHERE bno = #{bno} AND id = #{id}
+        WHERE review_id = #{review_id} AND member_email = #{member_email}
+        AND ROWNUM = 1
     </select>
 
     <insert id="insertHate" parameterType="HateVO">
-        INSERT INTO hate (bno, id, status)
-        VALUES (#{bno}, #{id}, #{status})
+        INSERT INTO hate (hate_id, review_id, member_email, hate_state)
+        VALUES (hate_id_seq.NEXTVAL, #{review_id}, #{member_email}, #{hate_state})
     </insert>
 
     <update id="updateHate" parameterType="HateVO">
         UPDATE hate
-        SET status = #{status}
-        WHERE bno = #{bno} AND id = #{id}
+        SET hate_state = #{hate_state}
+        WHERE review_id = #{review_id} AND member_email = #{member_email}
     </update>
 
     <delete id="deleteHate" parameterType="map">
         DELETE FROM hate
-        WHERE bno = #{bno} AND id = #{id}
+        WHERE review_id = #{review_id} AND member_email = #{member_email}
     </delete>
 
     <select id="countHates" parameterType="int" resultType="int">
         SELECT COUNT(*)
         FROM hate
-        WHERE bno = #{bno}
+        WHERE review_id = #{review_id}
     </select>
-	
-	<select id="existsById" parameterType="String" resultType="int">
+   
+   <select id="existsById" parameterType="String" resultType="int">
         SELECT COUNT(*)
-        FROM member1
-        WHERE id = #{id}
+        FROM member
+        WHERE member_email = #{member_email}
     </select>
 </mapper>

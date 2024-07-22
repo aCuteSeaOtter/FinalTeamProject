@@ -16,20 +16,20 @@ public class LikeController {
 	@Autowired
     private LikeService likeService;
 
-    @GetMapping("/{bno}/{id}")
-    public int getLikeStatus(@PathVariable int bno, @PathVariable String id) {
-        return likeService.getLikeStatus(bno, id);
+    @GetMapping("/{review_id}/{member_id}")
+    public int getLikeStatus(@PathVariable int review_id, @PathVariable String member_id) {
+        return likeService.getLikeStatus(review_id, member_id);
     }
 
-    @PostMapping("/{bno}/{id}")
-    public void toggleLike(@PathVariable int bno, @PathVariable String id) {
-    	System.out.println("게시글번호:" + bno);
-    	System.out.println("사용자 아이디 :" + id);
-        likeService.toggleLike(bno, id);
+    @PostMapping("/{review_id}/{member_id}")
+    public void toggleLike(@PathVariable int review_id, @PathVariable String member_id) {
+    	System.out.println("게시글번호:" + review_id);
+    	System.out.println("사용자 아이디 :" + member_id);
+        likeService.toggleLike(review_id, member_id);
     }
     
-    @GetMapping("/count/{bno}")
-    public int countLikes(@PathVariable int bno) {
-        return likeService.countLikes(bno);
+    @GetMapping("/count/{review_id}")
+    public int countLikes(@PathVariable int review_id) {
+        return likeService.countLikes(review_id);
     }
 }

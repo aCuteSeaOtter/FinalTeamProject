@@ -13,27 +13,27 @@ public class LikeServiceImpl implements LikeService{
 	@Autowired
 	LikeDAO likeDAO;
 	
-	public int getLikeStatus(int bno, String id) {
-        return likeDAO.getLikeStatus(bno, id);
+	public int getLikeStatus(int review_id, String member_email) {
+        return likeDAO.getLikeStatus(review_id, member_email);
     }
 
     @Override
     @Transactional
-    public void toggleLike(int bno, String id) {
-        int currentStatus = likeDAO.getLikeStatus(bno, id);
+    public void toggleLike(int review_id, String member_email) {
+        int currentStatus = likeDAO.getLikeStatus(review_id, member_email);
         LikeVO like = new LikeVO();
-        like.setBno(bno);
-        like.setId(id);
+        like.setReview_id(review_id);
+        like.setMember_email(member_email);
         if (currentStatus == 0) {
-            like.setStatus(1);
+            like.setLike_state(1);
             likeDAO.insertLike(like);
         } else {
-            likeDAO.deleteLike(bno, id);
+            likeDAO.deleteLike(review_id, member_email);
         }
     }
 
     @Override
-    public int countLikes(int bno) {
-        return likeDAO.countLikes(bno);
+    public int countLikes(int review_id) {
+        return likeDAO.countLikes(review_id);
     }
 }

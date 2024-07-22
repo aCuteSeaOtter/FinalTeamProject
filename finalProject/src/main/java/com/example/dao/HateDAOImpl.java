@@ -15,10 +15,10 @@ public class HateDAOImpl implements HateDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public int getHateStatus(int bno, String id) {
+	public int getHateStatus(int review_id, String member_email) {
         Map<String, Object> params = new HashMap<>();
-        params.put("bno", bno);
-        params.put("id", id);
+        params.put("review_id", review_id);
+        params.put("member_email", member_email);
         Integer status = mybatis.selectOne("HateDAO.getHateStatus", params);
         return status != null ? status : 0;
     }
@@ -34,15 +34,15 @@ public class HateDAOImpl implements HateDAO{
     }
 
     @Override
-    public void deleteHate(int bno, String id) {
+    public void deleteHate(int review_id, String member_email) {
         Map<String, Object> params = new HashMap<>();
-        params.put("bno", bno);
-        params.put("id", id);
+        params.put("review_id", review_id);
+        params.put("member_email", member_email);
         mybatis.delete("HateDAO.deleteHate", params);
     }
 
     @Override
-    public int countHates(int bno) {
-        return mybatis.selectOne("HateDAO.countHates", bno);
+    public int countHates(int review_id) {
+        return mybatis.selectOne("HateDAO.countHates", review_id);
     }
 }

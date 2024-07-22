@@ -1,16 +1,15 @@
 package com.example.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.domain.ReplyVO;
 
-	public interface ReplyDAO {
-
-	public Integer insertReply(ReplyVO vo); 
+public interface ReplyDAO {
 	
-	public List<ReplyVO> selectAllReply(Integer bno);
-	
-	public int deleteReply(Integer rno);
-	
-	public void updateReply(ReplyVO vo);
+	 Integer insertReply(ReplyVO vo);
+	 
+	 List<Map<String, Object>> selectAllReply(Integer comment_id);
+	 
+	 public int deleteReply(Integer reply_id);
 }

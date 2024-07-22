@@ -15,10 +15,10 @@ public class LikeDAOImpl implements LikeDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public int getLikeStatus(int bno, String id) {
+	public int getLikeStatus(int review_id, String member_email) {
         Map<String, Object> params = new HashMap<>();
-        params.put("bno", bno);
-        params.put("id", id);
+        params.put("review_id", review_id);
+        params.put("member_email", member_email);
         Integer status = mybatis.selectOne("LikeDAO.getLikeStatus", params);
         return status != null ? status : 0;
     }
@@ -34,15 +34,15 @@ public class LikeDAOImpl implements LikeDAO{
     }
 
     @Override
-    public void deleteLike(int bno, String id) {
+    public void deleteLike(int review_id, String member_email) {
         Map<String, Object> params = new HashMap<>();
-        params.put("bno", bno);
-        params.put("id", id);
+        params.put("review_id", review_id);
+        params.put("member_email", member_email);
         mybatis.delete("LikeDAO.deleteLike", params);
     }
 
     @Override
-    public int countLikes(int bno) {
-        return mybatis.selectOne("LikeDAO.countLikes", bno);
+    public int countLikes(int review_id) {
+        return mybatis.selectOne("LikeDAO.countLikes", review_id);
     }
 }

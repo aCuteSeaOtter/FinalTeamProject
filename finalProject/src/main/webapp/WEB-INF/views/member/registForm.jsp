@@ -12,16 +12,16 @@
 <form action="saveMember" method="post">
 <table border="1">
 	<tr>
-		<td bgcolor="orange" width="70">아이디</td><td align="left">
-		<input type="text" name="id"/></td>
+		<td bgcolor="orange" width="70">이메일</td><td align="left">
+		<input type="email" name="member_email"/></td>
 	</tr>
 	<tr>
 		<td bgcolor="orange" width="70">비밀번호</td><td align="left">
-		<input type="password" name="pass"/></td>
+		<input type="password" name="member_pass"/></td>
 	</tr>
 	<tr>
-		<td bgcolor="orange" width="70">이름</td><td align="left">
-		<input type="text" name="name"/></td>
+		<td bgcolor="orange" width="70">닉네임</td><td align="left">
+		<input type="text" name="member_nickname"/></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">

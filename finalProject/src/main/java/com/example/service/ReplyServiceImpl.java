@@ -1,42 +1,34 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.ReplyCommentDAO;
 import com.example.dao.ReplyDAO;
+import com.example.domain.CommentVO;
 import com.example.domain.ReplyVO;
 
 @Service("replyService")
 public class ReplyServiceImpl implements ReplyService{
-
+	
 	@Autowired
 	ReplyDAO replyDAO;
 	
-	 @Autowired
-	 ReplyCommentDAO replyCommentDAO;
-	 
-	@Override
 	public Integer insertReply(ReplyVO vo) {
 		Integer result = replyDAO.insertReply(vo);
-		return result;
+		return result; 
 	}
 
 	@Override
-	public List<ReplyVO> selectAllReply(Integer bno) {
+	public List<Map<String, Object>> selectAllReply(Integer comment_id) {
 		
-		return replyDAO.selectAllReply(bno);
+		return replyDAO.selectAllReply(comment_id);
 	}
 	
-	
-	@Override
-	public Integer deleteReply(Integer rno) {
-		return replyDAO.deleteReply(rno);
+	public Integer deleteReply(Integer reply_id) {
+		return replyDAO.deleteReply(reply_id);
 	}
 	
-	public void updateReply(ReplyVO vo) {
-		replyDAO.updateReply(vo);
-	}
 }

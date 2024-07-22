@@ -2,9 +2,9 @@ package com.example.service;
 
 public interface HateService {
 
-	int getHateStatus(int bno, String id);
+	int getHateStatus(int review_id, String member_email);
 	
-    void toggleHate(int bno, String id);
+    void toggleHate(int review_id, String member_email);
     
-    int countHates(int bno);
+    int countHates(int review_id);
 }

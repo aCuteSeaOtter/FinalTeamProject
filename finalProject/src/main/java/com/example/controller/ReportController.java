@@ -23,9 +23,9 @@ public class ReportController {
 	
 	@GetMapping("/reportWrite")
     public String showReportPage(
-            @RequestParam(value = "seq", required = false) String seq,
-            @RequestParam(value = "rno", required = false) String rno,
-            @RequestParam(value = "rcno", required = false) String rcno,
+            @RequestParam(value = "review_id", required = false) String review_id,
+            @RequestParam(value = "comment_id", required = false) String comment_id,
+            @RequestParam(value = "reply_id", required = false) String reply_id,
     		Model model,
     		HttpSession session) {
 		// 세션에서 사용자 ID 가져오기
@@ -39,19 +39,19 @@ public class ReportController {
         }
         
         // URL 파라미터로 전달된 값 로그 출력
-        System.out.println("seq: " + seq);
-        System.out.println("rno: " + rno);
-        System.out.println("rcno: " + rcno);
+        System.out.println("review_id: " + review_id);
+        System.out.println("comment_id: " + comment_id);
+        System.out.println("reply_id: " + reply_id);
 
         // URL 파라미터를 모델에 추가
-        if (seq != null) {
-            model.addAttribute("seq", seq);
+        if (review_id != null) {
+            model.addAttribute("review_id", review_id);
         }
-        if (rno != null) {
-            model.addAttribute("rno", rno);
+        if (comment_id != null) {
+            model.addAttribute("comment_id", comment_id);
         }
-        if (rcno != null) {
-            model.addAttribute("rcno", rcno);
+        if (reply_id != null) {
+            model.addAttribute("reply_id", reply_id);
         }
 		return "report/reportWrite";
     }
@@ -60,19 +60,19 @@ public class ReportController {
 	public String saveReport(ReportVO vo, Model m
 			, HttpSession session
 			, HttpServletResponse response
-			,@RequestParam(value = "seq", required = false) String seq,
-             @RequestParam(value = "rno", required = false) String rno,
-             @RequestParam(value = "rcno", required = false) String rcno) {
+			,@RequestParam(value = "review_id", required = false) String review_id,
+             @RequestParam(value = "comment_id", required = false) String comment_id,
+             @RequestParam(value = "reply_id", required = false) String reply_id) {
 		// 세션에서 사용자 ID 가져오기
         String id = (String) session.getAttribute("sess");
         System.out.println("insertReport 세션에서 가져온 id값: " + id);
         
         System.out.println("report VO : "+vo);
         // ReportVO에 사용자 ID 설정
-        vo.setReportId(id);
+        vo.setMember_email(id);
         
         
 		reportService.insertReport(vo);
-		return "redirect:/board/getBoardList";
+		return "redirect:/review/getReviewList";
 	}
 }

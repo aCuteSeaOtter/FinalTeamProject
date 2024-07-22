@@ -2,9 +2,9 @@ package com.example.service;
 
 public interface LikeService {
 
-	int getLikeStatus(int bno, String id);
+	int getLikeStatus(int review_id, String member_email);
 	
-    void toggleLike(int bno, String id);
+    void toggleLike(int review_id, String member_email);
     
-    int countLikes(int bno);
+    int countLikes(int review_id);
 }

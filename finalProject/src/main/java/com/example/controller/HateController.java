@@ -16,20 +16,20 @@ public class HateController {
 	@Autowired
     private HateService hateService;
 
-    @GetMapping("/{bno}/{id}")
-    public int getHateStatus(@PathVariable int bno, @PathVariable String id) {
-        return hateService.getHateStatus(bno, id);
+    @GetMapping("/{review_id}/{member_email}")
+    public int getHateStatus(@PathVariable int review_id, @PathVariable String member_email) {
+        return hateService.getHateStatus(review_id, member_email);
     }
 
-    @PostMapping("/{bno}/{id}")
-    public void toggleHate(@PathVariable int bno, @PathVariable String id) {
-    	System.out.println("게시글번호:" + bno);
-    	System.out.println("사용자 아이디 :" + id);
-        hateService.toggleHate(bno, id);
+    @PostMapping("/{review_id}/{member_email}")
+    public void toggleHate(@PathVariable int review_id, @PathVariable String member_email) {
+    	System.out.println("게시글번호:" + review_id);
+    	System.out.println("사용자 아이디 :" + member_email);
+        hateService.toggleHate(review_id, member_email);
     }
 
-    @GetMapping("/count/{bno}")
-    public int countHates(@PathVariable int bno) {
-        return hateService.countHates(bno);
+    @GetMapping("/count/{review_id}")
+    public int countHates(@PathVariable int review_id) {
+        return hateService.countHates(review_id);
     }
 }
