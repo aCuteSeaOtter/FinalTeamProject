@@ -17,6 +17,6 @@ import com.example.domain.PlanVO;
 */
 @Mapper		// Mapper 호출
 public interface PlanDAO {
-	/* public List<PlanVO> addAttr(Model m); */
+	public List<PlanVO> insertPlan(List<PlanVO> selectedAttrIdData);
 	public List<PlanVO> selectAttrList(Model m);
 }

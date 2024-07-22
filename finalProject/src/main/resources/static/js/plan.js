@@ -1,42 +1,4 @@
 $(function() {
-	// 버튼 클릭 이벤트 핸들러
-    $('.add-Btn').on('click', function() {
-        $.ajax({
-            url: '/attrList', // 서버의 @RequestMapping("/attrList") URL
-            type: 'POST', // 요청 방식 (GET 또는 POST)
-            success: function(response) {
-                // 요청이 성공했을 때의 처리
-                // response는 서버에서 반환된 데이터입니다.
-                console.log('Success:', response);
-            },
-            error: function(xhr, status, error) {
-                // 요청이 실패했을 때의 처리
-                console.error('Error:', status, error);
-            }
-        });
-    });
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
     // 일정 추가 버튼 클릭 시 팝업창 열기
     $(".add-btn").on("click", function() {
         showPopup();
@@ -55,6 +17,8 @@ $(function() {
     const noneSel = '../images/plan/none_select.svg'; // 선택되지 않은 이미지 경로
     const sel = '../images/plan/place_select.svg'; // 선택된 이미지 경로
 
+	let selectedAttrIdData = [];
+	
     selectBox.on("click", function() {
         const currentSrc = $(this).attr('src'); // 현재 클릭된 요소의 src 속성 가져오기
         // 이미지 상태에 따라 클릭 시 교체
@@ -91,15 +55,20 @@ $(function() {
 			cnt += 1;
 			updateCnt(cnt);
 			
+			var selectedAttrId = divBlock.find(".attrId").val();
             var selectedThumbnailSrc = divBlock.find(".thumbnail").attr("src"); // 선택된 썸네일 이미지 경로 가져오기
             var selectedDescriptionText = divBlock.find(".contentBox > div:last-child").text(); // 선택된 설명 텍스트 가져오기
+			
 
+			selectedAttrIdData.push(selectedAttrId);
+			
             // 새로운 항목 HTML 생성
             var newItem = `
                 <div class="selectedItem">
                     <div class="selectedLocation">
                         <img class="selectedThumbnail" src="${selectedThumbnailSrc}"/>
                         <div class="selectedContentBox">
+							<input type="hidden" value="${selectedAttrId}"/>
                             <div class="selectedLocalTitle">${selectedLocalTitleText}</div>
                             <div>${selectedDescriptionText}</div>
                         </div>
@@ -178,6 +147,30 @@ $(function() {
 		// selectItem 제거
 		$selectedItem.remove();
 	});
+	
+	
+	
+	
+	// 버튼 클릭 이벤트 핸들러
+    $('.save-btn').on('click', function() {
+		alert("배열 확인 : " + selectedAttrIdData);
+		$.ajax({
+		    url: '/insertPlan', // 서버의 @RequestMapping("/insertPlan") URL
+		    type: 'POST', // 요청 방식 (GET 또는 POST)
+			contentType:"application/json",
+			data: selectedAttrIdData,
+		    success: function(response) {
+		        // 요청이 성공했을 때의 처리
+		        // response는 서버에서 반환된 데이터입니다.
+		        console.log('Success:', response);
+				window.close();
+		    },
+		    error: function(error) {
+		        // 요청이 실패했을 때의 처리
+				console.log('Error:', error);
+		    }
+		});
+    });
 });
 
 

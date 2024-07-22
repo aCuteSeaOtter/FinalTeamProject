@@ -153,7 +153,7 @@
 	        <input type="button" class="habtn btn" value="항공"></input><hr/>
 	        
 	        <div class="dayBlock">
-	        	<div>
+	        	<div> 
 		        	<div>
 		        		<span>DAY 1</span> 
 		        		<span>&nbsp&nbsp7/16 수</span> 
