@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentDAO">
+
+    <insert id="insertComment" parameterType="commentVO">
+        INSERT INTO comments (comment_id, review_id, comment_content, member_email,  comment_regdate)
+        VALUES (comment_id_seq.NEXTVAL, #{review_id}, #{comment_content}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'))
+    </insert>
+
+    <select id="selectAllComment" parameterType="int" resultType="Map">
+        SELECT c.*, m.member_nickname 
+        FROM comments c 
+        INNER JOIN member m 
+        ON c.member_email = m.member_email
+        WHERE c.review_id = #{review_id}
+    </select>
+
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comments WHERE comment_id = #{comment_id}
+    </delete>
+
+    <update id="updateComment" parameterType="commentVO">
+        UPDATE comments
+        SET comment_content = #{comment_content}
+        WHERE comment_id = #{comment_id}
+    </update>
+</mapper>
