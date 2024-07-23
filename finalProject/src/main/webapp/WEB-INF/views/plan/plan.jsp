@@ -157,16 +157,18 @@
 		        	<div>
 		        		<span>DAY 1</span> 
 		        		<span>&nbsp&nbsp7/16 수</span> 
-		        		<input type="button" class="editBtn btn" value="편집"></input>
+		        		<input type="button" class="edit-btn btn" value="편집"></input>
 		        	</div>
 		        </div>
 		        
-		        <div>
-		        	<div>
-			        	<div>여기여기여기 0</div>
-			        	<div>저기저기 0</div>
-			        </div>
-		        </div>
+	        	<c:forEach items="${selList }" var="sel">
+	        		<div class="inputData">
+	        		
+	        			<!-- 선택한 일정이 추가되는 영역 -->
+	        		
+	        		</div>
+		        </c:forEach>
+		       
 		        <input type="button" class="add-btn btn" value="장소 추가"></input>
 	        </div>
 	        

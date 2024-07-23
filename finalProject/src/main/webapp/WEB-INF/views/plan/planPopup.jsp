@@ -123,8 +123,10 @@
 			        <div class="selectedCnt">0</div>
 			        <div class="deleteAll">모든 항목 삭제</div>
 	        	</div>
+	        	
+	        	
 	        	<div class="selectedScrollBox">
-			        
+	        	
 			        <!-- 선택한 일정이 추가되는 영역 -->
 			        
 				</div>

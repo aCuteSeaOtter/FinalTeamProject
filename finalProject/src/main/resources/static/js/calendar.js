@@ -191,19 +191,19 @@ $(function() {
         }
         
 
-         // AJAX 요청을 사용하여 날짜 정보를 서버로 전송
-        //  $.ajax({
-        //     url: '/save-dates', // 서버의 엔드포인트 URL
-        //     type: 'POST',
-        //     contentType: 'application/json',
-        //     data: { dates: selDates },
-        //     success: function(response) {
-        //         console.log("날짜 정보가 성공적으로 전송되었습니다.");
-        //     },
-        //     error: function(error) {
-        //         console.error("날짜 정보를 전송하는 동안 오류가 발생했습니다.", error);
-        //     }
-        // });
+        // AJAX 요청을 사용하여 날짜 정보를 서버로 전송
+          $.ajax({
+             url: '/plan', // 서버의 엔드포인트 URL
+             type: 'POST',
+             data: { dates: selDates },
+             success: function(response) {
+                 console.log("날짜 정보가 성공적으로 전송되었습니다.");
+				 window.location.href = "/plan/plan";
+             },
+             error: function(error) {
+                 console.error("날짜 정보를 전송하는 동안 오류가 발생했습니다.", error);
+             }
+         });
     });
 
     $(".delBtn").click(function() {
