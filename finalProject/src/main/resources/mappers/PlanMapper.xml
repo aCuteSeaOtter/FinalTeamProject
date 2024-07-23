@@ -4,13 +4,23 @@
  
 <mapper namespace="com.example.dao.PlanDAO">
 
-	<insert id="insertPlan" parameterType="java.util.List">
+	<!-- <insert id="insertPlan" parameterType="java.util.List">
 	    INSERT INTO ATTR (attr_id, attr_name, info_title, info_content)
 	    VALUES
 	    <foreach collection="list" item="item" separator=",">
 	        (#{item.attr_id}, #{item.attr_name}, #{item.info_title}, #{item.info_content})
 	    </foreach>
-	</insert>
+	</insert> -->
+	
+	<select id="insertPlan" parameterType="java.util.List" resultType="com.example.domain.PlanVO">
+	    SELECT *
+	    FROM ATTR
+	    WHERE attr_id IN (
+	        <foreach collection="data" item="item" separator="," open="" close="">
+	            #{item}
+	        </foreach>
+	    )
+	</select>
 	
 	<select id="selectAttrList" parameterType="com.example.domain.PlanVO" resultType="com.example.domain.PlanVO">
 		SELECT *

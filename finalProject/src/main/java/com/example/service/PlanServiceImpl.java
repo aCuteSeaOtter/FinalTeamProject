@@ -17,9 +17,8 @@ public class PlanServiceImpl implements PlanService {
 	@Autowired
 	private PlanDAO planDAO;
 	
-	public List<PlanVO> insertPlan(List<PlanVO> selectedAttrIdData) {
-		System.out.println("INSERT : " + selectedAttrIdData);
-		return planDAO.insertPlan(selectedAttrIdData);
+	public List<PlanVO> insertPlan(List<Integer> data) {
+		return planDAO.insertPlan(data);
 	}
 	
 	public List<PlanVO> selectAttrList(Model m) {

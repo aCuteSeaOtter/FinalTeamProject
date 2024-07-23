@@ -1,23 +1,35 @@
 $(function() {
     // 일정 추가 버튼 클릭 시 팝업창 열기
     $(".add-btn").on("click", function() {
+		$(".inputData").empty();
+		
         showPopup();
 
         function showPopup() {
-            window.open("planPopup", "a", "width=1200, height=800, top=50");
+            window.open("planPopup", "a", "width=1200, height=800, top=50, left=100");
         }
     }); 
 	
 	
+	// 편집 버튼 클릭 시 팝업창 열기
+	$(".edit-btn").on("click", function() {
+        showPopup();
+
+        function showPopup() {
+            window.open("planPopup", "a", "width=1200, height=800, top=50, left=100");
+        }
+    });
+	
+	
 	// 추가한 일정의 수 카운트
 	let cnt = 0;
+	let selectedAttrIdData = [];
 	
     // + 버튼 클릭 시 체크 버튼으로 교체 및 선택된 요소 추가
     const selectBox = $(".selectBox"); // .selectBox 클래스 요소 선택
     const noneSel = '../images/plan/none_select.svg'; // 선택되지 않은 이미지 경로
     const sel = '../images/plan/place_select.svg'; // 선택된 이미지 경로
-
-	let selectedAttrIdData = [];
+	
 	
     selectBox.on("click", function() {
         const currentSrc = $(this).attr('src'); // 현재 클릭된 요소의 src 속성 가져오기
@@ -59,23 +71,23 @@ $(function() {
             var selectedThumbnailSrc = divBlock.find(".thumbnail").attr("src"); // 선택된 썸네일 이미지 경로 가져오기
             var selectedDescriptionText = divBlock.find(".contentBox > div:last-child").text(); // 선택된 설명 텍스트 가져오기
 			
-
-			selectedAttrIdData.push(selectedAttrId);
+			selectedAttrIdData.push( selectedAttrId );
+			/*selectedAttrIdData.push({ 'attr_id' :selectedAttrId });*/
 			
             // 새로운 항목 HTML 생성
-            var newItem = `
-                <div class="selectedItem">
-                    <div class="selectedLocation">
-                        <img class="selectedThumbnail" src="${selectedThumbnailSrc}"/>
-                        <div class="selectedContentBox">
-							<input type="hidden" value="${selectedAttrId}"/>
-                            <div class="selectedLocalTitle">${selectedLocalTitleText}</div>
-                            <div>${selectedDescriptionText}</div>
-                        </div>
-                        <img class="deleteItem" src="../images/plan/trash.png">
-                    </div>
-                </div>
-            `;
+			var newItem = `
+			    <div class="selectedItem">
+			        <div class="selectedLocation">
+			            <img class="selectedThumbnail" src="${selectedThumbnailSrc}"/>
+			            <div class="selectedContentBox">
+			                <input type="hidden" value="${selectedAttrId}"/>
+			                <div class="selectedLocalTitle">${selectedLocalTitleText}</div>
+			                <div>${selectedDescriptionText}</div>
+			            </div>
+			            <img class="deleteItem" src="../images/plan/trash.png">
+			        </div>
+			    </div>
+			`;
             // 생성된 항목을 .selectedScrollBox 안에 추가
             $(".selectedScrollBox").append(newItem);
         }
@@ -148,31 +160,48 @@ $(function() {
 		$selectedItem.remove();
 	});
 	
-	
-	
-	
+
+
 	// 버튼 클릭 이벤트 핸들러
     $('.save-btn').on('click', function() {
 		alert("배열 확인 : " + selectedAttrIdData);
 		$.ajax({
 		    url: '/insertPlan', // 서버의 @RequestMapping("/insertPlan") URL
 		    type: 'POST', // 요청 방식 (GET 또는 POST)
-			contentType:"application/json",
-			data: selectedAttrIdData,
+			data: {data : selectedAttrIdData},
 		    success: function(response) {
 		        // 요청이 성공했을 때의 처리
 		        // response는 서버에서 반환된 데이터입니다.
 		        console.log('Success:', response);
+				
+				response.forEach(item => {
+	                input(item); // 각 항목을 처리
+	            });
+			
+				// 타이머 필요
+				
 				window.close();
 		    },
-		    error: function(error) {
+		    error: function(error, xhr) {
 		        // 요청이 실패했을 때의 처리
-				console.log('Error:', error);
+				console.log('Error:', error, xhr);
 		    }
 		});
     });
 });
 
+
+// plan/plan 추가한 일정을 출력
+function input(data){
+	// 부모의 form 에 data 갯수만큼 동적으로 만들어서 처리
+	let inputData = `
+    	<div>
+        	<div>${data.attr_name}</div>
+        	<div>${data.attr_tag}</div>
+        </div>
+	    `;
+	$(opener.document).find(".inputData").append(inputData);
+}
 
 // 추가한 일정의 수 카운트
 function updateCnt(newCnt) {
