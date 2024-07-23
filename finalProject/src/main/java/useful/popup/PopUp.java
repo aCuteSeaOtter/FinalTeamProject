@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-public class PopUp { 
+public class PopUp {
 	
 	public static void popUp(HttpServletResponse response, String popUpContent) {
 			response.setContentType("text/html; charset=UTF-8");
