@@ -20,25 +20,17 @@ import jakarta.servlet.http.HttpSession;
 import useful.popup.PopUp;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("/user")
 @SessionAttributes("mem")
 public class UserController {
    
    static final Logger logger = LoggerFactory.getLogger(UserController.class);
    
    @Autowired
-   private UserService memberService;
-   
-   // 회원 목록보기
-   @RequestMapping("/registList")
-   public void getMemberList(Model m) {
-      UserVO vo = new UserVO();
-      List<UserVO> list = memberService.getMemberList(vo);
-      m.addAttribute("memberList",list);
-   }
+   private UserService userService;
    
    // 회원가입 버튼 클릭 시 회원가입 창으로 이동
-   @RequestMapping("/registForm")
+   @RequestMapping("/userRegistForm")
    public void registForm() {
       
    }
@@ -57,40 +49,17 @@ public class UserController {
         }
 
         // 입력 값이 유효한 경우 회원 정보 저장
-        memberService.insertMember(vo);
+        userService.insertMember(vo);
         PopUp.popUpMove(response, "회원가입이 완료되었습니다. 환영합니다.", "/member/login");
         return null; // 팝업 후 리다이렉트
     }
    
-   // 사용자 아이디 클릭 시 상세보기로 이동
-   @RequestMapping("/regist")
-   public void getRegist(UserVO vo, Model m) {
-      UserVO result = memberService.getMember(vo);
-      m.addAttribute("member",result);
-   }
-   
-   // 회원정보 수정
-   @RequestMapping("/updateMember")
-   public String updateMember(UserVO vo) {
-      memberService.updateMember(vo);
-      
-      return "redirect:/member/registList";
-   }
-   
-   // 회원정보 삭제
-   @RequestMapping("/deleteMember")
-   public String deleteMember(UserVO vo) {
-      memberService.deleteMember(vo);
-      
-      return "redirect:/member/registList";
-   }
-   
-   @RequestMapping("/login")
+   @RequestMapping("/userLogin")
    public void login(UserVO vo) {
       
    }
    
-   @RequestMapping("/logout")
+   @RequestMapping("/userLogout")
     public String logout(HttpSession session, UserVO vo) {
         session.invalidate(); // 세션 무효화
         System.out.println(vo.toString());
@@ -108,7 +77,7 @@ public class UserController {
            return "member/login"; // 리턴을 null로 하여 직접 팝업에서 리다이렉트하도록 함
        }
 
-       UserVO result = memberService.checkLogin(vo);
+       UserVO result = userService.checkLogin(vo);
        System.out.println("결과:" + result);
 
        // result가 null이거나 필드 값이 공백인지 체크
@@ -127,7 +96,7 @@ public class UserController {
        System.out.println("세션에 nickname 저장: " + session.getAttribute("nickname"));  // 확인용
 
        
-       return "redirect:/review/getReviewList";
+       return "redirect:/review/reviewList";
    }
 
 }

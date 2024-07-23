@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.comment-row td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 대댓글 컨테이너 스타일 */
+.nested-reply-list {
+    margin-left: 20px; /* 들여쓰기 효과 */
+}
+
+/* 대댓글 스타일 */
+.reply-comment-row td {
+    padding: 4px;
+    border-bottom: 1px solid #eee;
+    margin-left: 20px; /* 대댓글의 들여쓰기 효과 */
+}
+
+/* ----대댓글 추가 css---- */
+.reply-comment-row {
+   display: flex;
+   align-items: center;
+   margin-bottom: 5px; /* 대댓글 사이의 간격 */
+   
+}
+
+/* 대댓글쓴이 위치 조절 */
+.reply-commenter {
+    font-weight: bold;
+    margin-top:auto;
+    margin-right: 20px;
+}
+
+/* 대댓글쓴이와 대댓글 내용 공백 조절 */
+.reply-comment {
+    margin-left: 5px;    
+}
+
+/* 날짜 글씨색, 폰트 사이즈 */
+.reply-comment-date {
+   margin-top:auto;
+    margin-left: 5px;
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* 대댓글 내용 좌측 정렬 */
+.right-container {
+   margin-top : auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* 대댓글 아래 밑줄 */
+.reply-comment-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 댓글 작성자 글씨 두껍게 */
+.reply-commenter {
+    font-weight: bold;
+}
+
+
+
+/* 댓글 대댓글 삭제 버튼 모양 변경 */
+.delete-btn, .delete-comment {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: red;
+}
+
+/* 댓글 신고 버튼 위치 변경 */
+.delete-btn {
+    float: right; /* 삭제 버튼을 오른쪽으로 정렬 */
+    margin-left: 10px; /* 버튼 사이의 간격 조절 */
+}
+
+/* 신고 버튼 모양 변경 */
+.report-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    float: right; /* 신고 버튼을 오른쪽으로 정렬 */
+    margin-left: 10px; /* 버튼 사이의 간격 조절 */
+    
+}

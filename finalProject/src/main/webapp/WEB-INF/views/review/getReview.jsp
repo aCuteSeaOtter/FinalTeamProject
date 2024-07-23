@@ -5,16 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/assets/css/getBoardStar.css" rel="stylesheet"/>
-<link href="/assets/css/getBoard.css" rel="stylesheet"/>
-<link href="/assets/css/replyComment.css" rel="stylesheet"/>
+<link href="/css/getReviewStar.css" rel="stylesheet"/>
+<link href="/css/getReview.css" rel="stylesheet"/>
+<link href="/css/comment.css" rel="stylesheet"/>
 
 <title>글 상세</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='/assets/js/like.js' type="text/javascript"></script>
-<script src='/assets/js/hate.js' type="text/javascript"></script>
-
-<script src='/assets/js/comment.js' type="text/javascript"></script>
+<script src='/js/like.js' type="text/javascript"></script>
+<script src='/js/hate.js' type="text/javascript"></script>
+<script src='/js/comment.js' type="text/javascript"></script>
 </head>
 <body>
     <h1>글 상세</h1>
@@ -105,14 +104,14 @@
         
     <div id="post">
         <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="like-button">
-            <img src="/assets/images/unlike.jpg" alt="Like">
+            <img src="/images/review/unlike.jpg" alt="Like">
         </div>
         <span id="like-count">0</span>명이 좋아합니다.
     </div>
     
     <div id="post-${review.review_id}">
         <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="hate-button">
-            <img src="/assets/images/unhate2.jpg" alt="Hate">
+            <img src="/images/review/unhate.jpg" alt="Hate">
         </div>
         <span id="hate-count-${review.REVIEW_ID}">0</span>명이 싫어합니다.
     </div>

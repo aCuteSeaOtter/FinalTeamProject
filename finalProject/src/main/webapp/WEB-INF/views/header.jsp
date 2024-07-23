@@ -8,9 +8,9 @@
     <header id="header" class="w-100 flaot-left header-con main-box position-relative">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index">
+          <a class="navbar-brand" href="/index">
             <figure class="mb-0">
-              <img src="assets/images/logo-icon.png" alt="logo-icon">
+              <img src="<c:url value='/assets/images/logo-icon.png' />" alt="logo-icon">
             </figure>
           </a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -23,18 +23,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link p-0" href="index">Home</a>
+                <a class="nav-link p-0" href="/index">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link p-0" href="about">About Us</a>
+                <a class="nav-link p-0" href="/about">About Us</a>
               </li>
 			  
 			  <li class="nav-item">
-			  	<a class="nav-link p-0" href="/member/login">가상 로그인</a>
+			  	<a class="nav-link p-0" href="/user/userLogin">가상 로그인</a>
 			  </li>
 			  
               <li class="nav-item">
-                <a class="nav-link p-0" href="destinations">Destination</a>
+                <a class="nav-link p-0" href="/destinations">Destination</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown3" role="button"

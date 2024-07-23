@@ -6,9 +6,9 @@ $(document).ready(function() {
     function updateLikeStatus() {
         $.get(`/likes/${reviewId}/${nickname}`, function(status) {
             if (status == 1) {
-                $("#like-button img").attr("src", "/assets/images/like.jpg");
+                $("#like-button img").attr("src", "/images/review/like.jpg");
             } else {
-                $("#like-button img").attr("src", "/assets/images/unlike.jpg");
+                $("#like-button img").attr("src", "/images/review/unlike.jpg");
             }
         });
     }

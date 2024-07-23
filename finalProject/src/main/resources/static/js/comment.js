@@ -184,7 +184,7 @@ $(function() {
                     var replyContentDiv = $('<div/>').addClass('reply-comment-row').data('reply_id', replyId);
 
                     // 화살표 이미지 추가
-                    var arrowImg = $('<img/>').attr('src', '/assets/images/arrow3.jpg').addClass('reply-arrow');
+                    var arrowImg = $('<img/>').attr('src', '/images/review/arrow3.jpg').addClass('reply-arrow');
                     replyContentDiv.append(arrowImg);
 
                     // replyCommenter를 위한 span

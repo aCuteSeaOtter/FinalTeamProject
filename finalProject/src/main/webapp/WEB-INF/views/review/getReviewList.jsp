@@ -5,53 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/css/getReviewList.css" rel="stylesheet"/>
 <title>글 목록</title>
-<style>
-	body {
-	    font-family: Arial, sans-serif;
-	    background-color: #f4f4f9;
-	    margin: 0;
-	    padding: 20px;
-	    color: #333;
-	}
-
-	h1 {
-	    text-align: center;
-	    margin-top: 20px;
-	}
-
-	table {
-	    width: 100%;
-	    border-collapse: collapse;
-	    margin-top: 20px;
-	    border: 1px solid #ddd;
-	}
-
-	th, td {
-	    padding: 10px;
-	    text-align: center;
-	}
-
-	th {
-	    background-color: #f2f2f2;
-	    color: #333;
-	}
-
-	td {
-	    background-color: #fff;
-	}
-
-	a {
-	    text-decoration: none;
-	    color: #0066cc;
-	}
-
-	a:hover {
-	    text-decoration: underline;
-	    color: #0044cc;
-	}
-
-</style>
 </head>
 <body>
 		<h1>게시글 목록</h1>
@@ -76,8 +31,8 @@
 			</c:forEach>
 		</table>
 		<br> <a href="insertReview">새글 등록</a>
-		<br> <a href="/member/login">로그인 창 이동</a>
-		<br> <a href="/member/logout">로그아웃</a>
+		<br> <a href="/user/userLogin">로그인 창 이동</a>
+		<br> <a href="/user/userLogout">로그아웃</a>
 		
 		<c:if test="${not empty id}">
 			<p>현재 사용자 ID: ${id}</p>

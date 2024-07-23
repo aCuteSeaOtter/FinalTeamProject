@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("plan")
 public class PageController {
 	static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	

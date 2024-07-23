@@ -7,9 +7,9 @@ $(document).ready(function() {
         function updateHateStatus() {
             $.get(`/hates/${reviewId}/${memberEmail}`, function(status) {
                 if (status == 1) {
-                    postDiv.find("[id^='hate-button-'] img").attr("src", "/assets/images/hate2.jpg");
+                    postDiv.find("[id^='hate-button-'] img").attr("src", "/images/review/hate2.jpg");
                 } else {
-                    postDiv.find("[id^='hate-button-'] img").attr("src", "/assets/images/unhate2.jpg");
+                    postDiv.find("[id^='hate-button-'] img").attr("src", "/images/review/unhate2.jpg");
                 }
             });
         }

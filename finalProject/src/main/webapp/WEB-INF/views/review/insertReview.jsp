@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/assets/css/star.css" rel="stylesheet"/>
-<link href="/assets/css/insertBoard.css" rel="stylesheet"/>
+<link href="/css/star.css" rel="stylesheet"/>
+<link href="/css/insertReview.css" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='/assets/js/check.js' type="text/javascript"></script>
 <title>새글등록</title>
 </head>
 <body>
@@ -58,7 +57,7 @@
 </table>
 </form>
 <hr>
-<a href="getReviewList">글목록</a>
+<a href="reviewList">글목록</a>
 
 </body>
 </html>
