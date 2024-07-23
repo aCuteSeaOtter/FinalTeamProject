@@ -181,7 +181,8 @@ $(function() {
 
         // 선택한 날짜 저장
         selDates = selectedDates.map(date => date.toISOString().split('T')[0]);
-        
+        $(".test").val(selDates);
+		
         // 시작일, 종료일을 모두 선택하지 않았다면 알림 띄우기
         if(selDates.length > 0) {
             $(".start").val("시작일 : " + selDates[0]);
@@ -189,21 +190,7 @@ $(function() {
         } else {
             alert("날짜를 선택해주세용.");
         }
-        
-
-        // AJAX 요청을 사용하여 날짜 정보를 서버로 전송
-          $.ajax({
-             url: '/plan', // 서버의 엔드포인트 URL
-             type: 'POST',
-             data: { dates: selDates },
-             success: function(response) {
-                 console.log("날짜 정보가 성공적으로 전송되었습니다.");
-				 window.location.href = "/plan/plan";
-             },
-             error: function(error) {
-                 console.error("날짜 정보를 전송하는 동안 오류가 발생했습니다.", error);
-             }
-         });
+		
     });
 
     $(".delBtn").click(function() {

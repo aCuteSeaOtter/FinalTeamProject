@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html> 
 <html lang="zxx">
 <head> 
@@ -148,6 +151,12 @@
 	    <div class="container">
 	      <div class="row">
 	        <div class="col-lg-4">
+	        <c:forEach items="${dates}" var="date">
+		        <div>${date}</div>
+		    </c:forEach>
+	        <%-- <c:if test="${not empty dates}">
+	            <c:out value="${dates[0]}" />
+	        </c:if> --%>
 	        <div style="margin-bottom: 10px">2024.07.16(수) ~ 2024.07.18(금)&nbsp&nbsp<img alt="calendar" class="calendarImg" src="../images/plan/calendar.png"></div>
 	        <input type="button" class="habtn btn" value="숙소"></input>
 	        <input type="button" class="habtn btn" value="항공"></input><hr/>
@@ -161,13 +170,11 @@
 		        	</div>
 		        </div>
 		        
-	        	<c:forEach items="${selList }" var="sel">
-	        		<div class="inputData">
-	        		
-	        			<!-- 선택한 일정이 추가되는 영역 -->
-	        		
-	        		</div>
-		        </c:forEach>
+        		<div class="inputData">
+        		
+        			<!-- 선택한 일정이 추가되는 영역 -->
+        		
+        		</div>
 		       
 		        <input type="button" class="add-btn btn" value="장소 추가"></input>
 	        </div>
