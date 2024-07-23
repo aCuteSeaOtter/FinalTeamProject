@@ -33,14 +33,15 @@
                         <li>금</li>
                         <li>토</li>
                     </ul>   <!-- weeks -->
-    
+    			<form action="../plan/plan" method="get">
                     <ul class="days">
                         
                     </ul>   <!-- days -->
                 </div>  <!-- calendar -->
-                
+                <input type="text" class="test" name="day6"/>
                 <input type="button" class="delBtn" value="취소하기"/>
-                <input type="button" class="selBtn" value="선택하기"/>
+                <input type="submit" class="selBtn" value="선택하기"/>
+                </form>
             </div>  <!-- body -->
         </div>  <!-- left -->
         
