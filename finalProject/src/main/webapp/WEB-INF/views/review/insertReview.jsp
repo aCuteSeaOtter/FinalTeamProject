@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 <title>새글등록</title>
 </head>
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <body>
 
 <h3>새글 등록하기</h3>
@@ -58,6 +59,7 @@
 </form>
 <hr>
 <a href="reviewList">글목록</a>
-
+<!-- FOOTER SECTION -->
+ <jsp:include page="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

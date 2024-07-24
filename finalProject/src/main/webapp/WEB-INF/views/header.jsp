@@ -30,7 +30,7 @@
               </li>
 			  
 			  <li class="nav-item">
-			  	<a class="nav-link p-0" href="/login/registForm">가상 로그인</a>
+			  	<a class="nav-link p-0" href="/user/userLogin">가상 로그인</a>
 			  </li>
 			  
               <li class="nav-item">
@@ -40,12 +40,12 @@
                 <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <a class="dropdown-item" href="booking">Booking</a>
-                  <a class="dropdown-item" href="faq">Faq</a>
-                  <a class="dropdown-item" href="contact">Contact</a>
-                  <a class="dropdown-item" href="team">Team</a>
-                  <a class="dropdown-item" href="service">Service</a>
-                  <a class="dropdown-item" href="testimonial">Testimonial</a>
+                  <a class="dropdown-item" href="/booking">Booking</a>
+                  <a class="dropdown-item" href="/faq">Faq</a>
+                  <a class="dropdown-item" href="/contact">Contact</a>
+                  <a class="dropdown-item" href="/team">Team</a>
+                  <a class="dropdown-item" href="/service">Service</a>
+                  <a class="dropdown-item" href="/testimonial">Testimonial</a>
 
                 </div>
               </li>
@@ -53,15 +53,15 @@
                 <a class="nav-link dropdown-toggle p-0" href="blog" id="navbarDropdown4" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                  <a class="dropdown-item" href="blog">Blog</a>
-                  <a class="dropdown-item" href="load-more">Load More</a>
-                  <a class="dropdown-item" href="single-blog">Single Blog</a>
-                  <a class="dropdown-item" href="one-column">One Column</a>
-                  <a class="dropdown-item" href="two-column">Two Column</a>
-                  <a class="dropdown-item" href="three-column">Three Column</a>
-                  <a class="dropdown-item" href="three-colum-sidbar">Three Column Sidbar</a>
-                  <a class="dropdown-item" href="four-column">Four Column</a>
-                  <a class="dropdown-item" href="six-colum-full-wide">Six Column</a>
+                  <a class="dropdown-item" href="/blog">Blog</a>
+                  <a class="dropdown-item" href="/load-more">Load More</a>
+                  <a class="dropdown-item" href="/single-blog">Single Blog</a>
+                  <a class="dropdown-item" href="/one-column">One Column</a>
+                  <a class="dropdown-item" href="/two-column">Two Column</a>
+                  <a class="dropdown-item" href="/three-column">Three Column</a>
+                  <a class="dropdown-item" href="/three-colum-sidbar">Three Column Sidbar</a>
+                  <a class="dropdown-item" href="/four-column">Four Column</a>
+                  <a class="dropdown-item" href="/six-colum-full-wide">Six Column</a>
                 </div>
               </li>
             </ul>
