@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
-    <link rel="stylesheet" type="text/css" href="../css/calendar.css">
+    <link rel="stylesheet" type="text/css" href="/css/calendar.css">
 </head>
 <body> 
 
@@ -17,9 +17,9 @@
 
                 <header>
                     <div class="nav">
-                        <div id="prev" class="meterial-icons"><img class="arrowIcon" src="../images/calendar/left.png"></div>
+                        <div id="prev" class="meterial-icons"><img class="arrowIcon" src="/images/calendar/left.png"></div>
                         <p class="current-date"></p>
-                        <div id="next" class="meterial-icons"><img class="arrowIcon" src="../images/calendar/right.png"></div>
+                        <div id="next" class="meterial-icons"><img class="arrowIcon" src="/images/calendar/right.png"></div>
                     </div>
                 </header>
     
@@ -33,7 +33,7 @@
                         <li>금</li>
                         <li>토</li> 
                     </ul>   <!-- weeks -->
-	    			<form action="../calendar/plan" method="post">
+	    			<form action="/calendar/plan" method="post">
 	                    <ul class="days">
 	                        
 	                    </ul>   <!-- days -->
@@ -53,6 +53,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../js/calendar.js"></script>
+<script src="/js/calendar.js"></script>
 
 </html>
