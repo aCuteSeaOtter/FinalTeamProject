@@ -10,34 +10,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/images/favicon/manifest.json">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <!-- Font Awesome link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- StyleSheet link CSS -->
-  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="/assets/css/animate.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/superclasses.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/custom.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
   
@@ -77,7 +77,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="index">
             <figure class="mb-0">
-            <!--<img src="assets/images/logo-icon.png" alt="logo-icon">-->  
+            <!--<img src="/assets/images/logo-icon.png" alt="logo-icon">-->  
             </figure>
           </a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -266,7 +266,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -294,7 +294,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -323,7 +323,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -358,7 +358,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -386,7 +386,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -415,7 +415,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -444,7 +444,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -472,7 +472,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -501,7 +501,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -536,7 +536,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -564,7 +564,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -593,7 +593,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -622,7 +622,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -650,7 +650,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -679,7 +679,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -714,7 +714,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -742,7 +742,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -771,7 +771,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -800,7 +800,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
                     Africa</span>
                   <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img1.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -828,7 +828,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
                   <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img2.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -857,7 +857,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
                     Argentina</span>
                   <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="assets/images/package-box-img3.jpg">
+                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
                   <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
                       class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
                       class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
@@ -897,18 +897,18 @@
 
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/owl.carousel.js"></script>
-  <script src="assets/js/contact-form.js"></script>
-  <script src="assets/js/video-popup.js"></script>
-  <script src="assets/js/video-section.js"></script>
-  <script src="assets/js/jquery.validate.js"></script>
-  <script src="assets/js/wow.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script src="assets/js/search.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/owl.carousel.js"></script>
+  <script src="/assets/js/contact-form.js"></script>
+  <script src="/assets/js/video-popup.js"></script>
+  <script src="/assets/js/video-section.js"></script>
+  <script src="/assets/js/jquery.validate.js"></script>
+  <script src="/assets/js/wow.js"></script>
+  <script src="/assets/js/counter.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/search.js"></script>
  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <script>

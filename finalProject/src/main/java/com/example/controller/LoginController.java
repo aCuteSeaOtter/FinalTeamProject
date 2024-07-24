@@ -35,6 +35,7 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
+@RequestMapping("/login")
 @SessionAttributes("mem")
 public class LoginController {
 	static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -69,17 +70,23 @@ public class LoginController {
 		return "index";
 		
 	}
+	
 	//회원가입 화면 요청 처리
 	@RequestMapping("/registForm")
-	public void contact() {
+	public void registForm() {
 		
 	}
+	
+	@RequestMapping("/loginForm")
+	public void loginForm() {
+		
+	}
+	
 	//비밀번호찾기
 	@RequestMapping("/findpass")
 	public String findpass() {
 		return "findpass";
 	}
-	
 	
 	//회원가입 요청 처리
 //	@RequestMapping("/regist")
