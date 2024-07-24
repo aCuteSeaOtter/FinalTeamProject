@@ -170,7 +170,7 @@ public class ReviewController<SearchCriteria> {
            PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/review/reviewList");
            return null;  // 팝업을 띄우고 리다이렉트가 처리되므로 null 반환
        }
-   }
+   } 
 
    @RequestMapping("getReview")
    public void getReview() {
