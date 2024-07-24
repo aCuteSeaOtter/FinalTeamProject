@@ -153,7 +153,7 @@
 	        <div class="col-lg-4">
 	        <c:if test="${not empty dates}">
 		        <c:if test="${not empty lastDate}">
-		        	<div style="margin-bottom: 10px"><c:out value="${dates[0]}"/>(수) ~ <c:out value="${lastDate}"/>(금)&nbsp&nbsp<img alt="calendar" class="calendarImg" src="../images/plan/calendar.png"></div>
+		        	<div style="margin-bottom: 10px"><c:out value="${dates[0]}"/> ~ <c:out value="${lastDate}"/>&nbsp&nbsp<img alt="calendar" class="calendarImg" src="../images/plan/calendar.png"></div>
 				</c:if>
 				
 		        <input type="button" class="habtn btn" value="숙소"></input>
@@ -166,9 +166,7 @@
 			        	<div> 
 				        	<div>
 				        		<span>DAY 1</span> 
-				        		<c:forEach var="date" items="${dates}">
-				        			<span>&nbsp&nbsp${date} 수</span> 
-	        					</c:forEach>
+				        		<span>&nbsp&nbsp${dates[0]}</span> 
 				        		<input type="button" class="edit-btn btn" value="편집"></input>
 				        	</div>
 				        </div>
@@ -180,9 +178,10 @@
 		        		</div>
 				       
 				        <input type="button" class="add-btn btn" value="장소 추가"></input>
+				    <!-- dayBlock -->
 			        </div>
 		        	
-		        	<!-- dayBlockWrapper -->
+		        <!-- dayBlockWrapper -->
 		        </div> 
 	        </c:if>
 	          <!-- col -->

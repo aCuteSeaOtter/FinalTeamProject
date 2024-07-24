@@ -23,6 +23,7 @@ $(function() {
 	
 	// 추가한 일정의 수 카운트
 	let cnt = 0;
+	let selectedAttrId;
 	let selectedAttrIdData = [];
 	
     // + 버튼 클릭 시 체크 버튼으로 교체 및 선택된 요소 추가
@@ -67,7 +68,7 @@ $(function() {
 			cnt += 1;
 			updateCnt(cnt);
 			
-			var selectedAttrId = divBlock.find(".attrId").val();
+			selectedAttrId = divBlock.find(".attrId").val();
             var selectedThumbnailSrc = divBlock.find(".thumbnail").attr("src"); // 선택된 썸네일 이미지 경로 가져오기
             var selectedDescriptionText = divBlock.find(".contentBox > div:last-child").text(); // 선택된 설명 텍스트 가져오기
 			
@@ -118,15 +119,24 @@ $(function() {
 
     // .deleteItem 클릭 시 요소 제거 및 관련 selectBox 이미지 변경
     $(this).on('click', '.deleteItem', function() {
+		// 해당하는 attrId를 찾아서 제거
+		/*let thisId = $(this).
+		for (let attrId of selectedAttrIdData) {
+		    if (attrId === selectedAttrId) {
+		        selectedAttrIdData.splice(selectedAttrIdData.indexOf(attrId), 1);
+		        break;  // 원소를 찾아 제거했으므로 루프를 종료합니다.
+		    }
+		}*/
+		
 		// 추가한 일정의 수 카운트
 		cnt -= 1;
 		updateCnt(cnt);
 		
-        var $selectedItem = $(this).closest(".selectedItem"); // 클릭된 deleteItem의 부모 selectedItem 요소 선택
-        var selectedLocalTitleText = $selectedItem.find(".selectedLocalTitle").text(); // 선택된 지역명 텍스트 가져오기
+        var selectedItem = $(this).closest(".selectedItem"); // 클릭된 deleteItem의 부모 selectedItem 요소 선택
+        var selectedLocalTitleText = selectedItem.find(".selectedLocalTitle").text(); // 선택된 지역명 텍스트 가져오기
 
         // 해당 요소 제거
-        $selectedItem.remove();
+        selectedItem.remove();
 
         // 관련 selectBox의 이미지 변경
         $(".selectBox").each(function() {
@@ -146,6 +156,9 @@ $(function() {
 	
 	// '모든 항목 삭제' 클릭 시, 선택된 모든 아이템 제거
 	$(".deleteAll").on('click', function() {
+		// 선택했던 값 제거
+		selectedAttrIdData = [];
+		
 		// 추가한 일정의 수 카운트
 		cnt = 0;
 		updateCnt(cnt);

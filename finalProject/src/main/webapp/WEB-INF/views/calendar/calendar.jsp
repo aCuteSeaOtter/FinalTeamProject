@@ -35,8 +35,11 @@
                     </ul>   <!-- weeks -->
 	    			<form action="../calendar/plan" method="post">
 	                    <ul class="days">
-	                        
-	                    </ul>   <!-- days -->
+	                       
+	                       <!-- 날짜가 추가되는 부분 -->
+	                       
+	                    <!-- days --> 
+	                    </ul>   
 	                    <input type="hidden" class="dates" name="dates"/>
 		                <input type="button" class="delBtn" value="취소하기"/>
 		                <input type="submit" class="selBtn" value="선택하기"/>

@@ -184,12 +184,12 @@
     background: #ff8d8d;
 }
 
-.calendar > ul.days > li.selected::before {
+.calendar ul.days > li.selected::before {
     background: #1bbc9b;
     border-radius: 50%;
 }
 
-.calendar > ul > li.selected-range::before {
+.calendar ul > li.selected-range::before {
     background: #1bbc9cad;
 }
 
