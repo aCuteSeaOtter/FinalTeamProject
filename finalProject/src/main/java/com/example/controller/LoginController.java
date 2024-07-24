@@ -41,15 +41,6 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
-	
-	
-	
-	@RequestMapping("/{step}")
-	// @PathVariable : 경로변수
-	public String viewPage(@PathVariable String step) {
-		logger.info(step + "경로 들어옴");
-		return step;
-	} 
 
 	@RequestMapping("/index")
 	public void index(){
