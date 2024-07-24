@@ -181,7 +181,7 @@ $(function() {
 
         // 선택한 날짜 저장
         selDates = selectedDates.map(date => date.toISOString().split('T')[0]);
-        $(".test").val(selDates);
+        $(".dates").val(selDates);
 		
         // 시작일, 종료일을 모두 선택하지 않았다면 알림 띄우기
         if(selDates.length > 0) {
