@@ -180,7 +180,7 @@ $(function() {
 			
 				// 타이머 필요
 				
-				window.close();
+				window.close(); 
 		    },
 		    error: function(error, xhr) {
 		        // 요청이 실패했을 때의 처리
