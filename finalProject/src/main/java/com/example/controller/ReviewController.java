@@ -172,4 +172,13 @@ public class ReviewController<SearchCriteria> {
        }
    }
 
+   @RequestMapping("getReview")
+   public void getReview() {
+	   
+   }
+   
+   @RequestMapping("getReviewList")
+   public void getReviewList() {
+	   
+   }
 }

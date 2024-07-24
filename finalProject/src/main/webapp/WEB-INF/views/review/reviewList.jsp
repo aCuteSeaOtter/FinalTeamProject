@@ -82,15 +82,12 @@
                     <div class="col-lg-7">
                         <div class="sub-banner-inner-con padding-bottom">
                             <h1>reviewList</h1>
-                            <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm
-                                tempor
-                                incididunt
-                                ut labore et dolore.
+                            <p class="font-size-20">사용자들이
+								작성한 리뷰들을 같이 봐보아요.
                             </p>
                             <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="index">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">reviewList</li>
+                                    <li class="breadcrumb-item"><a href="/index">Home</a></li>
                                 </ol>
                             </div>
                             <!-- sub banner inner con -->
@@ -119,7 +116,8 @@
 						<div class="blog-box onecolumn-blog float-left w-100 post-item mb-4">
 	                        <div class="post-item-wrap position-relative">
 	                            <div class="post-image">
-	                                <a href="single-blog"><img alt="image" src="/assets/images/post-featured.jpg"
+	                                <a href="selectReview?review_id=${review.REVIEW_ID}">
+										<img alt="image" src="/files/${review.FILE_NAME}"
 	                                        loading="lazy"></a>
 	                            </div>
 	                            <div class="lower-portion">
@@ -135,8 +133,8 @@
 	                                    <span class="mb-0 text-size-50">${review.REVIEW_REGDATE}</span>
 	                                </div>
 	                                <div class="button">
-	                                    <a class="mb-0 read_more text-decoration-none" href="selectReview?review_id=${review.REVIEW_ID}">Read
-	                                        More</a>
+	                                    <a class="mb-0 read_more text-decoration-none" href="selectReview?review_id=${review.REVIEW_ID}">
+											Read More</a>
 	                                </div>
 	                            </div>
 	                        </div>
