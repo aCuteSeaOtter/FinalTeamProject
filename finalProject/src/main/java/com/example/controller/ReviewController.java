@@ -90,18 +90,29 @@ public class ReviewController<SearchCriteria> {
            @RequestParam(value = "review_star", required = false) String reviewStar,
            ReviewVO vo, HttpSession session, HttpServletResponse response) throws IOException {
 
-       // 모든 필드를 검사하여 누락된 경우 경고 메시지 출력
-       if ((files == null || files.isEmpty()) ||
-           reviewTitle == null || reviewTitle.isEmpty() ||
-           reviewContent == null || reviewContent.isEmpty() ||
-           reviewStar == null || reviewStar.isEmpty()) {
-
-           response.setContentType("text/html; charset=UTF-8");
-           PrintWriter out = response.getWriter();
-           out.println("<script>alert('입력하지 않은 창이 있습니다.'); history.go(-1);</script>");
-           out.flush();
-           return;
-       }
+	   response.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+	    
+	    if (files == null || files.isEmpty()) {
+	        out.println("<script>alert('파일을 업로드해 주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
+	    if (reviewTitle == null || reviewTitle.isEmpty()) {
+	        out.println("<script>alert('제목을 입력해 주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
+	    if (reviewContent == null || reviewContent.isEmpty()) {
+	        out.println("<script>alert('내용을 입력해 주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
+	    if (reviewStar == null || reviewStar.isEmpty()) {
+	        out.println("<script>alert('별점을 입력해 주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
 
        // 세션에서 사용자 이메일 가져오기
        String id = (String) session.getAttribute("sess");
@@ -145,7 +156,7 @@ public class ReviewController<SearchCriteria> {
    public String updateReview(ReviewVO vo) {
       reviewService.updateReview(vo);
       
-      return "redirect:getReviewList";
+      return "redirect:reviewList";
    }
    
    // 글 삭제
@@ -153,7 +164,7 @@ public class ReviewController<SearchCriteria> {
    public String deleteReview(ReviewVO vo) {
       reviewService.deleteReview(vo);
       
-      return "redirect:getReviewList";
+      return "redirect:reviewList";
    }
    
    @RequestMapping("/insertReview")

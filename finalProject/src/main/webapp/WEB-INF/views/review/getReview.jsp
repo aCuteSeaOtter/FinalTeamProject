@@ -140,6 +140,6 @@
 
 
    <a href="insertReview">글등록</a>&nbsp;&nbsp;&nbsp;
-   <a href="getReviewList">글목록</a>
+   <a href="reviewList">글목록</a>
 </body>
 </html>

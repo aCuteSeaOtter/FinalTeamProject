@@ -30,7 +30,7 @@
               </li>
 			  
 			  <li class="nav-item">
-			  	<a class="nav-link p-0" href="/user/userLogin">가상 로그인</a>
+			  	<a class="nav-link p-0" href="/login/registForm">가상 로그인</a>
 			  </li>
 			  
               <li class="nav-item">

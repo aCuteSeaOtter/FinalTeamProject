@@ -28,7 +28,7 @@
 */
 /*------------------------------------------------------------------ 
 # [Typography]
-	`
+   `
 Body copy: "Jost", sans-serif;
 Headings: "Jost", sans-serif;
 */
@@ -42,47 +42,47 @@ Headings: "Jost", sans-serif;
     box-sizing: border-box;
 }
 ul{
-	display:flex;
-	justify-content:flex-end;
-	list-style-type:none;
-	padding:0px;
+   display:flex;
+   justify-content:flex-end;
+   list-style-type:none;
+   padding:0px;
 }
 #regist{
-	margin-left:auto;
-	margin-right:auto;
+   margin-left:auto;
+   margin-right:auto;
 }
 
 .container h1{
-	text-align:center;
+   text-align:center;
 }
 
 .row{
-	display:flex;
-	flex-direction:row;
-	justify-content:center;
-	align-items:center;
-	height:100px;
+   display:flex;
+   flex-direction:row;
+   justify-content:center;
+   align-items:center;
+   height:100px;
 }
 .join-box{
-	width:300px;
-	text-align:center;
-	
+   width:300px;
+   text-align:center;
+   
 }
 
 
 .form-agree{
-	margin:0 auto;
-	padding:40px;
+   margin:0 auto;
+   padding:40px;
   display: inline-block;
-	
+   
 }
 .confirm{
-	background-color:#c0c0c0;
-	border-style:none;
-	width:50px;
-	color: var(--text-color);
-	cursor:pointer;
-	
+   background-color:#c0c0c0;
+   border-style:none;
+   width:50px;
+   color: var(--text-color);
+   cursor:pointer;
+   
 }
 .join{
  display: flex;
@@ -94,23 +94,23 @@ ul{
 }
 
 .join-button{
-	width: 300px;
+   width: 300px;
   text-align: center;
-	border:none;
+   border:none;
 }
 
 .join-box .confirm hover{
-	background-color: var(--mustard-color);
-	
+   background-color: var(--mustard-color);
+   
 }
 .form-gender label input{
-	padding:50px;
+   padding:50px;
 
 }
 
 
 .join-box label{
-	text-font:30px;
+   text-font:30px;
 }
  .login-group {
      /* 원하는 스타일 설정 */
@@ -118,68 +118,68 @@ ul{
      padding:-10px;
  }
 .join-box{
-	display:flex;
-	margin:0 auto;
-	padding:20px;
-	font-weight:bold;
-	font-size:11px;
-	justify-content:center;
-	align-items:center;
+   display:flex;
+   margin:0 auto;
+   padding:20px;
+   font-weight:bold;
+   font-size:11px;
+   justify-content:center;
+   align-items:center;
 }
 .join-box label select{
-	text-align:center;
-	padding:100px;
-	margin:100px;
-	justify-content:center;
-	align-items:center;
-	cursor:pointer;
+   text-align:center;
+   padding:100px;
+   margin:100px;
+   justify-content:center;
+   align-items:center;
+   cursor:pointer;
 }
 
 .form-agree{
-	justify-content:center;
+   justify-content:center;
   text-align:center;
   padding:3px 5pxS;
 }
 .form-email{
-	justify-content:center;
+   justify-content:center;
   text-align:center;
 }
 .form-pass{
-	justify-content:center;
+   justify-content:center;
   text-align:center;
 }
 .form-birth{
-	justify-content:center;
+   justify-content:center;
   text-align:center;
   align-items:center;
 }
 .form-nickname{
-	justify-content:center;
-	 text-align:center;
-	align-items:center;	
+   justify-content:center;
+    text-align:center;
+   align-items:center;   
 }
 .form-gender{
-	justify-content:center;
+   justify-content:center;
   text-align:center;
-	align-items:center;
+   align-items:center;
 }
 .form-gender label{
-	cursor:pointer;
+   cursor:pointer;
 }
 /* 
  .register-box{
-	margin:0 auto;
-	justify-content:center;
-	align-items:center; 
-	position:fixed;
-	padding:20px;
+   margin:0 auto;
+   justify-content:center;
+   align-items:center; 
+   position:fixed;
+   padding:20px;
 }*/
 
 .form-group input[type="radio"]{
-	margin-left:10px;
+   margin-left:10px;
 }
 .form-group input[type="checkbox"]{
-	margin-right:10px;
+   margin-right:10px;
 }
 
 
@@ -191,34 +191,34 @@ ul{
    border: 1px solid #ccc;
    border-radius: 5px;
    background-color: #f9f9f9;
-			 
+          
 } */
 /* button.register_now{
-	padding:10px;
-	cursor:pointer;
-	width:100%;
-	border:none;
-	white-space:nowrap;
-	text-align:center;
+   padding:10px;
+   cursor:pointer;
+   width:100%;
+   border:none;
+   white-space:nowrap;
+   text-align:center;
 
 } */
 
 /*button.login_now{
-	padding:10px;
-	cursor:pointer;
-	width:50px;
-	border:none;
-	text-align:center;
-	
+   padding:10px;
+   cursor:pointer;
+   width:50px;
+   border:none;
+   text-align:center;
+   
 }*/
 /*
 button.join_now{
-	padding:10px;
-	cursor:pointer;
-	width:50px;
-	border:none;
-	text-align:center;
-	display:flex;
+   padding:10px;
+   cursor:pointer;
+   width:50px;
+   border:none;
+   text-align:center;
+   display:flex;
     font-size: 11px;
     line-height: 18px;
     font-weight: 300;
@@ -237,15 +237,15 @@ button.join_now{
 }*/
 
 button.join_now:hover{
-	background-color:orange;
+   background-color:orange;
 }
 
 button.login_now:hover{
-	background-color:orange;
-}		
+   background-color:orange;
+}      
 
-		
-		
+      
+      
 .info#info__birth select::-webkit-scrollbar {
   width: 10px;
 }
@@ -261,37 +261,37 @@ button.login_now:hover{
 }
 
 .form-group input[type="checkbox"]{
-	margin-right:10px;
-	width:20px;
-	height:40px;
+   margin-right:10px;
+   width:20px;
+   height:40px;
 }
 /* Input 태그에 대한 스타일 지정 */
-		input[type="text"] {
-		    font-size: 11px; /* 원하는 텍스트 크기 설정 */
-		    padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
-		    border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
-		    border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
-	}
+      input[type="text"] {
+          font-size: 11px; /* 원하는 텍스트 크기 설정 */
+          padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
+          border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
+          border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
+   }
 
-		input[type="password"] {
-		    font-size: 11px; /* 원하는 텍스트 크기 설정 */
-		    padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
-		    border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
-		    border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
-	}
-		input[type="email"] {
-		    font-size: 11px; /* 원하는 텍스트 크기 설정 */
-		    padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
-		    border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
-		    border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
-	}
+      input[type="password"] {
+          font-size: 11px; /* 원하는 텍스트 크기 설정 */
+          padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
+          border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
+          border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
+   }
+      input[type="email"] {
+          font-size: 11px; /* 원하는 텍스트 크기 설정 */
+          padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
+          border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
+          border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
+   }
 
-/* 		input[type="number"] {
-		    font-size: 11px; 원하는 텍스트 크기 설정
-		    padding: 8px; 텍스트와 테두리 사이의 간격 설정 (옵션)
-		    border: 1px solid #ccc; 테두리 스타일 설정 (옵션)
-		    border-radius: 4px; 테두리의 둥근 정도 설정 (옵션)
-	} */
+/*       input[type="number"] {
+          font-size: 11px; 원하는 텍스트 크기 설정
+          padding: 8px; 텍스트와 테두리 사이의 간격 설정 (옵션)
+          border: 1px solid #ccc; 테두리 스타일 설정 (옵션)
+          border-radius: 4px; 테두리의 둥근 정도 설정 (옵션)
+   } */
 html, body {
     scroll-behavior: smooth;
     height:100%;
@@ -299,12 +299,12 @@ html, body {
 
 
 /* .join-button .join-now{
-	display:flex;
-	justify-content:center;
-	align-items: center;
-	text-align:center;
-	margin:0;
-	top:50px;
+   display:flex;
+   justify-content:center;
+   align-items: center;
+   text-align:center;
+   margin:0;
+   top:50px;
 }
  */
 
@@ -313,13 +313,13 @@ html, body {
             height: 40px;
             background-color: light green; /* 배경색 설정 (예시) */
             border: none;
-            cursor: pointer;	
+            cursor: pointer;   
 }
 
 
 section::-webkit-scrollbar {
   width: 10px; /* 스크롤바 너비 */
-	
+   
 
 }
 
@@ -354,7 +354,7 @@ body {
     font-weight: 400;
     color: var(--text-color);
     font-family: "Jost", sans-serif;
-	overflow:scroll;
+   overflow:scroll;
 }
 
 h1,
@@ -1062,13 +1062,13 @@ span {
 font-weight:bold;
 }
 .heading-content input{
-	width:400px;
-	position:relative;
-	border-radius:40px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
+   width:400px;
+   position:relative;
+   border-radius:40px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   }
 .icon{
-	cursor:pointer;
+   cursor:pointer;
 }
 
 .tab {
@@ -1106,7 +1106,7 @@ background-color: #CEFBC9;
 }     
        
 .inline-flex{
-	  display: flex;
+     display: flex;
       justify-content: center; /* 수평 가운데 정렬 */
       align-items: center; /* 수직 가운데 정렬 */
 }
@@ -1154,7 +1154,7 @@ background-color: #CEFBC9;
 
 .travel-tour-con .tab-content .package-box span.location-span i {
     color: var(--mustard-color);
-    background-color:white;	/*  rgb(255, 137, 0, 10%); */
+    background-color:white;   /*  rgb(255, 137, 0, 10%); */
     width: 36px;
     height: 36px;
     line-height: 36px;
@@ -2274,10 +2274,10 @@ background-color: #CEFBC9;
 } */
 
 .login-group{
-	text-align:center;
-	justify-content: center;
-	align-items: center;
-	margin:30px;
+   text-align:center;
+   justify-content: center;
+   align-items: center;
+   margin:30px;
 }
 
 
@@ -2285,7 +2285,7 @@ background-color: #CEFBC9;
 .register-box input,
 .register-box select
 {
-	text-weight:bold;
+   text-weight:bold;
     font-size: 14px;
     line-height: 10px;
     color: var(--text-color);
@@ -2302,8 +2302,8 @@ background-color: #CEFBC9;
 
 .register-box input {
     height: 60px;
-	width:50px;
-	
+   width:50px;
+   
 }
 .register-box .register_now {
     font-size: 11px;
@@ -2321,29 +2321,29 @@ background-color: #CEFBC9;
     border-style: none;
     cursor: pointer;
 }
-
 .register-box .register_now:hover {
     background-color: var(--mustard-color);
 }
+
 
 .register-box input:focus,
 .register-box textarea:focus {
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(30 194 139 / 100%);
     border-color: var(--primary--color);
 }
-	
+   
 /* .form-group #btnSignIn{
- 	position: static;
+    position: static;
 
 } 
 .size{
 
-	white-space:nowrap;
+   white-space:nowrap;
 }*/
 
 .form-group input{
 
-	white-space:nowrap;
+   white-space:nowrap;
 }
 
 
