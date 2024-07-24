@@ -31,7 +31,7 @@
                         <li>수</li>
                         <li>목</li>
                         <li>금</li>
-                        <li>토</li>
+                        <li>토</li> 
                     </ul>   <!-- weeks -->
 	    			<form action="../calendar/plan" method="post">
 	                    <ul class="days">

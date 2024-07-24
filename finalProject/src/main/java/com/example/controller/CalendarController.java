@@ -19,7 +19,7 @@ public class CalendarController {
 	
 	
 	 
-	@RequestMapping("calendar/calendar")
+	@RequestMapping("calendar/calendar") 
 	public String calendar() {
 		return "calendar/calendar";
 	}

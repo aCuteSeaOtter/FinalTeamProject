@@ -175,7 +175,7 @@ $(function() {
         });
     };
 
-    let selDates;
+    let selDates; 
     // '선택하기'버튼 클릭 이벤트
     $(".selBtn").on("click", function() {
 

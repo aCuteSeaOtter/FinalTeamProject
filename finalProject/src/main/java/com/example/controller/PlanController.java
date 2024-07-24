@@ -57,7 +57,7 @@ public class PlanController {
 	
 	
 	
-	// calendar -> plan 이동
+	// calendar -> plan 이동 
 	// plan/plan 페이지에 선택한 날짜 출력 및 선택한 일자 수 만큼 일정 생성칸 추가
 	@PostMapping("/calendar/plan")
 	public String sendDates(@RequestParam("dates") String dates, RedirectAttributes redirectAttributes) {

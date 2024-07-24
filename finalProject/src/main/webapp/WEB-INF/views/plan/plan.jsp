@@ -162,7 +162,7 @@
 			    
 		        <div class="dayBlockWrapper">
 		        
-			        <div class="dayBlock">
+			        <div class="dayBlock"> 
 			        	<div> 
 				        	<div>
 				        		<span>DAY 1</span> 
