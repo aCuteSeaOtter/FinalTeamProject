@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class LoginServiceImpl implements LoginService{
 
-	@Autowired
+	@Autowired 
 	private LoginDAO loginDAO;
 	
 	

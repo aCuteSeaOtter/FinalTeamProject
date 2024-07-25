@@ -5,28 +5,28 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import javax.validation.Valid;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
+
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -65,11 +65,15 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping("/about")
-	public String about() {
-		return "about";
-	}
+//	@RequestMapping("/about")
+//	public void about() {
+//		
+//	}
 	
+	@RequestMapping("/index")
+	public void index() {
+		
+	}
 	
 	@RequestMapping("/updateForm")
 	public String updateForm() {
@@ -89,8 +93,8 @@ public class LoginController {
 	}
 	//비밀번호찾기
 	@RequestMapping("/findpass")
-	public String findpass() {
-		return "findpass";
+	public void findpass() {
+		
 	}
 	
 	@RequestMapping("/loginForm")
@@ -105,8 +109,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("/main")
-	public String main() {
-			return "/main";
+	public void main() {
 	}
 
 	@RequestMapping("/loginsuccess")
@@ -152,15 +155,18 @@ public class LoginController {
 //	
 		
 	@RequestMapping("/regist")
-	public String registMember(@ModelAttribute("member2VO") LoginVO member2VO, 
-	                            @RequestParam("year") @DateTimeFormat(pattern="yyyy") int year,
-	                            @RequestParam("month") @DateTimeFormat(pattern="MM") int month,
-	                            @RequestParam("day") @DateTimeFormat(pattern="dd") int day,
-	                            BindingResult bindingResult) {
+	public String registMember(@ModelAttribute("member2VO") LoginVO loginVO, 
+	                            @RequestParam("year")  int year,
+	                            @RequestParam("month") int month,
+	                            @RequestParam("day")  int day
+	                          ) {
 	    
-	    if (bindingResult.hasErrors()) {
+		System.out.println("/regiest 컨트럴러"+ loginVO.toString());
+		
+		
+	 /*   if (bindingResult.hasErrors()) {
 	        return "registForm"; // 에러 발생 시 다시 폼 페이지로 이동
-	    }
+	    }*/
 
 	    // 날짜 유효성 검사
 	    if (!isValidDate(year, month, day)) {
@@ -170,22 +176,26 @@ public class LoginController {
 
 	    // LocalDate를 Date로 변환
 	    LocalDate localdate = LocalDate.of(year, month, day);
-	    Date memberBirth = Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    Date memberbirth = Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-	    // MemberVO에 설정
-	    // member2VO.(memberBirth);
+	    System.out.println("서비스전");
 	    
-	    // 회원 등록 서비스 호출
-
-	    return "loginForm"; // 등록 완료 후 로그인 폼 페이지로 이동
+	    // loginVO에 member_birth 설정
+	    loginVO.setMember_birth(memberbirth);
+	    // 회원 등록 서비스 호출??????????????
+	    loginService.registForm(loginVO);
+	    
+	    System.out.println("서비스후");
+	    
+	    return "/login/loginForm"; // 등록 완료 후 로그인 폼 페이지로 이동
 	}
 
 	
 	// 로그인을 위해 아이디와 비밀번호를 입력하고 로그인 버튼을 눌렸을 때
 	@PostMapping("/loginMain.jsp")
-	public String checkLogin(LoginVO memVO, HttpSession session)
+	public String checkLogin(LoginVO loginVO, HttpSession session)
 	{
-		LoginVO result = loginService.checkLogin(memVO);
+		LoginVO result = loginService.checkLogin(loginVO);
 	
 		if(result!=null) {
 			//로그인 성공 시 세션에 사용자 정보 저장
@@ -197,8 +207,6 @@ public class LoginController {
 			return "loginForm";
 		}
 	}
-	
-		
 	// 카카오 로그인 기능이 처리되는 페이지
 	@RequestMapping("/loginForm/getKakaoAuthURl")
 	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception{

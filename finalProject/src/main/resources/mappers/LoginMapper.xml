@@ -4,15 +4,17 @@
 
 <mapper namespace="com.example.dao.LoginDAO">
 <insert id="registForm" parameterType="com.example.domain.LoginVO">
-    INSERT INTO MEMBER (MEMBER_EMAIL, MEMBER_PASS,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_NICKNAME,MEMBER_REGDATE
+    INSERT INTO MEMBER (MEMBER_EMAIL, MEMBER_PASS,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_NICKNAME
+    ,MEMBER_REGDATE,MEMBER_REVIEW
     )
     VALUES (
         #{member_email, jdbcType=VARCHAR},
         #{member_pass, jdbcType=VARCHAR},
         #{member_birth, jdbcType=DATE},
-        #{member_gender, jdbcType=CHAR},
+        #{member_gender,  jdbcType=CHAR},
         #{member_nickname, jdbcType=VARCHAR},
-        SYSDATE
+        SYSDATE,
+        0
  
 )
 </insert>

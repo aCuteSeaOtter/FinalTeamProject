@@ -6,7 +6,7 @@ import com.example.domain.LoginVO;
 
 import jakarta.servlet.http.HttpSession;
 
-public interface LoginService {
+public interface LoginService { 
 
 	void registForm(LoginVO LoginVO);
 	//MemberVO loginForm(MemberVO memberVO);

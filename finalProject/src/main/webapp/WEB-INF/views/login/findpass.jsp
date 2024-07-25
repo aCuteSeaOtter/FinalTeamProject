@@ -102,50 +102,8 @@
 				</li>
 				<li class="nav-item">
 				<a class="nav-link p-0" href="csForm">고객센터</a>
-				</li>
-			  
-	  
-          <!--    <li class="nav-item">
-                <a class="nav-link p-0" href="destinations">Destination</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <a class="dropdown-item" href="booking">Booking</a>
-                  <a class="dropdown-item" href="faq">Faq</a>
-                  <a class="dropdown-item" href="contact">Contact</a>
-                  <a class="dropdown-item" href="team">Team</a>
-                  <a class="dropdown-item" href="service">Service</a>
-                  <a class="dropdown-item" href="testimonial">Testimonial</a>
-
-                </div>
-              </li>-->
-            <!--  <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle p-0" href="blog" id="navbarDropdown4" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                  <a class="dropdown-item" href="blog">Blog</a>
-                  <a class="dropdown-item" href="load-more">Load More</a>
-                  <a class="dropdown-item" href="single-blog">Single Blog</a>
-                  <a class="dropdown-item" href="one-column">One Column</a>
-                  <a class="dropdown-item" href="two-column">Two Column</a>
-                  <a class="dropdown-item" href="three-column">Three Column</a>
-                  <a class="dropdown-item" href="three-colum-sidbar">Three Column Sidbar</a>
-                  <a class="dropdown-item" href="four-column">Four Column</a>
-                  <a class="dropdown-item" href="six-colum-full-wide">Six Column</a>
-                </div>
-              </li>-->
-			  
-            </ul>
-            <div class="header-contact">
-              <ul class="list-unstyled mb-0">
-               <li><a href="registForm" class="live-chat-btn d-inline-block">
-                    회원가입</a></li>
-                <!-- list unstyled -->
-              </ul>
-              <!-- header contact -->
-            </div>
+			</li>
+		 </ul>
            </div>
         </nav>
         <!-- container -->
@@ -160,7 +118,7 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="sub-banner-inner-con padding-bottom">
-              <h1>로그인</h1>
+              <h2>비밀번호찾기</h2>
          <!--     <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
                 incididunt
                 ut labore et dolore.
@@ -191,44 +149,37 @@
  <div class="row">
         <div class="col-12">
           <div class="login-box">
-            <form id="loginForm" action="loginMain" method="POST">
+            <form action="loginForm" method="POST">
 				<div class="col-lg-10 col-md-10 col-sm-12 col-12">
 					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
                 			
-					<div class="col-12"><!--12-->
+		 			<div class="col-12"><!--12-->
 					<div class="login-group">
-					 <label for="memberEmail">이메일</label>
+			 		 <label for="memberEmail">이메일</label>
 				 <input type="email" style="width:250px; height:50px;" name="member_email" placeholder="Enter Your Email Address"
 			id="email"required>
 		 </div>
-	</div>
+	<p>이메일인증</p>
+	 
+	 </div> <!--class="col-12" -->
+	
 	<div class="col-12">
 	<div class="login-group">
-	    <label for="memberPass">비밀번호</label>
+	    <label for="memberPass">새 비밀번호</label>
 	<input type="password" style="width:250px;" class="form_style" placeholder="Enter Your passwords" name="member_pass"
 	 id="fname"required>
 	   </div>
 	   </div>
+	   <div class="col-12">
+	   <div class="login-group">
+	       <label for="memberPass">비밀번호확인</label>
+	   <input type="password" style="width:250px;" class="form_style" placeholder="Enter Your passwords" name="member_pass"
+	    id="fname"required>
+	      </div>
+	      </div>
    
-	   <ul>
-	<p><a href="/findpass">비밀번호 찾기</a></p>	
-	<p id="regist"><a href="/registForm">회원가입</a></p>
-</ul>
 
- <div class="col-6">
-    <div class="manage-button">
-	      <button onClick="checkPassword()" type="submit" name="submit"
-	      class="login_now text-white text-decoration-none w-100">로그인</button>
-			<p	id="error-msg" style="color:red; display:none;">비밀번호가 일치하지않습니다</p>
-	  </div>
-	 </div>
 
-	 <div class="col-6">
-	    <div class="kakao-btn" onclick="kakaoLogin()">
-	   	<a href="https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917
-		&redirect_uri=http://localhost:8081/login/oauth2/code/kakao&response_type=code"><img src="/images/login/kakao_login_medium_narrow.png"></a>
-	 </div>
-	  </div>
 
 
   </div><!-- row -->
@@ -278,12 +229,7 @@
 	}
 	</script>
 
-	<script>
-			
-	
-	
-	</script>
-	  
+
  </body>
 
 </html>

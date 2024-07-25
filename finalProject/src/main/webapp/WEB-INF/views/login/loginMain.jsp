@@ -6,7 +6,7 @@
 <html lang="zxx">
 
 <head> 
-  <title>Travel | 메인화면 </title>
+  <title>Travel | 로그인성공_메인화면 </title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -104,21 +104,20 @@
 			  <li class="nav-item">
 				<a class="nav-link p-0" href="csForm">고객센터</a>
 			  </li>
-			  
-			  	 <li class="nav-item">
-			 	<a class="nav-link p-0" href="#"> ${sessionScope.mem.member_nickname}님 로그인중</a>
-				<div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown4">
-									<a class="dropdown-item" href="/mypage">마이페이지</a>
-					                 <a class="dropdown-item" href="/reservation">예약내역</a>
-					                 <a class="dropdown-item" href="/main">로그아웃</a>
+			  <li class="nav-item">
+			  <i class="fa-solid fa-user" id="dropdownIcon" 
+			  style="font-size:20px; margin-right:100px; cursor:pointer; 
+			  position:relative;"> 
+			  ${sessionScope.mem.member_nickname}님 로그인중
+			  </i>
+			 </li>
+				<div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown4"
+				style="position: absolute; right: 0; left: auto; display: none;">
+				<a class="dropdown-item" href="/mypage">마이페이지</a>
+			 <a class="dropdown-item" href="/reservation">예약내역</a>
+			 <a class="dropdown-item" href="/main">로그아웃</a>
 				</div>	
-			</li>		
-	            
-            
-		            </div>	
-              </li>
-            </ul>
-          
+	            </ul>
           </div>
         </nav>
         <!-- container -->
@@ -148,12 +147,7 @@
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i>
                     JEJU</span>
                   <h6><a href="destinations">JejuIsland</a></h6>
-                  <img class="img-fluid" alt="image" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/
-				  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">
-                   <div class="spans-wrapper"><span class="d-inline-block"></span> <span
+                  <img class="img-fluid" alt="image" src="/images/login/jeju.jpg"></span> <span
                       class="d-inline-block"></span> <span
                       class="d-inline-block"> </span>
                    
@@ -173,7 +167,7 @@
                 <div class="package-box">
                   <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i>SEOUL</span>
                   <h6><a href="destinations">Seoul–LTower</a></h6>
-                  <img class="img-fluid" alt="image" src="https://cdn.myro.co.kr/prod/image/city/Seoul.jpg">
+                  <img class="img-fluid" alt="image" src="/images/login/seoul.jpg">
             <div class="spans-wrapper"><span class="d-inline-block"></span> <span
                       class="d-inline-block"></span> 
 					  <span class="d-inline-block"> </span>
@@ -268,571 +262,7 @@
                   </div>
                   <!-- package box -->
                 </div>
-<!--
-                 item 
-              </div>
-          <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
 
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-               owl carousel 
-            </div>
-             tab pane 
-          </div>
-          <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="popular-tab">
-            <div class="owl-carousel">
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
-                    Africa</span>
-                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
-                    Africa</span>
-                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-               owl carousel 
-            </div>
-             tab pane 
-          </div>
-          <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="recommend-tab">
-            <div class="owl-carousel">
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
-                    Africa</span>
-                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
-                    Africa</span>
-                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-               owl carousel 
-            </div>
-             tab pane 
-          </div>
-          <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="price-tab">
-            <div class="owl-carousel">
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
-                    Africa</span>
-                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Johannesburg,
-                    Africa</span>
-                  <h6><a href="destinations">Africa – Amazing African Safari</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img1.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Hong Kong, China</span>
-                  <h6><a href="destinations">China – Suzhou and Zhouzhuang</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img2.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item 
-              </div>
-              <div class="item">
-                <div class="package-box">
-                  <span class="d-block location-span"> <i class="fa-solid fa-location-dot"></i> Buenos Aires,
-                    Argentina</span>
-                  <h6><a href="destinations">Argentina – Great Diving Trip</a></h6>
-                  <img class="img-fluid" alt="image" src="/assets/images/package-box-img3.jpg">
-                  <div class="spans-wrapper"><span class="d-inline-block">10 Activities</span> <span
-                      class="d-inline-block"><i class="fa-solid fa-map-location-dot"></i> 12 Places</span> <span
-                      class="d-inline-block"> <i class="fas fa-calendar-alt"></i> 1 Week</span>
-                     spans wrapper 
-                  </div>
-                  <div class="pkg-btn-con d-flex align-items-center justify-content-between">
-                    <span class="person d-inline-block p-0 m-0">
-                      <span class="price d-inline-block p-0 m-0">
-                        $545
-                      </span>
-                      /Person
-                    </span>
-                    <div class="grey-btn d-inline-block">
-                      <a href="booking" class="d-inline-block">View Availability</a>
-                    </div>
-
-                     package btn con 
-                  </div>
-                   package box 
-                </div>
-
-                 item -->
               </div>
               <!-- owl carousel -->
             </div>
@@ -864,29 +294,7 @@
   <script src="/assets/js/search.js"></script>
  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-<!--  <script>
-	
-	
-	document.addEventListener("DOMContentLoaded", function() {
-	       // JavaScript에서 세션에서 사용자 이름 가져오기
-	       let memberVO = '<%= session.getAttribute("mem")%>';
-		   
-	       // 사용자 이름이 존재할 경우 링크에 텍스트 채워넣기
-	       if (username) {
-			// let username=mem.memberName; // MemberVO 객체에서 이름 필드 가져오기
-	           let loginStatusElement = document.getElementById("loginStatus");
-	           loginStatusElement.textContent = memberVO.member_email + "님 로그인 중";
-	           loginStatusElement.setAttribute("data-toggle", "dropdown"); // 드롭다운 토글 설정
-	           loginStatusElement.setAttribute("aria-haspopup", "true"); // 드롭다운 메뉴로 인식하도록 설정
-	           loginStatusElement.setAttribute("aria-expanded", "false"); // 드롭다운 메뉴가 닫혀있음을 설정
-	       } else {
-	           // 사용자 이름이 없을 경우 로그인 링크를 설정
-	           loginStatusElement.textContent = "로그인";
-	           loginStatusElement.setAttribute("href", "loginForm"); // 로그인 폼 페이지로 이동하는 링크 설정
-	       }
-	   });
-	
-  </script>-->
+
   
  <script>
 	//클릭 이벤트 핸들러 함수
@@ -904,7 +312,23 @@
 	  }
 	
 </script>
-  
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var dropdownIcon = document.getElementById('dropdownIcon');
+    var dropdownMenu = document.getElementById('dropdownMenu');
+
+    dropdownIcon.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('show');
+    });
+
+    // 클릭 이벤트가 발생한 곳 외의 다른 곳을 클릭했을 때 드롭다운 메뉴가 사라지도록 처리
+    document.addEventListener('click', function(event) {
+        if (!dropdownIcon.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+});
+</script>
 
 <script>
 	// 기본 탭 열기
@@ -925,6 +349,23 @@
 	  }
 	</script>
 	
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+		    var dropdownIcon = document.getElementById('dropdownIcon');
+		    var dropdownMenu = document.getElementById('dropdownMenu');
+
+		    dropdownIcon.addEventListener('click', function() {
+		        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+		    });
+
+		    // 클릭 이벤트가 발생한 곳 외의 다른 곳을 클릭했을 때 드롭다운 메뉴가 사라지도록 처리
+		    document.addEventListener('click', function(event) {
+		        if (!dropdownIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+		            dropdownMenu.style.display = 'none';
+		        }
+		    });
+		});
+		</script>
   </body>
 
 </html>

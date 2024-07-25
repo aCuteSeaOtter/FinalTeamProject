@@ -196,14 +196,14 @@
 				<div class="col-12"><!--12-->
 					  <div class="form-email">
 					    <label>이메일</label>
-						<input type="email" style="width:200px; height:30px;"name="MEMBER_EMAIL" placeholder="Enter Your Email Address"
+						<input type="email" style="width:200px; height:30px;"name="member_email" placeholder="Enter Your Email Address"
 					      id="email"required>
 					  </div>
 					</div>
 					<div class="col-12">
 					    <div class="form-pass">
 						<label>비밀번호</label>
-					   <input type="password" style="width:190px; height:30px;"class="form_style" placeholder="Enter Your passwords" name="MEMBER_PASS"
+					   <input type="password" style="width:190px; height:30px;"class="form_style" placeholder="Enter Your passwords" name="member_pass"
 					   id="fname" minlength="6" required>
 					     </div>
 					  </div>
@@ -211,27 +211,27 @@
 					    <div class="form-birth">
 					  <label>생년월일</label>
 					  						
-					  	<select name="year" 	id="year" style="width:47px; height:30px;" required></select>년
-					  	<select name="month"	id="month"style="width:30px; height:30px;"required></select>월
-					  	<select name="day"		id="day"  style="width:30px; height:30px;"required></select>일
+					  	<select name="year" id="year1" style="width:49px; height:30px;" required></select>년
+					  	<select name="month"id="month1"style="width:30px; height:30px;"required></select>월
+					  	<select name="day"	id="day1"  style="width:30px; height:30px;"required></select>일
 					  	</div>
 					  	</div>
 						<div class="col-12"><!--12-->
 					 <div class="form-nickname">
 					<label>닉네임</label>
 					<input type="text" style="width:200px; height:30px;"class="mb-md-0 form_style" placeholder="Enter Your nickname"
-					 name="MEMBER_NICKNAME"required>
+					 name="member_nickname"required>
 					 </div>
 					 </div>
 					 <div class="col-12"><!--12-->
 					<div class="form-gender">
 					<label>성별</label>
-											  				<label for="male">남</label>
-											  			<input type="radio" style="width:20px; height:20px;"id="male" name="MEMBER_GENDER" value="M" required>
-											  		<label for="female">여</label>
-											  		<input type="radio" style="width:20px; height:20px;" id="female" name="MEMBER_GENDER" value="F"required>
-											  			</div>
-											  			</div>
+						<label for="male">남</label>
+					<input type="radio" style="width:20px; height:20px;"id="male" name="member_gender" value="M" required>
+				<label for="female">여</label>
+				<input type="radio" style="width:20px; height:20px;" id="female" name="member_gender" value="F"required>
+				</div>
+			</div>
 					
 														
 														<!--<div class="col-lg-6 col-md-6 col-sm-12 col-12">-->
@@ -269,11 +269,8 @@
             </form>
           </div>
         </div>
-  
-    </section>
-  
-	
-	<!-- BACK TO TOP BUTTON -->
+     </section>
+  <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
@@ -295,18 +292,18 @@
 
   	 //년도 selectbox 만들기
   	  for (i = 1940; i <= year; i++) {
-  	    $('#year').append('<option value="' + i + '">' + i + '</option>');
+  	    $('#year1').append('<option value="' + i + '">' + i + '</option>');
   	  }
 
   	  //월 selectbox 만들기
   	  for (i = 1; i <= 12; i++) {
-  	    $('#month').append('<option value="' + i + '">' + i + '</option>');
+  	    $('#month1').append('<option value="' + i + '">' + i + '</option>');
   	  }
 
 
   		  //일 selectbox 만들기
   		  for (i = 1; i <= 31; i++) {
-  		    $('#day').append('<option value="' + i + '">' + i + '</option>');
+  		    $('#day1').append('<option value="' + i + '">' + i + '</option>');
   		  }
  
 }); // end of ready function
