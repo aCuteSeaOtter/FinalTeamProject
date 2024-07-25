@@ -2,12 +2,14 @@ package com.example.domain;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Entity
 public class LoginVO{
 
 

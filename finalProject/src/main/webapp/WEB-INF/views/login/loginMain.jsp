@@ -57,11 +57,11 @@
     <div class="w-100 float-left top-bar-con main-box">
       <div class="container">
         <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <!--<div class="left-con">
-            <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i> help@traveltrek.com</a>
+          <div class="left-con">
+			HOTSPOT
             
-          </div>-->		<!-- left con -->
-        <!--  <div class="right-con"><a href="loginForm">로그인</a>-->
+          </div>	<!-- left con -->
+       <div class="right-con">070-0000-0000
             <!-- right con -->
           <!--</div>-->
           <!-- top bar inner con -->
@@ -72,7 +72,7 @@
     </div>
     <div class="clearfix"></div>
     <!-- HEADER SECTION -->
-    <header class="w-100 flaot-left header-con main-box position-relative">
+	 <header class="w-100 flaot-left header-con main-box position-relative">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="index">
@@ -104,21 +104,26 @@
 			  <li class="nav-item">
 				<a class="nav-link p-0" href="csForm">고객센터</a>
 			  </li>
-		<!-- <li class="nav-item">
-			 	<a class="nav-link p-0" href="#"> ${sessionScope.mem.member_email}님 로그인중</a>
-		 </li>-->
-		
-	
-                </div>	
+			  
+			  	 <li class="nav-item">
+			 	<a class="nav-link p-0" href="#"> ${sessionScope.mem.member_nickname}님 로그인중</a>
+				<div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown4">
+									<a class="dropdown-item" href="/mypage">마이페이지</a>
+					                 <a class="dropdown-item" href="/reservation">예약내역</a>
+					                 <a class="dropdown-item" href="/main">로그아웃</a>
+				</div>	
+			</li>		
+	            
+            
+		            </div>	
               </li>
             </ul>
           
           </div>
         </nav>
         <!-- container -->
-      </div>
+      </div> 
       <!-- header-con -->
-	  <jsp:include page="/WEB-INF/views/header.jsp" />
     </header>
     <!-- BANNER SECTION -->
 
@@ -133,19 +138,6 @@
 		  <input type="text" class="input-field" placeholder="검색어를 입력하세요" onkeypress="handleKeyPress(event)">
 		  <i class="icon fas fa-search" onClick="goToNextPage()"></i>
         </div>
-	
-	
-		
-		<!--<div class="tab">
-			<ul class="inline-flex text-center">
-				    <button class="tablinks" onclick="openTab(event, 'tab1')" id="defaultOpen">지역</button>
-
-			<button class="tablinks" onclick="openTab(event, 'tab2')">명소</button>
-		    
-
-		
-			</ul>
-		</div>--><!--tab-->
 	<span></span>
 		
 	     <div class="tab-content" id="myTabContent1">
@@ -171,12 +163,7 @@
                       <span class="price d-inline-block p-0 m-0">
                         </span>
                    </span>
-              <!--      <div class="grey-btn d-inline-block">
-                      <a href="reservation" class="d-inline-block">View Availability</a>
-                    </div>-->
-
-                    <!-- package btn con -->
-                  </div>
+                      </div>
                   <!-- package box -->
                 </div>
 
@@ -858,8 +845,8 @@
     </div>
     <!-- travel tour con -->
   </section>
+ <!--Footer section-->
 
-  <jsp:include page="/WEB-INF/views/footer.jsp" />
 
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
@@ -877,7 +864,7 @@
   <script src="/assets/js/search.js"></script>
  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
- <!-- <script>
+<!--  <script>
 	
 	
 	document.addEventListener("DOMContentLoaded", function() {

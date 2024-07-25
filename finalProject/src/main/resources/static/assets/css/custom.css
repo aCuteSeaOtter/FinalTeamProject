@@ -26,9 +26,9 @@
 #   light-green-color: #b2f3de;
 
 */
-/*------------------------------------------------------------------
+/*------------------------------------------------------------------ 
 # [Typography]
-
+	`
 Body copy: "Jost", sans-serif;
 Headings: "Jost", sans-serif;
 */
@@ -41,10 +41,314 @@ Headings: "Jost", sans-serif;
     padding: 0;
     box-sizing: border-box;
 }
-
-html {
-    scroll-behavior: smooth;
+.nav-item{
+	position:relative;
 }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	top:100%;
+	left:0;
+}
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+
+ul{
+	display:flex;
+	justify-content:flex-end;
+	list-style-type:none;
+	padding:0px;
+}
+#regist{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.container h1{
+	text-align:center;
+}
+
+.row{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+	height:100px;
+}
+.join-box{
+	width:300px;
+	text-align:center;
+	
+}
+
+
+.form-agree{
+	margin:0 auto;
+	padding:40px;
+  display: inline-block;
+	
+}
+.confirm{
+	background-color:#c0c0c0;
+	border-style:none;
+	width:50px;
+	color: var(--text-color);
+	cursor:pointer;
+	
+}
+.join{
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border:none;
+}
+
+.join-button{
+	width: 300px;
+  text-align: center;
+	border:none;
+}
+
+.join-box .confirm hover{
+	background-color: var(--mustard-color);
+	
+}
+.form-gender label input{
+	padding:50px;
+
+}
+
+
+.join-box label{
+	text-font:30px;
+}
+ .login-group {
+     /* 원하는 스타일 설정 */
+     width: 120px;
+     padding:-10px;
+ }
+.join-box{
+	display:flex;
+	margin:0 auto;
+	padding:20px;
+	font-weight:bold;
+	font-size:11px;
+	justify-content:center;
+	align-items:center;
+}
+.join-box label select{
+	text-align:center;
+	padding:100px;
+	margin:100px;
+	justify-content:center;
+	align-items:center;
+	cursor:pointer;
+}
+
+.form-agree{
+	justify-content:center;
+  text-align:center;
+  padding:3px 5pxS;
+}
+.form-email{
+	justify-content:center;
+  text-align:center;
+}
+.form-pass{
+	justify-content:center;
+  text-align:center;
+}
+.form-birth{
+	justify-content:center;
+  text-align:center;
+  align-items:center;
+}
+.form-nickname{
+	justify-content:center;
+	 text-align:center;
+	align-items:center;	
+}
+.form-gender{
+	justify-content:center;
+  text-align:center;
+	align-items:center;
+}
+.form-gender label{
+	cursor:pointer;
+}
+/* 
+ .register-box{
+	margin:0 auto;
+	justify-content:center;
+	align-items:center; 
+	position:fixed;
+	padding:20px;
+}*/
+
+.form-group input[type="radio"]{
+	margin-left:10px;
+}
+.form-group input[type="checkbox"]{
+	margin-right:10px;
+}
+
+
+
+
+/* .form-container form {
+   width: 300px; 폼의 너비를 설정
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+			 
+} */
+/* button.register_now{
+	padding:10px;
+	cursor:pointer;
+	width:100%;
+	border:none;
+	white-space:nowrap;
+	text-align:center;
+
+} */
+
+/*button.login_now{
+	padding:10px;
+	cursor:pointer;
+	width:50px;
+	border:none;
+	text-align:center;
+	
+}*/
+/*
+button.join_now{
+	padding:10px;
+	cursor:pointer;
+	width:50px;
+	border:none;
+	text-align:center;
+	display:flex;
+    font-size: 11px;
+    line-height: 18px;
+    font-weight: 300;
+    padding:10px 78px;
+ 
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    background: var(--primary--color);
+    box-shadow: 0 20px 50px 0 rgb(30 194 139 / 35%);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border-style: none;
+  
+
+}*/
+
+button.join_now:hover{
+	background-color:orange;
+}
+
+button.login_now:hover{
+	background-color:orange;
+}		
+
+		
+		
+.info#info__birth select::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info#info__birth select::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 3px;
+}
+
+.info#info__birth select::-webkit-scrollbar-track {
+  background-color: #ebe9e9;
+  border-radius: 6px;
+}
+
+.form-group input[type="checkbox"]{
+	margin-right:10px;
+	width:20px;
+	height:40px;
+}
+/* Input 태그에 대한 스타일 지정 */
+		input[type="text"] {
+		    font-size: 11px; /* 원하는 텍스트 크기 설정 */
+		    padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
+		    border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
+		    border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
+	}
+
+		input[type="password"] {
+		    font-size: 11px; /* 원하는 텍스트 크기 설정 */
+		    padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
+		    border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
+		    border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
+	}
+		input[type="email"] {
+		    font-size: 11px; /* 원하는 텍스트 크기 설정 */
+		    padding: 8px; /* 텍스트와 테두리 사이의 간격 설정 (옵션) */
+		    border: 1px solid #ccc; /* 테두리 스타일 설정 (옵션) */
+		    border-radius: 4px; /* 테두리의 둥근 정도 설정 (옵션) */
+	}
+
+/* 		input[type="number"] {
+		    font-size: 11px; 원하는 텍스트 크기 설정
+		    padding: 8px; 텍스트와 테두리 사이의 간격 설정 (옵션)
+		    border: 1px solid #ccc; 테두리 스타일 설정 (옵션)
+		    border-radius: 4px; 테두리의 둥근 정도 설정 (옵션)
+	} */
+html, body {
+    scroll-behavior: smooth;
+    height:100%;
+}
+
+
+/* .join-button .join-now{
+	display:flex;
+	justify-content:center;
+	align-items: center;
+	text-align:center;
+	margin:0;
+	top:50px;
+}
+ */
+
+.manage-button .login_now{
+     width: 100%;
+            height: 40px;
+            background-color: light green; /* 배경색 설정 (예시) */
+            border: none;
+            cursor: pointer;	
+}
+
+
+section::-webkit-scrollbar {
+  width: 10px; /* 스크롤바 너비 */
+	
+
+}
+
+section::-webkit-scrollbar-track {
+  background: #f1f1f1; /* 스크롤바 트랙 배경색 */
+}
+
+section::-webkit-scrollbar-thumb {
+  background-color: #888; /* 스크롤바 색 */
+  border-radius: 5px; /* 스크롤바 모양 */
+}
+
+
 
 a,
 button input {
@@ -66,6 +370,7 @@ body {
     font-weight: 400;
     color: var(--text-color);
     font-family: "Jost", sans-serif;
+	overflow:scroll;
 }
 
 h1,
@@ -296,8 +601,8 @@ span {
     color: white;
     cursor: pointer;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     -webkit-animation: spineer 2s infinite;
     animation: spineer 2s infinite;
 }
@@ -765,12 +1070,61 @@ span {
 }
 
 .color-overlay {
-    background: rgba(22, 48, 53, 0.9);
+    background: rgb(255, 255, 255);
 }
 
-.heading-content h4 {
-    color: var(--mustard-color);
-    margin-bottom: 24px;
+.heading-content h3{
+
+font-weight:bold;
+}
+.heading-content input{
+	width:400px;
+	position:relative;
+	border-radius:40px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+.icon{
+	cursor:pointer;
+}
+
+.tab {
+ overflow: hidden;
+/*  border: 1px solid #ccc; */
+/*  background-color: #f1f1f1; */
+ margin-top: 20px;
+ text-align:center;
+}
+
+        /* 탭 버튼 스타일 */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: 2px solid #CEFBC9;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: 0.3s;
+            font-size: 18px;
+            border-radius: 10px;
+            width:100px;
+            height:50px;
+        }
+
+        /* 버튼 호버 효과 */
+        .tab button:hover {
+            background-color:#CEFBC9; /* 호버 시 배경색 변경 */
+            border-color: #CEFBC9; /* 호버 시 테두리 색상 변경 */
+        }
+
+/* 활성 탭 버튼 스타일 */
+.tab button.active {
+background-color: #CEFBC9;
+       
+}     
+       
+.inline-flex{
+	  display: flex;
+      justify-content: center; /* 수평 가운데 정렬 */
+      align-items: center; /* 수직 가운데 정렬 */
 }
 
 .travel-tour-con .vector7 {
@@ -816,7 +1170,7 @@ span {
 
 .travel-tour-con .tab-content .package-box span.location-span i {
     color: var(--mustard-color);
-    background-color: rgb(255, 137, 0, 10%);
+    background-color:white;	/*  rgb(255, 137, 0, 10%); */
     width: 36px;
     height: 36px;
     line-height: 36px;
@@ -1094,6 +1448,7 @@ span {
 
 .heading-title h4 {
     color: var(--primary--color);
+   
     margin-bottom: 28px;
 }
 
@@ -1842,8 +2197,9 @@ span {
     top: 0;
 }
 
-/* CONTACT PAGE */
 
+/* CONTACT PAGE */
+/* 
 .talk-to-us-con.about-travel-con .about-travel-img-con .about-img2 img {
     right: 0;
     bottom: -34px;
@@ -1874,16 +2230,17 @@ span {
     position: relative;
     padding-left: 24px;
 }
+ */
 
 /* map section */
-.contact-map-con iframe {
+/* .contact-map-con iframe {
     height: 448px;
     width: 100%;
     filter: grayscale(1);
     border: none;
 }
-
-.talk-to-us-con .contact-info .social-icons .circle {
+ */
+/* .talk-to-us-con .contact-info .social-icons .circle {
     background-color: var(--text-color);
     border-radius: 100px;
     height: 30px;
@@ -1904,12 +2261,12 @@ span {
 .talk-to-us-con .contact-info .social-icons a i {
     color: var(--secondary--color);
 }
-
+ */
 /* .talk-to-us-con .contact-info ul.contact-info-inner-wrapper li a {
     position: relative;
 } */
 
-.talk-to-us-con .contact-info .social-icons {
+/* .talk-to-us-con .contact-info .social-icons {
     margin-top: 18px;
 }
 
@@ -1921,42 +2278,37 @@ span {
     color: var(--primary--color);
     text-decoration: none;
 }
-
+ */
 /* talk with our team section */
-.talk-width-our-team-con {
+/* .talk-width-our-team-con {
     background: linear-gradient(to bottom, #f4fdfa 0%, #ffffff 100%);
 }
 
 .talk-width-our-team-con .vector11 {
     top: 103px;
     left: 98px;
+} */
+
+.login-group{
+	text-align:center;
+	justify-content: center;
+	align-items: center;
+	margin:30px;
 }
 
-.talk-width-our-team-con .register-box {
-    padding: 77px 92px;
-    margin-bottom: 0 !important;
-    background-color: var(--light-green-color);
-    border-radius: 10px;
-}
 
-.talk-width-our-team-con .register-box label {
-    font-size: 18px;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 17px;
-    color: var(--navy-color);
-}
 
-.talk-width-our-team-con .register-box input,
-.talk-width-our-team-con .register-box select,
-.talk-width-our-team-con .register-box textarea {
+.register-box input,
+.register-box select
+{
+	text-weight:bold;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 10px;
     color: var(--text-color);
     background-color: var(--secondary--color);
     border: 1px solid transparent;
     border-radius: 5px;
-    padding: 19px 21px;
+    padding: 20px;
     width: 100%;
     overflow: visible;
     outline: none;
@@ -1964,20 +2316,15 @@ span {
     box-shadow: 0 2px 2px rgb(35 31 32 / 10%);
 }
 
-.talk-width-our-team-con .register-box input {
+.register-box input {
     height: 60px;
+	width:50px;
+	
 }
-
-.talk-width-our-team-con .register-box textarea {
-    height: 230px;
-    float: left;
-    margin-bottom: 24px;
-}
-
-.talk-width-our-team-con .register-box .register_now {
-    font-size: 18px;
+.register-box .register_now {
+    font-size: 11px;
     line-height: 18px;
-    font-weight: 600;
+    font-weight: 300;
     padding: 21px 78px;
     text-align: center;
     display: inline-block;
@@ -1991,26 +2338,32 @@ span {
     cursor: pointer;
 }
 
-.talk-width-our-team-con .register-box .register_now:hover {
+.register-box .register_now:hover {
     background-color: var(--mustard-color);
 }
 
-
-.talk-width-our-team-con .register-box .form-group {
-    margin-bottom: 26px;
-}
-
-.talk-width-our-team-con .register-box .form-group.fon-con {
-    margin-bottom: 0;
-}
-
-.talk-width-our-team-con .register-box input:focus,
-.talk-width-our-team-con .register-box textarea:focus {
+.register-box input:focus,
+.register-box textarea:focus {
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(30 194 139 / 100%);
     border-color: var(--primary--color);
 }
+	
+/* .form-group #btnSignIn{
+ 	position: static;
 
-.talk-width-our-team-con .register-box #contactpage span.error {
+} 
+.size{
+
+	white-space:nowrap;
+}*/
+
+.form-group input{
+
+	white-space:nowrap;
+}
+
+
+.register-box #contactpage span.error {
     font-size: 15px;
     line-height: 15px;
     margin-top: 5px;
@@ -2021,12 +2374,12 @@ span {
     text-align: left;
     padding-left: 4px;
     color: red;
-}
 
-.talk-width-our-team-con .vector9 {
+}
+/* .talk-width-our-team-con .vector9 {
     right: 99px;
     bottom: 148px;
-}
+} */
 
 /* COMING SOON PAGE */
 .comingsoon_outer {
@@ -2093,13 +2446,13 @@ span {
 .coming-soon-con .coming-banner-content .form-group input {
     position: relative;
     width: 100%;
-    margin: 0 auto;
+    margin: 100;
     background: var(--secondary--color);
     border: none;
     height: 60px;
-    font-size: 16px;
+    font-size: 11px;
     color: var(--text-color);
-    padding: 15px 19px;
+    padding: /* 15px 19px; */ 20px;
     box-shadow: 0 2px 2px rgb(35 31 32 / 10%);
     border-radius: 5px;
     font-weight: 500;

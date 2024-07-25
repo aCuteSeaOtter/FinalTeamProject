@@ -60,10 +60,25 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	public LoginVO checkLogin(LoginVO loginVO) {
-		System.out.println("파라미터:" + loginVO);
+		/*System.out.println("파라미터:" + loginVO);
 		LoginVO result = loginDAO.checkLogin(loginVO);
 		System.out.println("결과:" +result);
-		return result;
+		return result;*/
+		
+		// 사용자 입력 정보로 DB에서 사용자 정보 조회
+		LoginVO result = loginDAO.checkLogin(loginVO);
+		System.out.println("확인"+loginVO);
+		if (result != null) {
+            // DB에 저장된 비밀번호와 사용자 입력 비밀번호 비교
+            if (result.getMember_pass().equals(loginVO.getMember_pass())) {
+                return result; // 로그인 성공
+            } else {
+                return null; // 비밀번호 불일치
+            }
+        } else {
+            return null; // 사용자 정보가 없음
+        }
+    
 	}
 
     @Override
@@ -73,32 +88,7 @@ public class LoginServiceImpl implements LoginService{
     	return member;
     }
 
-/*	@Override
-	public String getAccessToken(String code) {
-		String accessToken="";
-		try {
-			accessToken = callKakaoAccessTokenAPI(code);//카카오 API 호출메서드
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		return accessToken;
-	}
-
-	private String callKakaoAccessTokenAPI(String code) {
-		String accessToken="";
-		if(accessToken.equals("accessToken")) {
-			userInfo="";
-		}
-	}
-	
-	
-	@Override
-	public String getUserInfo(String accessToken, HttpSession session, RedirectAttributes rttr) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-    
+ 
     
     
 

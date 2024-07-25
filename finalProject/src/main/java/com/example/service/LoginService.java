@@ -26,6 +26,9 @@ public interface LoginService {
 	String getAccessToken(String code);
 	String getUserInfo(String accessToken, HttpSession session, RedirectAttributes rttr);
 
-	//회원정보를 DB에 저장하는 메소드
+	
+//	void memberuser(String member_email, String member_pass);
+	
+	
 }
   

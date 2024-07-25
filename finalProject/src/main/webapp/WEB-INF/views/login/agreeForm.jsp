@@ -11,34 +11,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-aweson/5.15.4/css/all.min.css">
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/images/favicon/manifest.json">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <!-- Font Awesome link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- StyleSheet link CSS -->
-  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="/assets/css/animate.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/superclasses.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/custom.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -77,7 +77,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="index">
             <figure class="mb-0">
-              <img src="assets/images/logo-icon.png" alt="logo-icon">
+              <img src="/assets/images/logo-icon.png" alt="logo-icon">
             </figure>
           </a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -149,8 +149,8 @@
     </header>
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1  img-fluid position-absolute" src="assets/images/vector1.png">
-      <img alt="vector" class="vector2 img-fluid position-absolute" src="assets/images/vector2.png">
+      <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
+      <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
       <div class="container">
         <div class="row">
           <div class="col-lg-7">
@@ -183,15 +183,15 @@
   <!--<section
     class="float-left w-100 about-travel-con talk-to-us-con position-relative main-box padding-top padding-bottom">
     <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="assets/images/vector5.png">
-    <img alt="vector" class="vector6 img-fluid position-absolute" src="assets/images/vector6.png">
+      src="/assets/images/vector5.png">
+    <img alt="vector" class="vector6 img-fluid position-absolute" src="/assets/images/vector6.png">
     <div class="container wow bounceInUp" data-wow-duration="2s">
       <div class="row">
         <div class="col-lg-6">
           <div class="about-travel-img-con position-relative">
-            <figure class="about-img"><img class="img-fluid" alt="image" src="assets/images/talk-to-us-img1.jpg">
+            <figure class="about-img"><img class="img-fluid" alt="image" src="/assets/images/talk-to-us-img1.jpg">
             </figure>
-            <figure class="about-img2"><img class="img-fluid" alt="image" src="assets/images/talk-to-us-img2.jpg">
+            <figure class="about-img2"><img class="img-fluid" alt="image" src="/assets/images/talk-to-us-img2.jpg">
             </figure>
              about travel img con 
           </div>
@@ -239,9 +239,9 @@
   <!-- CONTACT FORM SECTION  -->
   <section class="float-left w-100 talk-width-our-team-con position-relative main-box padding-top padding-bottom">
   <!--<img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s"
-      src="assets/images/vector11.png">
+      src="/assets/images/vector11.png">
     <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="assets/images/vector9.png">-->
+      src="/assets/images/vector9.png">-->
     <div class="container wow bounceInUp" ><!--data-wow-duration="2s"-->
    <!--  <div class="heading-title text-center">
         <h4 class="text-uppercase">Talk with our team</h4>
@@ -326,17 +326,17 @@
     </section>
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/owl.carousel.js"></script>
-  <script src="assets/js/contact-form.js"></script>
-  <script src="assets/js/video-popup.js"></script>
-  <script src="assets/js/video-section.js"></script>
-  <script src="assets/js/jquery.validate.js"></script>
-  <script src="assets/js/wow.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script src="assets/js/search.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/owl.carousel.js"></script>
+  <script src="/assets/js/contact-form.js"></script>
+  <script src="/assets/js/video-popup.js"></script>
+  <script src="/assets/js/video-section.js"></script>
+  <script src="/assets/js/jquery.validate.js"></script>
+  <script src="/assets/js/wow.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/search.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>>
   <script>
 	$(document).ready(function() {
