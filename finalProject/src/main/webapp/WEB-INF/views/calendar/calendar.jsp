@@ -13,7 +13,7 @@
 
     <div class="wrapper">
         <div class="left">
-            <div class="body">
+            <div class="body"> 
 
                 <header>
                     <div class="nav">

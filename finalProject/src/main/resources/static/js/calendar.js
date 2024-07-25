@@ -210,7 +210,7 @@ $(function() {
             alert("날짜를 선택해주세요.");
 			return false;
         }
-    });
+    }); 
 
     // '취소하기' 버튼 클릭 이벤트
     $(".delBtn").click(function() {

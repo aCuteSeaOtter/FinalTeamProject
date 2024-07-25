@@ -157,7 +157,7 @@ $(function() {
         });
     });
 	
-	
+	 
 	
 	// '모든 항목 삭제' 클릭 시, 선택된 모든 아이템 제거
 	$(".deleteAll").on('click', function() {

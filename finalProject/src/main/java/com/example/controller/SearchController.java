@@ -10,7 +10,7 @@ import com.example.service.SearchService;
 @RequestMapping("/searchTest")
 public class SearchController {
 	  
-	@Autowired
+	@Autowired 
 	private SearchService searchService;
 	
 	@RequestMapping("/searchData")

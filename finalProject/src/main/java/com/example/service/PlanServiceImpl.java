@@ -12,7 +12,7 @@ import com.example.domain.PlanVO;
 //** 
 @Service	// Service 호출
 public class PlanServiceImpl implements PlanService {
-	
+	 
 	//**
 	@Autowired
 	private PlanDAO planDAO;

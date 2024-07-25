@@ -63,7 +63,7 @@ public class PlanController {
 	public String sendDates(@RequestParam("dates") String dates, RedirectAttributes redirectAttributes) {
 		List<String> dateList = Arrays.asList(dates.split(","));
 		System.out.println(dateList);
-		
+		 
 		try {
 			redirectAttributes.addFlashAttribute("dates", dateList);
 			

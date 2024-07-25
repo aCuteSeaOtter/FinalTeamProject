@@ -5,7 +5,7 @@
     src: url('../fonts/tway.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+} 
  
 /*#2 */
 * {
@@ -14,7 +14,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', 'tway', sans-serif;
 }
- 
+  
 /*#3 */
 .meterial-icons {
     border: none;

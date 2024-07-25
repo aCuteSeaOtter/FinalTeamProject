@@ -10,7 +10,7 @@ import com.example.dao.SearchDAO;
 //** 
 @Service	// Service 호출
 public class SearchServiceImpl implements SearchService {
-	
+	 
 	//**
 	@Autowired
 	private SearchDAO searchDAO;

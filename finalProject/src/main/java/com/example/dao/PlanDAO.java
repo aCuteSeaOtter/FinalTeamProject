@@ -14,7 +14,7 @@ import com.example.domain.PlanVO;
  	
  	[2] DAO 클래스에서
  		함수명과 Mapper에서의 ID값 동일해야함
-*/
+*/ 
 @Mapper		// Mapper 호출
 public interface PlanDAO {
 	public List<PlanVO> insertPlan(List<Integer> data);

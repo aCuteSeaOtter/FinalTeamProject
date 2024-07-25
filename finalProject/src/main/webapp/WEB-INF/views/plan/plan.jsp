@@ -84,7 +84,7 @@
 	      <div class="row">
 	        <div class="col-lg-4">
 	        <c:if test="${not empty dates}">
-		        <c:if test="${not empty lastDate}">
+		        <c:if test="${not empty lastDate}"> 
 		        	<div style="margin-bottom: 10px"><c:out value="${dates[0]}"/> ~ <c:out value="${lastDate}"/>&nbsp&nbsp<img alt="calendar" class="calendarImg" src="/images/plan/calendar.png"></div>
 				</c:if>
 				

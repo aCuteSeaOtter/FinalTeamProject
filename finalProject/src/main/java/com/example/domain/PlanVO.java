@@ -12,4 +12,4 @@ public class PlanVO {
 	private int attrimg_id;
 	private String attr_local;
 	private String attr_tag;
-}
+} 
