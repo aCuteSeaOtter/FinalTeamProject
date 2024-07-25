@@ -10,3 +10,4 @@ public interface PlanService {
 	List<PlanVO> insertPlan(List<Integer> data);
 	List<PlanVO> selectAttrList(Model m);
 } 
+ 

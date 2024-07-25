@@ -11,7 +11,7 @@ import com.example.domain.PlanVO;
  DAO와 Mapper 연결
  	[1] Mapper에서
  		<mapper namespace="com.example.dao.BoardDAO">
- 	
+ 	 
  	[2] DAO 클래스에서
  		함수명과 Mapper에서의 ID값 동일해야함
 */

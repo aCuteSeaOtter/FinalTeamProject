@@ -10,7 +10,7 @@
 	    <foreach collection="list" item="item" separator=",">
 	        (#{item.attr_id}, #{item.attr_name}, #{item.info_title}, #{item.info_content})
 	    </foreach>
-	</insert> -->
+	</insert> --> 
 	
 	<select id="insertPlan" parameterType="java.util.List" resultType="com.example.domain.PlanVO">
 	    SELECT *

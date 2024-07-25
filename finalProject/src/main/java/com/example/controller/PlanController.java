@@ -20,7 +20,7 @@ public class PlanController {
 	
 	@Autowired
 	private PlanService planService;
-	 
+	  
 	
 	// 선택한 장소의 id값 가져오기
 	@PostMapping("/insertPlan")

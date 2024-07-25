@@ -12,7 +12,7 @@ public class SearchController {
 	  
 	@Autowired
 	private SearchService searchService;
-	
+	 
 	@RequestMapping("/searchData")
 	public String searchData(String keyword) {
 		String result = searchService.searchData(keyword);

@@ -1,15 +1,17 @@
 $(function() {
-    // ** $변수명 : jQuery에서 구분하기 위해 사용
- 
+    // ** $변수명 : jQuery 객체를 구분하기 위해 사용
+
     // 현재 날짜를 가져옴
     let currentDate = new Date();
     let viewYear    = currentDate.getFullYear();
     let viewMonth   = currentDate.getMonth() + 1;
+	let viewDate	= currentDate.getDate();
+	let viewDay		= currentDate.getDay();
 
     // 현재 연도와 월을 표시하는 요소를 선택하고 초기화
     let current_date = $(".current-date");
     current_date.html(`${viewYear}년 ${viewMonth}월`);
- 
+
     // 날짜를 표시할 요소와 이전/다음 버튼 요소를 선택
     let daysTag = $(".days");
     let prevBtn = $("#prev");
@@ -20,13 +22,15 @@ $(function() {
     let endDate   = null;
 
     // 클릭한 날짜 저장
-    let selectedYear  = []; // 클릭한 날짜의 연도를 저장
-    let selectedMonth = []; // 클릭한 날짜의 월을 저장
-    let selectedDay   = [];
+    let selYear  = []; // 클릭한 날짜의 연도를 저장
+    let selMonth = []; // 클릭한 날짜의 월을 저장
+    let selDate  = []; // 클릭한 날짜의 일을 저장
+    let selDay   = []; // 클릭한 날짜의 요일을 저장
 
-    // 선택한 범위에 포함된 날짜를 가져옴
+    // 선택한 범위에 포함된 날짜를 저장
     let selectedDates = [];
 
+    // 시작일과 종료일의 jQuery 객체를 저장
     let startDay;
     let endDay;
 
@@ -61,7 +65,7 @@ $(function() {
             liTag += `<li class="${isToday} ${isSelected}">${i}</li>`;
         }
 
-        // 최종적으로 날짜를 $daysTag에 설정
+        // 최종적으로 날짜를 daysTag에 설정
         daysTag.html(liTag);
 
         // 이전 달, 다음 달 버튼의 클릭 이벤트 핸들러 설정
@@ -87,30 +91,33 @@ $(function() {
 
         // 각 날짜를 클릭했을 때의 처리
         daysTag.find("li").click(function () {
+			// 날짜 클릭 시 오늘 날짜 하이라이트 제거
+			$(".activ").removeClass();
+			
             if ($(this).hasClass('inactiv')) return; // 이전 달의 날짜를 클릭 시, 아무 동작도 하지 않음
         
             // 만약 startDate와 endDate가 이미 선택되어 있다면 초기화
             if (startDate !== null && endDate !== null) {
                 startDate     = null;
                 endDate       = null;
-                selectedYear  = [];
-                selectedMonth = [];
-                selectedDay   = [];
+                selYear  	  = [];
+                selMonth 	  = [];
+                selDate   	  = [];
                 selectedDates = [];
                 $("li").removeClass('selected selected-range');
             }
         
             $(this).addClass("selected selected-range");
         
-            selectedYear.push(viewYear); // 현재 보이는 해를 저장
-            selectedMonth.push(viewMonth); // 현재 보이는 달을 저장
-            selectedDay.push(parseInt($(this).text())); // 클릭한 날짜의 텍스트 값을 정수로 가져옴
+            selYear.push(viewYear); // 현재 보이는 해를 저장
+            selMonth.push(viewMonth); // 현재 보이는 달을 저장
+            selDate.push(parseInt($(this).text())); // 클릭한 날짜의 텍스트 값을 정수로 가져옴
         
             // 선택한 날짜가 2개가 될 때까지 기다림
-            if (selectedDay.length === 2) {
+            if (selDate.length === 2) {
                 let selectedDate = [];
                 for (let i = 0; i < 2; i++) {
-                    selectedDate[i] = new Date(selectedYear[i], selectedMonth[i] - 1, selectedDay[i], 12);
+                    selectedDate[i] = new Date(selYear[i], selMonth[i] - 1, selDate[i], 12);
                 }
         
                 // 종료일이 시작일보다 뒤거나 같은 경우
@@ -145,6 +152,18 @@ $(function() {
                         });
                         current.setDate(current.getDate() + 1);
                     }
+					
+					// 요일 저장 로직 추가
+				    selDay = [];
+				    let dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+				    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+				        selDay.push(dayNames[d.getDay()]);
+				    }
+					
+					// 콘솔에 선택된 날짜와 요일 출력
+				    console.log("선택된 날짜들과 요일:", selectedDates.map((date, index) => 
+				        `${date.toISOString().split('T')[0]} (${selDay[index]})`
+				    ));
                 }
         
                 // 선택한 범위에 포함된 날짜를 가져옴
@@ -175,32 +194,45 @@ $(function() {
         });
     };
 
-    let selDates; 
+	
     // '선택하기'버튼 클릭 이벤트
     $(".selBtn").on("click", function() {
-
-        // 선택한 날짜 저장
-        selDates = selectedDates.map(date => date.toISOString().split('T')[0]);
-        $(".dates").val(selDates);
-		
-        // 시작일, 종료일을 모두 선택하지 않았다면 알림 띄우기
-        if(selDates.length > 0) {
-            $(".start").val("시작일 : " + selDates[0]);
-            $(".end").val("도착일 : " + selDates[selDates.length-1]);
+        if (selectedDates.length > 0) {
+            let formattedDates = selectedDates.map((date, index) => 
+                `${date.toISOString().split('T')[0]} (${selDay[index]})`
+            );
+            $(".dates").val(formattedDates.join(', '));
+            $(".start").val("시작일 : " + formattedDates[0]);
+            $(".end").val("도착일 : " + formattedDates[formattedDates.length - 1]);
+            
+            console.log("선택된 날짜들과 요일:", formattedDates);
         } else {
-            alert("날짜를 선택해주세용.");
+            alert("날짜를 선택해주세요.");
+			return false;
         }
-		
     });
 
+    // '취소하기' 버튼 클릭 이벤트
     $(".delBtn").click(function() {
+        // 변수 초기화
         startDate     = null;
         endDate       = null;
-        selectedYear  = [];
-        selectedMonth = [];
-        selectedDay   = [];
+        selYear       = [];
+        selMonth      = [];
+        selDate       = [];
+        selDay        = [];
         selectedDates = [];
+        
+        // 모든 선택된 날짜의 클래스 제거
         $("li").removeClass('selected selected-range');
+        
+        // 현재 날짜로 달력을 초기화
+        viewYear  = currentDate.getFullYear();
+        viewMonth = currentDate.getMonth() + 1;
+		viewDate  = currentDate.getDate();
+        
+        // 달력 다시 렌더링
+        renderCalendar();
     });
 
     // 초기 달력 렌더링

@@ -10,7 +10,7 @@
 .selectedLocal {
 	color: black;
 	font-family: 'tway';
-	font-size: 30px;
+	font-size: 30px; 
 }
 
 .selectedDiv > div:nth-child(1) {
