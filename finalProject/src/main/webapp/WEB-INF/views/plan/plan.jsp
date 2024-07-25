@@ -73,12 +73,12 @@
       <!-- top bar con -->
     </div>
     <div class="clearfix"></div>
-    <jsp:include page="/WEB-INF/views/header.jsp" />
+	<!-- HEADER SECTION -->
+	  <jsp:include page="/WEB-INF/views/header.jsp" />
     
     <!-- bg outer wrapper -->
   </div>
   <!-- TOP DESTINATIONS SECTION -->
-  
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 	    <div class="container">
 	      <div class="row">
@@ -157,8 +157,8 @@
 	    </div>
 	    <!-- about travel con -->
 	  </section>
-  
-  <jsp:include page="/WEB-INF/views/footer.jsp" />
+	  <!-- FOOTER SECTION -->
+	    <jsp:include page="/WEB-INF/views/footer.jsp" />
 
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>

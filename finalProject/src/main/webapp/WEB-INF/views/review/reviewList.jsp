@@ -71,6 +71,8 @@
             <!-- top bar con -->
         </div>
         <div class="clearfix"></div>
+		<!-- OUTER BG WRAPPER -->
+			  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
         <!-- HEADER SECTION -->
 			<jsp:include page="/WEB-INF/views/header.jsp" />
         <!-- BANNER SECTION -->
