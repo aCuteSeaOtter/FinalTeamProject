@@ -80,7 +80,7 @@
 	      <div class="row">
 	        <div class="col-lg-5">
 	        <div class="selectedLocal">제주</div> 
-	        <div style="margin-bottom: 10px">2024.07.16(수) ~ 2024.07.18(금)</div>
+	        <div class="selectedDate2"></div>
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="/images/plan/search.png"/></div><hr/>
 	        
 	        
@@ -114,8 +114,8 @@
 	        <div class="col-lg-7 selectedDiv">
 		        <div>
 		        	<div>
-		        		<span>DAY 1</span> 
-		        		<span>&nbsp&nbsp7/16 수</span> 
+		        		<span class="dayNum2">DAY 1</span> 
+		        		<span class="date2">&nbsp&nbsp7/16 수</span> 
 		        		<input type="button" class="btn btn-secondary save-btn" value="저장"></input>
 		        	</div> 
 		        </div> 

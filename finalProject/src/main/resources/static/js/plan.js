@@ -1,29 +1,69 @@
 $(function() {
+	let currentPage = 1;
+	const totalPages = Math.ceil($('.dayBlock').length / 3);
+
+	$('#nextPage').click(function() {
+		if (currentPage < totalPages) {
+			$(`#page${currentPage}`).hide();
+			currentPage++;
+			$(`#page${currentPage}`).show();
+			updatePaginationButtons();
+			}
+		});
+	
+	$('#prevPage').click(function() {
+		if (currentPage > 1) {
+			$(`#page${currentPage}`).hide();
+			currentPage--;
+			$(`#page${currentPage}`).show();
+			updatePaginationButtons();
+		}
+	});
+	
+	function updatePaginationButtons() {
+		$('#prevPage').prop('disabled', currentPage === 1);
+	    $('#nextPage').prop('disabled', currentPage === totalPages);
+	}
+	
+	
+	
 	$(".calendarImg").on("click", function() {
-		
+		location.href="/calendar/calendar";
 	});
 	
 	
     // 일정 추가 버튼 클릭 시 팝업창 열기
-    $(".add-btn").on("click", function() {
-		$(".inputData").empty();
+	$(".add-btn").on("click", function() {
+	    let day = $(this).data('day');
 		
-        showPopup();
-
-        function showPopup() {
-            window.open("planPopup", "a", "width=1200, height=800, top=50, left=100");
-        }
-    }); 
+		// .selectedDate 값을 가져와 스토리지에 저장
+	    localStorage.setItem('selectedDate', $('.selectedDate').text());
+		localStorage.setItem('dayNum', $('.dayNum').text());
+		localStorage.setItem('date', $('.date').text());
+		
+	    window.open(`planPopup?day=${day}`, "a", "width=1200, height=800, top=50, left=100");
+	});
 	
+	// 스토리지에서 값을 꺼내와 '.selectedDate2'에 출력
+	$('.selectedDate2').text(localStorage.getItem('selectedDate'));
+	$('.dayNum2').text(localStorage.getItem('dayNum'));
+	$('.date2').text(localStorage.getItem('date'));
 	
 	// 편집 버튼 클릭 시 팝업창 열기
 	$(".edit-btn").on("click", function() {
-        showPopup();
-
-        function showPopup() {
-            window.open("planPopup", "a", "width=1200, height=800, top=50, left=100");
-        }
-    });
+	    let day = $(this).data('day');
+	    let existingData = [];
+	    
+	    // 해당 day의 기존 데이터 수집
+	    $(`#inputData-${day} .selectedItem`).each(function() {
+	        let attrId = $(this).find('input[type="hidden"]').val();
+	        existingData.push(attrId);
+	    });
+	    
+	    // 기존 데이터를 쿼리 파라미터로 전달
+	    let existingDataParam = existingData.join(',');
+	    window.open(`planPopup?day=${day}&existingData=${existingDataParam}`, "a", "width=1200, height=800, top=50, left=100");
+	});
 	
 	
 	// 추가한 일정의 수 카운트
@@ -45,7 +85,8 @@ $(function() {
         } else {
             $(this).attr('src', noneSel); // 선택되지 않은 이미지로 변경
         }
-
+				    
+					
         var divBlock = $(this).closest('.divBlock'); // 클릭한 selectBox의 부모 divBlock 요소 선택
         var selectedLocalTitleText = divBlock.find(".localTitle").text(); // 선택된 지역명 텍스트 가져오기
 
@@ -183,42 +224,38 @@ $(function() {
 	// 버튼 클릭 이벤트 핸들러
     $('.save-btn').on('click', function() {
 		alert("배열 확인 : " + selectedAttrIdData);
-		$.ajax({
-		    url: '/insertPlan', // 서버의 @RequestMapping("/insertPlan") URL
-		    type: 'POST', // 요청 방식 (GET 또는 POST)
-			data: {data : selectedAttrIdData},
-		    success: function(response) {
-		        // 요청이 성공했을 때의 처리
-		        // response는 서버에서 반환된 데이터입니다.
-		        console.log('Success:', response);
-				
-				response.forEach(item => {
-	                input(item); // 각 항목을 처리
+		let day = new URLSearchParams(window.location.search).get('day');
+	    $.ajax({
+	        url: '/insertPlan',
+	        type: 'POST',
+	        data: {
+	            day: day,
+	            data: selectedAttrIdData
+	        },
+	        success: function(response) {
+	            console.log('Success:', response);
+	            response.forEach(item => {
+	                inputToParent(item, day);
 	            });
-			
-				// 타이머 필요
-				
-				window.close();
-		    },
-		    error: function(error, xhr) {
-		        // 요청이 실패했을 때의 처리
-				console.log('Error:', error, xhr);
-		    }
-		});
+	            window.close();
+	        },
+	        error: function(error, xhr) {
+	            console.log('Error:', error, xhr);
+	        }
+	    });
     });
 });
 
 
 // plan/plan 추가한 일정을 출력
-function input(data){
-	// 부모의 form 에 data 갯수만큼 동적으로 만들어서 처리
-	let inputData = `
-    	<div>
-        	<div>${data.attr_name}</div>
-        	<div>${data.attr_tag}</div>
+function inputToParent(data, day){
+    let inputData = `
+        <div>
+            <div>${data.attr_name}</div>
+            <div>${data.attr_tag}</div>
         </div>
-	    `;
-	$(opener.document).find(".inputData").append(inputData);
+    `;
+    $(opener.document).find(`#inputData-${day}`).append(inputData);
 }
 
 // 추가한 일정의 수 카운트

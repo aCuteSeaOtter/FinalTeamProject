@@ -30,9 +30,6 @@ $(function() {
     // 선택한 범위에 포함된 날짜를 저장
     let selectedDates = [];
 
-    // 시작일과 종료일의 jQuery 객체를 저장
-    let startDay;
-    let endDay;
 
     // 달력을 렌더링하는 함수
     let renderCalendar = () => {
@@ -205,6 +202,7 @@ $(function() {
             $(".start").val("시작일 : " + formattedDates[0]);
             $(".end").val("도착일 : " + formattedDates[formattedDates.length - 1]);
             
+			localStorage.setItem('selectedDates', formattedDates);	// 브라우저 스토리지에 저장
             console.log("선택된 날짜들과 요일:", formattedDates);
         } else {
             alert("날짜를 선택해주세요.");

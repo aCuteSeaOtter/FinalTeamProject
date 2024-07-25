@@ -7,6 +7,73 @@
 }
 
 
+.dayBlockWrapper {
+  position: relative;
+  min-height: 500px; /* 기존 설정 유지 */
+  max-height: 79vh; /* 뷰포트 높이의 70%로 제한 */
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+  padding-right: 15px; /* 스크롤바 공간 확보 */
+}
+
+
+/* 스크롤바 스타일링 (선택사항) */
+.dayBlockWrapper::-webkit-scrollbar {
+	width: 10px;
+}
+
+
+.dayBlockWrapper::-webkit-scrollbar-track {
+	background: rgba(30, 194, 139, .1);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+
+.dayBlockWrapper::-webkit-scrollbar-thumb {
+	background: rgba(30, 194, 139); /* 스크롤바 색상 */
+	border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+
+.dayBlockWrapper::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+
+/* 전체 컨테이너에 최소 높이 설정 */
+.about-travel-con {
+  min-height: calc(100vh - 200px); /* 푸터 높이를 뺀 값으로 설정 */
+}
+
+
+.full-height-container {
+  min-height: calc(100vh - 200px); /* 푸터 높이를 뺀 값 */
+}
+
+
+/* 기존 스타일 유지 */
+.dayBlockPage {
+  position: relative; /* absolute에서 relative로 변경 */
+  width: 100%;
+}
+
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  /* position: sticky; 페이지네이션을 고정 */
+  bottom: 0;
+  /* background-color: white; 배경색 설정 */
+  padding: 10px 0;
+}
+
+
+/* dayBlock 간 간격 조정 */
+.dayBlock {
+  margin-bottom: 30px; /* 65px에서 30px로 줄임 */
+}
+
+
 .dayBlock {
 	margin-bottom: 65px; 
 }
@@ -46,6 +113,16 @@
 	font-family: 'tway';
 } 
 
+
+.selectedDate {
+	display: inline;
+}
+
+
+.btnSet {
+	margin-top: 10px;
+}
+
   
 .add-btn {
 	width: 100%; 
@@ -56,9 +133,14 @@
 }
 
 
-.habtn {
+.hbtn {
 	font-family: 'tway';
-	display: inline-block;
+	width: 49%;
+}
+
+
+.abtn {
+	font-family: 'tway';
 	width: 49%;
 }
 
@@ -72,6 +154,12 @@
 .calendarImg {
 	width: 25px;
 	height: 25px;
+	display: inline;
+}
+
+
+.calendarImg:hover {
+	cursor: pointer;
 }
 
 
