@@ -1,0 +1,50 @@
+@charset "UTF-8";
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0; 
+}
+
+#starRow th, #starRow td {
+    padding: 0; /* 패딩 없애기 */
+    margin: 0;  /* 마진 없애기 */
+    border-spacing: 0; /* 테이블 셀 간격 없애기 */
+    vertical-align: middle; /* 수직 정렬 */
+    line-height: 1; /* 줄 간격 최소화 */
+}
+
+#starRow fieldset {
+    padding: 0; /* 필드셋 패딩 없애기 */
+    margin: 0;  /* 필드셋 마진 없애기 */
+}
+
+/* getBoardStar.css */
+.star-rating {
+    font-size: 1.5em;
+    color: gray; /* 기본 색상은 회색 */
+}
+
+.star {
+    display: inline-block;
+    cursor: default;
+}
+
+.star.filled {
+    color: gold; /* 채워진 별 색상 */
+}
+
+.star-fieldset {
+    border: none; /* 필드셋의 기본 테두리 제거 */
+    padding: 0; /* 패딩 제거 */
+}

@@ -13,7 +13,7 @@ public interface ReviewDAO {
 	
 	List<ReviewVO> getReviewList(ReviewVO vo) ;
 	
-	HashMap getReview(ReviewVO vo);
+	List<HashMap<String, Object>> getReview(ReviewVO vo);
 	
 	void insertReview(ReviewVO vo);
 	

@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-    <title>Travel | reviewList </title>
+    <title>Travel | Three Column </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -71,8 +71,8 @@
             <!-- top bar con -->
         </div>
         <div class="clearfix"></div>
-        <!-- HEADER SECTION -->
-			<jsp:include page="/WEB-INF/views/header.jsp" />
+		<div class="clearfix"></div>
+	    	<jsp:include page="/WEB-INF/views/header.jsp" />
         <!-- BANNER SECTION -->
         <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
             <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
@@ -81,9 +81,9 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="sub-banner-inner-con padding-bottom">
-                            <h1>reviewList</h1>
-                            <p class="font-size-20">사용자들이
-								작성한 리뷰들을 같이 봐보아요.
+                            <h1>리뷰 목록</h1>
+                            <p class="font-size-20">
+								모두 함께 상세보기를 보아요🥵
                             </p>
                             <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                                 <ol class="breadcrumb mb-0">
@@ -103,50 +103,45 @@
         </section>
         <!-- bg outer wrapper -->
     </div>
-    <!-- ======================================= -->
-    <!-- ==========   {One Column*}   ========== -->
-    <!-- ======================================= -->
-    <div class="blog-posts blogpage-section background-gradient">
+    <!-- MAIN SECTION -->
+    <section class="blog-posts blogpage-section three-column-con w-100 float-left">
         <div class="container">
             <div class="row wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                 <div id="blog" class="col-xl-12">
 					<a href="insertReview">새글 등록</a> <br>
 					<a href="/user/userLogin">로그인 창 이동</a>
-					<c:forEach items="${reviewList }" var="review">
-						<div class="blog-box onecolumn-blog float-left w-100 post-item mb-4">
-	                        <div class="post-item-wrap position-relative">
-	                            <div class="post-image">
-	                                <a href="selectReview?review_id=${review.REVIEW_ID}">
-										<img alt="image" src="/files/${review.FILE_NAME}"
-	                                        loading="lazy"></a>
-	                            </div>
-	                            <div class="lower-portion">
-	                                <div class="span-i-con">
-										<h3>${review.REVIEW_TITLE}</h3>
-										<i class="fa-solid fa-user"></i>
-	                                    <span class="text-size-50 text-mr">작성자 : ${review.MEMBER_NICKNAME} </span>
-									</div>
-	                            </div>
-	                            <div class="button-portion loadone_twocol">
-	                                <div class="date">
-	                                    <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
-	                                    <span class="mb-0 text-size-50">${review.REVIEW_REGDATE}</span>
-	                                </div>
-	                                <div class="button">
-	                                    <a class="mb-0 read_more text-decoration-none" href="selectReview?review_id=${review.REVIEW_ID}">
+                    <!-- threecolumn-blog  -->
+                    <div class="row">
+						<c:forEach items="${reviewList }" var="review">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
+                            <div class="blog-box blog-box1">
+								<a href="selectReview?review_id=${review.REVIEW_ID}">
+									<img alt="image" src="/files/${review.FILE_NAME}" loading="lazy"></a>
+                                </a>
+                                <div class="lower-portion">
+                                    <div class="span-i-con">
+										<div>
+											${review.REVIEW_TITLE}										
+										</div>
+                                        <i class="fa-solid fa-user"></i>
+                                        <span class="text-size-14 text-mr">${review.MEMBER_NICKNAME}</span>
+                                    </div>
+                                </div>
+                                <div class="button-portion ">
+                                    <div class="date">
+                                        <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+                                        <span class="mb-0 text-size-14">${review.REVIEW_REGDATE}</span>
+                                    </div>
+                                    <div class="button">
+                                        <a class="mb-0 read_more text-decoration-none" href="selectReview?review_id=${review.REVIEW_ID}">
 											Read More</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-					</c:forEach>						
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- FOOTER SECTION -->
-	<jsp:include page="/WEB-INF/views/footer.jsp" />
-
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						</c:forEach>
+    </section>
+    <jsp:include page="/WEB-INF/views/footer.jsp" />
     <!-- BACK TO TOP BUTTON -->
     <button id="back-to-top-btn" title="Back to Top"></button>
     <script src="/assets/js/jquery.min.js"></script>

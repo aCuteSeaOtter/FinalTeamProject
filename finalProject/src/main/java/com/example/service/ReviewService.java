@@ -9,9 +9,9 @@ import com.example.domain.ReviewFileVO;
 public interface ReviewService {
 	List<ReviewVO> getReviewList(ReviewVO vo);
 	
-	HashMap getReview(ReviewVO vo); 
+	HashMap<String, Object> getReview(ReviewVO vo); 
 	
-	void insertReview(ReviewVO vo, ReviewFileVO fvo);
+	void insertReview(ReviewVO vo, List<ReviewFileVO> fileList);
 	
 	void updateReview(ReviewVO vo);
 	

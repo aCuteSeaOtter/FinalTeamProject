@@ -1,149 +1,139 @@
 @charset "UTF-8";
 body {
-	    font-family: Arial, sans-serif;
-	    background-color: #f4f4f9;
-	    margin: 0;
-	    padding: 0;
-	    color: #333;
-	}
+       font-family: Arial, sans-serif;
+       background-color: #f4f4f9;
+       margin: 0;
+       padding: 0;
+       color: #333;
+   }
 
-	h1, h3 {
-	    text-align: center;
-	    margin-top: 20px;
-	}
+   h1, h3 {
+       text-align: center;
+       margin-top: 20px;
+   }
 
-	hr {
-	    border: 0;
-	    height: 1px;
-	    background: #ddd;
-	    margin: 20px 0;
-	}
+   hr {
+       border: 0;
+       height: 1px;
+       background: #ddd;
+       margin: 20px 0;
+   }
 
-	form {
-	    width: 80%;
-	    max-width: 600px;
-	    margin: 0 auto;
-	    background: #fff;
-	    padding: 20px;
-	    border-radius: 8px;
-	    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
+   table {
+       width: 100%;
+       /* max-width: 600px; */
+       margin-bottom: 20px;
+       border: 1px solid #ddd;
+   }
+   
+   th, td {
+           border: 1px solid #ddd;
+           padding: 12px;
+           text-align: left;
+       }
+       th {
+           background-color: #f2f2f2;
+           text-align: center;
+       }
+       td {
+           background-color: #fff;
+       }
+      
+   input[type="text"],
+   textarea,
+   .form-control {
+       width: calc(100% - 24px);
+       padding: 10px;
+       margin: 8px 0;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       box-sizing: border-box;
+   }
 
-	table {
-	    width: 100%;
-	    border-collapse: collapse;
-	    margin-bottom: 20px;
-	    border: 1px solid #ddd;
-	}
-	
-	th, td {
-	        border: 1px solid #ddd;
-	        padding: 12px;
-	        text-align: left;
-	    }
-	    th {
-	        background-color: #f2f2f2;
-	        text-align: center;
-	    }
-	    td {
-	        background-color: #fff;
-	    }
-		
-	input[type="text"],
-	textarea,
-	.form-control {
-	    width: calc(100% - 24px);
-	    padding: 10px;
-	    margin: 8px 0;
-	    border: 1px solid #ccc;
-	    border-radius: 4px;
-	    box-sizing: border-box;
-	}
+   input[type="file"] {
+       margin-top: 5px;
+   }
 
-	input[type="file"] {
-	    margin-top: 5px;
-	}
+   input[type="submit"] {
+       background-color: #28a745;
+       color: #fff;
+       border: none;
+       padding: 10px 20px;
+       border-radius: 4px;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+   }
 
-	input[type="submit"] {
-	    background-color: #28a745;
-	    color: #fff;
-	    border: none;
-	    padding: 10px 20px;
-	    border-radius: 4px;
-	    cursor: pointer;
-	    transition: background-color 0.3s ease;
-	}
+   input[type="submit"]:hover {
+       background-color: #218838;
+   }
 
-	input[type="submit"]:hover {
-	    background-color: #218838;
-	}
+   fieldset {
+       margin: 20px 0;
+       padding: 0;
+       border: none;
+   }
 
-	fieldset {
-	    margin: 20px 0;
-	    padding: 0;
-	    border: none;
-	}
+   fieldset span {
+       display: block;
+       margin-bottom: 10px;
+       font-weight: bold;
+       color: #333;
+   }
 
-	fieldset span {
-	    display: block;
-	    margin-bottom: 10px;
-	    font-weight: bold;
-	    color: #333;
-	}
+   fieldset label {
+       font-size: 2rem;
+       color: #ccc;
+       cursor: pointer;
+       transition: color 0.3s ease;
+   }
 
-	fieldset label {
-	    font-size: 2rem;
-	    color: #ccc;
-	    cursor: pointer;
-	    transition: color 0.3s ease;
-	}
+   fieldset input[type="radio"] {
+       display: none;
+   }
 
-	fieldset input[type="radio"] {
-	    display: none;
-	}
+   fieldset input[type="radio"]:checked + label {
+       color: #f5c518;
+   }
 
-	fieldset input[type="radio"]:checked + label {
-	    color: #f5c518;
-	}
+   .reply-form label {
+       display: block;
+       margin-top: 10px;
+   }
 
-	.reply-form label {
-	    display: block;
-	    margin-top: 10px;
-	}
+   .reply-form input[type="text"],
+   .reply-form textarea {
+       width: calc(100% - 22px);
+       padding: 10px;
+       margin-top: 8px;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+   }
 
-	.reply-form input[type="text"],
-	.reply-form textarea {
-	    width: calc(100% - 22px);
-	    padding: 10px;
-	    margin-top: 8px;
-	    border: 1px solid #ccc;
-	    border-radius: 4px;
-	}
+   .reply-form input[type="button"] {
+       margin-top: 10px;
+       padding: 10px 20px;
+       background-color: #4CAF50;
+       color: white;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+   }
 
-	.reply-form input[type="button"] {
-	    margin-top: 10px;
-	    padding: 10px 20px;
-	    background-color: #4CAF50;
-	    color: white;
-	    border: none;
-	    border-radius: 4px;
-	    cursor: pointer;
-	}
+   .reply-form input[type="button"]:hover {
+       background-color: #45a049;
+   }
 
-	.reply-form input[type="button"]:hover {
-	    background-color: #45a049;
-	}
+   .action-links a {
+       margin-right: 20px;
+       text-decoration: none;
+       color: #0066cc;
+   }
 
-	.action-links a {
-	    margin-right: 20px;
-	    text-decoration: none;
-	    color: #0066cc;
-	}
+   .action-links a:hover {
+       text-decoration: underline;
+   }
 
-	.action-links a:hover {
-	    text-decoration: underline;
-	}
-
-	textarea {
-	    resize: vertical; /* 텍스트영역의 크기 조정 가능 여부 설정 */
-	}
+   textarea {
+       resize: vertical;
+   }

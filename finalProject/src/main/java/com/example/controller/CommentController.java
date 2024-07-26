@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.domain.CommentVO;
 import com.example.service.CommentService;
 
-
-
 @RestController
 public class CommentController {
 	

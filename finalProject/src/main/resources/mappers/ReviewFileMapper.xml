@@ -4,38 +4,41 @@
 
 <mapper namespace="com.example.dao.ReviewFileDAO">
 
-	<!-- board_file에 입력 -->
-	<insert id="insertFile" parameterType="ReviewFileVO">
-		insert into review_img
-		(
-			review_fileid
-			, origin_file_name
-			, file_name
-			, file_path
-		)
-		values(
-			review_img_fileid_seq.NEXTVAL
-			, #{origin_file_name}
-			, #{file_name}
-			, #{file_path}
-		)
-	</insert>
-	
-	<!-- board_file에서 키값 검색 -->
-	<select id="selectFile" parameterType="ReviewFileVO" resultType="ReviewFileVO">
-		SELECT *
-		FROM review_img
-		WHERE review_fileid=#{review_fileid}
-	</select>
-	
-	<!-- 최신 자동증가수 값을 얻어온다면 -->
-	<select id="selectId" resultType="int">
-		SELECT review_fileid
-		FROM (
-				SELECT review_fileid
-				FROM review_img
-				ORDER BY review_fileid desc
-			 )
-		WHERE ROWNUM = 1
-	</select>
+   <insert id="insertFile" parameterType="ReviewFileVO">
+      INSERT INTO review_img
+      (
+          review_fileid,
+          review_id,         <!-- review_id를 추가합니다. -->
+          origin_file_name,
+          file_name,
+          file_path
+      )
+      VALUES(
+          review_img_fileid_seq.NEXTVAL,
+          <!-- #{review_id},      review_id를 넣습니다. -->
+          review_id_seq.currval,
+          #{origin_file_name},
+          #{file_name},
+          #{file_path}
+      )
+   </insert>
+
+   
+   <!-- board_file에서 키값 검색 -->
+   <select id="selectFile" parameterType="ReviewFileVO" resultType="ReviewFileVO">
+      SELECT *
+      FROM review_img
+      WHERE review_fileid=#{review_fileid}
+   </select>
+   
+   <!-- 최신 자동증가수 값을 얻어온다면 -->
+   <select id="selectId" resultType="int">
+      SELECT review_fileid
+      FROM (
+            SELECT review_fileid
+            FROM review_img
+            ORDER BY review_fileid desc
+          )
+      WHERE ROWNUM = 1
+   </select>
 </mapper>

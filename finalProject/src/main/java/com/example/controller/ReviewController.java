@@ -3,6 +3,7 @@ package com.example.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,16 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.domain.UserVO;
 import com.example.domain.ReviewFileVO;
 import com.example.domain.ReviewVO;
-import com.example.service.UserService;
+import com.example.domain.UserVO;
 import com.example.service.ReviewService;
+import com.example.service.UserService;
 import com.example.util.MD5Generator;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -55,24 +55,22 @@ public class ReviewController<SearchCriteria> {
    @RequestMapping("/selectReview")
    public void getReview(@RequestParam int review_id, Model model, HttpSession session, ReviewVO vo) {
        vo.setReview_id(review_id);
-       
+
        // 조회수 증가 함수
        reviewService.incrementViewCount(vo);
-       
+
        // 상세보기의 정보
-       HashMap result = reviewService.getReview(vo);
-       System.out.println("상세보기의 값:" + result);
-       model.addAttribute("review", result);
+       HashMap<String, Object> result = reviewService.getReview(vo);
+       model.addAttribute("reviews", result.get("reviews"));
+       model.addAttribute("review", result.get("reviewOne"));
        
+       System.out.println("reviewcontroller에서 list"+result.get("reviewOne"));
+
        // 세션에서 사용자 ID 가져오기, 사용자 nickname 가져오기
        String id = (String) session.getAttribute("sess");
        String nickname = (String) session.getAttribute("nickname");
-       System.out.println("getReview 페이지 이동 시 세션에서 가져온 id값: " + id);  // 로그를 통해 id 값을 확인
-       System.out.println("getReview 페이지 이동 시 세션에서 가져온 nickname값: " + nickname);  // 로그를 통해 nickname 값을 확인
        if (id != null) {
-          model.addAttribute("id", id);
-       } else {
-           System.out.println("id값이 null입니다. 세션에 id가 설정되지 않았습니다.");
+           model.addAttribute("id", id);
        }
 
        // reviewList를 모델에 추가
@@ -83,69 +81,80 @@ public class ReviewController<SearchCriteria> {
    
    // 글쓰기
    @RequestMapping("/saveReview")
-   public void insertReview(
-           @RequestParam(value = "review_file", required = false) MultipartFile files,
+   public String insertReview(
+           @RequestParam(value = "review_file", required = false) List<MultipartFile> files,
            @RequestParam(value = "review_title", required = false) String reviewTitle,
            @RequestParam(value = "review_content", required = false) String reviewContent,
            @RequestParam(value = "review_star", required = false) String reviewStar,
            ReviewVO vo, HttpSession session, HttpServletResponse response) throws IOException {
 
-       // 모든 필드를 검사하여 누락된 경우 경고 메시지 출력
-       if ((files == null || files.isEmpty()) ||
-           reviewTitle == null || reviewTitle.isEmpty() ||
-           reviewContent == null || reviewContent.isEmpty() ||
-           reviewStar == null || reviewStar.isEmpty()) {
+	   response.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = response.getWriter();
 
-           response.setContentType("text/html; charset=UTF-8");
-           PrintWriter out = response.getWriter();
-           out.println("<script>alert('입력하지 않은 창이 있습니다.'); history.go(-1);</script>");
+	    if (files == null || files.stream().allMatch(file -> file.isEmpty())) {
+           out.println("<script>alert('파일을 업로드해 주세요.'); history.go(-1);</script>");
            out.flush();
-           return;
-       }
+           return null;
+	       }
 
-       // 세션에서 사용자 이메일 가져오기
-       String id = (String) session.getAttribute("sess");
-       vo.setMember_email(id);
+	    if (reviewTitle == null || reviewTitle.isEmpty()) {
+	        out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return null;
+	    }
 
-       try {
-           // 파일 처리 로직
-           if (files != null && !files.isEmpty()) {
-               String originFilename = files.getOriginalFilename();
-               String filename = new MD5Generator(originFilename).toString();
-               String savepath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
-               
-               if (!new File(savepath).exists()) {
-                   new File(savepath).mkdir();
+	    if (reviewContent == null || reviewContent.isEmpty()) {
+	        out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return null;
+	    }
+
+	    if (reviewStar == null || reviewStar.isEmpty()) {
+	        out.println("<script>alert('별점을 입력해주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return null;
+	    }
+
+       vo.setReview_title(reviewTitle);
+       vo.setReview_content(reviewContent);
+       vo.setReview_star(Integer.parseInt(reviewStar));
+       vo.setMember_email((String) session.getAttribute("sess"));
+       vo.setReview_regdate(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
+
+       List<ReviewFileVO> fileList = new ArrayList<>();
+
+       for (MultipartFile file : files) {
+           String originFileName = file.getOriginalFilename();
+           if (originFileName != null && !originFileName.isEmpty()) {
+               String fileName = System.currentTimeMillis() + "_" + originFileName;
+               String filePath = "C:\\Users\\ict03_004\\git\\FinalTeamProject\\finalProject\\src\\main\\resources\\static\\files\\" + fileName;
+
+               try {
+                   file.transferTo(new File(filePath));
+               } catch (IOException e) {
+                   logger.error("File upload failed: ", e);
                }
-               
-               String filepath = savepath + "\\" + filename;
-               files.transferTo(new File(filepath));
-               
-               ReviewFileVO reviewFileVO = new ReviewFileVO();
-               reviewFileVO.setOrigin_file_name(originFilename);
-               reviewFileVO.setFile_name(filename);
-               reviewFileVO.setFile_path(filepath);
-               
-               // 파일을 첨부한 경우
-               reviewService.insertReview(vo, reviewFileVO);
-           } else {
-               // 파일을 첨부하지 않은 경우
-               reviewService.insertReview(vo, null);
+
+               ReviewFileVO fvo = new ReviewFileVO();
+               fvo.setOrigin_file_name(originFileName);
+               fvo.setFile_name(fileName);
+               fvo.setFile_path(filePath);
+
+               fileList.add(fvo);
            }
-           
-       } catch (Exception ex) {
-           ex.printStackTrace();
        }
+
+       reviewService.insertReview(vo, fileList);
        
-       response.sendRedirect("reviewList");
+       return "redirect:reviewList";
    }
-   
+
    // 글 수정
    @RequestMapping("/updateReview")
    public String updateReview(ReviewVO vo) {
       reviewService.updateReview(vo);
       
-      return "redirect:getReviewList";
+      return "redirect:reviewList";
    }
    
    // 글 삭제
@@ -153,7 +162,7 @@ public class ReviewController<SearchCriteria> {
    public String deleteReview(ReviewVO vo) {
       reviewService.deleteReview(vo);
       
-      return "redirect:getReviewList";
+      return "redirect:reviewList";
    }
    
    @RequestMapping("/insertReview")
@@ -170,15 +179,6 @@ public class ReviewController<SearchCriteria> {
            PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/review/reviewList");
            return null;  // 팝업을 띄우고 리다이렉트가 처리되므로 null 반환
        }
-   } 
+   }
 
-   @RequestMapping("getReview")
-   public void getReview() {
-	   
-   }
-   
-   @RequestMapping("getReviewList")
-   public void getReviewList() {
-	   
-   }
 }

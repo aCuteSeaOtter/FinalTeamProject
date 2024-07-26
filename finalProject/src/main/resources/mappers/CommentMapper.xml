@@ -14,6 +14,7 @@
         INNER JOIN member m 
         ON c.member_email = m.member_email
         WHERE c.review_id = #{review_id}
+        ORDER BY c.comment_id
     </select>
 
     <delete id="deleteComment" parameterType="int">

@@ -4,49 +4,47 @@
 
 <mapper namespace="com.example.dao.ReviewDAO">
 
-	<select id="getReviewList" resultType="hashmap">
-	    SELECT r.*, m.member_nickname
-	    FROM review r
-	    INNER JOIN member m ON r.member_email = m.member_email
-	    ORDER BY r.review_id DESC
-	</select>
+   <select id="getReviewList" resultType="hashmap">
+       SELECT r.*, m.member_nickname, ri.file_name
+      FROM review r
+      INNER JOIN member m ON r.member_email = m.member_email
+      LEFT JOIN (
+          SELECT review_id, MAX(file_name) AS file_name
+          FROM review_img
+          GROUP BY review_id
+      ) ri ON r.review_id = ri.review_id
+      ORDER BY r.review_id DESC
+   </select>
    
-	<select id="getReview" parameterType="ReviewVO" resultType="hashMap">
-		SELECT 
-	    r.review_id,
-	    r.review_title,
-	    m.member_nickname,
-	    r.review_star,
-	    r.review_content,
-	    r.review_regdate,
-	    r.review_cnt,
-	    r.review_like,
-	    r.review_hate,
-	    m.member_email,
-	    ri.origin_file_name,
-	    ri.file_name
-	  FROM review r
-	  LEFT OUTER JOIN review_img ri
-	    ON r.review_fileid = ri.review_fileid
-	  LEFT OUTER JOIN member m
-	    ON r.member_email = m.member_email
-	  WHERE r.review_id = #{review_id}
-	</select>
+   <select id="getReview" parameterType="ReviewVO" resultType="hashmap">
+       SELECT 
+           r.review_id      review_id,
+           r.review_title  review_title,
+           m.member_nickname member_nickname,
+           r.review_star,
+           r.review_content,
+           r.review_regdate,
+           r.review_cnt,
+           r.review_like,
+           r.review_hate,
+           m.member_email      member_email,
+           ri.origin_file_name origin_file_name,
+           ri.file_name      file_name
+       FROM review r
+       LEFT OUTER JOIN review_img ri
+           ON r.review_id = ri.review_id
+       LEFT OUTER JOIN member m
+           ON r.member_email = m.member_email
+       WHERE r.review_id = #{review_id}
+   </select>
+
 
    
    <insert id="insertReview" parameterType="ReviewVO">
       INSERT INTO review
-      ( review_id, review_title, review_content, review_cnt, review_star, member_email, review_regdate
-         <if test='#{review_fileid} !=null'>
-            , review_fileid
-         </if>
-      )
+      ( review_id, review_title, review_content, review_cnt, review_star, member_email, review_regdate)
       VALUES
-      ( review_id_seq.NEXTVAL, #{review_title}, #{review_content}, 0, #{review_star}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS')
-         <if test='#{review_fileid} !=null'>
-            , #{review_fileid}
-         </if>
-      )
+      ( review_id_seq.NEXTVAL, #{review_title}, #{review_content}, 0, #{review_star}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'))
    </insert>
    
    <update id="updateReview" parameterType="ReviewVO">

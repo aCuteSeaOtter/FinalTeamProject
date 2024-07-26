@@ -72,7 +72,7 @@ public class ReportController {
         vo.setMember_email(id);
         
 		reportService.insertReport(vo);
-		PopUp.popUpMove(response, "신고가 완료되었습니다.", "/review/getReviewList");
+		PopUp.popUpMove(response, "신고가 완료되었습니다.", "/review/reviewList");
 		
 	}
 }
