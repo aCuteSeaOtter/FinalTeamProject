@@ -11,7 +11,7 @@ import com.example.dao.PlanDAO;
 import com.example.domain.PlanVO;
 
 //** 
-@Service	// Service 호출
+@Service	// Service 호출 
 public class PlanServiceImpl implements PlanService {
 	 
 	//**

@@ -12,7 +12,7 @@
 	font-family: 'tway';
 	font-size: 30px; 
 }
-
+ 
 .selectedDiv > div:nth-child(1) {
 	margin-bottom: 14px;
 }

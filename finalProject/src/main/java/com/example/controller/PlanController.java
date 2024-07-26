@@ -78,7 +78,7 @@ public class PlanController {
 	}
 	
 	
-	// plan 이동
+	// plan 이동 
 	@RequestMapping("plan/plan")
 	public String plan(Model m) {
 		List<String> dates = (List<String>) m.getAttribute("dates");

@@ -221,7 +221,7 @@ $(function() {
 	
 
 
-	// 버튼 클릭 이벤트 핸들러
+	// 버튼 클릭 이벤트 핸들러 
     $('.save-btn').on('click', function() {
 		alert("배열 확인 : " + selectedAttrIdData);
 		let day = new URLSearchParams(window.location.search).get('day');

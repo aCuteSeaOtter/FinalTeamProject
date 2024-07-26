@@ -197,7 +197,7 @@ $(function() {
         if (selectedDates.length > 0) {
             let formattedDates = selectedDates.map((date, index) => 
                 `${date.toISOString().split('T')[0]} (${selDay[index]})`
-            );
+            ); 
             $(".dates").val(formattedDates.join(', '));
             $(".start").val("시작일 : " + formattedDates[0]);
             $(".end").val("도착일 : " + formattedDates[formattedDates.length - 1]);

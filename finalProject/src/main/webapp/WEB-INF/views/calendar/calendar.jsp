@@ -36,7 +36,7 @@
 	    			<form action="/calendar/plan" method="post">
 	                    <ul class="days">
 	                        
-	                    </ul>   <!-- days -->
+	                    </ul>   <!-- days --> 
 	                    <input type="hidden" class="dates" name="dates"/>
 		                <input type="button" class="delBtn" value="취소하기"/>
 		                <input type="submit" class="selBtn" value="선택하기"/>

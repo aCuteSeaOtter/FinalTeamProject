@@ -6,7 +6,7 @@
     <select id="selectAttrList" resultType="com.example.domain.PlanVO">
         SELECT *
         FROM ATTR
-    </select>
+    </select> 
 
     <insert id="insertPlanItem">
 	    INSERT INTO plan (plan_id, plan_day, attr_id)
