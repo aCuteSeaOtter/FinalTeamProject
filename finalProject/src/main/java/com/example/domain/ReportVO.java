@@ -2,7 +2,7 @@ package com.example.domain;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class ReportVO {
    
    private Integer report_id;      	 // 신고 번호

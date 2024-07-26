@@ -14,7 +14,7 @@ import com.example.domain.CommentVO;
 import com.example.service.CommentService;
 
 @RestController
-public class CommentController {
+public class CommentController { 
 	
 	@Autowired
 	CommentService commentService;

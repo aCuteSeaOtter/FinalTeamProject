@@ -12,7 +12,7 @@ import com.example.domain.CommentVO;
 @Service
 public class CommentServiceImpl implements CommentService{
 
-	@Autowired
+	@Autowired 
 	CommentDAO CommentDAO;
 	 
 	@Override

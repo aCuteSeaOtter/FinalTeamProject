@@ -7,4 +7,4 @@ public interface LikeService {
     void toggleLike(int review_id, String member_email);
     
     int countLikes(int review_id);
-}
+} 

@@ -14,5 +14,5 @@ public class ReportServiceImpl implements ReportService{
 	
 	public void insertReport(ReportVO vo) {
 		reportDAO.insertReport(vo);
-	}
+	} 
 }

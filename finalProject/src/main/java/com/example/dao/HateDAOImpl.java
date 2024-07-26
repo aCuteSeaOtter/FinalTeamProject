@@ -22,7 +22,7 @@ public class HateDAOImpl implements HateDAO{
         Integer status = mybatis.selectOne("HateDAO.getHateStatus", params);
         return status != null ? status : 0;
     }
-
+ 
     @Override
     public void insertHate(HateVO hate) {
         mybatis.insert("HateDAO.insertHate", hate);

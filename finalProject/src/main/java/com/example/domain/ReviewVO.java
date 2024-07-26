@@ -4,7 +4,7 @@ import java.util.List;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class ReviewVO {
    
    private int    	  review_id;         // 리뷰 번호

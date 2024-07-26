@@ -7,7 +7,7 @@ $(function() {
             return false; 
         }
         return true;
-    }
+    } 
 
     // '댓글 작성' 버튼이 눌렸을 때
     $('#commentConfirm').click(function() {

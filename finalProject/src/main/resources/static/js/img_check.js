@@ -9,5 +9,5 @@ $(document).ready(function() {
                 alert('이미지나 동영상 파일만 업로드 가능합니다.');
                 $(this).val(''); // 파일 선택 초기화
             }
-        });
+        }); 
     });

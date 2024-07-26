@@ -6,7 +6,7 @@
 	<insert id="insertReply" parameterType="ReplyVO">
         INSERT INTO reply (reply_id, comment_id, reply_content, member_email, reply_regdate)
         VALUES (reply_id_seq.NEXTVAL, #{comment_id}, #{reply_content}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'))
-    </insert>
+    </insert> 
 
     <select id="selectAllReply" parameterType="int" resultType="Map">
         SELECT r.*, m.member_nickname

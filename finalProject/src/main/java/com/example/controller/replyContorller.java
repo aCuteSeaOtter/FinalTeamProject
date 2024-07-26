@@ -22,7 +22,7 @@ import com.example.service.ReplyService;
 @RequestMapping("/replies") // 공통 경로 설정
 public class replyContorller {
 
-    @Autowired
+    @Autowired 
     ReplyService replyService;
     
     

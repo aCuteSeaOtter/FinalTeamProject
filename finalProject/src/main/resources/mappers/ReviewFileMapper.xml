@@ -12,7 +12,7 @@
           origin_file_name,
           file_name,
           file_path
-      )
+      ) 
       VALUES(
           review_img_fileid_seq.NEXTVAL,
           <!-- #{review_id},      review_id를 넣습니다. -->

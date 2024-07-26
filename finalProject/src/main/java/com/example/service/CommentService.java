@@ -7,7 +7,7 @@ import com.example.domain.CommentVO;
 
 public interface CommentService {
 
-	// 댓글추가
+	// 댓글추가 
 	Integer insertComment(CommentVO vo);
 	// 댓글목록보기
 	public List<Map<String, Object>> selectAllComment(Integer review_id);

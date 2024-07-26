@@ -17,7 +17,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 	
 	public Integer insertReply(ReplyVO vo) {
 		return mybatis.insert("ReplyDAO.insertReply", vo);
-	}
+	} 
 
 	public List<Map<String, Object>> selectAllReply(Integer comment_id) {
 		return mybatis.selectList("ReplyDAO.selectAllReply", comment_id);

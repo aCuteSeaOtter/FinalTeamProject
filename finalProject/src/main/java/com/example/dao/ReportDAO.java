@@ -6,3 +6,4 @@ public interface ReportDAO {
 	
 	public void insertReport(ReportVO vo);
 }
+ 

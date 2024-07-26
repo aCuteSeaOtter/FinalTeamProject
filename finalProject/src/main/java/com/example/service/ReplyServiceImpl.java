@@ -19,7 +19,7 @@ public class ReplyServiceImpl implements ReplyService{
 	public Integer insertReply(ReplyVO vo) {
 		Integer result = replyDAO.insertReply(vo);
 		return result; 
-	}
+	} 
 
 	@Override
 	public List<Map<String, Object>> selectAllReply(Integer comment_id) {

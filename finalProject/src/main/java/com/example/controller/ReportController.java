@@ -18,7 +18,7 @@ import useful.popup.PopUp;
 @RequestMapping("/report")
 public class ReportController {
 	
-	@Autowired
+	@Autowired 
 	private ReportService reportService;
 	
 	@GetMapping("/reportWrite")

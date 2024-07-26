@@ -2,7 +2,7 @@ package com.example.domain;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class HateVO {
 
 	private int hate_id;		// 싫어요 번호

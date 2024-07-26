@@ -7,7 +7,7 @@
 		INSERT INTO report
 		(report_id, review_id, comment_id, reply_id, member_email,
 		 report_state, report_type, report_content, report_regdate)
-		 
+		  
 		VALUES(
 		report_id_seq.NEXTVAL, 
 		#{review_id},

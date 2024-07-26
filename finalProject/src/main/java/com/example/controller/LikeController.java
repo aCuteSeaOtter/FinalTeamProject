@@ -13,7 +13,7 @@ import com.example.service.LikeService;
 @RequestMapping("/likes")
 public class LikeController {
 
-	@Autowired
+	@Autowired 
     private LikeService likeService;
 
     @GetMapping("/{review_id}/{member_id}")

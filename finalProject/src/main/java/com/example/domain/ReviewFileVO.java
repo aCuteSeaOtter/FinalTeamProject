@@ -2,7 +2,7 @@ package com.example.domain;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class ReviewFileVO {
 
 	private int review_id; 				// 리뷰 이미지 번호

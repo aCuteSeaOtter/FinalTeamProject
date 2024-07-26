@@ -6,5 +6,5 @@ public interface HateService {
 	
     void toggleHate(int review_id, String member_email);
     
-    int countHates(int review_id);
+    int countHates(int review_id); 
 }

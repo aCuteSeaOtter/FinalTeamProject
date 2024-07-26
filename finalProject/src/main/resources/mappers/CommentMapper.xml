@@ -6,7 +6,7 @@
     <insert id="insertComment" parameterType="commentVO">
         INSERT INTO comments (comment_id, review_id, comment_content, member_email,  comment_regdate)
         VALUES (comment_id_seq.NEXTVAL, #{review_id}, #{comment_content}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'))
-    </insert>
+    </insert> 
 
     <select id="selectAllComment" parameterType="int" resultType="Map">
         SELECT c.*, m.member_nickname 

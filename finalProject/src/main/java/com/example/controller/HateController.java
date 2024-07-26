@@ -12,7 +12,7 @@ import com.example.service.HateService;
 @RestController
 @RequestMapping("/hates")
 public class HateController {
-
+ 
 	@Autowired
     private HateService hateService;
 

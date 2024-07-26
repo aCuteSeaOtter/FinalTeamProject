@@ -15,4 +15,4 @@ public class ReportDAOImpl implements ReportDAO{
 	public void insertReport(ReportVO vo) {
 		mybatis.insert("ReportDAO.insertReport", vo);
 	}
-}
+} 

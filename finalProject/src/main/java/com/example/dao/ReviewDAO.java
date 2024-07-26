@@ -22,5 +22,5 @@ public interface ReviewDAO {
 	void deleteReview(ReviewVO vo);
 	
 	void incrementViewCount(ReviewVO vo);
-	
+	 
 }

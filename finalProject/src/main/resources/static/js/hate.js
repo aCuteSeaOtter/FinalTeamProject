@@ -10,7 +10,7 @@ $(document).ready(function() {
                     postDiv.find("[id^='hate-button-'] img").attr("src", "/images/review/hate2.jpg");
                 } else {
                     postDiv.find("[id^='hate-button-'] img").attr("src", "/images/review/unhate2.jpg");
-                }
+                } 
             });
         }
 

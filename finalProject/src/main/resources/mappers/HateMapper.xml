@@ -9,7 +9,7 @@
         FROM hate
         WHERE review_id = #{review_id} AND member_email = #{member_email}
         AND ROWNUM = 1
-    </select>
+    </select> 
 
     <insert id="insertHate" parameterType="HateVO">
         INSERT INTO hate (hate_id, review_id, member_email, hate_state)

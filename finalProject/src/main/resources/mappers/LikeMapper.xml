@@ -9,7 +9,7 @@
         FROM likes
         WHERE review_id = #{review_id} AND member_email = #{member_email}
         AND ROWNUM = 1
-    </select>
+    </select> 
 
     <insert id="insertLike" parameterType="LikeVO">
         INSERT INTO likes (like_id, review_id, member_email, like_state)

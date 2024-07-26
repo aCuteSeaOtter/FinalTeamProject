@@ -12,4 +12,4 @@ function confirmUpdate() {
 	          } else {
 	              return false;
 	          }
-	      }
+	      } 

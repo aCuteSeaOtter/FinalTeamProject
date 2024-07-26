@@ -21,7 +21,7 @@ public class LikeDAOImpl implements LikeDAO{
         params.put("member_email", member_email);
         Integer status = mybatis.selectOne("LikeDAO.getLikeStatus", params);
         return status != null ? status : 0;
-    }
+    } 
 
     @Override
     public void insertLike(LikeVO like) {

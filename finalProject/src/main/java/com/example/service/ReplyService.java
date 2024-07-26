@@ -11,6 +11,6 @@ public interface ReplyService {
 	public Integer insertReply(ReplyVO vo);
 	
     public List<Map<String, Object>> selectAllReply(Integer comment_id);
-    
+     
     Integer deleteReply(Integer reply_id);
 }

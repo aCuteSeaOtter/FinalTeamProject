@@ -12,7 +12,7 @@ $(document).ready(function() {
             }
         });
     }
-
+ 
     function updateLikeCount() {
         $.get(`/likes/count/${reviewId}`, function(count) {
             $("#like-count").text(count);

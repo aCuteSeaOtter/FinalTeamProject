@@ -25,7 +25,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewVO> getReviewList(ReviewVO vo) {
         return reviewDAO.getReviewList(vo);
-    }
+    } 
     
     @Override
     public HashMap<String, Object> getReview(ReviewVO vo) {

@@ -15,4 +15,4 @@ import com.example.domain.CommentVO;
 	public int deleteComment(Integer comment_id);
 	
 	public void updateComment(CommentVO vo);
-}
+} 

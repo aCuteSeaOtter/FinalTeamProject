@@ -33,7 +33,7 @@ public class ReviewController<SearchCriteria> {
    
    static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
    
-   @Autowired
+   @Autowired 
    private ReviewService reviewService;
    
    @Autowired

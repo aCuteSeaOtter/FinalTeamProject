@@ -8,7 +8,7 @@
 /* 대댓글 컨테이너 스타일 */
 .nested-reply-list {
     margin-left: 20px; /* 들여쓰기 효과 */
-}
+} 
 
 /* 대댓글 스타일 */
 .reply-comment-row td {

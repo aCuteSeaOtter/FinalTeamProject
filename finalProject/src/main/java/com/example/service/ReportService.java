@@ -6,3 +6,4 @@ public interface ReportService {
 
 	void insertReport(ReportVO vo);
 }
+ 

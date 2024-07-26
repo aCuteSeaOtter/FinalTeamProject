@@ -13,3 +13,4 @@ public interface ReplyDAO {
 	 
 	 public int deleteReply(Integer reply_id);
 }
+ 

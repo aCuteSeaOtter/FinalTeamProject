@@ -12,7 +12,7 @@ public class LikeServiceImpl implements LikeService{
 	
 	@Autowired
 	LikeDAO likeDAO;
-	
+	 
 	public int getLikeStatus(int review_id, String member_email) {
         return likeDAO.getLikeStatus(review_id, member_email);
     }

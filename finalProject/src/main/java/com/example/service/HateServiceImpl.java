@@ -10,7 +10,7 @@ import com.example.domain.HateVO;
 @Service("hateService")
 public class HateServiceImpl implements HateService{
 	
-	@Autowired
+	@Autowired 
 	HateDAO hateDAO;
 	
 	public int getHateStatus(int review_id, String member_email) {

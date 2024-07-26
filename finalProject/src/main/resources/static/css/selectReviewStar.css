@@ -10,7 +10,7 @@
 #myform input[type=radio]{
     display: none;
 }
-#myform label{
+#myform label{ 
     font-size: 3em;
     color: transparent;
     text-shadow: 0 0 0 #f0f0f0; 

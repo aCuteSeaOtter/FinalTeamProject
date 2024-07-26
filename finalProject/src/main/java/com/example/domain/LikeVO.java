@@ -2,7 +2,7 @@ package com.example.domain;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class LikeVO {
 	
 	private int like_id;		// 좋아요 번호

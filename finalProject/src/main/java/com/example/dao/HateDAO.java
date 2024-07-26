@@ -14,3 +14,4 @@ public interface HateDAO {
     
     int countHates(int review_id);
 }
+ 

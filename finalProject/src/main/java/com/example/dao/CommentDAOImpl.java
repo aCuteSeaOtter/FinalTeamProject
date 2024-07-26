@@ -22,7 +22,7 @@ public class CommentDAOImpl implements CommentDAO{
 	public List<Map<String, Object>> selectAllComment(Integer review_id) {
 	      return mybatis.selectList("commentDAO.selectAllComment", review_id);
 	   }
-
+ 
 	@Override
 	public int deleteComment(Integer comment_id) {
 		return mybatis.delete("commentDAO.deleteComment", comment_id);

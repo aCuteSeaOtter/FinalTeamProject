@@ -18,5 +18,5 @@ public interface ReviewService {
 	void deleteReview(ReviewVO vo);
 	
 	void incrementViewCount(ReviewVO vo);
-	
+	 
 }

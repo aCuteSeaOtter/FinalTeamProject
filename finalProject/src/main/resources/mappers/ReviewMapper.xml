@@ -14,7 +14,7 @@
           GROUP BY review_id
       ) ri ON r.review_id = ri.review_id
       ORDER BY r.review_id DESC
-   </select>
+   </select> 
    
    <select id="getReview" parameterType="ReviewVO" resultType="hashmap">
        SELECT 

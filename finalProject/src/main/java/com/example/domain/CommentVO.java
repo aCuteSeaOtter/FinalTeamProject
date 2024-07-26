@@ -2,7 +2,7 @@ package com.example.domain;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class CommentVO {
 	
 	private int comment_id;			// 댓글번호
