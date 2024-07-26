@@ -108,7 +108,7 @@
 }
 
 
-.dayBlock > div > div > span {
+.dayBlock > div > div > span, .dayNum2 {
 	font-size: 18px;
 	font-family: 'tway';
 } 
@@ -116,6 +116,11 @@
  
 .selectedDate {
 	display: inline;
+}
+
+
+.selectedDate2 {
+	margin-bottom: 5px;
 }
 
 
@@ -160,6 +165,11 @@
 
 .calendarImg:hover {
 	cursor: pointer;
+}
+
+
+.selectedLocal {
+	margin-bottom: 5px;
 }
 
 

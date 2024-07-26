@@ -203,7 +203,8 @@ $(function() {
             $(".end").val("도착일 : " + formattedDates[formattedDates.length - 1]);
             
 			localStorage.setItem('selectedDates', formattedDates);	// 브라우저 스토리지에 저장
-            console.log("선택된 날짜들과 요일:", formattedDates);
+			localStorage.setItem('selectedStartDate', formattedDates[0]); // 첫번째 날 저장
+			localStorage.setItem('selectedEndDate', formattedDates[formattedDates.length-1]); // 마지막 날 저장
         } else {
             alert("날짜를 선택해주세요.");
 			return false;

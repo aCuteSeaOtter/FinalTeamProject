@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.List" %>
 
+
 <!DOCTYPE html> 
 <html lang="zxx">
 <head> 
@@ -81,45 +82,23 @@
 	    <div class="container full-height-container">
 	      <div class="row">
 	        <div class="col-lg-4">
-	        <c:if test="${not empty dates}">
-		        <c:if test="${not empty lastDate}">
-		        	<div class="selectedDate" name="dates"><c:out value="${dates[0]}"/> ~ <c:out value="${lastDate}"/>&nbsp&nbsp</div><img alt="calendar" class="calendarImg" src="/images/plan/calendar.png">
-				</c:if>
+	        	<div class="selectedDate" name="dates"></div><img alt="calendar" class="calendarImg" src="/images/plan/calendar.png">
 				<div class="btnSet">
 					<input type="button" class="hbtn btn" value="숙소"></input>
 		        	<input type="button" class="abtn btn" value="항공"></input>
 				</div>
 		        <hr/>
 		        
-		        <c:if test="${not empty dates}">
+		        
 			    <div class="dayBlockWrapper">
-			        <c:forEach begin="1" end="${totalPages}" varStatus="pageStatus">
-			            <div class="dayBlockPage" id="page${pageStatus.index}" style="${pageStatus.index > 1 ? 'display: none;' : ''}">
-			                <c:forEach var="date" items="${dates}" varStatus="status" begin="${(pageStatus.index-1)*3}" end="${pageStatus.index*3-1}">
-				        
-						        <div class="dayBlock"> 
-						        	<div> 
-						        		<div>
-						        			<span class="dayNum">DAY ${status.index + 1}</span>
-						        			<span class="date">&nbsp;&nbsp;${date}</span> 
-					        			</div>
-				        			</div>
-									<div class="inputData" id="inputData-${status.index + 1}">
-										<!-- 선택한 일정이 추가되는 영역 -->
-									</div>
-									<input type="button" class="add-btn btn" data-day="${status.index + 1}" value="장소 추가">
-								</div>
-						
-							</c:forEach>
-			            </div>
-			        </c:forEach>
+			        
+			        <!-- '장소추가' 생기는 구역 -->
+			        
 			    </div>
-			    <div class="pagination">
+			    <%-- <div class="pagination">
 			        <button id="prevPage" class="btn btn-secondary" disabled>이전</button>
 			        <button id="nextPage" class="btn btn-secondary" ${dates.size() <= 3 ? 'disabled' : ''}>다음</button>
-			    </div>
-				</c:if>
-			</c:if>
+			    </div> --%>
 			<!-- col -->
 	        </div>
 	        <input type="hidden" class="hiddenDate"/>
