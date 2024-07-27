@@ -4,6 +4,7 @@
 
 <mapper namespace="LikeDAO">
    
+    <!-- 좋아요 상태 -->
     <select id="getLikeStatus" parameterType="map" resultType="int">
         SELECT like_state
         FROM likes
@@ -11,28 +12,33 @@
         AND ROWNUM = 1
     </select> 
 
+	<!-- 좋아요 추가 -->
     <insert id="insertLike" parameterType="LikeVO">
         INSERT INTO likes (like_id, review_id, member_email, like_state)
         VALUES (like_id_seq.NEXTVAL, #{review_id}, #{member_email}, #{like_state})
     </insert>
 
+	<!-- 좋아요 상태 변경 -->
     <update id="updateLike" parameterType="LikeVO">
         UPDATE likes
         SET like_state = #{like_state}
         WHERE review_id = #{review_id} AND member_email = #{member_email}
     </update>
 
+	<!-- 좋아요 삭제 -->
     <delete id="deleteLike" parameterType="map">
         DELETE FROM likes
         WHERE review_id = #{review_id} AND member_email = #{member_email}
     </delete>
 
+	<!-- 좋아요 갯수 -->
     <select id="countLikes" parameterType="int" resultType="int">
         SELECT COUNT(*)
         FROM likes
         WHERE review_id = #{review_id}
     </select>
    
+   <!-- 이메일 조회 -->
    <select id="existsById" parameterType="String" resultType="int">
         SELECT COUNT(*)
         FROM member

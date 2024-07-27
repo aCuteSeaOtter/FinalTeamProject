@@ -15,23 +15,30 @@ import jakarta.servlet.http.HttpSession;
 import useful.popup.PopUp;
 
 @Controller
+
+// 신고 관련 요청 처리 컨트롤러
 @RequestMapping("/report")
 public class ReportController {
 	
+	// ReportService 객체를 자동으로 주입
 	@Autowired 
 	private ReportService reportService;
 	
+	// 신고 페이지 이동
 	@GetMapping("/reportWrite")
     public String showReportPage(
+    		// 각 값들에 대한 파라미터
             @RequestParam(value = "review_id", required = false) String review_id,
             @RequestParam(value = "comment_id", required = false) String comment_id,
             @RequestParam(value = "reply_id", required = false) String reply_id,
+            // 뷰에 데이터를 전달하기 위한 모델 객체
     		Model model,
     		HttpSession session) {
+		
 		// 세션에서 사용자 ID 가져오기
         String id = (String) session.getAttribute("sess");
-        System.out.println("reportWrite 페이지 이동 시 세션에서 가져온 id값: " + id);
         
+        // 세션에서 가져온 ID를 모델에 추가
         if (id != null) {
         	model.addAttribute("id", id);
         } else {
@@ -56,6 +63,7 @@ public class ReportController {
 		return "report/reportWrite";
     }
 	
+	// 신고 저장
 	@RequestMapping("saveReport")
 	public void saveReport(ReportVO vo, Model m
 			, HttpSession session
@@ -63,14 +71,14 @@ public class ReportController {
 			,@RequestParam(value = "review_id", required = false) String review_id,
              @RequestParam(value = "comment_id", required = false) String comment_id,
              @RequestParam(value = "reply_id", required = false) String reply_id) {
+		
 		// 세션에서 사용자 ID 가져오기
         String id = (String) session.getAttribute("sess");
-        System.out.println("insertReport 세션에서 가져온 id값: " + id);
-        
-        System.out.println("report VO : "+vo);
+
         // ReportVO에 사용자 ID 설정
         vo.setMember_email(id);
         
+        // 작성 완료 시 팝업 메시지 띄운 후 해당 페이지로 이동
 		reportService.insertReport(vo);
 		PopUp.popUpMove(response, "신고가 완료되었습니다.", "/review/reviewList");
 		

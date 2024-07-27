@@ -126,9 +126,6 @@
 </form>
 <hr>
 <a href="reviewList">글목록</a>
-
-<!-- 업로드된 파일 표시 -->
-    <div id="uploadedFiles"></div>
  <!-- row -->
 	      </div>
 	      <!-- container -->

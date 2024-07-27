@@ -4,6 +4,7 @@
 
 <mapper namespace="HateDAO">
    
+   <!-- 싫어요 상태 -->
    <select id="getHateStatus" parameterType="map" resultType="int">
         SELECT hate_state
         FROM hate
@@ -11,28 +12,33 @@
         AND ROWNUM = 1
     </select> 
 
+	<!-- 싫어요 추가 -->
     <insert id="insertHate" parameterType="HateVO">
         INSERT INTO hate (hate_id, review_id, member_email, hate_state)
         VALUES (hate_id_seq.NEXTVAL, #{review_id}, #{member_email}, #{hate_state})
     </insert>
 
+	<!-- 싫어요 상태 변경 -->
     <update id="updateHate" parameterType="HateVO">
         UPDATE hate
         SET hate_state = #{hate_state}
         WHERE review_id = #{review_id} AND member_email = #{member_email}
     </update>
 
+	<!-- 싫어요 삭제 -->
     <delete id="deleteHate" parameterType="map">
         DELETE FROM hate
         WHERE review_id = #{review_id} AND member_email = #{member_email}
     </delete>
 
+	<!-- 싫어요 갯수 -->
     <select id="countHates" parameterType="int" resultType="int">
         SELECT COUNT(*)
         FROM hate
         WHERE review_id = #{review_id}
     </select>
    
+   <!-- 이메일 조회 -->
    <select id="existsById" parameterType="String" resultType="int">
         SELECT COUNT(*)
         FROM member
