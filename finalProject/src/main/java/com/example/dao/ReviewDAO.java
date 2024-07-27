@@ -11,16 +11,22 @@ import com.example.domain.ReviewVO;
 @Mapper
 public interface ReviewDAO {
 	
+	// 리뷰 목록 출력
 	List<ReviewVO> getReviewList(ReviewVO vo) ;
 	
+	// 리뷰 상세보기
 	List<HashMap<String, Object>> getReview(ReviewVO vo);
 	
+	// 리뷰 작성
 	void insertReview(ReviewVO vo);
 	
+	// 리뷰 수정
 	void updateReview(ReviewVO vo);
 	
+	// 리뷰 삭제
 	void deleteReview(ReviewVO vo);
 	
+	// 리부 조회수
 	void incrementViewCount(ReviewVO vo);
 	 
 }

@@ -9,9 +9,11 @@ import com.example.domain.ReportVO;
 @Repository("ReportDAO")
 public class ReportDAOImpl implements ReportDAO{
 
+	// mybatis 객체 자동 주입
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 신고 추가
 	public void insertReport(ReportVO vo) {
 		mybatis.insert("ReportDAO.insertReport", vo);
 	}

@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ReportDAO">
 
+	<!-- 신고 작성 -->
 	<insert id="insertReport" parameterType="ReportVO">
 		INSERT INTO report
 		(report_id, review_id, comment_id, reply_id, member_email,

@@ -28,58 +28,67 @@ import jakarta.servlet.http.HttpSession;
 import useful.popup.PopUp;
 
 @Controller
+
+// 리뷰 관련 요청 처리 컨트롤러
 @RequestMapping("/review")
 public class ReviewController<SearchCriteria> {
    
+	// 로깅을 위한 로거 객체 생성
    static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
    
+   // ReviewService 객체 자동 주입
    @Autowired 
    private ReviewService reviewService;
    
+   // UserService 객체 자동 주입
    @Autowired
    private UserService userService;
    
-   // 글 목록보기
+   // 리뷰 목록보기
    @RequestMapping("/reviewList")
    public void getReviewList(Model m, HttpSession session) {
-      ReviewVO vo = new ReviewVO(); // 추후에 조건 검색하고자 필요
+	  // 리뷰 목록을 조회하기 위한 객체 생성
+      ReviewVO vo = new ReviewVO();
+      // 리뷰 목록 조회
       List<ReviewVO> list = reviewService.getReviewList(vo);
+      // 조회수 증가
       reviewService.incrementViewCount(vo);
+      // 모델에 리뷰 목록 추가
       m.addAttribute("reviewList", list);
-      System.out.println("-----------------------------");
-      System.out.println(list);
-      System.out.println("-----------------------------");
+      // 세션에서 사용자 ID 가져오기
       String id = (String) session.getAttribute("sess");
    }
    
+   // 리뷰 상세보기
    @RequestMapping("/selectReview")
    public void getReview(@RequestParam int review_id, Model model, HttpSession session, ReviewVO vo) {
+	   // 리뷰 ID 설정
        vo.setReview_id(review_id);
 
        // 조회수 증가 함수
        reviewService.incrementViewCount(vo);
 
        // 상세보기의 정보
-       HashMap<String, Object> result = reviewService.getReview(vo);
+       HashMap<String, Object> result = reviewService.getReview(vo); // 리뷰 정보 조회
        model.addAttribute("reviews", result.get("reviews"));
        model.addAttribute("review", result.get("reviewOne"));
-       
-       System.out.println("reviewcontroller에서 list"+result.get("reviewOne"));
 
        // 세션에서 사용자 ID 가져오기, 사용자 nickname 가져오기
        String id = (String) session.getAttribute("sess");
        String nickname = (String) session.getAttribute("nickname");
+       
        if (id != null) {
            model.addAttribute("id", id);
        }
 
-       // reviewList를 모델에 추가
+       // 리뷰 목록 조회
        List<ReviewVO> reviewList = reviewService.getReviewList(vo);
+       // 모델에 리뷰 목록 추가
        model.addAttribute("reviewList", reviewList);
    }
 
    
-   // 글쓰기
+   // 리뷰 작성 후 저장
    @RequestMapping("/saveReview")
    public String insertReview(
            @RequestParam(value = "review_file", required = false) List<MultipartFile> files,
@@ -88,9 +97,10 @@ public class ReviewController<SearchCriteria> {
            @RequestParam(value = "review_star", required = false) String reviewStar,
            ReviewVO vo, HttpSession session, HttpServletResponse response) throws IOException {
 
-	   response.setContentType("text/html; charset=UTF-8");
-	    PrintWriter out = response.getWriter();
+	   	   response.setContentType("text/html; charset=UTF-8");
+	       PrintWriter out = response.getWriter();
 
+	       // 각 값들 null, !null 확인
 	    if (files == null || files.stream().allMatch(file -> file.isEmpty())) {
            out.println("<script>alert('파일을 업로드해 주세요.'); history.go(-1);</script>");
            out.flush();
@@ -115,31 +125,42 @@ public class ReviewController<SearchCriteria> {
 	        return null;
 	    }
 
+	   // 입력값 설정
        vo.setReview_title(reviewTitle);
        vo.setReview_content(reviewContent);
        vo.setReview_star(Integer.parseInt(reviewStar));
        vo.setMember_email((String) session.getAttribute("sess"));
+       // 년원일 시분초
        vo.setReview_regdate(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
 
+       // 업로드된 파일 정보를 저장할 리스트
        List<ReviewFileVO> fileList = new ArrayList<>();
 
+       // files 리스트의 각 파일에 대해 반복
        for (MultipartFile file : files) {
+    	   // 파일의 원래 이름을 가져옴
            String originFileName = file.getOriginalFilename();
            if (originFileName != null && !originFileName.isEmpty()) {
+        	   // 파일 이름 생성
                String fileName = System.currentTimeMillis() + "_" + originFileName;
+               // 저장 경로
                String filePath = "C:\\Users\\ict03_004\\git\\FinalTeamProject\\finalProject\\src\\main\\resources\\static\\files\\" + fileName;
 
                try {
+            	   // 파일을 지정된 경로로 저장
                    file.transferTo(new File(filePath));
+                 // 파일 저장 실패 시 에러 로그 출력
                } catch (IOException e) {
                    logger.error("File upload failed: ", e);
                }
 
+               // ReviewFileVO 객체 생성 및 파일 정보 설정
                ReviewFileVO fvo = new ReviewFileVO();
                fvo.setOrigin_file_name(originFileName);
                fvo.setFile_name(fileName);
                fvo.setFile_path(filePath);
 
+               // fileList에 ReviewFileVO 객체 추가
                fileList.add(fvo);
            }
        }

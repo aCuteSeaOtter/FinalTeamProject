@@ -4,6 +4,7 @@
 
 <mapper namespace="com.example.dao.ReviewFileDAO">
 
+	<!-- 파일 업로드 -->
    <insert id="insertFile" parameterType="ReviewFileVO">
       INSERT INTO review_img
       (
@@ -23,15 +24,14 @@
       )
    </insert>
 
-   
-   <!-- board_file에서 키값 검색 -->
+   <!-- review_fileid를 기반으로 파일 정보 조회 -->
    <select id="selectFile" parameterType="ReviewFileVO" resultType="ReviewFileVO">
       SELECT *
       FROM review_img
       WHERE review_fileid=#{review_fileid}
    </select>
    
-   <!-- 최신 자동증가수 값을 얻어온다면 -->
+   <!-- fileID 조회 -->
    <select id="selectId" resultType="int">
       SELECT review_fileid
       FROM (
