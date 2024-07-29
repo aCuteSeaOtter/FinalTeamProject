@@ -10,6 +10,7 @@ $(function() {
 	        		<div>
 	        			<span class="dayNum">DAY ${i+1}</span>
 	        			<span class="date">&nbsp;&nbsp;${selectedDates[i]}</span> 
+						<input type="button" class="btn mappingBtn" value="맵핑"/>
 	    			</div>
 				</div>
 				<div class="inputData" id="inputData-${i+1}">

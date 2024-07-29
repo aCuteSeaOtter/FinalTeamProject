@@ -27,7 +27,8 @@
 /*#4 */
 .body {
     width: 100%;
-    max-width: 450px;
+    max-width: 100%;
+    /* min-width: 100%; */
     height: 550px;
     background: #fff;
     border-radius: 10px;
@@ -35,7 +36,7 @@
     padding-bottom: 70px; /* 아래쪽 여백 추가 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative; /* 상대적인 위치 설정 */
-    margin: 0 auto; /* 가운데 정렬 */
+    margin: 20px auto; /* 가운데 정렬 */
     background: #f5f2f2;
 }
 
@@ -43,16 +44,14 @@
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-    overflow-y: auto;
-    align-items: center; /* 수직 가운데 정렬 */
+    /* align-items: center; 수직 가운데 정렬 */
     justify-content: center; /* 수평 가운데 정렬 */
 }
 
 .left {
-    flex: 1;
-    min-width: 300px; /* 작은 화면을 위한 최소 너비 설정 */
-    height: auto; /* 콘텐츠에 따라 높이 조정 */
-    padding: 10px;
+    flex: 1; /* 자식 요소들이 동일한 넓이를 갖도록 설정 */
+    margin-right: 10px; /* 오른쪽 여백 설정 */
+    max-width: 430px;
 }
 
 .wrapper .nav {
@@ -66,6 +65,8 @@
 .wrapper .nav .current-date {
     font-size: 24px;
     font-weight: 600;
+    color: black;
+    margin-bottom: 0;
 }
 
 .wrapper .nav .meterial-icons {
@@ -104,6 +105,8 @@
 .calendar ul li {
     width: calc(100% / 7);
     position: relative;
+    color: #808080;
+    font-weight: 999;
 }
 
 .calendar .days li {
@@ -113,7 +116,9 @@
 }
 
 .days li.inactiv {
-    color: #aaaaaa;
+    color: rgb(211, 211, 211);
+    font-weight: 100;
+    
 }
 
 .days li.activ {
@@ -231,6 +236,32 @@
 
 .schedule {
     width: auto;
+}
+
+.title {
+	color: black;
+	justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.margin-bottom {
+	margin-bottom: 10px;
+}
+
+.planName {
+	margin-bottom: 10px;
+}
+
+.form-select {
+	display: inline-block;
+}
+
+.sido {
+	width: 30%;
+}
+
+.city {
+	width: 65%;
+	float: right;
 }
 
 /* 반응형 디자인을 위한 미디어 쿼리 */

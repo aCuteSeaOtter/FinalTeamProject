@@ -95,26 +95,41 @@
 			        <!-- '장소추가' 생기는 구역 -->
 			        
 			    </div>
-			    <%-- <div class="pagination">
-			        <button id="prevPage" class="btn btn-secondary" disabled>이전</button>
-			        <button id="nextPage" class="btn btn-secondary" ${dates.size() <= 3 ? 'disabled' : ''}>다음</button>
-			    </div> --%>
+			    
 			<!-- col -->
 	        </div>
 	        <input type="hidden" class="hiddenDate"/>
+	        
+	        
+	        
+	        
+	        <!-- Tmap -->
 	        <div class="col-lg-8 mapBlock">
 	        <div>&nbsp&nbsp</div>
-	          <div id="map">
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb3a8076d2603f3df36081d8e29ae823"></script>
-				<script>
-			      var container = document.getElementById("map");
-			      var options = {
-			        center: new kakao.maps.LatLng(37.552811217, 126.93794821),
-			        level: 3,
-			      };
-			      var map = new kakao.maps.Map(container, options);
-			    </script>
-	          </div>
+	          
+	          <p id="result"></p>
+	          	<div id="map_wrap" class="map_wrap">
+	          		<div id="map_div"></div>
+	          	</div>
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
 	          <!-- col -->
 	        </div>
 	        <!-- row -->
@@ -126,6 +141,11 @@
   <jsp:include page="/WEB-INF/views/footer.jsp" />
   <!-- 상단으로 이동 버튼 -->
   <button id="back-to-top-btn" title="Back to Top"></button>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y"></script>
+
+  
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>
@@ -138,5 +158,10 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/plan.js"></script>
+  <script src="/js/tmap.js"></script>
+  
+  
+  
+  
 </body>
 </html>
