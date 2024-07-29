@@ -5,7 +5,7 @@ function handleReviewClick(event, url) {
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function(){ 
     // Slick 슬라이더 초기화
     $('.slider').slick({
         infinite: true,

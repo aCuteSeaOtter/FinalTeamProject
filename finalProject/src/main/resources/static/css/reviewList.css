@@ -1,4 +1,5 @@
 /* !improtant 우선순위 높히기 */
+
 .small-read-more {
     padding: 2px 5px !important; /* 내부 여백 */
     line-height: 1.2 !important; /* 줄 높이 */
@@ -21,4 +22,36 @@
 .input-group-append {
     display: flex;
     align-items: center;
+}
+.slider-wrapper {
+    position: relative;
+}
+
+.slider {
+    position: relative;
+}
+
+.slider img {
+    cursor: pointer; /* 이미지 위에 마우스를 올리면 커서가 포인터로 변함 */
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.slider-button.prev {
+    left: 10px;
+}
+
+.slider-button.next {
+    right: 10px;
 }
