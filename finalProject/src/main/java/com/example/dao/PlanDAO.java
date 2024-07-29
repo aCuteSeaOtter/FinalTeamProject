@@ -3,7 +3,7 @@ package com.example.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.ui.Model;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.PlanVO;
 
@@ -15,8 +15,10 @@ import com.example.domain.PlanVO;
  	[2] DAO 클래스에서
  		함수명과 Mapper에서의 ID값 동일해야함
 */
-@Mapper		// Mapper 호출
+@Mapper		// Mapper 호출 
 public interface PlanDAO {
-	public List<PlanVO> insertPlan(List<Integer> data);
-	public List<PlanVO> selectAttrList(Model m);
+	public List<PlanVO> selectAttrList();
+	public List<PlanVO> insertPlan(@Param("day") int day, @Param("attrIds") List<Integer> attrIds);
+    public void insertPlanItem(@Param("day") int day, @Param("attrId") int attrId);
+    public PlanVO selectInsertedPlan(@Param("day") int day, @Param("attrId") int attrId);
 }

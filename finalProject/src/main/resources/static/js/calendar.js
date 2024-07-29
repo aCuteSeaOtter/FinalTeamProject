@@ -30,9 +30,6 @@ $(function() {
     // 선택한 범위에 포함된 날짜를 저장
     let selectedDates = [];
 
-    // 시작일과 종료일의 jQuery 객체를 저장
-    let startDay;
-    let endDay;
 
     // 달력을 렌더링하는 함수
     let renderCalendar = () => {
@@ -149,7 +146,7 @@ $(function() {
                                     $(this).addClass('selected-range');
                                 }
                             }
-                        });
+                        }); 
                         current.setDate(current.getDate() + 1);
                     }
 					
@@ -158,7 +155,7 @@ $(function() {
 				    let dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 				    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
 				        selDay.push(dayNames[d.getDay()]);
-				    }
+				    } 
 					
 					// 콘솔에 선택된 날짜와 요일 출력
 				    console.log("선택된 날짜들과 요일:", selectedDates.map((date, index) => 
@@ -200,12 +197,14 @@ $(function() {
         if (selectedDates.length > 0) {
             let formattedDates = selectedDates.map((date, index) => 
                 `${date.toISOString().split('T')[0]} (${selDay[index]})`
-            );
+            ); 
             $(".dates").val(formattedDates.join(', '));
             $(".start").val("시작일 : " + formattedDates[0]);
             $(".end").val("도착일 : " + formattedDates[formattedDates.length - 1]);
             
-            console.log("선택된 날짜들과 요일:", formattedDates);
+			localStorage.setItem('selectedDates', formattedDates);	// 브라우저 스토리지에 저장
+			localStorage.setItem('selectedStartDate', formattedDates[0]); // 첫번째 날 저장
+			localStorage.setItem('selectedEndDate', formattedDates[formattedDates.length-1]); // 마지막 날 저장
         } else {
             alert("날짜를 선택해주세요.");
 			return false;

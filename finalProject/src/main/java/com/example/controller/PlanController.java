@@ -24,22 +24,22 @@ public class PlanController {
 	
 	// 선택한 장소의 id값 가져오기
 	@PostMapping("/insertPlan")
-	@ResponseBody
-	public List<PlanVO> insertPlan(@RequestParam(value="data[]") List<Integer> data) {
-		System.out.println("insertPlan 신호");
-		List<PlanVO> result = planService.insertPlan(data);
-		System.out.println(result);
-		return result;
-	}
-	
-	// planPopup에 장소목록 출력
-	@RequestMapping("/plan/planPopup")
-	public List<PlanVO> selectAttrList(Model m) {
-		System.out.println("planPopup 신호");
-		List<PlanVO> result = planService.selectAttrList(m);
-		m.addAttribute("attrList", result);
-		return result;
-	}
+    @ResponseBody
+    public List<PlanVO> insertPlan(@RequestParam("day") int day, @RequestParam(value="data[]") List<Integer> data) {
+        System.out.println("insertPlan 신호 for Day " + day);
+        List<PlanVO> result = planService.insertPlan(day, data);
+        System.out.println(result);
+        return result;
+    }
+    
+    @RequestMapping("/plan/planPopup")
+    public String selectAttrList(Model m) {
+        System.out.println("planPopup 신호");
+        
+        List<PlanVO> result = planService.selectAttrList();
+        m.addAttribute("attrList", result);
+        return "plan/planPopup";
+    }
 	
 	
 	
@@ -78,9 +78,14 @@ public class PlanController {
 	}
 	
 	
-	// plan 이동
+	// plan 이동 
 	@RequestMapping("plan/plan")
-	public String plan() {
+	public String plan(Model m) {
+		List<String> dates = (List<String>) m.getAttribute("dates");
+	    if (dates != null) {
+	        int totalPages = (int) Math.ceil(dates.size() / 3.0);
+	        m.addAttribute("totalPages", totalPages);
+	    }
 		return "plan/plan";
 	}
 } 

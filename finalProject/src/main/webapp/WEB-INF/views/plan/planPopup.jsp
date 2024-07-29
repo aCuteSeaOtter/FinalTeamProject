@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx">
-<head> 
+<head>  
   <title>planPopup</title> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,11 +80,11 @@
 	      <div class="row">
 	        <div class="col-lg-5">
 	        <div class="selectedLocal">제주</div> 
-	        <div style="margin-bottom: 10px">2024.07.16(수) ~ 2024.07.18(금)</div>
+	        <div class="selectedDate2"></div>
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="/images/plan/search.png"/></div><hr/>
 	        
 	        
-		    <div class="scrollBox">
+		    <div class="scrollBox"> 
 		    
 		    <!-- 명소 출력 시작 -->
 	        <c:forEach items="${attrList }" var="attr">
@@ -100,7 +100,6 @@
 			        </div>
 		        </div>
 			</c:forEach>
-		        
 		        <!-- 명소 출력 끝 -->
 		        
 	        </div>
@@ -114,8 +113,8 @@
 	        <div class="col-lg-7 selectedDiv">
 		        <div>
 		        	<div>
-		        		<span>DAY 1</span> 
-		        		<span>&nbsp&nbsp7/16 수</span> 
+		        		<span class="dayNum2">DAY 1</span> 
+		        		<span class="date2">&nbsp&nbsp7/16 수</span> 
 		        		<input type="button" class="btn btn-secondary save-btn" value="저장"></input>
 		        	</div> 
 		        </div> 
