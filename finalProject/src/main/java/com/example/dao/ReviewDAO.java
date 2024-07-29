@@ -2,9 +2,9 @@ package com.example.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.ReviewVO;
 
@@ -12,7 +12,7 @@ import com.example.domain.ReviewVO;
 public interface ReviewDAO {
 	
 	// 리뷰 목록 출력
-	List<ReviewVO> getReviewList(ReviewVO vo) ;
+	List<ReviewVO> getReviewList(HashMap<String, Object> map);
 	
 	// 리뷰 상세보기
 	List<HashMap<String, Object>> getReview(ReviewVO vo);
@@ -28,5 +28,4 @@ public interface ReviewDAO {
 	
 	// 리부 조회수
 	void incrementViewCount(ReviewVO vo);
-	 
 }
