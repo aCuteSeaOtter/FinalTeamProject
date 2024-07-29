@@ -1,43 +1,24 @@
-body {
-	    font-family: Arial, sans-serif;
-	    background-color: #f4f4f9;
-	    margin: 0;
-	    padding: 20px;
-	    color: #333;
-	}
+/* !improtant 우선순위 높히기 */
+.small-read-more {
+    padding: 2px 5px !important; /* 내부 여백 */
+    line-height: 1.2 !important; /* 줄 높이 */
+}
 
-	h1 {
-	    text-align: center;
-	    margin-top: 20px;
-	} 
+.form-inline {
+    display: flex;
+    align-items: center;
+}
 
-	table { 
-	    width: 100%;
-	    border-collapse: collapse;
-	    margin-top: 20px;
-	    border: 1px solid #ddd;
-	}
+.input-group {
+    display: flex;
+    align-items: center;
+}
 
-	th, td {
-	    padding: 10px;
-	    text-align: center;
-	}
+.form-control {
+    margin-right: 5px; /* 필요에 따라 조정 */
+}
 
-	th {
-	    background-color: #f2f2f2;
-	    color: #333;
-	}
-
-	td {
-	    background-color: #fff;
-	}
-
-	a {
-	    text-decoration: none;
-	    color: #0066cc;
-	}
-
-	a:hover {
-	    text-decoration: underline;
-	    color: #0044cc;
-	}
+.input-group-append {
+    display: flex;
+    align-items: center;
+}

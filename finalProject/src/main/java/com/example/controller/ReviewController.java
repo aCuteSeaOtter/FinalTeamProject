@@ -46,17 +46,27 @@ public class ReviewController<SearchCriteria> {
    
    // 리뷰 목록보기
    @RequestMapping("/reviewList")
-   public void getReviewList(Model m, HttpSession session) {
-	  // 리뷰 목록을 조회하기 위한 객체 생성
-      ReviewVO vo = new ReviewVO();
-      // 리뷰 목록 조회
-      List<ReviewVO> list = reviewService.getReviewList(vo);
-      // 조회수 증가
-      reviewService.incrementViewCount(vo);
-      // 모델에 리뷰 목록 추가
-      m.addAttribute("reviewList", list);
-      // 세션에서 사용자 ID 가져오기
-      String id = (String) session.getAttribute("sess");
+   public String getReviewList(Model m,
+                               @RequestParam(required = false) String searchCondition,
+                               @RequestParam(required = false) String searchKeyword,
+                               HttpSession session) {
+
+       // 검색 조건 및 키워드를 위한 맵 생성
+       HashMap<String, Object> map = new HashMap<>();
+       map.put("searchCondition", searchCondition);
+       map.put("searchKeyword", searchKeyword);
+
+       // 리뷰 목록 조회
+       List<ReviewVO> list = reviewService.getReviewList(map);
+
+       // 모델에 리뷰 목록 추가
+       m.addAttribute("reviewList", list);
+
+       // 검색 조건 및 검색 키워드 모델에 추가
+       m.addAttribute("searchCondition", searchCondition);
+       m.addAttribute("searchKeyword", searchKeyword);
+
+       return "review/reviewList";
    }
    
    // 리뷰 상세보기
@@ -80,11 +90,6 @@ public class ReviewController<SearchCriteria> {
        if (id != null) {
            model.addAttribute("id", id);
        }
-
-       // 리뷰 목록 조회
-       List<ReviewVO> reviewList = reviewService.getReviewList(vo);
-       // 모델에 리뷰 목록 추가
-       model.addAttribute("reviewList", reviewList);
    }
 
    

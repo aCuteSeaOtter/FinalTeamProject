@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,9 @@ public class ReviewServiceImpl implements ReviewService {
     private ReviewFileDAO reviewFileDAO;
 
     // 리뷰 목록 보기
-    public List<ReviewVO> getReviewList(ReviewVO vo) {
-    	// ReviewDAO의 getReviewList 메서드 호출
-        return reviewDAO.getReviewList(vo);
-    } 
+    public List<ReviewVO> getReviewList(HashMap<String, Object> map) {
+        return reviewDAO.getReviewList(map);
+    }
     
     // 리뷰 상세보기
     public HashMap<String, Object> getReview(ReviewVO vo) {
