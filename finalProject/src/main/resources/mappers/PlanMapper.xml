@@ -8,11 +8,14 @@
         FROM ATTR
     </select> 
 
+
+	<!-- /plan/planPopup 일정 추가 시 DB 저장 -->
     <insert id="insertPlanItem">
 	    INSERT INTO plan (plan_id, plan_day, attr_id)
 	    VALUES (plan_seq.NEXTVAL, #{day}, #{attrId})
 	</insert>
 	
+	<!-- /plan/plan 추가한 일정 가져오기 -->
 	<select id="selectInsertedPlan" resultType="com.example.domain.PlanVO">
 	    SELECT * FROM (
 	        SELECT p.plan_id, p.plan_day, p.attr_id, a.attr_name, a.attr_tag

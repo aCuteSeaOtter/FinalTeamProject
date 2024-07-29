@@ -22,7 +22,7 @@ public class PlanController {
 	private PlanService planService;
 	  
 	
-	// 선택한 장소의 id값 가져오기
+	/* /plan/planPopup 선택한 장소의 id값 가져오기 */
 	@PostMapping("/insertPlan")
     @ResponseBody
     public List<PlanVO> insertPlan(@RequestParam("day") int day, @RequestParam(value="data[]") List<Integer> data) {
