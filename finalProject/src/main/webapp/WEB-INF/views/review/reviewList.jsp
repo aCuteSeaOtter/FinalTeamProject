@@ -40,6 +40,9 @@
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link rel="stylesheet" href="/css/reviewList.css" type="text/css">
+	<!-- Slick CSS -->
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 </head>
 
 <body>
@@ -166,7 +169,7 @@
                                                         <span class="mb-0 text-size-14">${review.REVIEW_REGDATE}</span>
                                                     </div>
                                                     <div class="button">
-                                                        <a class="mb-0 read_more text-decoration-none" href="selectReview?review_id=${review.REVIEW_ID}">
+                                                        <a class="mb-0 read_more text-decoration-none small-read-more" href="selectReview?review_id=${review.REVIEW_ID}">
                                                             Read More
                                                         </a>
                                                     </div>
@@ -279,29 +282,8 @@
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/search.js"></script>
 	<script src="/js/reviewList.js"></script>
-    <script>
-        function moveSlide(step, sliderId) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.getElementsByTagName('div');
-            const totalSlides = slides.length;
-            let currentIndex = Array.from(slides).findIndex(slide => slide.style.display === 'block');
-            
-            if (currentIndex === -1) currentIndex = 0;
-            slides[currentIndex].style.display = 'none';
-            currentIndex = (currentIndex + step + totalSlides) % totalSlides;
-            slides[currentIndex].style.display = 'block';
-        }
-        
-        document.addEventListener('DOMContentLoaded', function () {
-            const sliders = document.querySelectorAll('.slider');
-            sliders.forEach(slider => {
-                const slides = slider.getElementsByTagName('div');
-                if (slides.length > 0) {
-                    slides[0].style.display = 'block';
-                }
-            });
-        });
-    </script>
+	<!-- Slick JS -->
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
 
 </html>
