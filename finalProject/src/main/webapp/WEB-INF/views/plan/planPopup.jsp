@@ -84,7 +84,7 @@
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="/images/plan/search.png"/></div><hr/>
 	        
 	        
-		    <div class="scrollBox">
+		    <div class="scrollBox"> 
 		    
 		    <!-- 명소 출력 시작 -->
 	        <c:forEach items="${attrList }" var="attr">

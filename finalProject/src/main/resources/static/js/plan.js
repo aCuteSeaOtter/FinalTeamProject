@@ -283,7 +283,7 @@ $(function() {
 	
 	
 	
-
+ 
 	// plan/plan 추가한 일정을 출력
 	function inputToParent(data, day) {
 		

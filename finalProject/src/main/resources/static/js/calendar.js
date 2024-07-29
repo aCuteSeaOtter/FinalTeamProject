@@ -146,7 +146,7 @@ $(function() {
                                     $(this).addClass('selected-range');
                                 }
                             }
-                        });
+                        }); 
                         current.setDate(current.getDate() + 1);
                     }
 					
@@ -155,7 +155,7 @@ $(function() {
 				    let dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 				    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
 				        selDay.push(dayNames[d.getDay()]);
-				    }
+				    } 
 					
 					// 콘솔에 선택된 날짜와 요일 출력
 				    console.log("선택된 날짜들과 요일:", selectedDates.map((date, index) => 
