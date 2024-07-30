@@ -81,74 +81,81 @@
   <!-- 주요 목적지 섹션 -->
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 	    <div class="container full-height-container">
-	        
-			<div class="wrapper">
+	        <form id="travelForm" action="/calendar/plan" method="post">
+				<div class="wrapper">
+				
+			    	<div class="left">
+			    		<div class="body">
+			    			<div class="title">여행정보 등록</div>
+			    			<div class="mb10">일정명</div>
+			    			<div class="mb15">
+			    				<input type="text" class="form-control planName" name="info_name" placeholder="일정명을 입력하세요."/>
+			    			</div>
+			    			
+			    			<div class="mb10">지역</div>
+			    			<div class="mb15">
+				    			<!-- <select class="form-select sido" name="sido"></select> -->
+				    			<input type="text" class="sido form-control" name="trip_place" readonly/>
+			    			</div>
+			    			
+			    			<div class="mb10 fl db">누구와</div>
+			    			<input type="hidden" class="form-control wstyleText" name="who_tag"/>
+			    			<div class="who mb15">
+				    			<input type="button" class="btn tagBtn mb5" name="alone" value="혼자"/>
+				    			<input type="button" class="btn tagBtn mb5" name="friend" value="친구와"/>
+				    			<input type="button" class="btn tagBtn mb5" name="couple" value="연인과"/>
+				    			<input type="button" class="btn tagBtn mb5" name="family" value="가족과"/>
+			    			</div>
+			    			
+			    			<div class="mb10 fl">여행 스타일</div>
+			    			<input type="hidden" class="form-control tstyleText" name="style_tag"/>
+			    			<div class="tstyle b15">
+				    			<input type="button" class="btn tagBtn mb5" name="healing" value="힐링"/>
+				    			<input type="button" class="btn tagBtn mb5" name="activity" value="활동"/>
+				    			<input type="button" class="btn tagBtn mb5" name="tourism" value="관광"/>
+				    			<input type="button" class="btn tagBtn mb5" name="culture" value="문화"/>
+				    			<input type="button" class="btn tagBtn mb5" name="gourmet" value="미식"/>
+				    			<input type="button" class="btn tagBtn mb5" name="shopping" value="쇼핑"/>
+				    			<input type="button" class="btn tagBtn mb5" name="nature" value="자연"/>
+				    			<input type="button" class="btn tagBtn mb5" name="history" value="역사"/>
+			    			</div>
+			    			
+			    		</div>
+			    	</div>
+			        <div class="left">
+			            <div class="body">
 			
-		    	<div class="left">
-		    		<div class="body">
-		    			<div class="margin-bottom title">여행정보 등록</div>
-		    			<input type="text" class="form-control planName" placeholder="일정명을 입력하세요."/>
-		    			
-		    			<div class="margin-bottom">지역 선택</div>
-		    			<select class="form-select sido" name="sido">
-		    				<option value="전체">전체</option>
-		    				<option value="서울">서울</option>
-		    				<option value="부산">부산</option>
-		    				<option value="인천">인천</option>
-		    				<option value="대구">대구</option>
-		    				<option value="광주">광주</option>
-		    				<option value="대전">대전</option>
-		    				<option value="울산">울산</option>
-		    				<option value="세종">세종</option>
-		    			</select>
-		    			<select class="form-select city" name="city">
-		    				<option value="전체">전체</option>
-		    				<option value="서울">서울</option>
-		    				<option value="부산">부산</option>
-		    				<option value="인천">인천</option>
-		    				<option value="대구">대구</option>
-		    				<option value="광주">광주</option>
-		    				<option value="대전">대전</option>
-		    				<option value="울산">울산</option>
-		    				<option value="세종">세종</option>
-		    			</select>
-		    		</div>
-		    	</div>
-		        <div class="left">
-		            <div class="body">
-		
-		                <header>
-		                    <div class="nav">
-		                        <div id="prev" class="meterial-icons"><img class="arrowIcon" src="/images/calendar/left.png"></div>
-		                        <p class="current-date"></p>
-		                        <div id="next" class="meterial-icons"><img class="arrowIcon" src="/images/calendar/right.png"></div>
-		                    </div>
-		                </header>
-		    
-		                <div class="calendar">
-		                    <ul class="weeks">
-		                        <li>일</li>
-		                        <li>월</li>
-		                        <li>화</li>
-		                        <li>수</li>
-		                        <li>목</li>
-		                        <li>금</li>
-		                        <li>토</li> 
-		                    </ul>   <!-- weeks -->
-			    			<form action="/calendar/plan" method="post">
-			                    <ul class="days">
-			                        
-			                    </ul>   <!-- days --> 
-			                    <input type="hidden" class="dates" name="dates"/>
-				                <input type="button" class="delBtn" value="취소하기"/>
-				                <input type="submit" class="selBtn" value="선택하기"/>
-			                </form>
-		                </div>  <!-- calendar -->
-			                
-		            </div>  <!-- body -->
-		        </div>  <!-- left -->
-		        
-		    </div>
+			                <header>
+			                    <div class="nav">
+			                        <div id="prev" class="meterial-icons"><img class="arrowIcon" src="/images/calendar/left.png"></div>
+			                        <p class="current-date"></p>
+			                        <div id="next" class="meterial-icons"><img class="arrowIcon" src="/images/calendar/right.png"></div>
+			                    </div>
+			                </header>
+			    
+			                <div class="calendar">
+			                    <ul class="weeks">
+			                        <li>일</li>
+			                        <li>월</li>
+			                        <li>화</li>
+			                        <li>수</li>
+			                        <li>목</li>
+			                        <li>금</li>
+			                        <li>토</li> 
+			                    </ul>   <!-- weeks -->
+				                    <ul class="days">
+				                        
+				                    </ul>   <!-- days --> 
+				                    <input type="hidden" class="dates" name="dates"/>
+					                <input type="button" class="delBtn" value="취소하기"/>
+					                <input type="submit" class="selBtn" value="선택하기"/>
+			                </div>  <!-- calendar -->
+				                
+			            </div>  <!-- body -->
+			        </div>  <!-- left -->
+			        
+			    </div>
+		  	</form>
  
       <!-- 컨테이너 -->
     </div>

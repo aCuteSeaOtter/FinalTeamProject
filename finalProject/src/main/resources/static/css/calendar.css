@@ -98,8 +98,13 @@
     font-size: 135%;
 }
 
+ul.weeks {
+    padding-left: 0rem;
+}
+
 .calendar .days {
     margin-bottom: 20px;
+    padding-left: 0rem;
 }
 
 .calendar ul li {
@@ -240,11 +245,42 @@
 
 .title {
 	color: black;
-	justify-content: center; /* 수평 가운데 정렬 */
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 25px;
+	padding: 15px;
 }
 
-.margin-bottom {
+.tagBtn {
+	width: 23%;
+	background: #E9ECEF;
+	color: #D1D1D1;
+}
+
+.sel {
+	background: #1BBC9B;
+	color: white;
+}
+
+.tagBtn:hover {
+	background: #1BBC9B;
+	color: white;
+}
+
+.mb5 {
+	margin-bottom: 5px;
+}
+
+.mb10 {
 	margin-bottom: 10px;
+}
+
+.mb15 {
+	margin-bottom: 15px;
+}
+
+.who, .tstyle {
+	text-align: center;
 }
 
 .planName {
@@ -253,15 +289,6 @@
 
 .form-select {
 	display: inline-block;
-}
-
-.sido {
-	width: 30%;
-}
-
-.city {
-	width: 65%;
-	float: right;
 }
 
 /* 반응형 디자인을 위한 미디어 쿼리 */

@@ -82,11 +82,16 @@
 	    <div class="container full-height-container">
 	      <div class="row">
 	        <div class="col-lg-4">
+	        	<div>
+		        	<c:if test="${not empty travelInfo}">
+		        		<div class="title">${travelInfo.info_name}</div>
+		        	</c:if>
+	        	</div>
 	        	<div class="selectedDate" name="dates"></div><img alt="calendar" class="calendarImg" src="/images/plan/calendar.png">
-				<div class="btnSet">
+				<!-- <div class="btnSet">
 					<input type="button" class="hbtn btn" value="숙소"></input>
 		        	<input type="button" class="abtn btn" value="항공"></input>
-				</div>
+				</div> -->
 		        <hr/>
 		         
 		        
@@ -143,7 +148,7 @@
   <button id="back-to-top-btn" title="Back to Top"></button>
   
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y"></script>
+  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=<!-- HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y -->"></script>
 
   
   <script src="/assets/js/jquery.min.js"></script>
