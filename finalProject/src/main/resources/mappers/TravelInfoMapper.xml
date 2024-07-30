@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.TravelInfoDAO">
+
+
+    <insert id="saveTravelInfo">
+	    INSERT INTO travel_info (info_id, member_email, info_name, trip_place, start_date, end_date, who_tag, style_tag)
+	    VALUES (info_id_seq.NEXTVAL, 'dkthnt06@gmail.com', #{info_name}, #{trip_place}, #{start_date}, #{end_date}, #{who_tag}, #{style_tag})
+	</insert>
+	
+</mapper>

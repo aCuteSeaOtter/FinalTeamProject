@@ -173,6 +173,14 @@
 }
 
 
+.title {
+	color: black;
+	font-family: 'tway';
+	font-size: 25px;	
+	margin-bottom: 5px;
+}
+
+
 .mappingBtn {
 	font-family: tway;
 	float: right;

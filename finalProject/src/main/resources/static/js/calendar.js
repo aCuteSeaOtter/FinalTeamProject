@@ -233,6 +233,60 @@ $(function() {
         // 달력 다시 렌더링
         renderCalendar();
     });
+	
+	
+	
+	// select
+	const local = ['전체', '서울', '부산', '인천', '경주', '제주', '강릉', '여수', '거제통영', '남원', '전주', '포항', '춘천', '대전', '군산', '목포', '안동', '울릉도', '가평', '제천', '수원', '영월'];
+	
+	
+	
+	function init() {
+	    let options  = '<option value="">선택</option>';
+		
+		for (const key of local) {
+	        options += `<option value="${key}">${key}</option>`;
+	    }
+	    
+	    $('select[name=sido]').html(options);
+	}
+	
+	init();
+	
+	
+	
+	// tag
+	$('.who > .tagBtn').on('click', function() {
+		$('.who > .tagBtn').removeClass('sel');
+		$(this).addClass('sel');
+		
+		var btnVal = $(this).val();
+		
+		if ($(this).hasClass('sel')) {
+			// 'sel' 클래스가 추가된 경우 값 추가
+			$('.wstyleText').val(btnVal);
+		}
+	});
+	
+	let tstyleVal = [];
+	$('.tstyle > .tagBtn').on('click', function() {
+		$(this).toggleClass('sel');
+		
+		var btnVal = $(this).val();
+		
+		if ($(this).hasClass('sel')) {
+           // 'sel' 클래스가 추가된 경우 배열에 값 추가
+			if (!tstyleVal.includes(btnVal)) {
+				tstyleVal.push(btnVal);
+			}
+		} else {
+			// 'sel' 클래스가 제거된 경우 배열에서 값 제거
+			tstyleVal = tstyleVal.filter(value => value !== btnVal);
+		}
+		
+		// 배열의 값으로 숨겨진 필드 업데이트 (필요한 경우)
+        $('.tstyleText').val(tstyleVal.join(',')); // ','로 구분된 문자열로 변환하여 설정
+	});
 
     // 초기 달력 렌더링
     renderCalendar();
