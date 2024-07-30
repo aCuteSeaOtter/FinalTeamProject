@@ -1,20 +1,22 @@
 package com.example.controller;
 
+import java.io.IOException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-
+import java.util.Arrays;
 import java.util.Date;
-
+import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,29 +26,37 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.LoginVO;
 import com.example.service.LoginService;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 
-
+@RequiredArgsConstructor
 @Controller
 @SessionAttributes("mem")
 @RequestMapping("/login")
+
 public class LoginController {
 	static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
 	private LoginService loginService;
 	
+	@Autowired
+	//private KakaoApi kakaoApi;
+	
+
 	
 	/*
 	 * @RequestMapping("/{step}") // @PathVariable : 경로변수 public String
@@ -98,8 +108,9 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/loginForm")
-	public void loginForm() {
-
+	public String loginForm() {
+		
+		return"/login/loginForm";
 		
 	}
 	@RequestMapping("/agreeForm")
@@ -108,8 +119,10 @@ public class LoginController {
 		
 	}
 
-	@RequestMapping("/main")
-	public void main() {
+	@RequestMapping("main")
+	public String main() {
+	
+		return "/login/main";
 	}
 
 	@RequestMapping("/loginsuccess")
@@ -161,7 +174,7 @@ public class LoginController {
 	                            @RequestParam("day")  int day
 	                          ) {
 	    
-		System.out.println("/regiest 컨트럴러"+ loginVO.toString());
+		System.out.println("/regiest 컨트럴로"+ loginVO.toString());
 		
 		
 	 /*   if (bindingResult.hasErrors()) {
@@ -201,46 +214,12 @@ public class LoginController {
 			//로그인 성공 시 세션에 사용자 정보 저장
 			session.setAttribute("mem", result);
 			
-			return "loginMain";
+			return "login/loginMain";
 		}
 		else {
-			return "loginForm";
+			return "login/loginForm";
 		}
 	}
-	// 카카오 로그인 기능이 처리되는 페이지
-	@RequestMapping("/loginForm/getKakaoAuthURl")
-	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception{
-		String reqUrl=
-				 "https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917&redirect_uri=	"
-				 + "http://localhost:8081/login/oauth2/code/kakao&response_type=code";
-	
-	
-		return reqUrl;
-	}
-
-
-    @GetMapping("/oauth2/code/kakao") // GET 요청을 처리하는 URL
-    public String handleKakaoCallback(@RequestParam("code") String code, HttpSession session, RedirectAttributes rttr,
-    								Model m) {
-        
-       	try {
-            // 카카오에서 제공하는 사용자 정보 요청 메서드 호출
-            String accessToken = loginService.getAccessToken(code);
-            String userInfo = loginService.getUserInfo(accessToken, session, rttr);
-            
-            //사용자 정보를 모델에 추가하여 화면에 전달
-            m.addAttribute("mem", userInfo);
-            
-            //DB에 저장
-            loginService.saveKakaoMember(accessToken, userInfo);
-            
-            return "redirect:/loginMain"; // 로그인 성공 후 메인 페이지로 리다이렉트
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/loginForm"; // 예외 발생 시 에러 페이지로 리다이렉트
-        }
-    }
-		
 	@RequestMapping("/savecontact")
 	public String savecontact(@Valid  LoginVO loginVO, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -262,4 +241,41 @@ public class LoginController {
         }
     }
 	
-}
+	// kakaoLogin
+	
+	// 카카오 로그인 기능이 처리되는 페이지
+	@RequestMapping("/loginForm/getKakaoAuthURl")
+	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception{
+		String reqUrl=
+				 "https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917&redirect_uri=	"
+				 + "http://localhost:8081/login/oauth2/code/kakao&response_type=code";
+	return reqUrl;
+	}
+	
+/*	@Autowired
+	private final KakaoApi kakaoApi;
+	
+	@GetMapping("/loginForm")
+	public String loginForm(Model m) {
+		m.addAttribute("kakaoApiKey", kakaoApi.getKakaoApiKey());
+		m.addAttribute("redirectUri", kakaoApi.getKakaoRedirectUri());
+		return "/loginForm";
+	}
+
+	*/
+	
+/*	@RequestMapping("/login/oauth2/code/kakao")
+	public String kakaoLogin(@RequestParam String code) {
+		// 1. 인가코드받기	@RequestParam String code
+		
+		// 2. 토큰 받기
+		String accessToken = loginService.get
+	
+	}
+	*/
+	
+	
+}//end of class
+
+
+

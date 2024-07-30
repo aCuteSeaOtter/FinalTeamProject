@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import com.example.domain.LoginVO;
 
 @Mapper
-public interface LoginDAO {
+public interface LoginDAO { 
 
 	public 	void registForm(LoginVO loginVO);
 	//public MemberVO loginForm(MemberVO memberVO);
