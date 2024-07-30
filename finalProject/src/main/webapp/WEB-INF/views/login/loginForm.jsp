@@ -35,7 +35,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="/css/login.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
@@ -53,9 +53,9 @@
     </div>
   </div>
   <!-- OUTER BG WRAPPER -->
-  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
+  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100 login">
     <!-- TOP BAR SECTION -->
-    <div class="w-100 float-left top-bar-con main-box">
+    <div class="w-100 float-left top-bar-con loginForm-box">
       <div class="container">
         <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
           <div class="left-con">
@@ -103,48 +103,8 @@
 				<li class="nav-item">
 				<a class="nav-link p-0" href="csForm">고객센터</a>
 				</li>
-			  
-	  
-          <!--    <li class="nav-item">
-                <a class="nav-link p-0" href="destinations">Destination</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <a class="dropdown-item" href="booking">Booking</a>
-                  <a class="dropdown-item" href="faq">Faq</a>
-                  <a class="dropdown-item" href="contact">Contact</a>
-                  <a class="dropdown-item" href="team">Team</a>
-                  <a class="dropdown-item" href="service">Service</a>
-                  <a class="dropdown-item" href="testimonial">Testimonial</a>
-
-                </div>
-              </li>-->
-            <!--  <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle p-0" href="blog" id="navbarDropdown4" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                  <a class="dropdown-item" href="blog">Blog</a>
-                  <a class="dropdown-item" href="load-more">Load More</a>
-                  <a class="dropdown-item" href="single-blog">Single Blog</a>
-                  <a class="dropdown-item" href="one-column">One Column</a>
-                  <a class="dropdown-item" href="two-column">Two Column</a>
-                  <a class="dropdown-item" href="three-column">Three Column</a>
-                  <a class="dropdown-item" href="three-colum-sidbar">Three Column Sidbar</a>
-                  <a class="dropdown-item" href="four-column">Four Column</a>
-                  <a class="dropdown-item" href="six-colum-full-wide">Six Column</a>
-                </div>
-              </li>-->
-			  
-            </ul>
-            <div class="header-contact">
-              <ul class="list-unstyled mb-0">
-               <li><a href="registForm" class="live-chat-btn d-inline-block">
-                    회원가입</a></li>
-                <!-- list unstyled -->
-              </ul>
-              <!-- header contact -->
+	           </ul>
+            <!-- header contact -->
             </div>
            </div>
         </nav>
@@ -154,9 +114,7 @@
     </header>
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
-      <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
-      <div class="container">
+         <div class="container">
         <div class="row">
           <div class="col-lg-7">
             <div class="sub-banner-inner-con padding-bottom">
@@ -192,7 +150,7 @@
         <div class="col-12">
           <div class="login-box">
             <form id="loginForm" action="loginMain" method="POST">
-				<div class="col-lg-10 col-md-10 col-sm-12 col-12">
+				<div class="col-lg-10 col-md-10 col-sm-12 col-12 ">
 					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
                 			
 					<div class="col-12"><!--12-->
@@ -222,27 +180,22 @@
 			<p	id="error-msg" style="color:red; display:none;">비밀번호가 일치하지않습니다</p>
 	  </div>
 	 </div>
-
-	 <div class="col-6">
+	<hr/>
+		 <div class="col-4">
 	    <div class="kakao-btn" onclick="kakaoLogin()">
-	   	<a href="https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917
-		&redirect_uri=http://localhost:8081/login/oauth2/code/kakao&response_type=code"><img src="/images/login/kakao_login_medium_narrow.png"></a>
+			<a id="kakao-login-link" href="https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917
+					&redirect_uri=http://localhost:8081/login/oauth2/code/kakao&response_type=code">
+		<img id="'kakaoLoginBtn" src="/images/login/kakao_login_medium_narrow.png"></a>
 	 </div>
 	  </div>
-
-
-  </div><!-- row -->
-		
-				
-				
-                  </div>
-                 </div>
-
-			  <p>${error}</p>
+          </div>
+                <!--<p>${error}</p>-->
 			  </form>
           </div>
         </div>
-  
+		</div>
+		</div>
+		
     <!--</section>-->
 	
 	 <!-- BACK TO TOP BUTTON -->
@@ -263,27 +216,25 @@
   <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
-  <script>
-	
-	function kakaoLogin() {
-	$.ajax({
-	 url:'/loginForm/getKakaoAuthUrl',
-	 type:'post',
-	 async: false,
-	 dataType: 'text',
-	 success: function (res) {
-	   location.href = res;
-	 }
-	});
-	}
-	</script>
-
+  
 	<script>
-			
+function checkPassword(){
+	// 사용자가 입력한 비밀번호
+	var inputPassword=document.getElementById("fname").value();
+	var dbPassword=;
 	
-	
-	</script>
+	// 비번 비교
+	if(inputPassword == dbPassword){
+		alert('성공');
+		
+	}else{
+		//일치하지 않을 시
+		var errorMsg=document.getElementById("error-msg");
+		errorMsg.style.display="block";
+	}
+}
+</script>
 	  
- </body>
+</body>
 
 </html>

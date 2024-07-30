@@ -34,7 +34,8 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/superclasses.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+  <!--<link rel="stylesheet" href="assets/css/custom.css" type="text/css">-->
+  <link rel="stylesheet" href="/css/custom.css" type="text/css">
   <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" type="text/css">
