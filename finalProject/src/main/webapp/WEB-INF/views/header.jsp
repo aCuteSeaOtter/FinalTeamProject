@@ -26,10 +26,10 @@
 	                <a class="nav-link p-0" href="/about">일정 만들기</a>
 	            </li>
 				<li class="nav-item">
-	                <a class="nav-link p-0" href="/about">여행후기</a>
+	                <a class="nav-link p-0" href="/review/reviewList">여행후기</a>
 	            </li>
 				<li class="nav-item">
-	                <a class="nav-link p-0" href="/about">매거진</a>
+	                <a class="nav-link p-0" href="/question/questionList">매거진</a>
 	            </li>
 			  <!--
               <li class="nav-item active">
@@ -82,7 +82,7 @@
                     Live Chat</a></li>
 					-->		
 				<li>
-					<a href="contact" class="live-chat-btn d-inline-block">
+					<a href="/login/loginForm" class="live-chat-btn d-inline-block">
 				    	로그인
 					</a>
 				</li>
