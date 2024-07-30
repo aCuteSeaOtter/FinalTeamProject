@@ -146,9 +146,6 @@
                                                         <button class="slider-button prev" onclick="moveSlide(-1, 'slider-${review.REVIEW_ID}'); event.stopPropagation();">❮</button>
                                                         <button class="slider-button next" onclick="moveSlide(1, 'slider-${review.REVIEW_ID}'); event.stopPropagation();">❯</button>
                                                     </div>
-                                                    
-                                                    <!-- 파일 배열 확인 -->
-                                                    <p>Files: ${fn:join(fileNamesArray, ', ')}</p>
                                                 </div>
 
                                                 <!-- 리뷰 제목과 작성자 -->
@@ -192,7 +189,7 @@
                                                 <option value="review_content">내용</option>
                                                 <option value="member_nickname">작성자</option>
                                             </select>
-                                            <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="Search for reviews...">
+                                            <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="검색어를 입력해주세요.">
                                             <div class="input-group-append">
                                                 <span class="input-group-btn">
                                                     <button type="submit" id="widget-widget-search-form-button" class="btn">
