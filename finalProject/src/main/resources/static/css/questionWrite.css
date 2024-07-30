@@ -1,0 +1,98 @@
+/* 체크박스 스타일링 */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"] + label {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 24px;
+            display: inline-block;
+            color: #333;
+        }
+
+        input[type="checkbox"] + label::before,
+        input[type="checkbox"] + label::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        input[type="checkbox"] + label::before {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #ddd;
+            border-radius: 3px;
+            background: #fff;
+        }
+
+        input[type="checkbox"]:checked + label::before {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        input[type="checkbox"] + label::after {
+            content: "\2713"; /* 체크 표시 */
+            font-size: 18px;
+            color: white;
+            left: 4px;
+            display: none;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            display: block;
+        }
+       
+        .col-md-6 p,
+		.col-md-4 p {
+    	font-size: 18px;
+    	color: var(--navy-color);
+		}
+		
+		/* 비밀글 여부 항목에 상하 공백 추가 */
+		.col-md-6 {
+		    margin-top: 20px;
+		    margin-bottom: 10px;
+		}
+		
+		.col-md-8 {
+		    margin-bottom: 20px;
+		}
+		/* 비밀글 비밀번호 필드를 비밀글 비밀번호 텍스트 아래로 이동 */
+		#secretContentRow {
+		    display: flex;
+		    flex-direction: column;
+		    margin-top: 20px;
+		}
+		
+		#secretContentRow .col-md-8 {
+		    margin-top: 0;
+		}
+		
+		#secretContentRow .col-md-12 input[type="password"] {
+		    width: 100%;
+		    /* font-size: 30px; */
+		}
+		
+		/* placeholder 텍스트의 크기 유지 */
+		.col-md-12 input[type="password"]::placeholder {
+		    font-size: 14px; /* 기존 크기로 설정 */
+		}
+		/* 비밀글 비밀번호 텍스트와 입력 필드 사이의 간격 조정 */
+		#secretContentRow .col-md-4 {
+		    white-space: nowrap;
+		    margin-bottom: 0;
+		    padding-right: 10px; /* 입력 필드와의 간격 조정 */
+		}
+		
+		.password-toggle-icon {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
