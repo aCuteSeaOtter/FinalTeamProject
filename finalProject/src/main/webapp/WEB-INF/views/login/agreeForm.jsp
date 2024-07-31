@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
  <!-- <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">-->
  <link rel="stylesheet" href="/css/login.css" type="text/css">
+ <link rel="stylesheet" href="/css/realLogin.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
@@ -54,70 +55,17 @@
     </div>
   </div>
   <!-- OUTER BG WRAPPER -->
-  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-    <!-- TOP BAR SECTION -->
-    <div class="w-100 float-left top-bar-con main-box">
-      <div class="container">
-        <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-            HOTSPOT            
+
+    <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
           </div>
-          <div class="right-con">
-             070-0000-0000 
-          </div>
-          <!-- top bar inner con -->
-        </div>
         <!-- container -->
       </div>
       <!-- top bar con -->
     </div>
     <div class="clearfix"></div>
     <!-- HEADER SECTION -->
-    <header class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index">
-            <figure class="mb-0">
-              <img src="/assets/images/logo-icon.png" alt="logo-icon">
-            </figure>
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    	   	<ul class="navbar-nav ml-auto">
-		<li class="nav-item active">
-    	<a class="nav-link p-0" href="index">홈</a>
-		  </li>
-	   <li class="nav-item">
-		<a class="nav-link p-0" href="reservForm">예약</a>
-		 </li>
-		  <li class="nav-item">
-		  <a class="nav-link p-0" href="megazineForm">매거진</a>
-	 </li>
-		 <li class="nav-item">
-		 <a class="nav-link p-0" href="reviewForm">리뷰</a>
-		 </li>
-		<li class="nav-item">
-			<a class="nav-link p-0" href="csForm">고객센터</a>
-	</li>
-			  <li class="nav-item">
-		  <a class="nav-link p-0" href="loginForm">로그인</a>
-	  </li>
-			</ul>
-       
-              <!-- header contact -->
-            </div>
-           </div>
-        </nav>
-        <!-- container -->
-      </div>
-      <!-- header-con -->
-    </header>
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+	
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
       <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
@@ -150,64 +98,7 @@
     </section>
     <!-- bg outer wrapper -->
   </div>
-  <!-- TALK TO US SECTION -->
-  <!--<section
-    class="float-left w-100 about-travel-con talk-to-us-con position-relative main-box padding-top padding-bottom">
-    <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="/assets/images/vector5.png">
-    <img alt="vector" class="vector6 img-fluid position-absolute" src="/assets/images/vector6.png">
-    <div class="container wow bounceInUp" data-wow-duration="2s">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="about-travel-img-con position-relative">
-            <figure class="about-img"><img class="img-fluid" alt="image" src="/assets/images/talk-to-us-img1.jpg">
-            </figure>
-            <figure class="about-img2"><img class="img-fluid" alt="image" src="/assets/images/talk-to-us-img2.jpg">
-            </figure>
-             about travel img con 
-          </div>
-           col 
-        </div>
-        <div class="col-lg-6">
-          <div class="about-travel-content">
-            <h4 class="text-uppercase">Talk to us</h4>
-            <h2>Get in Touch <br>
-              With Us</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliquaquis</p>
-            <div class="contact-info">
-              <h4 class="text-uppercase sub-heading">Contact Info</h4>
-              <ul class="list-unstyled p-0 m-0 contact-info-inner-wrapper">
-                <li><a href="mailto:support@traveltek.com"><i class="fa-solid fa-envelope"></i>
-                    support@traveltek.com</a></li>
-                <li><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1 (0800) 123
-                    456</a></li>
-                <li><i class="fa-solid fa-location-dot"></i> Envato, King Street, Melbourne VIC, Australia</li>
-                 contact info inner wrapper 
-              </ul>
-              <div class="social-icons d-inline-block">
-                <div class="circle d-inline-block"><a href="https://www.facebook.com/login/"><i
-                      class="fa-brands fa-square-facebook"></i></a></div>
-                <div class="circle d-inline-block"><a href="https://twitter.com/i/flow/login"><i
-                      class="fa-brands fa-square-x-twitter"></i></a></div>
-                <div class="circle d-inline-block"><a href="https://www.linkedin.com/login"><i
-                      class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <div class="circle d-inline-block"><a href="https://www.pinterest.com/"><i
-                      class="fa-brands fa-square-pinterest"></i></a></div>
-              </div>
-            </div>
-             about travel content 
-          </div>
-           col 
-        </div>
-         row 
-      </div>
-       container 
-    </div>
-     about travel con 
-  </section>	-->
-  <!-- CONTACT FORM SECTION  -->
+   <!-- CONTACT FORM SECTION  -->
   <section class="float-left w-100 talk-width-our-team-con position-relative main-box padding-top padding-bottom">
   <!--<img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s"
       src="/assets/images/vector11.png">
@@ -237,10 +128,12 @@
 											<input type="checkbox"id="agree_terms0" required>
 											<label>모두 동의합니다</label>
 											<br/>
-											<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="이용약관" rows="5" name="msg">
+											이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
+											안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
+											<!--<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="이용약관" rows="5" name="msg">
 											이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
 											 안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
-											</textarea>
+											</textarea> -->
 										  </div>
 										</div>
 					
@@ -251,10 +144,10 @@
 						<label>[필수]이용약관</label>
 					  	
 						<br/>
-						<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="이용약관" rows="5" name="msg">
 						이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
-						 안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
-						</textarea>
+						안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
+						<!--<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="이용약관" rows="5" name="msg">
+						</textarea>-->
 					  </div>
 					</div>
 					<!--///////////////-->
@@ -263,10 +156,8 @@
 					   <input type="checkbox"id="agree_terms1"required>
 					   <label>[필수]개인정보보호</label>
 					   	<br/>
-							<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="개인정보" rows="5" name="msg">
-							당사는 이용자의 개인정보 수집 시 서비스 제공을 위해 필요한 범위에서 최소한의 개인정보를 수집합니다.
-							당사는 이용자의 개인정보를 수집 이용하는 때에는 이용자에게 그 목적을 고지하고 동의받습니다.
-							</textarea>
+						당사는 이용자의 개인정보 수집 시 서비스 제공을 위해 필요한 범위에서 최소한의 개인정보를 수집합니다.
+						당사는 이용자의 개인정보를 수집 이용하는 때에는 이용자에게 그 목적을 고지하고 동의받습니다.
 						  </div>
 							</div>
 							
@@ -275,10 +166,11 @@
 				  <div class="agree_Form">
 				  	<input type="checkbox"id="agree_terms2" name="agree_terms2" required>
 					<label>[선택]제3자정보제공</label>
-							<br/>
-						<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="선택사항" rows="5" name="msg">
-							당사에서 개인정보의 제3자 제공이 발생하는 경우는 주로 서비스 이용 도중 다른 회사에서 제공하는 부가 서비스를 이용할 경우입니다.
-						</textarea>
+					<br/>
+					당사에서 개인정보의 제3자 제공이 발생하는 경우는 주로 서비스 이용 도중 다른 회사에서 제공하는 부가 서비스를 이용할 경우입니다.
+					<!--<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="선택사항" rows="5" name="msg">
+							
+						</textarea> -->
 						  </div>
 						</div>
 						<button	></button>

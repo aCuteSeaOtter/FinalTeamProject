@@ -17,7 +17,7 @@ public interface LoginDAO {
 	
 
 	public LoginVO checkLogin(LoginVO loginVO);
-	
+	 
 	
 	// 이미 가입된 회원인지 확인하는 메소드
 	public LoginVO findkakao(@Param("memberEmail") String memberEmail,

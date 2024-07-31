@@ -23,7 +23,7 @@ public class LoginVO{
 	private Date member_regdate;
 	private Integer member_review;
    
-
+ 
 	//년 월 일
 	private int year;
 	private int month;

@@ -56,19 +56,7 @@
   <!-- 외부 배경 래퍼 -->
   <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
     <!-- 상단 바 섹션 -->
-    <div class="w-100 float-left top-bar-con main-box">
-      <div class="container">
-        <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-            <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i> help@traveltrek.com</a>
-            <!-- left con -->
-          </div>
-          <div class="right-con"><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1 (0800) 123 456</a>
-            <!-- right con -->
-          </div>
-          <!-- 상단 바 내부 내용 -->
-        </div>
-        <!-- 컨테이너 -->
+  
       </div>
       <!-- 상단 바 컨 -->
     </div>

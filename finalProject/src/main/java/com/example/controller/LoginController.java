@@ -70,16 +70,6 @@ public class LoginController {
 	}
 
 	
-	@RequestMapping("/contact")
-	public void tact() {
-		
-	}
-	
-//	@RequestMapping("/about")
-//	public void about() {
-//		
-//	}
-	
 	@RequestMapping("/index")
 	public void index() {
 		
@@ -104,19 +94,17 @@ public class LoginController {
 	//비밀번호찾기
 	@RequestMapping("/findpass")
 	public void findpass() {
-		
-	}
+			}
 	
 	@RequestMapping("/loginForm")
-	public String loginForm() {
+	public void loginForm() {
 		
-		return"/login/loginForm";
+		
 		
 	}
 	@RequestMapping("/agreeForm")
 	public void agreeForm() {
 
-		
 	}
 
 	@RequestMapping("main")
@@ -125,6 +113,7 @@ public class LoginController {
 		return "/login/main";
 	}
 
+	
 	@RequestMapping("/loginsuccess")
 	public void loginsuccess(){}
 	
