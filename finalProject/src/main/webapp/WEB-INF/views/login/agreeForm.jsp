@@ -64,7 +64,6 @@
     </div>
     <div class="clearfix"></div>
     <!-- HEADER SECTION -->
-	<jsp:include page="/WEB-INF/views/header.jsp" />
 	
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
@@ -187,7 +186,8 @@
         </div>
   
     </section>
-  <!-- BACK TO TOP BUTTON -->
+	  <!-- BACK TO TOP BUTTON -->
+	
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>

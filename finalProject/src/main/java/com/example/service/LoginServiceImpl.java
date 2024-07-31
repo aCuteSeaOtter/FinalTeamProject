@@ -23,7 +23,7 @@ public class LoginServiceImpl implements LoginService{
 
 	@Autowired
 	private LoginDAO loginDAO;
-	
+	 
 	
 	 
 	@Override
