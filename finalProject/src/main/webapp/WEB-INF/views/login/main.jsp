@@ -331,7 +331,7 @@
     </div>
     <!-- footer con -->
   </section>
-
+  <jsp:include page="/WEB-INF/views/footer.jsp" />
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>

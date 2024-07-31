@@ -51,27 +51,28 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	public LoginVO checkLogin(LoginVO loginVO) {
-		/*System.out.println("파라미터:" + loginVO);
-		LoginVO result = loginDAO.checkLogin(loginVO);
-		System.out.println("결과:" +result);
-		return result;*/
+		System.out.println("파라미터:" + loginVO);
+		LoginVO result1 = loginDAO.checkLogin(loginVO);
+		System.out.println("결과:" +result1);
 		
+	
 		// 사용자 입력 정보로 DB에서 사용자 정보 조회
 		LoginVO result = loginDAO.checkLogin(loginVO);
-		System.out.println("확인"+loginVO);
 		if (result != null) {
-            // DB에 저장된 비밀번호와 사용자 입력 비밀번호 비교
-            if (result.getMember_pass().equals(loginVO.getMember_pass())) {
-                return result; // 로그인 성공
-            } else {
-                return null; // 비밀번호 불일치
-            }
-        } else {
-            return null; // 사용자 정보가 없음
-        }
+		    System.out.println("DB에서 가져온 사용자 정보: " + result);
+		    // DB에 저장된 비밀번호와 사용자 입력 비밀번호 비교
+		    if (result.getMember_pass().equals(loginVO.getMember_pass())) {
+		    	System.out.println("!" + result);
+		        return result; // 로그인 성공
+		    } else {
+		    	System.out.println("불일치");
+		        return null; // 비밀번호 불일치
+		    }
+		} else {
+		    return null; // 사용자 정보가 없음
+		}
     
 	}
- 
 	@Override
 	public void insertkakao(LoginVO memberVO) {
 						
