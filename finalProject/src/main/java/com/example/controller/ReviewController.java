@@ -20,8 +20,6 @@ import com.example.domain.ReviewFileVO;
 import com.example.domain.ReviewVO;
 import com.example.domain.UserVO;
 import com.example.service.ReviewService;
-import com.example.service.UserService;
-import com.example.util.MD5Generator;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -40,34 +38,54 @@ public class ReviewController<SearchCriteria> {
    @Autowired 
    private ReviewService reviewService;
    
-   // UserService 객체 자동 주입
-   @Autowired
-   private UserService userService;
    
    // 리뷰 목록보기
    @RequestMapping("/reviewList")
    public String getReviewList(Model m,
                                @RequestParam(required = false) String searchCondition,
                                @RequestParam(required = false) String searchKeyword,
+                               @RequestParam(defaultValue = "1") int page,
                                HttpSession session) {
+
+       int pageSize = 6; // 페이지당 리뷰 수
+       
+       // 페이지와 페이지당 데이터 수를 이용해 offset 계산
+       int offset = (page - 1) * pageSize;
+       
 
        // 검색 조건 및 키워드를 위한 맵 생성
        HashMap<String, Object> map = new HashMap<>();
        map.put("searchCondition", searchCondition);
        map.put("searchKeyword", searchKeyword);
+       map.put("offset", offset);
+       map.put("pageSize", pageSize);
+
+       // 총 리뷰 수 조회
+       int totalCount = reviewService.getTotalCount(map);
+       int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
+       // 현재 페이지가 유효한지 확인
+       if (page < 1) {
+           page = 1; // 페이지는 1보다 작을 수 없음
+       } else if (page > totalPages) {
+           page = totalPages; // 페이지가 총 페이지 수보다 클 수 없음
+       }
 
        // 리뷰 목록 조회
-       List<ReviewVO> list = reviewService.getReviewList(map);
+       List<ReviewVO> list = reviewService.getReviewList(map, page, pageSize);
 
-       // 모델에 리뷰 목록 추가
+       // 모델에 리뷰 목록 및 페이지 정보 추가
        m.addAttribute("reviewList", list);
-
-       // 검색 조건 및 검색 키워드 모델에 추가
        m.addAttribute("searchCondition", searchCondition);
        m.addAttribute("searchKeyword", searchKeyword);
+       m.addAttribute("currentPage", page);
+       m.addAttribute("totalPages", totalPages);
 
-       return "review/reviewList";
+       return "/review/reviewList";
    }
+
+
+
    
    // 리뷰 상세보기
    @RequestMapping("/selectReview")
@@ -149,7 +167,8 @@ public class ReviewController<SearchCriteria> {
         	   // 파일 이름 생성
                String fileName = System.currentTimeMillis() + "_" + originFileName;
                // 저장 경로
-               String filePath = "C:\\Users\\ict03_004\\git\\FinalTeamProject\\finalProject\\src\\main\\resources\\static\\files\\" + fileName;
+               String filePath = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\files\\" + fileName;
+               System.out.println("filepath"+filePath);
 
                try {
             	   // 파일을 지정된 경로로 저장
@@ -202,7 +221,7 @@ public class ReviewController<SearchCriteria> {
            return "review/insertReview";  // insertReview.jsp 페이지로 이동
        } else {
            System.out.println("닉네임이 null입니다. 세션에 닉네임이 설정되지 않았습니다.");
-           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/review/reviewList");
+           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/user/userLogin");
            return null;  // 팝업을 띄우고 리다이렉트가 처리되므로 null 반환
        }
    }

@@ -38,6 +38,8 @@
       <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
 	  <link rel="stylesheet" href="/css/comment.css" type="text/css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 	  <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 	  <script src='/js/like.js' type="text/javascript"></script>
 	  <script src='/js/hate.js' type="text/javascript"></script>
@@ -143,38 +145,60 @@
           <th>조회수</th>
           <td>👁️${review.REVIEW_CNT}</td>
         </tr>
-        <tr>
-          <th>이미지/영상</th>
-          <td>
-			<!-- 이미지 출력 -->     
-			           <c:forEach items="${reviews}" var="review">
-			               <div class="review_media_div">
-			                   <c:choose>
-			                       <c:when test="${review.FILE_NAME.endsWith('.mp4') or review.FILE_NAME.endsWith('.avi')}">
-			                           <video width="320" height="240" controls>
-			                               <source src="/files/${review.FILE_NAME}" type="video/mp4">
-			                               Your browser does not support the video tag.
-			                           </video>
-			                       </c:when>
-			                       <c:otherwise>
-			                           <img src="/files/${review.FILE_NAME}" alt="${review.ORIGIN_FILE_NAME}" />
-			                       </c:otherwise>
-			                   </c:choose>
-			                   <br/><span>${review.ORIGIN_FILE_NAME}</span>
-			               </div>
-			           </c:forEach>
-			           <!-- 이미지 출력 -->
-          </td>
-        </tr>
+		<tr>
+		  <th>이미지/영상</th>
+		  <td>
+		    <div class="slick-slider">
+		      <!-- 이미지 출력 -->
+		      <c:forEach items="${reviews}" var="review">
+		        <div class="slick-slide">
+		          <c:choose>
+		            <c:when test="${review.FILE_NAME.endsWith('.mp4') or review.FILE_NAME.endsWith('.avi')}">
+		              <video width="320" height="240" controls>
+		                <source src="/files/${review.FILE_NAME}" type="video/mp4">
+		                Your browser does not support the video tag.
+		              </video>
+		            </c:when>
+		            <c:otherwise>
+		              <img src="/files/${review.FILE_NAME}" alt="${review.ORIGIN_FILE_NAME}" />
+		            </c:otherwise>
+		          </c:choose>
+		          <br/><span>${review.ORIGIN_FILE_NAME}</span>
+		        </div>
+		      </c:forEach>
+		      <!-- 이미지 출력 -->
+		    </div>
+			
+		  </td>
+		</tr>
         <tr>
           <td colspan="2" align="center">
-            <c:if test="${id == review.MEMBER_EMAIL}">
-              <button type="submit" class="btn btn-primary"onclick="return confirmUpdate()">글 수정</button>
-              <a href="deleteReview?review_id=${review.REVIEW_ID}" class="btn btn-danger" onclick="return confirmDelete()">글삭제</a>
-            </c:if>
+            
             <div class="post" data-post-id="${review.REVIEW_ID}">
               <span class="report-btn" style="cursor:pointer;">🚨</span>
             </div>
+			<div id="post">
+		      
+		    </div>
+
+			<div id="post-${review.review_id}">
+			  <div class="reaction-buttons">
+			    <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="like-button">
+			      <img src="/images/review/unlike.jpg" alt="Like" class="img-fluid">
+			    </div>
+			    <span class="count" id="like-count">0</span>
+			    
+			    <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="hate-button">
+			      <img src="/images/review/unhate2.jpg" alt="Hate" class="img-fluid">
+			    </div>
+			    <span class="count"id="hate-count-${review.REVIEW_ID}">0</span>
+				<c:if test="${id == review.MEMBER_EMAIL}">
+	              <button type="submit" class="btn btn-primary"onclick="return confirmUpdate()">글 수정</button>
+	              <a href="deleteReview?review_id=${review.REVIEW_ID}" class="btn btn-danger" onclick="return confirmDelete()">글삭제</a>
+	            </c:if>
+			  </div>
+			</div>
+				
           </td>
         </tr>
       </table>
@@ -189,19 +213,7 @@
       <p>현재 게시물 번호: ${review.REVIEW_ID}</p>
     </c:if>
 
-    <div id="post">
-      <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="like-button">
-        <img src="/images/review/unlike.jpg" alt="Like" class="img-fluid">
-      </div>
-      <span id="like-count">0</span>명이 좋아합니다.
-    </div>
-
-    <div id="post-${review.review_id}">
-      <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="hate-button">
-        <img src="/images/review/unhate.jpg" alt="Hate" class="img-fluid">
-      </div>
-      <span id="hate-count-${review.REVIEW_ID}">0</span>명이 싫어합니다.
-    </div>
+    
 
     <!-- 댓글목록을 서버에서 가지고 와서 출력 -->
     <table id="commentList" class="table table-striped mt-3"></table>
@@ -246,5 +258,6 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/selectReview.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
 </html>

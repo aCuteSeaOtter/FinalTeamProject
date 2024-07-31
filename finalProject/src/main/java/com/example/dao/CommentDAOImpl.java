@@ -23,7 +23,8 @@ public class CommentDAOImpl implements CommentDAO{
 
 	// 댓글 목록 출력
 	public List<Map<String, Object>> selectAllComment(Integer review_id) {
-	      return mybatis.selectList("commentDAO.selectAllComment", review_id);
+	    System.out.println("comment : "+ mybatis.selectList("commentDAO.selectAllComment", review_id));  
+		return mybatis.selectList("commentDAO.selectAllComment", review_id);
 	   }
  
 	// 댓글 삭제

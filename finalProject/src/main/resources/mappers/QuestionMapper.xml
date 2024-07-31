@@ -6,6 +6,61 @@
 	<!-- sql 문의글 작성 -->
 	<insert id="insertQuestion" parameterType="QuestionVO">
 		INSERT INTO QUESTION (que_id, member_email, que_title, que_content, que_state, que_secret, que_regdate)
-		VALUES( que_id_seq.NEXTVAL, #{member_email}, #{que_title}, #{que_content}, 'N', #{que_secret}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS') )
+		VALUES( que_id_seq.NEXTVAL, #{member_email}, #{que_title}, #{que_content}, 'N', #{que_secret}, TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS') )
 	</insert>
+	
+	<!-- sql 문의글 검색 및 목록보기-->
+	<select id="questionList" parameterType="map" resultType="hashmap">
+    SELECT q.que_id, q.que_title, m.member_nickname, q.que_content, q.que_regdate, q.que_state
+    FROM QUESTION q INNER JOIN MEMBER m
+    ON q.member_email = m.member_email
+    <where>
+        <if test="searchKeyword != null and searchKeyword != ''">
+            ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+        </if>
+    </where>
+    	ORDER BY q.que_id
+	</select>
+	
+	<!-- sql 문의글 update문 -->
+	<update id="updateQuestion" parameterType="QuestionVO">
+		UPDATE QUESTION SET
+		que_title = #{que_title},
+		que_content = #{que_content}
+		WHERE que_id = #{que_id}
+	</update>
+	
+	<!-- sql 문의글 delete문 -->
+	<delete id="deleteQuestion" parameterType="QuestionVO">
+    	DELETE FROM QUESTION 
+    	WHERE que_id = #{que_id}
+	</delete>
+	
+	<!-- 문의글에 답변 시 Y -->
+	<update id="updateQuestionStatus" parameterType="QuestionVO">
+    	UPDATE QUESTION
+    	SET que_state = 'Y'
+    	WHERE que_id = #{que_id}
+	</update>
+
+	<!-- 답변 삭제 시 N -->
+	<update id="updateQuestionStatusToN" parameterType="QuestionVO">
+        UPDATE QUESTION 
+        SET que_state = 'N'
+        WHERE que_id = #{que_id}
+    </update>
+    
+    <!-- sql 문의글 상세보기 -->
+	<select id="selectQuestion" parameterType="QuestionVO" resultType="QuestionVO">
+		SELECT *
+		FROM QUESTION
+		WHERE que_id = #{que_id}
+	</select>
+	
+	<!-- 문의사항 비밀글 비밀번호 -->
+	<select id="checkSecretPassword" parameterType="QuestionVO" resultType="QuestionVO">
+		SELECT *
+		FROM QUESTION
+		WHERE que_secret = #{que_secret}
+	</select>
 </mapper>
