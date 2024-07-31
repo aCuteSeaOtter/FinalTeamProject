@@ -15,7 +15,7 @@
         #{member_nickname, jdbcType=VARCHAR},
         SYSDATE,
         0
- 
+  
 )
 </insert> 
 

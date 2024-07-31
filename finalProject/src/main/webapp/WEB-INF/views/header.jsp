@@ -8,7 +8,7 @@
     <header id="header" class="w-100 flaot-left header-con main-box position-relative">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="/index">
+          <a class="navbar-brand" href="/login/main">
             <figure class="mb-0">
               <img src="<c:url value='/assets/images/logo-icon.png' />" alt="logo-icon">
             </figure>
@@ -23,14 +23,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
 				<li class="nav-item active">
-	                <a class="nav-link p-0" href="/about">일정 만들기</a>
+	                <a class="nav-link p-0" href="/calendar/calendar">일정 만들기</a>
 	            </li>
 				<li class="nav-item">
 	                <a class="nav-link p-0" href="/review/reviewList">여행후기</a>
 	            </li>
 				<li class="nav-item">
-	                <a class="nav-link p-0" href="/question/questionList">매거진</a>
+	                <a class="nav-link p-0" href="/login/main">매거진</a>
 	            </li>
+
+			 
+			 		
 			  <!--
               <li class="nav-item active">
                 <a class="nav-link p-0" href="/index">Home</a>

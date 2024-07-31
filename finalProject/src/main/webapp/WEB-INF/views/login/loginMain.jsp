@@ -54,8 +54,7 @@
   <!-- OUTER BG WRAPPER -->
 
    <div class="clearfix"></div>
-    	<jsp:include page="/WEB-INF/views/header.jsp" />
-  
+    	<jsp:include page="/WEB-INF/views/header2.jsp" />
 
   </div>
 
@@ -65,6 +64,9 @@
     <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
       src="/assets/images/vector5.png">
 	  
+<!--	  <li class="nav-item">
+	  		 	<a class="nav-link p-0" href="#"> ${sessionScope.mem.member_nickname}님 로그인중</a>
+		</li>-->
 	    
 	  <div class="container top-destination-con1 wow bounceInUp" data-wow-duration="2s">
 	    <div class="heading-title text-center">
@@ -223,6 +225,10 @@
   <script src="/assets/js/counter.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
-</body>
+
+
+
+  
+  </body>
 
 </html>

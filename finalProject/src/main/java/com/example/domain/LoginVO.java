@@ -21,7 +21,7 @@ public class LoginVO{
 	private String member_gender;
 	private String member_nickname;
 	private Date member_regdate;
-	private Integer member_review;
+	private Integer member_review; 
    
  
 	//년 월 일

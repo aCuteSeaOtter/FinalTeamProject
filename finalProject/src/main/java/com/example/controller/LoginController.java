@@ -192,17 +192,16 @@ public class LoginController {
 	    return "/login/loginForm"; // 등록 완료 후 로그인 폼 페이지로 이동
 	}
 
-	
 	// 로그인을 위해 아이디와 비밀번호를 입력하고 로그인 버튼을 눌렸을 때
-	@PostMapping("/loginMain.jsp")
+	@PostMapping("/loginMain")
 	public String checkLogin(LoginVO loginVO, HttpSession session)
 	{
 		LoginVO result = loginService.checkLogin(loginVO);
-	
+		System.out.println("ㅇㅇ" + result);
 		if(result!=null) {
 			//로그인 성공 시 세션에 사용자 정보 저장
 			session.setAttribute("mem", result);
-			
+		System.out.println("if: " + result);
 			return "login/loginMain";
 		}
 		else {
@@ -213,7 +212,7 @@ public class LoginController {
 	public String savecontact(@Valid  LoginVO loginVO, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "contact";
-		}
+}
 			
 		System.out.println(loginVO);
 		loginService.savecontact(loginVO);

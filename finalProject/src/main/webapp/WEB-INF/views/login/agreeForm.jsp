@@ -3,7 +3,7 @@
 
 <!-- registForm-->
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx"> 
 
 <head>
   <title>Travel | 이용약관</title>
