@@ -39,6 +39,8 @@
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
 	  <link rel="stylesheet" href="/css/insertReview.css" type="text/css">
 	  <link rel="stylesheet" href="/css/star.css" type="text/css">
+	  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	  <script src="/js/insertReview.js"></script>
 	  
 	</head>
 
@@ -115,7 +117,8 @@
    <tr>
       <th>파일추가</th>
       <td align="left">
-         <input type="file" name="review_file" accept="image/*, video/*" multiple="multiple">
+         <input type="file" name="review_file" accept="image/*, video/*" multiple="multiple" id="fileInput">
+		 <div id="filePreviewContainer"></div> <!-- 미리보기 컨테이너 추가 -->
       </td>
    </tr>
    <tr>
@@ -125,7 +128,7 @@
 </table>
 </form>
 <hr>
-<a href="reviewList">글목록</a>
+<a href="reviewList" class="reviewList-btn">글목록</a>
  <!-- row -->
 	      </div>
 	      <!-- container -->
@@ -149,7 +152,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/plan.js"></script>
-  <script src="/js/isnertReview.js"></script>
+
   
 </body>
 

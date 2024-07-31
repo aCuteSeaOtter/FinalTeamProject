@@ -11,5 +11,5 @@ public class QuestionVO {
 	String  que_title;		// 문의 제목
 	String  que_content;	// 문의 내용
 	String  que_state;		// 답변 여부
-	String  que_secret;		// 문의 비밀글
+	String  que_secret;		// 문의 비밀글 
 }

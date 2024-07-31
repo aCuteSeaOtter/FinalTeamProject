@@ -4,7 +4,7 @@
 <html lang="zxx">
 
 <head>
-  <title>Travel | QuestionList </title>
+  <title>Travel | selectQuestion </title>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-  <link rel="stylesheet" href="/css/questionList.css" type="text/css">
+  <link rel="stylesheet" href="/css/questionWrite.css" type="text/css">
 </head>
 
 <body>
@@ -76,47 +76,18 @@
       <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-7">
             <div class="sub-banner-inner-con padding-bottom">
               <h1>문의사항</h1>
-              <p class="font-size-20">화끈한 문의를 작성해 보아요 🥵🥵<br>
-									  ⬇️ 아래 링크 클릭</p>
+              <p class="font-size-20">내가 작성한 문의에요🥵💦💦<br>
+									  뒤로 가기는<br>
+									   ⬇️ 아래 링크 클릭
+              </p>
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                 <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="/question/questionWrite">⭐문의 작성하러 가기⭐</a></li>
+                  <li class="breadcrumb-item"><a href="/question/questionList">뒤로가기</a></li>
                 </ol>
               </div>
-			  <div class="table-container">
-				<table>
-				      <tr>
-				        <th>번호</th>
-						<th>제목</th>
-				        <th>작성자</th>
-						<th>작성일</th>
-						<th>조회수</th>
-						<th>답변 유무</th>
-				      </tr>
-					  <c:forEach var="question" items="${question}">
-					  <tr>
-			        	<td>${question.QUE_ID}</td>
-						<td>
-							<c:choose>
-								<c:when test="${not empty question.que_secret}">
-									<a href="checkQSecret?que_id=${question.que_id}">비밀글입니다.</a>
-								</c:when>
-								<c:otherwise>
-									<a href="selectQuestion?que_id=${question.que_id}">${question.QUE_TITLE}</a>
-								</c:otherwise>
-							</c:choose>
-						</td>
-			        	<!--<td><%= session.getAttribute("nickname") %></td>-->
-						<td>${question.MEMBER_NICKNAME}</td>
-			        	<td>${question.QUE_REGDATE}</td>
-						<td>${question.QUE_STATE}</td>
-			      	  </tr>
-	      	 		  </c:forEach>
-	    		</table>
-			    </div>
               <!-- sub banner inner con -->
             </div>
             <!-- col-lg-6 -->
@@ -125,11 +96,90 @@
         </div>
         <!-- container -->
       </div>
+
       <!-- banner con -->
     </section>
     <!-- bg outer wrapper -->
   </div>
   <!-- CONTACT FORM SECTION  -->
+  <section class="float-left w-100 talk-width-our-team-con about-travel-con position-relative main-box padding-top padding-bottom">
+    <img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s"
+      src="/assets/images/vector11.png">
+    <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
+      src="/assets/images/vector9.png">
+    <div class="container wow bounceInUp" data-wow-duration="2s">
+		<div class="heading-title text-center">
+		  <!-- heading title -->
+		</div>
+      <div class="row">
+        <div class="col-12">
+          <div class="register-box">
+            <form action="saveQuestion" id="questionWrite" method="POST">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                  <div >
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>작성자</label>
+                        <input type="text" class="form_style" name="member_nickname" value="${question.member_nickname}" readonly>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+						<c:choose>
+						    <c:when test="${id eq question.member_email}">
+						        <!-- 현재 사용자와 DB에서 가져온 질문의 작성자가 일치할 때 -->
+						        <label>제목</label>
+						        <input type="text" class="form_style" name="que_title" id="que_title" value="${question.que_title}">
+						    </c:when>
+						    <c:otherwise>
+						        <!-- 작성자가 일치하지 않을 때 -->
+						        <label>제목</label>
+						        <input type="text" class="form_style" name="que_title" id="que_title" value="${question.que_title}" readonly>
+						    </c:otherwise>
+						</c:choose>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group fon-con">
+                        <label>작성 날짜</label>
+                        <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate"
+							   value="${question.que_regdate}" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group mb-0">
+						<c:choose>
+						    <c:when test="${id eq question.member_email}">
+						        <label>문의 내용</label>
+						        <textarea class="form_style" rows="5" name="que_content">${question.que_content}</textarea>
+						    </c:when>
+						    <c:otherwise>
+						        <label>문의 내용</label>
+						        <textarea class="form_style" rows="5" name="que_content" readonly>${question.que_content}</textarea>
+						    </c:otherwise>
+						</c:choose>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="manage-button">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- container -->
+    </div>
+    <!-- talk with our team con -->
+  </section>
   <jsp:include page="/WEB-INF/views/footer.jsp" />
   </section>
 
@@ -146,6 +196,7 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
+  <script src="/js/questionWrite.js"></script>
 </body>
 
 </html>

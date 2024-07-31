@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +23,6 @@ public class QuestionController {
 
 	@Autowired
 	private QuestionService questionService;
-	
-	// 문의글 출력 및 검색
-	@RequestMapping("/questionList")
-	public void questionList() {
-		
-	}
 	
 	// 문의글 작성 페이지 이동
 	@RequestMapping("questionWrite")
@@ -73,4 +70,60 @@ public class QuestionController {
             return "redirect:user/login";
         }
     }
+	
+	// 문의글 검색 및 목록 출력
+	@RequestMapping("questionList")
+	public String questionList(HttpServletResponse response, Model m,
+							   String searchCondition, String searchKeyword,
+							   HttpSession session) {
+		String id = (String) session.getAttribute("sess");
+		String nickname = (String) session.getAttribute("nickname");
+		
+		HashMap<String, Object>map = new HashMap<>();
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		
+		List<QuestionVO> list = questionService.questionList(map);
+		System.out.println(list);
+		m.addAttribute("question", list);
+		m.addAttribute("searchCondition",searchCondition);
+		m.addAttribute("searchKeyword",searchKeyword);
+
+		return "question/questionList";
+	}
+	
+	@RequestMapping("selectQuestion")
+	public String selectQuestion(QuestionVO vo, Model m, HttpSession session) {
+		QuestionVO result = questionService.selectQuestion(vo);
+		String id = (String) session.getAttribute("sess");
+		m.addAttribute("id", id);
+		m.addAttribute("question", result);
+		
+		return "question/selectQuestion";
+	}
+	
+	@RequestMapping("updateQuestion")
+	public String updateQuestion(QuestionVO vo) {
+		questionService.updateQuestion(vo);
+		return "redirect:questionList";
+	}
+	
+	@RequestMapping("deleteQuestion")
+	public String deleteQuestion(QuestionVO vo, Model m, HttpSession session) {
+		questionService.deleteQuestion(vo);
+		String id = (String) session.getAttribute("sess");
+		m.addAttribute("id", id);
+		return "redirect:questionList";
+	}
+	
+	// 사용자의 문의글 비밀글 여부
+	@RequestMapping("checkSecretPassword")
+	public String checkSecretPassword(QuestionVO vo, Model m, HttpSession session) {
+		QuestionVO result = questionService.selectQuestion(vo);
+		String id = (String) session.getAttribute("logid");
+		m.addAttribute("id", id);
+		m.addAttribute("question", result);
+		return "question/checkQSecret";
+	}
 }
+
