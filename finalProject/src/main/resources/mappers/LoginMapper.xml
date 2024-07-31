@@ -6,7 +6,7 @@
 <insert id="registForm" parameterType="com.example.domain.LoginVO">
     INSERT INTO MEMBER (MEMBER_EMAIL, MEMBER_PASS,MEMBER_BIRTH,MEMBER_GENDER,MEMBER_NICKNAME
     ,MEMBER_REGDATE,MEMBER_REVIEW
-    )
+    ) 
     VALUES (
         #{member_email, jdbcType=VARCHAR},
         #{member_pass, jdbcType=VARCHAR},
@@ -17,7 +17,7 @@
         0
  
 )
-</insert>
+</insert> 
 
 <insert	id="kakaoinsert" parameterType="HashMap">
 INSERT INTO MEMBER
