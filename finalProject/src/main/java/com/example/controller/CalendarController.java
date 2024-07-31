@@ -1,26 +1,30 @@
 package com.example.controller;
 
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller 
 public class CalendarController {
 	
 	
-	 
 	
-	 
-	@RequestMapping("calendar/calendar") 
-	public String calendar() {
+	
+	
+	
+	
+	// 세션에서 로그인 정보 받아오기
+	@RequestMapping("calendar/calendar")
+	public String sessionData(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		session.setAttribute("local", "지역");	// 로그인 구현되면 지우기
+		String local = (String) session.getAttribute("local");	// 세션에 저장된 변수명
+		
+		
+		System.out.println("세션(지역) : " + local);
+		
 		return "calendar/calendar";
 	}
 }

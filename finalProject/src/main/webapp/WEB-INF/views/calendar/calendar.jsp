@@ -5,6 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.List" %>
 
+<%
+	/* String userId = (String)session.getAttribute(""); */
+%>
+
 
 <!DOCTYPE html> 
 <html lang="zxx">
@@ -87,7 +91,9 @@
 			    	<div class="left">
 			    		<div class="body">
 			    			<div class="title">여행정보 등록</div>
-			    			<div class="mb10">일정명</div>
+			    			<div class="mb10">
+			    				<div class="di">일정명&nbsp;&nbsp;&nbsp;</div><div class="di planNameChk"></div>
+			    			</div>
 			    			<div class="mb15">
 			    				<input type="text" class="form-control planName" name="info_name" placeholder="일정명을 입력하세요."/>
 			    			</div>
@@ -95,7 +101,7 @@
 			    			<div class="mb10">지역</div>
 			    			<div class="mb15">
 				    			<!-- <select class="form-select sido" name="sido"></select> -->
-				    			<input type="text" class="sido form-control" name="trip_place" readonly/>
+				    			<input type="text" class="sido form-control" name="trip_place" readonly value="<%= session.getAttribute("local") %>"/>
 			    			</div>
 			    			
 			    			<div class="mb10 fl db">누구와</div>
@@ -110,14 +116,14 @@
 			    			<div class="mb10 fl">여행 스타일</div>
 			    			<input type="hidden" class="form-control tstyleText" name="style_tag"/>
 			    			<div class="tstyle b15">
-				    			<input type="button" class="btn tagBtn mb5" name="healing" value="힐링"/>
-				    			<input type="button" class="btn tagBtn mb5" name="activity" value="활동"/>
-				    			<input type="button" class="btn tagBtn mb5" name="tourism" value="관광"/>
-				    			<input type="button" class="btn tagBtn mb5" name="culture" value="문화"/>
-				    			<input type="button" class="btn tagBtn mb5" name="gourmet" value="미식"/>
-				    			<input type="button" class="btn tagBtn mb5" name="shopping" value="쇼핑"/>
-				    			<input type="button" class="btn tagBtn mb5" name="nature" value="자연"/>
-				    			<input type="button" class="btn tagBtn mb5" name="history" value="역사"/>
+				    			<input type="button" class="btn tagBtn mb5" name="healing" value="역사"/>
+				    			<input type="button" class="btn tagBtn mb5" name="activity" value="음식"/>
+				    			<input type="button" class="btn tagBtn mb5" name="tourism" value="자연"/>
+				    			<input type="button" class="btn tagBtn mb5" name="culture" value="체험"/>
+				    			<input type="button" class="btn tagBtn mb5" name="gourmet" value="관광"/>
+				    			<input type="button" class="btn tagBtn mb5" name="shopping" value="문화"/>
+				    			<input type="button" class="btn tagBtn mb5" name="nature" value="쇼핑"/>
+				    			<input type="button" class="btn tagBtn mb5" name="history" value="드라이브"/>
 			    			</div>
 			    			
 			    		</div>
@@ -148,7 +154,7 @@
 				                    </ul>   <!-- days --> 
 				                    <input type="hidden" class="dates" name="dates"/>
 					                <input type="button" class="delBtn" value="취소하기"/>
-					                <input type="submit" class="selBtn" value="선택하기"/>
+					                <input type="submit" class="selBtn" value="선택하기" disabled="true"/>
 			                </div>  <!-- calendar -->
 				                
 			            </div>  <!-- body -->

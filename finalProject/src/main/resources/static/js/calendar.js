@@ -26,11 +26,30 @@ $(function() {
     let selMonth = []; // 클릭한 날짜의 월을 저장
     let selDate  = []; // 클릭한 날짜의 일을 저장
     let selDay   = []; // 클릭한 날짜의 요일을 저장
+	
 
     // 선택한 범위에 포함된 날짜를 저장
     let selectedDates = [];
+	
+	
+	// 저장된 날짜 카운트
+	let st = 0;
+	
+	let inputValue = '';
+	$('.planName').on('input', function() {
+        inputValue = $(this).val(); // 입력된 값을 변수에 저장
+		
+		// 날짜가 선택이 되고, 일정명에 값이 들어가면 '선택하기'버튼 활성화
+		if(inputValue !== null && inputValue.trim() !== '' && st == 2) {
+			$('.selBtn').css({'background' : '#1bbc9b'});
+			$('.selBtn').attr('disabled', false);
+		} else if(inputValue !== null || inputValue.trim() !== '' || st < 2) {
+			$('.selBtn').css({'background' : 'gray'});
+			$('.selBtn').attr('disabled', true);
+		}
+	});	
 
-
+	
     // 달력을 렌더링하는 함수
     let renderCalendar = () => {
         // 현재 연도와 월을 화면에 표시
@@ -88,6 +107,12 @@ $(function() {
 
         // 각 날짜를 클릭했을 때의 처리
         daysTag.find("li").click(function () {
+			st += 1;
+			if(st > 2) {
+				st = 1;
+			}
+			console.log(st);
+			
 			// 날짜 클릭 시 오늘 날짜 하이라이트 제거
 			$(".activ").removeClass();
 			
@@ -156,11 +181,6 @@ $(function() {
 				    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
 				        selDay.push(dayNames[d.getDay()]);
 				    } 
-					
-					// 콘솔에 선택된 날짜와 요일 출력
-				    console.log("선택된 날짜들과 요일:", selectedDates.map((date, index) => 
-				        `${date.toISOString().split('T')[0]} (${selDay[index]})`
-				    ));
                 }
         
                 // 선택한 범위에 포함된 날짜를 가져옴
@@ -172,7 +192,17 @@ $(function() {
                 // 콘솔에 시작일과 종료일 출력
                 console.log(`시작일: ${startDate.toISOString().split('T')[0]}, 종료일: ${endDate.toISOString().split('T')[0]}`);
                 console.log("선택된 날짜들:", selectedDates.map(date => date.toISOString().split('T')[0]));
-            }
+			}
+			
+			
+			// 날짜가 선택이 되고, 일정명에 값이 들어가면 '선택하기'버튼 활성화
+			if(inputValue !== null && inputValue.trim() !== '' && st == 2) {
+				$('.selBtn').css({'background' : '#1bbc9b'});
+				$('.selBtn').attr('disabled', false);
+			} else if(inputValue !== null || inputValue.trim() !== '' || st < 2) {
+				$('.selBtn').css({'background' : 'gray'});
+				$('.selBtn').attr('disabled', true);
+			}
         });
 
         // 이번 달의 날짜 중 오늘 이전의 날짜에 inactiv 클래스 추가
@@ -190,29 +220,44 @@ $(function() {
             }
         });
     };
-
+	
+	
+	// 일정명 입력이 안되어있으면, 안내 문구 출력
+	$('.planName').on('blur', function() {
+		if($('.planName').val() === null || $('.planName').val().trim() === '') {
+			$('.planNameChk').html('일정명을 입력해주세요.');
+			$('.planNameChk').css({'color' : 'red'});
+			
+			$('.selBtn').attr('disabled', true);
+		} else {
+			$('.planNameChk').html('');
+		}
+	});
+	
+	
+	
+	
+	
+	
 	
     // '선택하기'버튼 클릭 이벤트
-    $(".selBtn").on("click", function() {
-        if (selectedDates.length > 0) {
+    $('.selBtn').on('click', function() {
+        if(selectedDates.length > 0) {
             let formattedDates = selectedDates.map((date, index) => 
                 `${date.toISOString().split('T')[0]} (${selDay[index]})`
             ); 
-            $(".dates").val(formattedDates.join(', '));
-            $(".start").val("시작일 : " + formattedDates[0]);
-            $(".end").val("도착일 : " + formattedDates[formattedDates.length - 1]);
+            $('.dates').val(formattedDates.join(', '));
+            $('.start').val('시작일 : ' + formattedDates[0]);
+            $('.end').val('도착일 : ' + formattedDates[formattedDates.length - 1]);
             
 			localStorage.setItem('selectedDates', formattedDates);	// 브라우저 스토리지에 저장
-			localStorage.setItem('selectedStartDate', formattedDates[0]); // 첫번째 날 저장
-			localStorage.setItem('selectedEndDate', formattedDates[formattedDates.length-1]); // 마지막 날 저장
-        } else {
-            alert("날짜를 선택해주세요.");
-			return false;
+			//localStorage.setItem('selectedStartDate', formattedDates[0]); // 첫번째 날 저장
+			//localStorage.setItem('selectedEndDate', formattedDates[formattedDates.length-1]); // 마지막 날 저장
         }
     });
 
     // '취소하기' 버튼 클릭 이벤트
-    $(".delBtn").click(function() {
+    $('.delBtn').click(function() {
         // 변수 초기화
         startDate     = null;
         endDate       = null;

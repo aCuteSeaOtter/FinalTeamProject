@@ -32,28 +32,7 @@ public class PlanController {
         return result;
     }
     
-    @RequestMapping("/plan/planPopup")
-    public String selectAttrList(Model m) {
-        System.out.println("planPopup 신호");
-        
-        List<PlanVO> result = planService.selectAttrList();
-        m.addAttribute("attrList", result);
-        return "plan/planPopup";
-    }
-	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 	// plan 이동 
 	@RequestMapping("plan/plan")
 	public String plan(Model m) {
