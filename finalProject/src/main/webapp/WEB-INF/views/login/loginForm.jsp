@@ -104,16 +104,16 @@
  <div class="row">
         <div class="col-12">
           <div class="login-box">
-            <form id="loginForm" action="loginMain" method="POST">
+            <form id="loginForm" action="/login/" method="POST"><!--/login/logincheck-->
 				<div class="col-lg-10 col-md-10 col-sm-12 col-12 ">
 					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
                 			
 					<div class="col-12"><!--12-->
 					<div class="login-group">
-					 <label for="memberEmail">이메일</label>
+					 <label for="memberEmail">이메일222</label>
 				 <input type="email" style="width:250px; height:50px;" name="member_email" placeholder="Enter Your Email Address"
 			id="email"required>
-		 </div>
+		 </div> 
 	</div>
 	<div class="col-12">
 	<div class="login-group">

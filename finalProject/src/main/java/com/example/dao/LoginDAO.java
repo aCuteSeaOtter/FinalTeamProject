@@ -11,7 +11,7 @@ import com.example.domain.LoginVO;
 public interface LoginDAO { 
 
 	public 	void registForm(LoginVO loginVO);
-	//public MemberVO loginForm(MemberVO memberVO);
+	//public MemberVO loginForm(MemberVO memberVO); 
 	public	void updateForm(LoginVO loginVO);
 	public 	void deleteForm(LoginVO loginVO);
 	

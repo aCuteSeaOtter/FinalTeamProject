@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class LoginVO{
 
 
-	private String member_email;
+	private String member_email; 
 	
 	private String member_pass;
 	private Date member_birth;

@@ -160,7 +160,7 @@
 																			  </textarea>-->
 																			  <br/>
 																			  <label for="agree_terms">
-																			<a	href="agreeForm" target="_blank">이용약관</a></label>
+																			<a	href="agreeForm" target="_blank">이용약관 바로가기</a></label>
 																			<input type="checkbox"id="agree_terms" name="agree_terms" required> 
 														                    </div> 
 														                  </div>
@@ -187,6 +187,8 @@
         </div>
      </section>
 	  <!-- BACK TO TOP BUTTON -->
+	  
+	  
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
