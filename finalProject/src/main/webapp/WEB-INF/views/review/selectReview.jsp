@@ -37,8 +37,6 @@
       <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
       <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-	  <link rel="stylesheet" href="/css/getReview.css" type="text/css">
-	  <link rel="stylesheet" href="/css/getReviewStar.css" type="text/css">
 	  <link rel="stylesheet" href="/css/comment.css" type="text/css">
 	  <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 	  <script src='/js/like.js' type="text/javascript"></script>
