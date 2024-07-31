@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService{
 	
 	 
 	@Override
-	@Transactional
+	@Transactional 
 	public void registForm(LoginVO loginVO) {
 		loginDAO.registForm(loginVO);
 		 

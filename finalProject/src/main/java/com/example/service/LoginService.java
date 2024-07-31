@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public interface LoginService {
 
 	void registForm(LoginVO LoginVO);
-	//MemberVO loginForm(MemberVO memberVO);
+	//MemberVO loginForm(MemberVO memberVO); 
 	void updateForm(LoginVO LoginVO);
 	void deleteForm(LoginVO LoginVO);
 

@@ -1,13 +1,12 @@
-<!-- src/main/webapp/WEB-INF/views/registForm.jsp -->
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ko">
 
-<head> 
-  <title>Travel | 로그인성공_메인화면 </title>
-  <meta charset="UTF-8">
+<head>
+  <title>Travel | Home </title>
+  <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
@@ -34,17 +33,17 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
+  <!--<link rel="stylesheet" href="/assets/css/custom.css" type="text/css">-->
+  <link rel="stylesheet" href="/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="/css/realLogin.css" type="text/css">
   <link rel="stylesheet" href="/css/login.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-  
-  </head>
+</head>
 
-<body onload="displayUserInfo()">
-	<%@ page import="com.example.domain.LoginVO" %>
+<body>
   <!-- LOADER -->
   <div class="loader-mask">
     <div class="loader">
@@ -53,96 +52,163 @@
     </div>
   </div>
   <!-- OUTER BG WRAPPER -->
-  <div class="bg-outer-wrapper float-left w-100">
-    <!-- TOP BAR SECTION -->
-    <div class="w-100 float-left top-bar-con main-box">
-      <div class="container">
-        <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-			HOTSPOT
-            
-          </div>	<!-- left con -->
-       <div class="right-con">070-0000-0000
-            <!-- right con -->
-          <!--</div>-->
-          <!-- top bar inner con -->
-        </div>
-        <!-- container -->
-      </div>
-      <!-- top bar con -->
-    </div>
-    <div class="clearfix"></div>
-    <!-- HEADER SECTION -->
-	 <header class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index">
-            <figure class="mb-0">
-            <!--<img src="/assets/images/logo-icon.png" alt="logo-icon">-->  
-            </figure>
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link p-0" href="index">홈</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-0" href="reservForm">예약</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-0" href="megazineForm">매거진</a>
-              </li>
-			  <li class="nav-item">
-			    <a class="nav-link p-0" href="reviewForm">리뷰</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link p-0" href="csForm">고객센터</a>
-			  </li>
-			  <li class="nav-item">
-			  <i class="fa-solid fa-user" id="dropdownIcon" 
-			  style="font-size:20px; margin-right:100px; cursor:pointer; 
-			  position:relative;"> 
-			  ${mem.member_nickname}님 로그인중
-			  </i>
-			 </li>
-				<div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown4"
-				style="position: absolute; right: 0; left: auto; display: none;">
-				<a class="dropdown-item" href="/mypage">마이페이지</a>
-			 <a class="dropdown-item" href="/reservation">예약내역</a>
-			 <a class="dropdown-item" href="/main" id="logoutbtn">로그아웃</a>
-				</div>	
-	            </ul>
-          </div>
-        </nav>
-        <!-- container -->
-      </div> 
-      <!-- header-con -->
-    </header>
-    <!-- BANNER SECTION -->
 
-  <!-- TRAVEL TOUR AND PACKAGES -->
-  <section class="float-left w-100 travel-tour-con position-relative">
-    <div class="color-overlay position-relative padding-top padding-bottom main-box">
-      <div class="container wow bounceInUp" data-wow-duration="2s">
-         <div class="heading-content text-center position-relative">
+   <div class="clearfix"></div>
+    	<jsp:include page="/WEB-INF/views/header.jsp" />
+  
+
+  </div>
+
+  <section class="float-left w-100 top-destinations-con position-relative padding-top padding-bottom main-box">
+    <img alt="vector" class="vector4 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
+      src="/assets/images/vector4.png">
+    <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
+      src="/assets/images/vector5.png">
+	  
+	    
+	  <div class="container top-destination-con1 wow bounceInUp" data-wow-duration="2s">
+	    <div class="heading-title text-center">
+	      <h3 style="font-weight: bold; color:black;">어디로 여행을 떠나시나요?</h3>
+	  	<br/>
+	  	<input type="text" class="input-field" placeholder="검색어를 입력하세요" onkeypress="handleKeyPress(event)">
+	  	<i class="icon fas fa-search" onClick="goToNextPage()"></i>
+	      <!-- heading title -->
+	    </div>
+	    <br/>
+	    <br/>
+	    <br/>
+	    <br/>
+	    <br/>
+	    <br/>
+	  	<div class="flex item-center justify-center w-full"
+	  	id="wrapper-filter">
+	    <ul class="inline-flex text-center"> 
+	  <button class="button mx-3 px-4 duration-300 ease-in lg:mx-4 lg:py-2 text-lightScheme-primary 
+	  border-b-2 border-lightScheme-primary">전체</button>
+	  	</ul>
+	    </div><!--id=wrapper filter-->
+      <div class="owl-carousel">
+        <div class="item">
+          <div class="destination-box position-relative">
          
-          <h3 class="animated-text">어디로 여행을 떠나시나요?</h3>
-		  <br/>
-		  <input type="text" class="input-field" placeholder="검색어를 입력하세요" onkeypress="handleKeyPress(event)">
-		  <i class="icon fas fa-search" onClick="goToNextPage()"></i>
+            <figure><img src="/assets/images/destination-img1.jpg" alt="image" class="img-fluid"></figure>
+            <div class="bottom-con">
+        I      <span class="d-block text-uppercase">
+                
+              </span>
+              <a href="destinations">
+                <h4></h4>
+              </a>
+              <span class="d-inline-block star-con"><i class="fa-solid fa-star"></i><span
+                  class="d-inline-block review-span"></span></span>
+              <!-- bottom con -->
+            </div>
+            <!-- destination-box -->
+          </div>
+          <!-- item -->
         </div>
-	<span></span>
-	  </section>
- <!--Footer section-->
-
-
+        <div class="item">
+          <div class="destination-box position-relative">
+        
+            <figure><img src="/assets/images/destination-img2.jpg" alt="image" class="img-fluid"></figure>
+            <div class="bottom-con">
+              <span class="d-block text-uppercase">
+             
+              </span>
+              <a href="destinations">
+                <h4></h4>
+              </a>
+              <span class="d-inline-block star-con"><i class="fa-solid fa-star"></i><span
+                  class="d-inline-block review-span"></span></span>
+              <!-- bottom con -->
+            </div>
+            <!-- destination-box -->
+          </div>
+          <!-- item -->
+        </div>
+        <div class="item">
+          <div class="destination-box position-relative">
+         
+            <figure><img src="/assets/images/destination-img3.jpg" alt="image" class="img-fluid"></figure>
+            <div class="bottom-con">
+              <span class="d-block text-uppercase">
+             
+              </span>
+              <a href="destinations">
+                <h4></h4>
+              </a>
+              <span class="d-inline-block star-con"><i class="fa-solid fa-star"></i> <span
+                  class="d-inline-block review-span"></span></span>
+              <!-- bottom con -->
+            </div>
+            <!-- destination-box -->
+          </div>
+          <!-- item -->
+        </div>
+        <!--  -->
+        <div class="item">
+          <div class="destination-box position-relative">
+            <figure><img src="/assets/images/destination-img1.jpg" alt="image" class="img-fluid"></figure>
+            <div class="bottom-con">
+              <span class="d-block text-uppercase">
+             
+              </span>
+              <a href="destinations">
+                <h4></h4>
+              </a>
+              <span class="d-inline-block star-con"><i class="fa-solid fa-star"></i><span
+                  class="d-inline-block review-span"></span></span>
+              <!-- bottom con -->
+            </div>
+            <!-- destination-box -->
+          </div>
+          <!-- item -->
+        </div>
+        <div class="item">
+          <div class="destination-box position-relative">
+          
+            <figure><img src="/assets/images/destination-img2.jpg" alt="image" class="img-fluid"></figure>
+            <div class="bottom-con">
+              <span class="d-block text-uppercase">
+          
+              </span>
+              <a href="destinations">
+                <h4></h4>
+              </a>
+              <span class="d-inline-block star-con"><i class="fa-solid fa-star"></i> <span
+                  class="d-inline-block review-span"></span></span>
+              <!-- bottom con -->
+            </div>
+            <!-- destination-box -->
+          </div>
+          <!-- item -->
+        </div>
+        <div class="item">
+          <div class="destination-box position-relative">
+           
+            <figure><img src="/assets/images/destination-img3.jpg" alt="image" class="img-fluid"></figure>
+            <div class="bottom-con">
+              <span class="d-block text-uppercase">
+          
+              </span>
+              <a href="destinations">
+                <h4></h4>
+              </a>
+              <span class="d-inline-block star-con"><i class="fa-solid fa-star"></i><span
+                  class="d-inline-block review-span"></span></span>
+              <!-- bottom con -->
+            </div>
+            <!-- destination-box -->
+          </div>
+          <!-- item -->
+        </div>
+        <!-- owl carousel -->
+      </div>
+      <!-- container -->
+    </div>
+    <!-- top destinations con -->
+  </section>
+   <jsp:include page="/WEB-INF/views/footer.jsp" />
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
@@ -157,98 +223,6 @@
   <script src="/assets/js/counter.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
- <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-
-  
- <script>
-	//클릭 이벤트 핸들러 함수
-	function goToNextPage(){
-		window.location.href='reservation';
-	}	
-	
-	// 엔터 키 이벤트 처리 함수
-	  function handleKeyPress(event) {
-	      // event.which와 event.keyCode는 오래된 브라우저에서 사용될 수 있습니다.
-	      var keycode = event.keyCode || event.which;
-	      if (keycode === 13) { // 엔터 키의 keycode는 13입니다.
-	          goToNextPage(); // 엔터 키가 눌리면 goToNextPage 함수 호출
-	      }
-	  }
-	
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var dropdownIcon = document.getElementById('dropdownIcon');
-    var dropdownMenu = document.getElementById('dropdownMenu');
-
-    dropdownIcon.addEventListener('click', function() {
-        dropdownMenu.classList.toggle('show');
-    });
-
-    // 클릭 이벤트가 발생한 곳 외의 다른 곳을 클릭했을 때 드롭다운 메뉴가 사라지도록 처리
-    document.addEventListener('click', function(event) {
-        if (!dropdownIcon.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
-        }
-    });
-});
-
-</script>
-
-<script>
-	// 기본 탭 열기
-	  document.getElementById("defaultOpen").click();
-
-	  function openTab(evt, tabName) {
-
-
-	      // 탭 버튼 활성화 상태 해제
-	      tablinks = document.getElementsByClassName("tablinks");
-	      for (i = 0; i < tablinks.length; i++) {
-	          tablinks[i].className = tablinks[i].className.replace(" active", "");
-	      }
-
-	     
-	      // 선택된 탭 버튼을 활성화 상태로 설정
-	      evt.currentTarget.className += " active";
-	  }
-	</script>
-	
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-		    var dropdownIcon = document.getElementById('dropdownIcon');
-		    var dropdownMenu = document.getElementById('dropdownMenu');
-
-		    dropdownIcon.addEventListener('click', function() {
-		        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-		    });
-
-		    // 클릭 이벤트가 발생한 곳 외의 다른 곳을 클릭했을 때 드롭다운 메뉴가 사라지도록 처리
-		    document.addEventListener('click', function(event) {
-		        if (!dropdownIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
-		            dropdownMenu.style.display = 'none';
-		        }
-		    });
-		});
-		</script>
-	<!-- 카카오 로그아웃-->
-	<script>
-	function kakaoLogout(kakaoKey){
-		Kakao.init(kakaokey); //초기화?
-		Kakao.isInitialized();
-		
-		if(!Kakao.Auth.getAccessToken()){//토큰확인
-			console.log("not logged in");
-			return;
-		}
-	}
-	Kakao.Auth.logout(function(){
-		console.log(Kakao.Auth.getAccessToken());
-	})
-	</script>
-	  
-
 </body>
 
 </html>

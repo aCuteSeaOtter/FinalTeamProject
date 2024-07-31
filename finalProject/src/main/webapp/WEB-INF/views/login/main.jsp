@@ -32,7 +32,8 @@
   <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
  <!-- <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">-->
- <link rel="stylesheet" href="/css/custom.css" type="text/css"> 
+ <link rel="stylesheet" href="/css/custom.css" type="text/css">
+ <link rel="stylesheet" href="/css/realLogin.css" type="text/css"> 
  <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
@@ -48,60 +49,20 @@
     </div>
   </div>
   <!-- OUTER BG WRAPPER -->
+  
   <div class="bg-outer-wrapper float-left w-100">
     <div class="clearfix"></div> 
     <!-- HEADER SECTION -->
-    <header class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="main">
-            <figure class="mb-0">
-              <img src="/assets/images/logo-icon.png" alt="logo-icon">
-            </figure>
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link p-0" href="/main">일정만들기</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-0" href="/plan/plan">여행후기</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-0" href="#">매거진</a>
-              </li>
-			 </ul>
-            <div class="header-contact">
-              <ul class="list-unstyled mb-0">
-                <li><a href="/loginForm" class="live-chat-btn d-inline-block">로그인</a></li>
-                <!-- list unstyled -->
-              </ul>
-              <!-- header contact -->
-            </div>
-            <!--  -->
-          </div>
-        </nav>
-        <!-- container -->
-      </div>
-      <!-- header-con -->
-    </header>
+
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+
+
     </div>
 
     <!-- bg outer wrapper -->
   </div>
   <section class="float-left w-100 top-destinations-con position-relative padding-top padding-bottom main-box">
-    <img alt="vector" class="vector4 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="/assets/images/vector4.png">
-    <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="/assets/images/vector5.png">
-	  
+      
 	  
 	  
 	  

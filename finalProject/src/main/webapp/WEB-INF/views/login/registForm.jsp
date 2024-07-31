@@ -53,65 +53,18 @@
     </div>
   </div>
   <!-- OUTER BG WRAPPER -->
-  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100 regist">
-    <!-- TOP BAR SECTION -->
-    <div class="w-100 float-left top-bar-con registForm-box">
-      <div class="container">
-        <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-            HOTSPOT            
-          </div>
-          <div class="right-con">
-             070-0000-0000 
-          </div>
-          <!-- top bar inner con -->
-        </div>
-        <!-- container -->
-      </div>
-      <!-- top bar con -->
-    </div>
+  
     <div class="clearfix"></div>
     <!-- HEADER SECTION -->
-
-    <header class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index">
-            <figure class="mb-0">
-              <img src="/assets/images/logo-icon.png" alt="logo-icon">
-            </figure>
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-				<a class="nav-link p-0" href="main">홈</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link p-0" href="plan">예약</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link p-0" href="megazineForm">매거진</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link p-0" href="reviewForm">리뷰</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link p-0" href="csForm">고객센터</a>
-					</li>
-			  
-               </div>
-           </div>
-        </nav>
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+   
         <!-- container -->
       </div>
+
       <!-- header-con -->
     </header>
+	
+	
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
         <div class="container">
@@ -142,7 +95,8 @@
     </section>
     <!-- bg outer wrapper -->
   </div>
-   
+  
+     
  <div class="row">
         <div class="col-12">
           <div class="join-box">
@@ -156,6 +110,7 @@
 					      id="email"required>
 					  </div>
 					</div>
+					<br/>
 					<div class="col-12">
 					    <div class="form-pass">
 						<label>비밀번호</label>
@@ -165,7 +120,8 @@
 					
 				       </div>
 					  </div>
-					  <div class="col-12"><!--6--><!--12-->
+					  <br/>
+					    <div class="col-12"><!--6--><!--12-->
 					    <div class="form-birth">
 					  <label>생년월일</label>
 					  						
@@ -174,6 +130,7 @@
 					  	<select name="day"	id="day1"  style="width:30px; height:30px;"required></select>일
 					  	</div>
 					  	</div>
+						<br/>
 						<div class="col-12"><!--12-->
 					 <div class="form-nickname">
 					<label>닉네임</label>
@@ -181,6 +138,7 @@
 					 name="member_nickname"required>
 					 </div>
 					 </div>
+					 <br/>
 					 <div class="col-12"><!--12-->
 					<div class="form-gender">
 					<label>성별</label>
@@ -193,7 +151,7 @@
 					
 														
 														<!--<div class="col-lg-6 col-md-6 col-sm-12 col-12">-->
-														        
+															<br/>											        
 														             <div class="col-12"><!--12-->
 														                    <div class="form-agree">
 															<!--				  <textarea class="form_style" style="margin:10px; padding:10px;"placeholder="이용약관" rows="5" name="msg">
@@ -228,7 +186,7 @@
           </div>
         </div>
      </section>
-  <!-- BACK TO TOP BUTTON -->
+	  <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>

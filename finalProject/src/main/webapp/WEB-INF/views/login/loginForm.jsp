@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
   <link rel="stylesheet" href="/css/login.css" type="text/css">
+  <link rel="stylesheet" href="/css/realLogin.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
@@ -54,16 +55,6 @@
   </div>
   <!-- OUTER BG WRAPPER -->
   <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100 login">
-    <!-- TOP BAR SECTION -->
-    <div class="w-100 float-left top-bar-con loginForm-box">
-      <div class="container">
-        <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-            HOTSPOT            
-          </div>
-          <div class="right-con">
-             070-0000-0000 
-          </div>
           <!-- top bar inner con -->
         </div>
         <!-- container -->
@@ -71,48 +62,12 @@
       <!-- top bar con -->
     </div>
     <div class="clearfix"></div>
-    <!-- HEADER SECTION -->
-    <header class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index">
-            <figure class="mb-0">
-              <img src="/assets/images/logo-icon.png" alt="logo-icon">
-            </figure>
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-				  <a class="nav-link p-0" href="index">홈</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link p-0" href="reservForm">예약</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link p-0" href="megazineForm">매거진</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link p-0" href="reviewForm">리뷰</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link p-0" href="csForm">고객센터</a>
-				</li>
-	           </ul>
-            <!-- header contact -->
-            </div>
-           </div>
-        </nav>
-        <!-- container -->
-      </div>
-      <!-- header-con -->
-    </header>
-    <!-- BANNER SECTION -->
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+    
+	
+	
+	
+	<!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
          <div class="container">
         <div class="row">
@@ -169,8 +124,8 @@
 	   </div>
    
 	   <ul>
-	<p><a href="/findpass">비밀번호 찾기</a></p>	
-	<p id="regist"><a href="/registForm">회원가입</a></p>
+	<p><a href="/login/findpass">비밀번호 찾기</a></p>
+	<p id="regist"><a href="/login/registForm">회원가입</a></p>
 </ul>
 
  <div class="col-6">
@@ -197,9 +152,8 @@
 		</div>
 		
     <!--</section>-->
-	
 	 <!-- BACK TO TOP BUTTON -->
-  <button id="back-to-top-btn" title="Back to Top"></button>
+	<button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>

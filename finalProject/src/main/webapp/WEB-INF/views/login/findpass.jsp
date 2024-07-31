@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="/css/realLogin.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
@@ -54,62 +55,16 @@
   </div>
   <!-- OUTER BG WRAPPER -->
   <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-    <!-- TOP BAR SECTION -->
-    <div class="w-100 float-left top-bar-con main-box">
-      <div class="container">
-        <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-            HOTSPOT            
-          </div>
-          <div class="right-con">
-             070-0000-0000 
-          </div>
-          <!-- top bar inner con -->
-        </div>
-        <!-- container -->
-      </div>
-      <!-- top bar con -->
-    </div>
-    <div class="clearfix"></div>
-    <!-- HEADER SECTION -->
-    <header class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index">
-            <figure class="mb-0">
-              <img src="/assets/images/logo-icon.png" alt="logo-icon">
-            </figure>
-          </a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-				  <a class="nav-link p-0" href="index">홈</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link p-0" href="reservForm">예약</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link p-0" href="megazineForm">매거진</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link p-0" href="reviewForm">리뷰</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link p-0" href="csForm">고객센터</a>
-			</li>
-		 </ul>
-           </div>
-        </nav>
-        <!-- container -->
-      </div>
-      <!-- header-con -->
-    </header>
+   
+   <div class="clearfix"></div>
+   <!-- HEADER SECTION -->
+  <jsp:include page="/WEB-INF/views/header.jsp" />
+
+       <!-- container -->
+     </div>
+
+     <!-- header-con -->
+   </header>
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
       <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
@@ -157,9 +112,10 @@
 					<div class="login-group">
 					 <label for="memberEmail">이메일</label>
 				 <input type="email" style="width:250px; height:50px;" name="member_email" placeholder="Enter Your Email Address"
-			id="email"required>
+			id="email"required><span><a href="#">이메일인증</a></span>
 		 </div>
-	<p>이메일인증</p>
+		 <br/>
+	
 	 
 	 </div> <!--class="col-12" -->
 	
@@ -170,6 +126,7 @@
 	 id="fname"required>
 	   </div>
 	   </div>
+	 <br/>
 	   <div class="col-12">
 	   <div class="login-group">
 	       <label for="memberPass">비밀번호확인</label>
@@ -177,8 +134,14 @@
 	    id="fname"required>
 	      </div>
 	      </div>
-   
+   	
+		  <div class="col-6">
+		     <div class="checkbtn">
+		        <button onClick="check()" type="submit" name="submit"
+		        class="check_now text-white text-decoration-none w-100">확인</button>
 
+		    </div>
+		   </div>
 
 
 
@@ -210,26 +173,16 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   
-  <!-- Kakao SDK -->
-  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
   <script>
 	
-	function kakaoLogin() {
-	$.ajax({
-	 url:'/loginForm/getKakaoAuthUrl',
-	 type:'post',
-	 async: false,
-	 dataType: 'text',
-	 success: function (res) {
-	   location.href = res;
-	 }
-	});
+	function check(){
+		alert('성공');
+		
+		window.location.href = '/login/loginForm';
 	}
-	</script>
-
-
+	
+  </script>
+ 
  </body>
 
 </html>
