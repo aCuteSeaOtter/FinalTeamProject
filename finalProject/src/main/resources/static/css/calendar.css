@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 @font-face {
     font-family: 'tway';
-    src: url('../fonts/tway.ttf') format('truetype');
+    src: url('/fonts/tway_fly.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -12,7 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', 'tway', sans-serif;
+  font-family: 'tway', sans-serif;
 }
  
 /*#3 */
@@ -206,7 +206,7 @@ ul.weeks {
 .selBtn {
     width: 80px;
     height: 40px;
-    background-color: #1bbc9b;
+    background-color: gray;
     color: white;
     border-radius: 5px;
     border: none;
@@ -231,13 +231,9 @@ ul.weeks {
     font-size: 100%;
 }
 
-.selBtn:hover {
+/* .delBtn:hover {
     background-color: #1d927b;
-}
-
-.delBtn:hover {
-    background-color: #1d927b;
-}
+} */
 
 .schedule {
     width: auto;
@@ -277,6 +273,10 @@ ul.weeks {
 
 .mb15 {
 	margin-bottom: 15px;
+}
+
+.di {
+	display: inline;
 }
 
 .who, .tstyle {

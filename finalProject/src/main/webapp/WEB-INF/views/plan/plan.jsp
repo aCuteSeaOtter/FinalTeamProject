@@ -71,15 +71,12 @@
 	      <div class="row">
 	        <div class="col-lg-4">
 	        	<div>
-		        	<c:if test="${not empty travelInfo}">
-		        		<div class="title">${travelInfo.info_name}</div>
-		        	</c:if>
+	        		<div class="title"><%= session.getAttribute("info_name") %></div>
 	        	</div>
-	        	<div class="selectedDate" name="dates"></div><img alt="calendar" class="calendarImg" src="/images/plan/calendar.png">
-				<!-- <div class="btnSet">
-					<input type="button" class="hbtn btn" value="숙소"></input>
-		        	<input type="button" class="abtn btn" value="항공"></input>
-				</div> -->
+	        	<div class="selectedDate" name="dates">
+	        		<%= session.getAttribute("start_date") %> ~ <%= session.getAttribute("end_date") %>
+	        	</div>
+	        	<img alt="calendar" class="calendarImg" src="/images/plan/calendar.png">
 		        <hr/>
 		         
 		        

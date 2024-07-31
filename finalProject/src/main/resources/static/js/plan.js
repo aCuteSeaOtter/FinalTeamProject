@@ -1,6 +1,6 @@
 $(function() {
 	var selectedDates = localStorage.getItem('selectedDates').split(',');
-	$('.selectedDate').html(localStorage.getItem('selectedStartDate') +" ~ "+ localStorage.getItem('selectedEndDate') +"&nbsp&nbsp");
+	//$('.selectedDate').html(localStorage.getItem('selectedStartDate') +" ~ "+ localStorage.getItem('selectedEndDate') +"&nbsp&nbsp");
 	
 	
 	for(let i = 0; i < selectedDates.length; i++) {
@@ -74,10 +74,10 @@ $(function() {
 		window.open(`planPopup?day=${day}`, "a", "width=1200, height=800, top=50, left=100");
 	});
 
-	// 세션에서 값을 꺼내와 '.selectedDate2'에 출력
-	$('.selectedDate2').text(localStorage.getItem('selectedStartDate') +" ~ "+ localStorage.getItem('selectedEndDate'));
+	// 로컬스토리지에서 값을 꺼내와 '.dayNum2'에 출력
+	//$('.selectedDate2').text(localStorage.getItem('selectedStartDate') +" ~ "+ localStorage.getItem('selectedEndDate'));
 	$('.dayNum2').text(localStorage.getItem('dayNum'));
-	$('.date2').text(localStorage.getItem('date'));
+	//$('.date2').text(localStorage.getItem('date'));
 	
 	
 
@@ -260,7 +260,7 @@ $(function() {
 		day = day.match(/\d+/)[0];
 		
 		$.ajax({
-			url: '/insertPlan',
+			url: '/travelPlan',
 			type: 'POST',
 			data: {
 				day: day,

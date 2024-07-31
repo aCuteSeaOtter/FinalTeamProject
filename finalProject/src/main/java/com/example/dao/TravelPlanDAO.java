@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.PlanVO;
+import com.example.domain.TravelPlanVO;
 
 /**  
  DAO와 Mapper 연결
@@ -16,7 +17,7 @@ import com.example.domain.PlanVO;
  		함수명과 Mapper에서의 ID값 동일해야함
 */
 @Mapper		// Mapper 호출 
-public interface TravelInfoDAO {
-	void insertTravelInfo(String info_name, String trip_place, String start_date, String end_date, String who_tag, String style_tag);
-	String selectTravelInfo();
+public interface TravelPlanDAO {
+	void insertTravelPlan(String info_id, int attr_id, int plan_day, int plan_seq);
+	String selectTravelPlan(String info_id, int plan_day);
 }

@@ -79,8 +79,10 @@
 	    <div class="container">
 	      <div class="row">
 	        <div class="col-lg-5">
-	        <div class="selectedLocal">제주</div> 
-	        <div class="selectedDate2"></div>
+	        <div class="selectedLocal"><%= session.getAttribute("local") %></div> 
+	        <div class="selectedDate2">
+	        	<%= session.getAttribute("start_date") %> ~ <%= session.getAttribute("end_date") %>
+	        </div>
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="/images/plan/search.png"/></div><hr/>
 	        
 	        
@@ -113,8 +115,8 @@
 	        <div class="col-lg-7 selectedDiv">
 		        <div>
 		        	<div>
-		        		<span class="dayNum2">DAY 1</span> 
-		        		<span class="date2">&nbsp&nbsp7/16 수</span> 
+		        		<span class="dayNum2"></span> 
+		        		<span class="date2"><%= session.getAttribute("start_date") %></span> 
 		        		<input type="button" class="btn btn-secondary save-btn" value="저장"></input>
 		        	</div> 
 		        </div> 

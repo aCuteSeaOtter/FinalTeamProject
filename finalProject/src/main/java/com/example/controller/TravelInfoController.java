@@ -12,6 +12,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.TravelInfoVO;
 import com.example.service.TravelInfoService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class TravelInfoController {
 	
@@ -26,7 +29,7 @@ public class TravelInfoController {
 							 @RequestParam("dates") String dates,
 							 @RequestParam("who_tag") String who_tag, 
 							 @RequestParam("style_tag") String styleTags,
-							 RedirectAttributes redirectAttributes) {
+							 HttpServletRequest request) {
 		
 		List<String> dateList = Arrays.asList(dates.split(","));
 		List<String> styleTagList = Arrays.asList(styleTags.split(","));
@@ -38,17 +41,17 @@ public class TravelInfoController {
 		String end_date = dateList.get(dateList.size()-1);
 		
 		// 서비스 호출하여 데이터 저장
-		travelInfoService.saveTravelInfo(info_name, trip_place, start_date, end_date, who_tag, style_tag);
+		travelInfoService.insertTravelInfo(info_name, trip_place, start_date, end_date, who_tag, style_tag);
+		String info_id = travelInfoService.selectTravelInfo();
 		
-		TravelInfoVO vo = new TravelInfoVO();
-		vo.setInfo_name(info_name);
-		vo.setTrip_place(trip_place);
-		vo.setStart_date(start_date);
-		vo.setEnd_date(end_date);
-		vo.setWho_tag(who_tag);
-		vo.setStyle_tag(style_tag);
-
-		redirectAttributes.addFlashAttribute("travelInfo", vo);
+		HttpSession session = request.getSession();
+		session.setAttribute("info_id", info_id);
+		session.setAttribute("info_name", info_name);
+		session.setAttribute("trip_place", trip_place);
+		session.setAttribute("start_date", start_date);
+		session.setAttribute("end_date", end_date);
+		session.setAttribute("who_tag", who_tag);
+		session.setAttribute("style_tag", style_tag);
 		
 		return "redirect:/plan/plan";
 	}

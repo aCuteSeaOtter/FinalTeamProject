@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.TravelPlanDAO">
+
+	<!-- travel_plan 테이블에 일정 넣기 -->
+    <insert id="insertTravelPlan">
+	    INSERT INTO travel_plan (plan_id, info_id, attr_id, plan_day, plan_seq)
+	    VALUES (plan_id_seq.NEXTVAL, #{info_id}, #{attr_id}, #{plan_day}, #{plan_seq})
+	</insert>
+	
+	<select id="selectTravelPlan" resultType="string">
+		SELECT plan_id
+		FROM travel_plan
+		WHERE plan_day = #{plan_day} and info_id = #{info_id}
+	</select>
+	
+</mapper>
