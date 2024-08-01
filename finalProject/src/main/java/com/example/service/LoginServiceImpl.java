@@ -18,6 +18,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class LoginServiceImpl implements LoginService{
 
@@ -77,4 +79,13 @@ public class LoginServiceImpl implements LoginService{
 	public void insertkakao(LoginVO memberVO) {
 						
 }
+
+	@Override
+	public void logout(HttpSession session) {
+	    if(session.getAttribute("member") != null) {
+            session.removeAttribute("member");
+            session.invalidate();
+        }
+		
+	}
 }

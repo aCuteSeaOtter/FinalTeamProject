@@ -10,10 +10,13 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import org.apache.http.HttpStatus;
+import org.hibernate.internal.build.AllowSysOut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -33,19 +36,19 @@ import com.example.domain.LoginVO;
 import com.example.service.LoginService;
 
 import io.micrometer.common.util.StringUtils;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
-
-@RequiredArgsConstructor
 @Controller
 @SessionAttributes("mem")
 @RequestMapping("/login")
 
 public class LoginController {
 	static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
 	
 	@Autowired
 	private LoginService loginService;
@@ -89,47 +92,7 @@ public class LoginController {
 
 	}
 
-
-	
-	//회원가입 요청 처리
-//	@RequestMapping("/regist")
-//	public String registMember(@ModelAttribute("member2VO") @Valid MemberVO member2VO, 
-//							@RequestParam("year")@DateTimeFormat(pattern="yyyy") int year,
-//                            @RequestParam("month") @DateTimeFormat(pattern="MM") int month,
-//                            @RequestParam("day") @DateTimeFormat(pattern="dd") int day,
-//                            BindingResult bindingResult)
-//				
-//	{
-//		
-//		if(bindingResult.hasErrors()) {
-//			 return "registForm";
-//		}
-//		System.out.println("~~~~~~~~ ");
-//		
-//	//날짜 유효성 검사
-//	if(!isValidDate(year,month,day)) {
-//		//유효하지 않은 날짜 처리 로직
-//		String errorMessage = "유효하지 않은 날짜입니다";
-//		throw new IllegalArgumentException(errorMessage);
-//	}
-//	//LocalDate를 Date로 바꾸기
-//	LocalDate localdate = LocalDate.of(year, month, month);
-//	Date membeBirth= Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-//  
-//	member2VO.setMemberBirth(memberBirth);
-//	
-//	System.out.println("Member2VO:"+member2VO);
-//	
-//		//회원 등록 서비스 호출
-//		memberService.registForm(member2VO);
-//	
-//		return "loginForm";
-//		
-//	}	
-//	
-
-
-	
+	// 회원가입 요청
 	@RequestMapping("/regist")
 	public String registMember(@ModelAttribute("member2VO") LoginVO loginVO, 
 	                            @RequestParam("year")  int year,
@@ -166,7 +129,6 @@ public class LoginController {
 	    return "/loginForm"; // 등록 완료 후 로그인 폼 페이지로 이동
 	}
 
-	
 	// 로그인을 위해 아이디와 비밀번호를 입력하고 로그인 버튼을 눌렸을 때
 	@PostMapping("/") //logincheck
 	public String checkLogin(LoginVO loginVO, HttpSession session)
@@ -178,12 +140,53 @@ public class LoginController {
 			session.setAttribute("mem", result);
 			System.out.println("--------------------------------------");
 			System.out.println("if: " + result);
-			return "redirect:/index";
+			return "redirect:/"; // index였음
 		}
 		else {
 			return "redirect:/loginForm"; // 로그인창 뷰페이지 지정
 		}
 	}
+	
+	//header.jsp <a>로그아웃 눌렀을 때
+	@RequestMapping("/logout")
+	   public String logout(HttpSession session) {
+	      // 모든 세션 값 삭제
+		session.removeAttribute("mem");
+	      session.invalidate();
+	      System.out.println("성공");
+	      // 메인 페이지 이동
+	      return "redirect:/";
+}
+	   
+	//로그아웃 ( 예시 )
+/*@RequestMapping("/logout")
+public  ResponseEntity<String> logout(HttpServletRequest request) {
+    HttpSession session = request.getSession(false);
+    loginService.logout(session);
+    return ResponseEntity.status(HttpStatus.SC_OK).body("로그아웃 성공");
+}*/
+		
+	//마이페이지 ( 예시 )
+	@RequestMapping("/mypage")
+	public String myPage(HttpSession session) {
+	    LoginVO mem = (LoginVO) session.getAttribute("mem");
+	    if (mem != null) {
+	        // 사용자 정보를 세션에서 가져오고 페이지를 보여줍니다.
+	        return "mypage";
+	    } else {
+	        // 비로그인 상태일 때 로그인 페이지로 리디렉션
+	        return "redirect:/loginForm";
+	    }
+	}
+	
+	
+	//홈
+    @RequestMapping("/")
+    public String home() {
+        return "/";
+}
+
+	
 	
 	@RequestMapping("/savecontact")
 	public String savecontact(@Valid  LoginVO loginVO, BindingResult bindingResult) {
@@ -206,8 +209,8 @@ public class LoginController {
         }
     }
 	
-	// kakaoLogin
 	
+	// kakaoLogin
 	// 카카오 로그인 기능이 처리되는 페이지
 	@RequestMapping("/loginForm/getKakaoAuthURl")
 	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception{

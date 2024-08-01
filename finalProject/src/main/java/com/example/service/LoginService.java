@@ -5,6 +5,8 @@ import java.util.HashMap;
 import com.example.domain.LoginVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import jakarta.servlet.http.HttpSession;
+
 
 public interface LoginService {
 
@@ -17,7 +19,7 @@ public interface LoginService {
 	
 	LoginVO checkLogin(LoginVO LoginVO);
 	void savecontact(LoginVO LoginVO);
-	
+	void logout(HttpSession session);
 	//String getAccessToken(String code);
 	//HashMap<String,Object>getUserInfo(String accessToken);
 	//void kakaoLogout(String accessToken);

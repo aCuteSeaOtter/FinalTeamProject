@@ -8,7 +8,7 @@
     ,MEMBER_REGDATE,MEMBER_REVIEW
     )  
     VALUES (
-        #{member_email, jdbcType=VARCHAR},
+        #{member_email, jdbcType=VARCHAR}, 
         #{member_pass, jdbcType=VARCHAR},
         #{member_birth, jdbcType=DATE},
         #{member_gender,  jdbcType=CHAR},

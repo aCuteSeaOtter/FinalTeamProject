@@ -7,7 +7,7 @@
 4. Booking Tabs / .search-booking-tab-con
 5. What we serve / .what-we-serve-con
 6. Travel Tours & Packages / .travel-tour-con
-7. About us  / .about-travel-con 
+7. About us  / .about-travel-con
 8. Top Destinations / .top-destinations-con
 9. Customer Review / .review-testimonial-con
 10. News  & Articles / .news-articles-con
@@ -47,12 +47,48 @@ html {
     overflow-y:auto;
 }
 
+
+.col-lg-4, .col-md-4, .col-sm-6{
+	padding:15px;
+}
+.article-box{
+	margin-bottom:30px;
+}
+
+.last-con {
+    margin-bottom: 30px; /* 추가적인 아래쪽 여백을 조정 */
+}
+
+.nav-item {
+    position: relative; /* 부모 요소에 대한 위치 설정 */
+}
+
 .dropdown-menu {
-        display: none; /* 기본적으로 숨김 */
-    }
-.dropdown-menu.show {
-        display: block; /* show 클래스가 추가되면 표시됨 */
-    }
+    display: none; /* 기본적으로 숨김 */
+    position: absolute; /* 부모 요소에 대해 절대 위치 */
+    top: 100%; /* 부모 요소의 아래쪽에 위치 */
+    left: 0; /* 부모 요소의 왼쪽에 위치 */
+    background-color: #fff; /* 배경 색상 */
+    border: 1px solid #ddd; /* 테두리 */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    z-index: 1000; /* 메뉴가 다른 요소 위에 표시되도록 */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block; /* 부모 요소에 마우스를 올렸을 때 드롭다운 메뉴 표시 */
+}
+
+.dropdown-item {
+    padding: 10px 15px; /* 패딩 */
+    text-decoration: none; /* 밑줄 제거 */
+    color: #333; /* 텍스트 색상 */
+    display: block; /* 블록 요소로 설정 */
+    cursor: pointer; /* 커서 스타일 설정 */
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa; /* 배경 색상 */
+}
 
 .checkbtn .check_now{
 	     width: 100%;
@@ -123,7 +159,7 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
        }
 
 .input-field{
-	border-radius: 100px; /* 모서리를 둥글게 설정 (픽셀 값 또는 퍼센트 사용 가능) */
+	border-radius: 150px; /* 모서리를 둥글게 설정 (픽셀 값 또는 퍼센트 사용 가능) */
     padding: 10px; /* 텍스트와 테두리 사이의 여백을 설정 */
     width: 80%; /* 부모 요소의 전체 폭을 차지 */
     box-sizing: border-box; /* padding과 border가 width에 포함되도록 설정 */
@@ -132,6 +168,7 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
     font-family: Arial, sans-serif; /* 글꼴을 설정 */
     margin: 0; /* 기본 여백 제거 (선택 사항) */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+	
 }
 
 /* TOPBAR SECTION */
@@ -171,6 +208,9 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
 }
 
 /* HEADER SECTION */
+
+
+/*
 .header-con .navbar-light .navbar-nav .nav-link {
     font-size: 18px;
     color: var(--navy-color);
@@ -214,8 +254,9 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
     position: absolute;
     background: var(--primary--color);
     transition: ease-in-out 0.3s;
-}
+}*/
 
+/*
 .header-con .navbar-light .navbar-nav .dropdown .nav-link:hover::after {
     width: 0;
 }
@@ -261,7 +302,10 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
     background-color: var(--primary--color);
     color: var(--secondary--color);
 }
+*/
 
+
+/*
 .header-con .navbar-light .navbar-brand {
     margin: 0;
     padding: 0;
@@ -305,7 +349,7 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
 .header-con .outer-div {
     margin-left: 104px;
 }
-
+*/
 /* HEADER SECTION */
 /* BACK TO TOP BUTTON */
 /* #button {
@@ -372,10 +416,6 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
     margin-left: 53px;
 }
 
-#back-to-top-btn:focus {
-    outline: none;
-}
-
 @-webkit-keyframes spineer {
     from {
         box-shadow: 0 0 0 0 rgb(30, 194, 139, .99);
@@ -397,6 +437,46 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
     }
 }
 
+/* -----메인페이지 dropmenu---- */
+#dropdownContent{
+    display: none;
+    position: relative;
+    top:5px;
+  	left:500px;
+    z-index:100px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width:100px;
+}
+
+#dropdownMenu:hover #dropdownContent {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    position:relative;
+}
+
+.dropdown-item:hover {
+    background-color: #2dca73;
+}
+
+/* 모바일 뷰에서 드롭다운 메뉴 보이게 하기 위한 스타일 추가 */
+@media (max-width: 768px) {
+    #dropdownContent {
+        position: absolute;
+        top: 100%; /* 모바일에서도 버튼 바로 아래에 위치 */
+        right:500px;
+        width: 100%; /* 모바일 화면에서 너비를 화면 전체로 조정 */
+    }
+}
+
+/*----------------------------- */
+
 #back-to-top-btn::after {
     font-size: 18px;
     font-weight: 600;
@@ -405,7 +485,6 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
     color: var(--secondary--color);
     font-family: "Font Awesome 5 free";
 }
-
 
 #back-to-top-btn:hover {
     cursor: pointer;

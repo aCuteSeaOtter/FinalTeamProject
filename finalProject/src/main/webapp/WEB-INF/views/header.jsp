@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 	<link rel="stylesheet" href="/css/calendar.css" type="text/css">
+	<link rel="stylesheet" href="/css/realLogin.css" type="text/css">
 <!-- HEADER SECTION -->
     <header id="header" class="w-100 flaot-left header-con main-box position-relative">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="/login/main">
+          <a class="navbar-brand" href="/">
             <figure class="mb-0">
               <img src="<c:url value='/assets/images/logo-icon.png' />" alt="logo-icon">
             </figure>
@@ -23,7 +24,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
 				<li class="nav-item active">
-	                <a class="nav-link p-0" href="/calendar/calendar">일정 만들기</a>
+	                <a class="nav-link p-0" href="/">홈</a>
 	            </li>
 				<li class="nav-item">
 	                <a class="nav-link p-0" href="/review/reviewList">여행후기</a>
@@ -83,21 +84,77 @@
 				<!--
                 <li><a href="contact" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
                     Live Chat</a></li>
-					-->		
-				<li>
+					-->	
+				<!--[ ${sessionScope.mem}]	-->
+				<c:choose>		
+				<c:when test="${not empty sessionScope.mem}">
+				<li class="nav-item">
+					<a class="nav-link p-0">
+						${sessionScope.mem.member_nickname}님 로그인중 </a>
+					<div class="dropdown-menu" aria-lebelledby="navbarDropdown4">
+					<a class="dropdown-item" href="/login/mypage">마이페이지</a>
+					 <a class="dropdown-item" href="/review/reviewList">후기내역</a>
+					<a class="dropdown-item" href="/login/logout">로그아웃</a>
+					</div>	
+					</li>
+				</c:when>
+					
+				<c:otherwise>
+						<li class="nav-item">
 					<a href="/login/loginForm" class="live-chat-btn d-inline-block">
 				    	로그인
 					</a>
 				</li>
+				</c:otherwise>
+				</c:choose>
+	
 				
                 <!-- list unstyled -->
               </ul>
               <!-- header contact -->
             </div>
-            <!--  -->
+          
           </div>
         </nav>
         <!-- container -->
       </div>
       <!-- header-con -->
     </header>
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/popper.min.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/custom.js"></script>
+	
+	<script>
+	      document.addEventListener('DOMContentLoaded', function () {
+	          var navItems = document.querySelectorAll('.nav-item.dropdown');
+	          
+	          navItems.forEach(function (navItem) {
+	              var dropdownMenu = navItem.querySelector('.dropdown-menu');
+	              
+	              navItem.addEventListener('mouseover', function () {
+	                  dropdownMenu.style.display = 'block';
+	              });
+	              
+	              dropdownMenu.addEventListener('mouseover', function () {
+	                  dropdownMenu.style.display = 'block';
+	              });
+	              
+	              navItem.addEventListener('mouseout', function (event) {
+	                  if (!navItem.contains(event.relatedTarget)) {
+	                      dropdownMenu.style.display = 'none';
+	                  }
+	              });
+	              
+	              dropdownMenu.addEventListener('mouseout', function (event) {
+	                  if (!dropdownMenu.contains(event.relatedTarget)) {
+	                      dropdownMenu.style.display = 'none';
+	                  }
+	              });
+	          });
+	      });
+	
+			
+	</script>
+
+	  

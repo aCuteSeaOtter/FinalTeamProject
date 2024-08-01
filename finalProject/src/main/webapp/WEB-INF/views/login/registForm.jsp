@@ -114,7 +114,7 @@
 					<div class="col-12">
 					    <div class="form-pass">
 						<label>비밀번호</label>
-					   <input type="password" style="width:190px; height:30px;"class="form_style" placeholder="Enter Your passwords" name="member_pass"
+					   <input type="password" style="width:190px; height:30px;"class="form_control" placeholder="Enter Your passwords" name="member_pass"
 					   id="fname" minlength="6" required>
 					<span	id="password-error" class="error"></span>  
 					
