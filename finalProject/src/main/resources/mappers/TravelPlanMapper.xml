@@ -10,10 +10,16 @@
 	    VALUES (plan_id_seq.NEXTVAL, #{info_id}, #{attr_id}, #{plan_day}, #{plan_seq})
 	</insert>
 	
-	<select id="selectTravelPlan" resultType="string">
-		SELECT plan_id
+	<select id="selectTravelPlan" resultType="com.example.domain.TravelPlanVO">
+		SELECT *
 		FROM travel_plan
 		WHERE plan_day = #{plan_day} and info_id = #{info_id}
+	</select>
+	
+	<select id="selectTravelPlanById" resultType="com.example.domain.TravelPlanVO">
+		SELECT *
+		FROM travel_plan
+		WHERE plan_id = #{plan_id}
 	</select>
 	
 </mapper>

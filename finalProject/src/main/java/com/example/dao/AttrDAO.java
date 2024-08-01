@@ -15,6 +15,8 @@ import com.example.domain.AttrVO;
 @Mapper		// Mapper 호출 
 public interface AttrDAO {
 	public List<AttrVO> selectAttrList();
+	public List<AttrVO> selectAttrList(int selectedAttrIds);
+	public AttrVO selectAttrListById(Integer id);
 	
 	
 	

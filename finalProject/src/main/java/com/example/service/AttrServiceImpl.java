@@ -17,6 +17,14 @@ public class AttrServiceImpl implements AttrService {
     public List<AttrVO> selectAttrList() {
         return attrDAO.selectAttrList();
     }
+    
+    public List<AttrVO> selectAttrList(int selectedAttrIds) {
+        return attrDAO.selectAttrList(selectedAttrIds);
+    }
+    
+    public AttrVO selectAttrListById(Integer id) {
+        return attrDAO.selectAttrListById(id);
+    }
 	
     
     
