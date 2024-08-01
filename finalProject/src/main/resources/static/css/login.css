@@ -4,7 +4,7 @@
 1. Body
 2. Header / .header-con
 3. Banner / .banner-con
-4. Booking Tabs / .search-booking-tab-con 
+4. Booking Tabs / .search-booking-tab-con
 5. What we serve / .what-we-serve-con
 6. Travel Tours & Packages / .travel-tour-con
 7. About us  / .about-travel-con
@@ -40,7 +40,8 @@ Headings: "Jost", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-} 
+}
+
 
 /*loginForm */
 #loginForm{
@@ -197,6 +198,11 @@ ul{
 	padding:40px;
   display: inline-block;
 	
+}
+
+input .form_control{
+	
+	font-family:auto;
 }
 .confirm{
 	background-color:#c0c0c0;
