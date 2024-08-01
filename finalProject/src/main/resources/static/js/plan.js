@@ -70,36 +70,29 @@ $(function() {
 		// .selectedDate 값을 가져와 세션에 저장
 		localStorage.setItem('dayNum', dayNum);
 		localStorage.setItem('date', date);
+		
+		    
+	    // .dayBlock 안의 모든 명소의 attr_id 값을 저장할 배열
+	    var attrIds = [];
 
-		window.open(`planPopup?day=${day}`, "a", "width=1200, height=800, top=50, left=100");
+		// .dayBlock 내의 .inputData 요소를 순회하면서 .selectedItem 내의 .attr_id 값을 추출
+	    dayBlock.find('.inputData > div').each(function() {
+            var attrId = $(this).find('.attr_id').val();
+            if (attrId) { // attrId가 존재하는지 확인
+                attrIds.push(attrId);
+            }
+	    });
+		
+
+		window.open(`planPopup?day=${day}&selectedAttrIds=${attrIds}`, "a", "width=1200, height=800, top=50, left=100");
 	});
-
 	// 로컬스토리지에서 값을 꺼내와 '.dayNum2'에 출력
 	//$('.selectedDate2').text(localStorage.getItem('selectedStartDate') +" ~ "+ localStorage.getItem('selectedEndDate'));
 	$('.dayNum2').text(localStorage.getItem('dayNum'));
 	//$('.date2').text(localStorage.getItem('date'));
-	
-	
-
-	// 편집 버튼 클릭 시 팝업창 열기
-	$(".edit-btn").on("click", function() {
-		let day = $(this).data('day');
-		let existingData = [];
-
-		// 해당 day의 기존 데이터 수집
-		$(`#inputData-${day} .selectedItem`).each(function() {
-			let attrId = $(this).find('input[type="hidden"]').val();
-			existingData.push(attrId);
-		});
-
-		// 기존 데이터를 쿼리 파라미터로 전달
-		let existingDataParam = existingData.join(',');
-		window.open(`planPopup?day=${day}&existingData=${existingDataParam}`, "a", "width=1200, height=800, top=50, left=100");
-	});
 
 
-	// 추가한 일정의 수 카운트
-	let cnt = 0;
+
 	let selectedAttrId;
 	let selectedAttrIdData = [];
 
@@ -111,40 +104,19 @@ $(function() {
 
 	selectBox.on("click", function() {
 		const currentSrc = $(this).attr('src'); // 현재 클릭된 요소의 src 속성 가져오기
-		// 이미지 상태에 따라 클릭 시 교체
-		if (currentSrc.includes(noneSel)) {
-			$(this).attr('src', sel); // 선택된 이미지로 변경
-		} else {
-			$(this).attr('src', noneSel); // 선택되지 않은 이미지로 변경
-		}
-
-
 		var divBlock = $(this).closest('.divBlock'); // 클릭한 selectBox의 부모 divBlock 요소 선택
 		var selectedLocalTitleText = divBlock.find(".localTitle").text(); // 선택된 지역명 텍스트 가져오기
 
 		// 이미 추가된 요소인지 확인
-		var selectedItem = $(".selectedScrollBox").find(".selectedItem");
+		var selectedItem = $('.selectedScrollBox').find('.selectedItem');
 		var exists = false;
-		selectedItem.each(function() {
-			var existingTitle = $(this).find(".selectedLocalTitle").text(); // 기존 추가된 요소의 지역명 텍스트 가져오기
-			if (existingTitle === selectedLocalTitleText) {
-				// 이미 존재하는 경우 제거
-				$(this).remove();
-
-				// 추가한 일정의 수 카운트
-				cnt -= 1;
-				updateCnt(cnt);
-
-				exists = true;
-				return false; // each 반복문 중단
-			}
-		});
-
-		// 존재하지 않는 경우 추가
-		if (!exists) {
+		
+		// 이미지 상태에 따라 클릭 시 교체
+		if (currentSrc.includes(noneSel)) {
+			// 존재하지 않는 경우 추가
+			$(this).attr('src', sel); // 선택된 이미지로 변경
 			// 추가한 일정의 수 카운트
-			cnt += 1;
-			updateCnt(cnt);
+			updateCnt(1);
 
 			selectedAttrId = divBlock.find(".attrId").val();
 			var selectedThumbnailSrc = divBlock.find(".thumbnail").attr("src"); // 선택된 썸네일 이미지 경로 가져오기
@@ -169,6 +141,30 @@ $(function() {
 			`;
 			// 생성된 항목을 .selectedScrollBox 안에 추가
 			$(".selectedScrollBox").append(newItem);
+		} else {
+			$(this).attr('src', noneSel); // 선택되지 않은 이미지로 변경
+			selectedItem.each(function() {
+				var existingTitle = $(this).find('.selectedLocalTitle').text(); // 기존 추가된 요소의 지역명 텍스트 가져오기
+				if (existingTitle === selectedLocalTitleText) {
+					
+					// 한번 더 클릭 시, 제거
+					for (let attrId of selectedAttrIdData) {
+						if (attrId === selectedAttrId) {
+							selectedAttrIdData.splice(selectedAttrIdData.indexOf(attrId), 1);
+							break;  // 원소를 찾아 제거했으므로 루프를 종료
+						}
+					}
+					
+					
+					// 이미 존재하는 경우 제거
+					$(this).remove();
+
+					updateCnt(-1);
+
+					exists = true;
+					return false; // each 반복문 중단
+				}
+			});
 		}
 	});
 
@@ -207,8 +203,8 @@ $(function() {
 		}
 
 		// 추가한 일정의 수 카운트
-		cnt -= 1;
-		updateCnt(cnt);
+		updateCnt(-1);
+		
 
 		var selectedItem = $(this).closest(".selectedItem"); // 클릭된 deleteItem의 부모 selectedItem 요소 선택
 		var selectedLocalTitleText = selectedItem.find(".selectedLocalTitle").text(); // 선택된 지역명 텍스트 가져오기
@@ -238,8 +234,7 @@ $(function() {
 		selectedAttrIdData = [];
 
 		// 추가한 일정의 수 카운트
-		cnt = 0;
-		updateCnt(cnt);
+		updateCnt(100);
 
 		// 이미 추가된 요소인지 확인
 		var selectedItem = $(".selectedScrollBox").find(".selectedItem");
@@ -251,6 +246,21 @@ $(function() {
 		selectedItem.remove();
 	});
 
+	
+	// URL에서 쿼리 파라미터 추출
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedAttrIds = urlParams.get('selectedAttrIds');
+    const selectedIdArray = selectedAttrIds ? selectedAttrIds.split(',') : [];
+
+    // 이미 선택된 장소의 체크 상태 설정
+    if (selectedIdArray.length > 0) {
+        $('.selectBox').each(function() {
+            var attrId = $(this).closest('.divBlock').find('.attrId').val();
+            if (selectedIdArray.includes(attrId)) {
+                $(this).attr('src', '/images/plan/place_select.svg'); // 선택된 상태로 표시
+            }
+        });
+    }
 
 	
 	// 버튼 클릭 이벤트 핸들러 
@@ -258,17 +268,18 @@ $(function() {
 		alert("배열 확인 : " + selectedAttrIdData);
 		let day = localStorage.getItem('dayNum')
 		day = day.match(/\d+/)[0];
-		
+
 		$.ajax({
 			url: '/travelPlan',
 			type: 'POST',
 			data: {
-				day: day,
-				data: selectedAttrIdData
+				day : day,
+				'data[]': selectedAttrIdData
 			},
 			success: function(response) {
 				console.log('Success:', response);
 				response.forEach(item => {
+					// 'inputToParent' 함수를 호출하여 받은 데이터 처리
 					inputToParent(item, day);
 				});
 				window.close();
@@ -287,11 +298,12 @@ $(function() {
  
 	// plan/plan 추가한 일정을 출력
 	function inputToParent(data, day) {
-		
+		opener.console.log(data);
 		let inputData = `
 	        <div>
 	            <div>${data.attr_name}</div>
-	            <div>${data.attr_tag}</div>
+	            <div>${data.attr_local}</div>
+				<input type="text" class="attr_id" value="${data.attr_id}"/>
 	        </div>
 	    `;
 		if(day != undefined && day != null) {
@@ -307,8 +319,14 @@ $(function() {
 
 	// 추가한 일정의 수 카운트
 	function updateCnt(newCnt) {
-		cnt = newCnt;
-		$(".selectedCnt").html(cnt);
+		var currentCount = parseInt($('.selectedCnt').html().trim(), 10);
+		if(newCnt == 100) {
+			currentCount = 0;
+		} else {
+			currentCount += newCnt;
+		}
+		
+		$(".selectedCnt").html(currentCount);
 	}
 });
 

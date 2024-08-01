@@ -7,6 +7,17 @@
     <select id="selectAttrList" resultType="com.example.domain.AttrVO">
         SELECT *
         FROM ATTR
+        <where>
+	        <if test="attr_id != null">
+	            AND attr_id = #{attr_id}
+	        </if>
+	    </where>
+    </select>
+    
+    <select id="selectAttrListById" resultType="com.example.domain.AttrVO">
+        SELECT *
+        FROM ATTR
+        WHERE attr_id = #{attd_id}
     </select>
     
 </mapper>

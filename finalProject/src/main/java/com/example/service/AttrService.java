@@ -5,6 +5,8 @@ import com.example.domain.AttrVO;
   
 public interface AttrService {
 	List<AttrVO> selectAttrList();
+	List<AttrVO> selectAttrList(int selectedAttrIds);
+	AttrVO selectAttrListById(Integer id);
 	
 	
 	
