@@ -5,7 +5,7 @@
 
 <head>
   <title>Travel | selectQuestion </title>
-  <meta charset="UTF-8"> 
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
   <link rel="stylesheet" href="/css/questionWrite.css" type="text/css">
+  <link rel="stylesheet" href="/css/selectQuestion.css" type="text/css">
 </head>
 
 <body>
@@ -80,8 +81,8 @@
             <div class="sub-banner-inner-con padding-bottom">
               <h1>문의사항</h1>
               <p class="font-size-20">내가 작성한 문의에요🥵💦💦<br>
-									  뒤로 가기는<br>
-									   ⬇️ 아래 링크 클릭
+                뒤로 가기는<br>
+                ⬇️ 아래 링크 클릭
               </p>
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                 <ol class="breadcrumb mb-0">
@@ -108,43 +109,50 @@
     <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
       src="/assets/images/vector9.png">
     <div class="container wow bounceInUp" data-wow-duration="2s">
-		<div class="heading-title text-center">
-		  <!-- heading title -->
-		</div>
+      <div class="heading-title text-center">
+        <h2 class="">내가 얼마나 싸가지 없이<br>
+          작성했는지 보아요.
+        </h2>
+        <!-- heading title -->
+      </div>
       <div class="row">
         <div class="col-12">
           <div class="register-box">
             <form action="saveQuestion" id="questionWrite" method="POST">
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                  <div >
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin-top: -3px;">
+                  <div>
                     <div class="col-12">
                       <div class="form-group">
-                        <label>작성자</label>
-                        <input type="text" class="form_style" name="member_nickname" value="${question.member_nickname}" readonly>
+                        <input type="hidden" class="form_style" name="que_id" value="${question.que_id}" readonly>
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-						<c:choose>
-						    <c:when test="${id eq question.member_email}">
-						        <!-- 현재 사용자와 DB에서 가져온 질문의 작성자가 일치할 때 -->
-						        <label>제목</label>
-						        <input type="text" class="form_style" name="que_title" id="que_title" value="${question.que_title}">
-						    </c:when>
-						    <c:otherwise>
-						        <!-- 작성자가 일치하지 않을 때 -->
-						        <label>제목</label>
-						        <input type="text" class="form_style" name="que_title" id="que_title" value="${question.que_title}" readonly>
-						    </c:otherwise>
-						</c:choose>
+                        <label>작성자</label>
+                        <input type="text" class="form_style" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <c:choose>
+                          <c:when test="${id eq question.MEMBER_EMAIL}">
+                            <!-- 현재 사용자와 DB에서 가져온 질문의 작성자가 일치할 때 -->
+                            <label>제목</label>
+                            <input type="text" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}">
+                          </c:when>
+                          <c:otherwise>
+                            <!-- 작성자가 일치하지 않을 때 -->
+                            <label>제목</label>
+                            <input type="text" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
+                          </c:otherwise>
+                        </c:choose>
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group fon-con">
                         <label>작성 날짜</label>
-                        <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate"
-							   value="${question.que_regdate}" readonly>
+                        <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="${question.QUE_REGDATE}" readonly>
                       </div>
                     </div>
                   </div>
@@ -153,24 +161,70 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group mb-0">
-						<c:choose>
-						    <c:when test="${id eq question.member_email}">
-						        <label>문의 내용</label>
-						        <textarea class="form_style" rows="5" name="que_content">${question.que_content}</textarea>
-						    </c:when>
-						    <c:otherwise>
-						        <label>문의 내용</label>
-						        <textarea class="form_style" rows="5" name="que_content" readonly>${question.que_content}</textarea>
-						    </c:otherwise>
-						</c:choose>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="manage-button">
+                        <c:choose>
+                          <c:when test="${id eq question.MEMBER_EMAIL}">
+                            <label>문의 내용</label>
+                            <textarea class="form_style" rows="5" name="que_content">${question.QUE_CONTENT}</textarea>
+                          </c:when>
+                          <c:otherwise>
+                            <label>문의 내용</label>
+                            <textarea class="form_style" rows="5" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
+                          </c:otherwise>
+                        </c:choose>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- 체크박스 클릭 시 답변 확인-->
+                <div class="col-md-6 right-margin">
+                  <input type="checkbox" id="answerCheckbox" name="answer" value="true">
+                  <label for="answerCheckbox" class="short-label">답변 확인하기</label>
+                </div>
+
+                <!-- 답변 확인 내용 -->
+                <div id="answerContentRow" style="display: none;">
+                  <div class="row right-margin1">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin-top: -3px;">
+                      <div>
+                        <div class="col-12">
+                          <div class="form-group">
+                            <input type="hidden" class="form_style" name="que_id" value="${question.que_id}" readonly>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label>작성자</label>
+                            <input type="text" class="form_style wide-input" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label>제목</label>
+                            <input type="text" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-group fon-con">
+                            <label>작성 날짜</label>
+                            <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="${question.QUE_REGDATE}" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-group mb-0">
+                            <label>문의 내용</label>
+                            <textarea class="form_style large-textarea" rows="5" cols="50" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </form>
           </div>
@@ -181,7 +235,6 @@
     <!-- talk with our team con -->
   </section>
   <jsp:include page="/WEB-INF/views/footer.jsp" />
-  </section>
 
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
@@ -197,6 +250,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/questionWrite.js"></script>
+  <script src="/js/selectQuestion.js"></script>
 </body>
 
 </html>

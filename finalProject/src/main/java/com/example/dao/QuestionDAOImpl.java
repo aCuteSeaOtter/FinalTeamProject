@@ -38,7 +38,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 	}
 	
 	// 사용자 문의글 상세보기
-	public QuestionVO selectQuestion (QuestionVO vo) {
+	public HashMap<String, Object> selectQuestion (QuestionVO vo) {
 		return mybatis.selectOne("QuestionDAO.selectQuestion", vo);
 	}
 	

@@ -20,7 +20,7 @@ public interface QuestionService {
 	void deleteQuestion(QuestionVO vo);
 	
 	// 문의글 상세 조회
-	QuestionVO selectQuestion(QuestionVO vo);
+	HashMap<String, Object> selectQuestion(QuestionVO vo);
 	
 	// 답변 시 Y 반환
 	void updateQuestionStatus(QuestionVO vo);

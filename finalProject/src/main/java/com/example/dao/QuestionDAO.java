@@ -20,7 +20,7 @@ public interface QuestionDAO {
 	public void deleteQuestion(QuestionVO vo);
 	
 	// 사용자 문의사항 상세보기
-	public QuestionVO selectQuestion (QuestionVO vo);
+	public HashMap<String, Object> selectQuestion (QuestionVO vo);
 	
 	// 답변 시 Y 변환
 	public void updateQuestionStatus(QuestionVO vo);
