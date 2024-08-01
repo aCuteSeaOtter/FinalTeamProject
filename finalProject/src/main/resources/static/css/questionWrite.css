@@ -62,6 +62,11 @@
 		.col-md-8 {
 		    margin-bottom: 20px;
 		}
+		
+		.form_style {
+			border: none;
+      		resize: none;
+		}
 		/* 비밀글 비밀번호 필드를 비밀글 비밀번호 텍스트 아래로 이동 */
 		#secretContentRow {
 		    display: flex;
@@ -95,4 +100,8 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
+        }
+        
+        input#passwordInput.form-control {
+           font-family: auto;
         }

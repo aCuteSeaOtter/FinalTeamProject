@@ -146,20 +146,20 @@
 						<p>비밀글 여부</p>
 					</div>
 					<div class="col-md-8">
-						<input type="checkbox" id="secretCheckbox" name="secret"
-							value="true"> <label for="secretCheckbox">비밀글로 설정하기</label>
+					  <input type="checkbox" id="secretCheckbox" name="secret"
+							 value="true"> <label for="secretCheckbox">비밀글로 설정하기</label>
 					</div>
 
 					<%-- 비밀글 내용 입력란 --%>
 					<div id="secretContentRow" style="display: none;">
-						<div class="col-md-4">
-							<p>비밀글 비밀번호</p>
-						</div>
-						<div class="col-md-12">
-							<input type="password" name="que_secret" class="form-control"
-								id ="passwordInput" placeholder="비밀글에 대한 비밀번호를 남겨주세요.">
-								<i class="fa fa-eye fa-lg password-toggle-icon" id="togglePassword"></i>
-						</div>
+					  <div class="col-md-4">
+						<p>비밀글 비밀번호</p>
+					</div>
+					  <div class="col-md-12">
+						<input type="password" name="que_secret" class="form-control"
+						 	   id ="passwordInput" placeholder="비밀글에 대한 비밀번호를 남겨주세요.">
+						  <i class="fa fa-eye fa-lg password-toggle-icon" id="togglePassword"></i>
+					  </div>
 					</div>
                   </div>
                 </div>

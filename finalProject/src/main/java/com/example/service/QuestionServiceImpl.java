@@ -36,7 +36,7 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	// 문의글 상세보기
-	public QuestionVO selectQuestion(QuestionVO vo) {
+	public HashMap<String, Object> selectQuestion(QuestionVO vo) {
 		return questionDAO.selectQuestion(vo);
 	}
 	

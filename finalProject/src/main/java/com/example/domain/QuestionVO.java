@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class QuestionVO {
 	
-	int 	que_id;			// 문의 번호
+	Integer 	que_id;		// 문의 번호
 	String 	que_regdate;	// 문의 작성 날짜
 	String  member_email;	// 회원 이메일
 	String  que_title;		// 문의 제목

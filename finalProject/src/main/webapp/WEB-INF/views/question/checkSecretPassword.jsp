@@ -4,7 +4,7 @@
 <html lang="zxx">
 
 <head>
-  <title>Travel | QuestionList </title>
+  <title>Travel | checkSecretPassword </title>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
   <link rel="stylesheet" href="/css/questionList.css" type="text/css">
+  <link rel="stylesheet" href="/css/checkSecretPassword.css" type="text/css">
 </head>
 
 <body>
@@ -78,45 +79,32 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="sub-banner-inner-con padding-bottom">
-              <h1>문의사항</h1>
-              <p class="font-size-20">화끈한 문의를 작성해 보아요 🥵🥵<br>
+              <h1>비밀글 비밀번호 입력</h1>
+              <p class="font-size-20">비밀글에 대한 비밀번호를 작성🥵🥵<br>
+									  틀릴까봐 쫄린다면<br>
 									  ⬇️ 아래 링크 클릭</p>
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                 <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="/question/questionWrite">⭐문의 작성하러 가기⭐</a></li>
+                  <li class="breadcrumb-item"><a href="/question/questionList">⭐문의 목록 보기⭐</a></li>
                 </ol>
               </div>
-			  <div class="table-container">
-				<table>
-				      <tr>
-				        <th>번호</th>
-						<th>제목</th>
-				        <th>작성자</th>
-						<th>작성일</th>
-						<!--<th>조회수</th>-->
-						<th>답변 유무</th>
-				      </tr>
-					  <c:forEach var="question" items="${question}">
-					  <tr>
-			        	<td>${question.QUE_ID}</td>
-						<td>
-							<c:choose>
-								<c:when test="${not empty question.QUE_SECRET}">
-									<a href="checkSecretPassword?que_id=${question.QUE_ID}">비밀글입니다.</a>
-								</c:when>
-								<c:otherwise>
-									<a href="selectQuestion?que_id=${question.QUE_ID}">${question.QUE_TITLE}</a>
-								</c:otherwise>
-							</c:choose>
-						</td>
-			        	<!--<td><%= session.getAttribute("nickname") %></td>-->
-						<td>${question.MEMBER_NICKNAME}</td>
-			        	<td>${question.QUE_REGDATE}</td>
-						<td>${question.QUE_STATE}</td>
-			      	  </tr>
-	      	 		  </c:forEach>
-	    		</table>
-			    </div>
+			  <form id="passwordForm" method="get" action="selectQuestion" data-correct-secret="${question.QUE_SECRET}">
+	      		<c:choose>
+	          		<c:when test="${empty param.que_secret}">
+	              		<input type="hidden" name="que_id" value="${param.que_id}">
+	              		<input type="password" name="que_secret" id="que_secret" onkeypress="handleKeyPress(event)" >
+						<i class="fa fa-eye fa-lg password-toggle-icon" id="togglePassword"></i>
+	              		<input type="button" value="확인" onclick="checkPassword()">
+	          		</c:when>
+	          		
+	          		<c:when test="${param.que_secret eq question.que_secret}">
+	             			<input type="hidden" name="que_id" value="${param.que_id}">
+	             			<input type="hidden" name="que_secret" value="${param.que_secret}">
+	              		<input type="submit" value="확인">
+	          		</c:when>
+	      		</c:choose>
+	  		</form>
+	  		<a href='/question/questionList'><input type='button' value='닫기'></a>
               <!-- sub banner inner con -->
             </div>
             <!-- col-lg-6 -->
@@ -146,6 +134,7 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
+  <script src="/js/checkSecretPassword.js"></script>
 </body>
 
 </html>
