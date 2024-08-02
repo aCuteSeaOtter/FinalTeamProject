@@ -134,7 +134,7 @@
 					        <div class="selectedLocation">
 					            <img class="selectedThumbnail" src="${attr.attr_img}"/>
 					            <div class="selectedContentBox">
-					                <input type="hidden" value="${attr.attr_id}"/>
+					                <input type="hidden" class="attr_id" value="${attr.attr_id}"/>
 					                <div class="selectedLocalTitle">${attr.attr_name}</div>
 					                <div>${attr.attr_local}</div>
 					            </div>

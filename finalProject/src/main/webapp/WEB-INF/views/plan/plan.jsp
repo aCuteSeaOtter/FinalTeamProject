@@ -78,11 +78,12 @@
 	        	</div>
 	        	<img alt="calendar" class="calendarImg" src="/images/plan/calendar.png">
 		        <hr/>
-		         
 		        
 			    <div class="dayBlockWrapper">
+			    	
 			        
 			        <!-- '장소추가' 생기는 구역 -->
+			        
 			        
 			    </div>
 			    

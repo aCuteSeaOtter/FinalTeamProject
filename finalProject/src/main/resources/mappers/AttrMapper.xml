@@ -4,6 +4,7 @@
 
 <mapper namespace="com.example.dao.AttrDAO">
 
+	<!-- popup에 모든 attr 리스트 가져오기 (attr_id를 받았다면 맞는 값 가져오기) -->
     <select id="selectAttrList" resultType="com.example.domain.AttrVO">
         SELECT *
         FROM ATTR
@@ -14,8 +15,9 @@
 	    </where>
     </select>
     
+    <!-- attr_id로 attr 리스트 가져오기 -->
     <select id="selectAttrListById" resultType="com.example.domain.AttrVO">
-        SELECT *
+        SELECT attr_id, attr_name, attr_local
         FROM ATTR
         WHERE attr_id = #{attd_id}
     </select>
