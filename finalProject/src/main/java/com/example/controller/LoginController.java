@@ -30,10 +30,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.LoginVO;
 import com.example.service.LoginService;
+
 
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.Cookie;
@@ -58,8 +59,7 @@ public class LoginController {
 	@RequestMapping("/loginMain")
 	public void loginMain(){
 		
-	}
-
+	} 
 	@RequestMapping("/updateForm")
 	public String updateForm() {
 		return "updateForm";
@@ -134,7 +134,6 @@ public class LoginController {
 	public String checkLogin(LoginVO loginVO, HttpSession session)
 	{
 		LoginVO result = loginService.checkLogin(loginVO);
-		System.out.println("ㅇㅇ" + result);
 		if(result!=null) {
 			//로그인 성공 시 세션에 사용자 정보 저장
 			session.setAttribute("mem", result);
@@ -146,25 +145,17 @@ public class LoginController {
 			return "redirect:/loginForm"; // 로그인창 뷰페이지 지정
 		}
 	}
-	
-	//header.jsp <a>로그아웃 눌렀을 때
+
+	//로그아웃
 	@RequestMapping("/logout")
-	   public String logout(HttpSession session) {
-	      // 모든 세션 값 삭제
+	public  String logout( HttpSession session) {
+		System.out.println("logout");
 		session.removeAttribute("mem");
-	      session.invalidate();
-	      System.out.println("성공");
-	      // 메인 페이지 이동
-	      return "redirect:/";
-}
+		session.invalidate();
 	   
-	//로그아웃 ( 예시 )
-/*@RequestMapping("/logout")
-public  ResponseEntity<String> logout(HttpServletRequest request) {
-    HttpSession session = request.getSession(false);
-    loginService.logout(session);
-    return ResponseEntity.status(HttpStatus.SC_OK).body("로그아웃 성공");
-}*/
+	  return "redirect:/";
+	}
+
 		
 	//마이페이지 ( 예시 )
 	@RequestMapping("/mypage")
@@ -179,12 +170,11 @@ public  ResponseEntity<String> logout(HttpServletRequest request) {
 	    }
 	}
 	
-	
-	//홈
-    @RequestMapping("/")
-    public String home() {
-        return "/";
-}
+		//홈
+//    @RequestMapping("/")
+//    public String home() {
+//        return "/";
+//}
 
 	
 	

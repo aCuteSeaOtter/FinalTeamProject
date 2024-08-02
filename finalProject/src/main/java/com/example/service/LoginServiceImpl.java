@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService{
 
 	@Override
 	public void updateForm(LoginVO loginVO) {
-		
+		 
 		 
 	}
 
@@ -80,12 +80,6 @@ public class LoginServiceImpl implements LoginService{
 						
 }
 
-	@Override
-	public void logout(HttpSession session) {
-	    if(session.getAttribute("member") != null) {
-            session.removeAttribute("member");
-            session.invalidate();
-        }
-		
-	}
+
+
 }

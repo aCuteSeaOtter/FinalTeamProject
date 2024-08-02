@@ -6,7 +6,7 @@
 <html lang="zxx">
 
 <head>
-  <title>Travel | Login </title>
+  <title>Travel | Login </title> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/superclasses.css" type="text/css">
   <link rel="stylesheet" href="/css/login.css" type="text/css">
-  <link rel="stylesheet" href="/css/realLogin.css" type="text/css">
+  <!--<link rel="stylesheet" href="/css/realLogin.css" type="text/css">-->
   <link rel="stylesheet" href="/assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
@@ -124,7 +124,7 @@
 	   </div>
    
 	   <ul>
-	<p><a href="/login/findpass">비밀번호 찾기</a></p>
+	<p id="findpass"><a href="/login/findpass">비밀번호 찾기</a></p>
 	<p id="regist"><a href="/login/registForm">회원가입</a></p>
 </ul>
 

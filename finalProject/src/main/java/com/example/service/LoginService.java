@@ -19,10 +19,10 @@ public interface LoginService {
 	
 	LoginVO checkLogin(LoginVO LoginVO);
 	void savecontact(LoginVO LoginVO);
-	void logout(HttpSession session);
 	//String getAccessToken(String code);
 	//HashMap<String,Object>getUserInfo(String accessToken);
-	//void kakaoLogout(String accessToken);
+	//void kakaoLogout(String accessToken); 
+	
 	
 	}
    
