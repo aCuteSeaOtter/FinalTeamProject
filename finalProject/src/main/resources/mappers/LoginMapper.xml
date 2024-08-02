@@ -12,7 +12,7 @@
         #{member_pass, jdbcType=VARCHAR},
         #{member_birth, jdbcType=DATE},
         #{member_gender,  jdbcType=CHAR},
-        #{member_nickname, jdbcType=VARCHAR},
+        #{member_nickname, jdbcType=VARCHAR}, 
         SYSDATE,
         0
   

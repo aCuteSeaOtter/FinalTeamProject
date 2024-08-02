@@ -27,6 +27,6 @@ public interface LoginDAO {
 	//카카오 로그인 회원정보 저장
 	void kakaoinsert(HashMap<String, Object>userInfo);
 	
-	void saveKakaoMember(String email, String nickname);
+	void saveKakaoMember(String email, String nickname); 
 }
   

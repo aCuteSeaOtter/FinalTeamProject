@@ -6,7 +6,7 @@
 
 <head>
   <title> HOTSPOT | Home </title>
-  <meta charset="UTF-8"> 
+  <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicon/apple-icon-57x57.png">
@@ -33,9 +33,9 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/superclasses.css" type="text/css">
- <link rel="stylesheet" href="css/custom.css" type="text/css">
+<!-- <link rel="stylesheet" href="/css/custom.css" type="text/css">-->
+  <link rel="stylesheet" href="css/realLogin.css" type="text/css">
   <link rel="stylesheet" href="css/login.css" type="text/css">
-  <link rel="stylesheet" href="/css/realLogin.css" type="text/css"> 
   <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" type="text/css">
@@ -53,8 +53,7 @@
   </div>
   <!-- OUTER BG WRAPPER -->
   <div class="bg-outer-wrapper float-left w-100">
-    
-    </div>
+      </div>
     <div class="clearfix"></div>
     	<jsp:include page="/WEB-INF/views/header.jsp" />
       <!-- bg outer wrapper -->
@@ -74,41 +73,72 @@
 	  <br/>
 	  <br/>
 	  <br/>
-	  	<div class="flex item-center justify-center w-full"
-	  	id="wrapper-filter">
-	    <ul class="inline-flex text-center" id="dropdownMenu"> 
-	  <button class="button mx-3 px-4 duration-300 ease-in lg:mx-4 lg:py-2 text-lightScheme-primary 
-	  border-b-2 border-lightScheme-primary">전체</button>
-	  <button class="button mx-3 px-4 duration-300 ease-in lg:mx-4 lg:py-2 text-lightScheme-primary 
-	  	  border-b-2 border-lightScheme-primary" id="dropdownBtn">명소</button>
-    	</ul>
-	<!-- Dropdown	Menu-->
-		<div id="dropdownContent" class="hidden absolute bg-white shadow-lg mt-2 rounded-lg">
-		   <a href="/place1" class="dropdown-item block px-4 py-2 text-gray-800 hover:bg-gray-100">명소 1</a>
-		   <a href="/place2" class="dropdown-item block px-4 py-2 text-gray-800 hover:bg-gray-100">명소 2</a>
-		   <a href="/place3" class="dropdown-item block px-4 py-2 text-gray-800 hover:bg-gray-100">명소 3</a>
-		</div>
+	  <div class="flex item-center"id="wrapper-filter">
+		
+		<ul class="flex jusitfy-center">
+		<li>
+			<a href="#" id="navbarDropdownAll" role="button">전체</a>
+	
+		<li  class="nav-item dropdown">	
+			 <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdownPlaces" role="button"
+			  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">명소</a>
+			  
+			  <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+		             <a class="dropdown-item" href="/plan/plan">명소</a>
+		             <a class="dropdown-item" href="/plan/plan">명소</a>
+		             <a class="dropdown-item" href="/plan/plan">명소</a>
+		      </div>
+		</li>
+		</li>
+		</ul>
 		</div><!--id=wrapper filter-->
-	   <div class="row">
+		
+		
+		<!--////////이미지///////////-->
+<!--		<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-6">
           <div class="article-box position-relative">
-            <figure><img class="img-fluid" src="assets/images/article-img1.jpg" alt="img"></figure>
+            
+			<figure><img class="img-fluid" src="assets/images/article-img1.jpg" alt="img"></figure>
             <div class="bottom-left"><span class="d-block text-white"></span>
               <a href="single-blog">
                 <h6 class="text-white"> <br>
                   </h6>
               </a>
-              <!-- bottom left -->
-            </div>
-            <!-- article box -->
-          </div>
-          <!-- col -->
-        </div>
-     
-	</div>  <!-- row -->
-     
-    </div>  <!-- container -->
+             
+            </div> bottom left
+            
+          </div>article box
+          
+        </div>col
+		
+     </div> row      
+	 
+	 -->
+	 </div>  <!-- container -->
     
+	 <div class="row">
+		<c:ForEach var="mainimage" items="${mainimageList}"> <!--mainimage에서 아이템을 mainimage라는 변수명으로 반복-->
+			<div class="col-lg-4 col-md-4 col-sm-6">
+				<div class="article-box position-relative">
+					<figure>
+						<img class="img-fulid" src="${mainimage.file_path}/${mainimage.file_name}" alt="img">
+					<!--DB에서 가져온 file_path와 file_name을 조합하여 이미지 표시-->
+					</figure>
+		<div class="bottom-left">
+			<span class="d-block text-white">${mainimage.city_name}</span>
+			<a href="single-blog?main_id=${mainimage.main_id}">
+			<h6 class="text-white">
+				${mainimage.city_name}			<!--도시이름출력-->
+			</h6>
+		</a> 
+		</div><!--bottom-left-->
+		</div> <!--article-box-->
+		</div> <!--col-->
+		</div>
+		</c:ForEach>
+		</div><!--row-->	
+		
   </section> <!-- news and article con -->
   
   
@@ -127,26 +157,8 @@
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/search.js"></script>
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-	    const dropdownBtn = document.getElementById('dropdownBtn');
-	    const dropdownContent = document.getElementById('dropdownContent');
 
-	    dropdownBtn.addEventListener('click', function () {
-	    
-	        if (dropdownContent.style.display === 'block') {
-	            dropdownContent.style.display = 'none';
-	        } else {
-	            dropdownContent.style.display = 'block';
-	        }
-	    });
-    
-	    document.addEventListener('click', function (event) {
-	        if (!dropdownBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
-	            dropdownContent.style.display = 'none';
-	        }
-	    });
-	});
-</script>  
+
+
 </body>
 </html>

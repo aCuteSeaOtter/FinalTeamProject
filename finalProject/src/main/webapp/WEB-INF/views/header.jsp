@@ -13,7 +13,7 @@
             <figure class="mb-0">
               <img src="<c:url value='/assets/images/logo-icon.png' />" alt="logo-icon">
             </figure>
-          </a>
+          </a> 
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -85,9 +85,36 @@
                 <li><a href="contact" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
                     Live Chat</a></li>
 					-->	
-				<!--[ ${sessionScope.mem}]	-->
-				<c:choose>		
-				<c:when test="${not empty sessionScope.mem}">
+				 <!--[ ${sessionScope.mem}]-->
+				
+				<!-- [ ${sessionScope}]-->
+				
+				<c:if test="${not empty sessionScope.mem}">
+				    <li class="nav-item">
+				        <a class="nav-link p-0">
+				            "${sessionScope.mem.member_nickname}"님 로그인중
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+				            <a class="dropdown-item" href="/login/mypage">마이페이지</a>
+				            <a class="dropdown-item" href="/review/reviewList">후기내역</a>
+				            <a class="dropdown-item" href="/login/logout">로그아웃</a>
+				        </div>
+				    </li>
+				</c:if>
+
+				<c:if test="${empty sessionScope}">
+				    <li class="nav-item">
+				        <a href="/login/loginForm" class="live-chat-btn d-inline-block">
+				            로그인
+				        </a>
+				    </li>
+				</c:if>
+		
+
+						
+								 
+			<!--	 <c:choose>		
+				<c:when test="${not empty sessionScope}">
 				<li class="nav-item">
 					<a class="nav-link p-0">
 						${sessionScope.mem.member_nickname}님 로그인중 </a>
@@ -101,12 +128,12 @@
 					
 				<c:otherwise>
 						<li class="nav-item">
-					<a href="/login/loginForm" class="live-chat-btn d-inline-block">
+				<a href="/login/loginForm" class="live-chat-btn d-inline-block">
 				    	로그인
-					</a>
+				</a>
 				</li>
 				</c:otherwise>
-				</c:choose>
+				</c:choose>-->
 	
 				
                 <!-- list unstyled -->

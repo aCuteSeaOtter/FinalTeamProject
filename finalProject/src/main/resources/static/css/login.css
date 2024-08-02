@@ -41,7 +41,28 @@ Headings: "Jost", sans-serif;
     padding: 0;
     box-sizing: border-box;
 }
+/*input-field*/
 
+.heading-title .input-field{
+	border-radius: 150px; /* 모서리를 둥글게 설정 (픽셀 값 또는 퍼센트 사용 가능) */
+    padding: 10px; /* 텍스트와 테두리 사이의 여백을 설정 */
+    width: 80%; /* 부모 요소의 전체 폭을 차지 */
+    box-sizing: border-box; /* padding과 border가 width에 포함되도록 설정 */
+    border: 1px solid #ccc; /* 테두리 색상과 두께를 설정 */
+    font-size: 16px; /* 글자 크기를 설정 */
+    font-family: Arial, sans-serif; /* 글꼴을 설정 */
+    margin: 0; /* 기본 여백 제거 (선택 사항) */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+	
+}
+
+#wrapper-filter #dropdownContent
+{
+	position:relative;
+	top:100%;
+	right:100px;
+	width:200px;
+}
 
 /*loginForm */
 #loginForm{
@@ -98,6 +119,9 @@ Headings: "Jost", sans-serif;
     white-space:nowrap;
 }
 
+.main-box{
+	   background:#b2f3de;
+}
 .manage-button{
 	display:inline-block;
 	width:260px;
@@ -110,14 +134,19 @@ Headings: "Jost", sans-serif;
 }
 
 
-#regist{
-	margin-left:70px;
+#regist > a{
+	margin-left:80px;
 	margin-right:auto;
 }
 
+#findpass > a{
+	margin-left:auto;
+	margin-right:auto;
+}
 
-
-
+#password {
+	font-family:auto;
+}
 
 .place-name h2,
 .place-name h4 {

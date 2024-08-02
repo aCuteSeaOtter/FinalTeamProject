@@ -63,37 +63,25 @@ html {
     position: relative; /* 부모 요소에 대한 위치 설정 */
 }
 
-.dropdown-menu {
-    display: none; /* 기본적으로 숨김 */
-    position: absolute; /* 부모 요소에 대해 절대 위치 */
-    top: 100%; /* 부모 요소의 아래쪽에 위치 */
-    left: 0; /* 부모 요소의 왼쪽에 위치 */
-    background-color: #fff; /* 배경 색상 */
-    border: 1px solid #ddd; /* 테두리 */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-    z-index: 1000; /* 메뉴가 다른 요소 위에 표시되도록 */
+.flex{
+	display:flex;
+	justify-content:center;
+	gap: 3rem;
 }
 
-.nav-item:hover .dropdown-menu {
-    display: block; /* 부모 요소에 마우스를 올렸을 때 드롭다운 메뉴 표시 */
-}
+.flex li{
+  font-size: 1.2rem; /* 원하는 크기로 조절 */
 
-.dropdown-item {
-    padding: 10px 15px; /* 패딩 */
-    text-decoration: none; /* 밑줄 제거 */
-    color: #333; /* 텍스트 색상 */
-    display: block; /* 블록 요소로 설정 */
-    cursor: pointer; /* 커서 스타일 설정 */
-}
 
-.dropdown-item:hover {
-    background-color: #f8f9fa; /* 배경 색상 */
+}
+.flex li a {
+	color : lightslategray;
 }
 
 .checkbtn .check_now{
 	     width: 100%;
          height: 40px;
-         background-color:#2dca73;; /* 배경색 설정 (예시) */
+         background-color:#2dca73; /* 배경색 설정 (예시) */
          border: none;
          cursor: pointer;	
          border-radius:12px;
@@ -157,19 +145,6 @@ color: #0056b3; /* 마우스 오버 시 글자 색상 변경 */
 border-bottom-color: #0056b3; /* 마우스 오버 시 줄 색상 변경 */
 outline: none; /* 포커스 시 기본 테두리 제거 */
        }
-
-.input-field{
-	border-radius: 150px; /* 모서리를 둥글게 설정 (픽셀 값 또는 퍼센트 사용 가능) */
-    padding: 10px; /* 텍스트와 테두리 사이의 여백을 설정 */
-    width: 80%; /* 부모 요소의 전체 폭을 차지 */
-    box-sizing: border-box; /* padding과 border가 width에 포함되도록 설정 */
-    border: 1px solid #ccc; /* 테두리 색상과 두께를 설정 */
-    font-size: 16px; /* 글자 크기를 설정 */
-    font-family: Arial, sans-serif; /* 글꼴을 설정 */
-    margin: 0; /* 기본 여백 제거 (선택 사항) */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-	
-}
 
 /* TOPBAR SECTION */
 .top-bar-con a {
@@ -438,32 +413,25 @@ outline: none; /* 포커스 시 기본 테두리 제거 */
 }
 
 /* -----메인페이지 dropmenu---- */
+
 #dropdownContent{
-    display: none;
-    position: relative;
-    top:5px;
-  	left:500px;
-    z-index:100px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width:100px;
+    display: none; /* 기본적으로 숨김 */
+    position: absolute; /* 버튼 기준으로 위치 설정 */
+    top: 100%; /* 버튼 바로 아래 */
+    left: 0; /* 버튼 왼쪽과 정렬 */
+    width: 150px; /* 너비 설정 */
+    margin-top: 0.5rem; /* 버튼과 드롭다운 사이 여백 */
+    background-color: white; /* 배경색 설정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    z-index: 2000; /* 버튼보다 높은 값을 설정하여 위에 표시 */
 }
 
-#dropdownMenu:hover #dropdownContent {
-    display: block;
+#dropdownBtn {
+    position: relative; /* 드롭다운 메뉴의 위치 기준 설정 */
+    z-index: 1000; /* 충분히 높은 값을 설정 */
 }
 
-.dropdown-item {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-    position:relative;
-}
 
-.dropdown-item:hover {
-    background-color: #2dca73;
-}
 
 /* 모바일 뷰에서 드롭다운 메뉴 보이게 하기 위한 스타일 추가 */
 @media (max-width: 768px) {
