@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
@@ -55,8 +55,8 @@
   <div class="bg-outer-wrapper float-left w-100">
       </div>
     <div class="clearfix"></div>
-    	<jsp:include page="/WEB-INF/views/header.jsp" />
-      <!-- bg outer wrapper -->
+    <jsp:include page="/WEB-INF/views/header.jsp" />
+    <!-- bg outer wrapper -->
   </div>
    <!-- NEWS AND ARTICLES SECTION -->
   <section class="float-left w-100 news-articles-con position-relative padding-top padding-bottom main-box">
@@ -64,7 +64,7 @@
       <div class="heading-title text-center">
 		<h3 style="font-weight: bold; color:black;">어디로 여행을 떠나시나요?</h3>
 		<br/>
-		<input type="text" class="input-field" placeholder="검색어를 입력하세요"onkeypress="handleKeyPress(event)">
+		<input type="text" class="input-field" placeholder="검색어를 입력하세요" onkeypress="handleKeyPress(event)">
 		<i class="icon fas fa-search" onClick="goToNextPage()"></i>
 	  </div>
 	  <br/>
@@ -73,13 +73,13 @@
 	  <br/>
 	  <br/>
 	  <br/>
-	  <div class="flex item-center"id="wrapper-filter">
+	  <div class="flex item-center" id="wrapper-filter">
 		
-		<ul class="flex jusitfy-center">
+		<ul class="flex justify-center">
 		<li>
 			<a href="#" id="navbarDropdownAll" role="button">전체</a>
 	
-		<li  class="nav-item dropdown">	
+		<li class="nav-item dropdown">	
 			 <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdownPlaces" role="button"
 			  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">명소</a>
 			  
@@ -118,7 +118,7 @@
 	 </div>  <!-- container -->
     
 	 <div class="row">
-		<c:ForEach var="mainimage" items="${mainimageList}"> <!--mainimage에서 아이템을 mainimage라는 변수명으로 반복-->
+		<c:forEach var="mainimage" items="${mainimageList}"> <!--mainimage에서 아이템을 mainimage라는 변수명으로 반복-->
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<div class="article-box position-relative">
 					<figure>
@@ -135,8 +135,7 @@
 		</div><!--bottom-left-->
 		</div> <!--article-box-->
 		</div> <!--col-->
-		</div>
-		</c:ForEach>
+		</c:forEach>
 		</div><!--row-->	
 		
   </section> <!-- news and article con -->
@@ -154,7 +153,6 @@
   <script src="assets/js/video-section.js"></script>
   <script src="assets/js/jquery.validate.js"></script>
   <script src="assets/js/wow.js"></script>
-  <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/search.js"></script>
 

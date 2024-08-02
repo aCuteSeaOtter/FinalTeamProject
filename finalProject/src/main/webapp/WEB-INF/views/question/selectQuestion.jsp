@@ -106,22 +106,22 @@
                 <div>
                   <div class="col-12">
                     <div class="form-group">
-                         <form action="updateQuestion" method="post" onsubmit="return confirmUpdate()">
-                      <label>작성자</label>
-                      <input type="text" class="form_style" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
+                      <form action="updateQuestion" method="post" onsubmit="return confirmUpdate()">
+                        <label>작성자</label>
+                        <input type="text" class="form_style" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="form-group">
                       <label>제목</label>
-					  <c:choose>
-	                    <c:when test="${id == question.MEMBER_EMAIL}">
-	                      <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}">
-	                    </c:when>
-	                    <c:otherwise>
-	                      <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
-	                    </c:otherwise>
-	                  </c:choose>
+                      <c:choose>
+                        <c:when test="${id == question.MEMBER_EMAIL}">
+                          <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}">
+                        </c:when>
+                        <c:otherwise>
+                          <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
+                        </c:otherwise>
+                      </c:choose>
                     </div>
                   </div>
                   <div class="col-12">
@@ -130,29 +130,29 @@
                       <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()) %>" readonly>
                     </div>
                   </div>
-				  <!-- 답변 확인-->
+                  <!-- 답변 확인-->
                   <div class="col-md-5">
                     <input type="checkbox" id="answerCheckbox" name="answer" value="true"> 
                     <label for="answerCheckbox">답변 확인하기</label>
                   </div>
-                    <div class="col-12" id="hidden_member_nickname_container">
-                      <div class="form-group">
-                        <label>작성자</label>
-                        <input type="text" id="hidden_member_nickname" class="form_style" name="member_nickname" value="강성욱 관리자" readonly>
-                      </div>
+                  <div class="col-12" id="hidden_member_nickname_container" style="display:none;">
+                    <div class="form-group">
+                      <label>작성자</label>
+                      <input type="text" id="hidden_member_nickname" class="form_style" name="member_nickname" value="강성욱 관리자" readonly>
                     </div>
-                    <div class="col-12" id="hidden_que_title_container">
-                      <div class="form-group">
-                        <label>제목</label>
-                        <input type="text" id="hidden_que_title" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
-                      </div>
+                  </div>
+                  <div class="col-12" id="hidden_que_title_container" style="display:none;">
+                    <div class="form-group">
+                      <label>제목</label>
+                      <input type="text" id="hidden_que_title" class="form_style" name="" value="답변 내용" readonly>
                     </div>
-					<div class="col-12" id="hidden_que_regdate_container">
-                      <div class="form-group fon-con">
-                        <label>답변 날짜</label>
-                        <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="${question.QUE_REGDATE}" readonly>
-                      </div>
+                  </div>
+                  <div class="col-12" id="hidden_que_regdate_container" style="display:none;">
+                    <div class="form-group fon-con">
+                      <label>답변 날짜</label>
+                      <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="que_regdate" value="2012-01-23 01:23:45" readonly>
                     </div>
+                  </div>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -160,7 +160,7 @@
                   <div class="col-12">
                     <div class="form-group mb-0">
                       <label>문의 내용</label>
-					  <c:choose>
+                      <c:choose>
                         <c:when test="${id == question.MEMBER_EMAIL}">
                           <textarea class="form_style" placeholder="문의 내용을 입력해주세요." rows="5" name="que_content">${question.QUE_CONTENT}</textarea>
                         </c:when>
@@ -170,21 +170,20 @@
                       </c:choose>
                     </div>
                   </div> 
-				  <c:choose>
-				    <c:when test="${id == question.MEMBER_EMAIL}">
-						 
-					      <input type="hidden" name="que_id" value="${question.QUE_ID}">
-						  <input type="hidden" name="originalTitle" value="${question.QUE_TITLE}">
-						  <input type="hidden" name="originalContent" value="${question.QUE_CONTENT}">
-					      <input type="submit" value="수정">
-                         </form>
-					      <a href="deleteQuestion?que_id=${question.QUE_ID}" onclick="return confirmDelete()">삭제</a>
-				    </c:when>
-				  </c:choose>
-				  <div class="col-12" id="hidden_que_content_container">
+                  <c:choose>
+                    <c:when test="${id == question.MEMBER_EMAIL}">
+                      <input type="hidden" name="que_id" value="${question.QUE_ID}">
+                      <input type="hidden" name="originalTitle" value="${question.QUE_TITLE}">
+                      <input type="hidden" name="originalContent" value="${question.QUE_CONTENT}">
+                      <input type="submit" class="form_style btn btn-primary" value="수정">
+                    </form>
+                      <a href="deleteQuestion?que_id=${question.QUE_ID}" class="form_style btn btn-danger" onclick="return confirmDelete()">삭제</a>
+                    </c:when>
+                  </c:choose>
+                  <div class="col-12" id="hidden_que_content_container" style="display:none;">
                     <div class="form-group mb-0">
                       <label>답변 내용</label>
-                      <textarea id="hidden_que_content" class="form_style" rows="5" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
+                      <textarea id="hidden_que_content" class="form_style" rows="5" name="" readonly>답변 내용</textarea>
                     </div>
                   </div>
                 </div>
@@ -209,6 +208,3 @@
   <script src="/assets/js/search.js"></script>
   <script src="/js/questionWrite.js"></script>
   <script src="/js/selectQuestion.js"></script>
-</body>
-
-</html>
