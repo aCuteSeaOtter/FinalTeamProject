@@ -27,4 +27,16 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 	public TravelPlanVO selectTravelPlanById(int plan_id) {
 		return travelPlanDAO.selectTravelPlanById(plan_id);
 	}
+	
+	public int countTravelPlans(String info_id, int plan_day) {
+		return travelPlanDAO.countTravelPlans(info_id, plan_day);
+	}
+	
+	public void deleteAllTravelPlan(String info_id, int plan_day) {
+		travelPlanDAO.deleteAllTravelPlan(info_id, plan_day);
+	}
+	
+	public void deleteTravelPlan(String info_id, int plan_day, int attr_id) {
+		travelPlanDAO.deleteTravelPlan(info_id, plan_day, attr_id);
+	}
 } 

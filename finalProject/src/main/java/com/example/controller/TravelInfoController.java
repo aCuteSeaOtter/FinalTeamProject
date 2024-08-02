@@ -22,6 +22,7 @@ public class TravelInfoController {
 	private TravelInfoService travelInfoService;
 	
 	// calendar -> plan 이동 
+	// calendar/calendar 페이지에서 일정 등록
 	// plan/plan 페이지에 선택한 날짜 출력 및 선택한 일자 수 만큼 일정 생성칸 추가
 	@PostMapping("/calendar/plan")
 	public String travelInfo(@RequestParam("info_name") String info_name,
@@ -42,6 +43,8 @@ public class TravelInfoController {
 		
 		// 서비스 호출하여 데이터 저장
 		travelInfoService.insertTravelInfo(info_name, trip_place, start_date, end_date, who_tag, style_tag);
+		
+		// info_id 가져오기
 		String info_id = travelInfoService.selectTravelInfo();
 		
 		HttpSession session = request.getSession();
