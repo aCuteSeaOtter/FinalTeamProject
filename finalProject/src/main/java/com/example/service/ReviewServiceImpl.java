@@ -3,7 +3,6 @@ package com.example.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +36,16 @@ public class ReviewServiceImpl implements ReviewService {
     // 리뷰 총 개수 / 페이징용
     public int getTotalCount(HashMap<String, Object> map) {
         return reviewDAO.getTotalCount(map);
+    }
+    
+    // 조회수 기준 상위 리뷰 조회
+    public List<ReviewVO> getTopReviewsByViewCount(int limit) {
+        return reviewDAO.getTopReviewsByViewCount(limit);
+    }
+    
+    // 조회수 기준 상위 리뷰 조회
+    public List<ReviewVO> getTopReviewsByLikeCount(int limit) {
+        return reviewDAO.getTopReviewsByLikeCount(limit);
     }
     
     // 리뷰 상세보기

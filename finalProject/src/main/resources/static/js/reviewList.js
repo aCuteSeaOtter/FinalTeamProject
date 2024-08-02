@@ -1,7 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function() {
     // 모든 슬라이더를 slick으로 초기화
     function initializeSliders() {
-        $('.slider').each(function(){
+        $('.slider').each(function() {
             // 이미 초기화된 슬라이더는 재초기화하지 않도록 설정
             if (!$(this).hasClass('slick-initialized')) {
                 $(this).slick({
@@ -21,6 +21,13 @@ $(document).ready(function(){
 
     // 페이지 로드 시 초기화
     initializeSliders();
+	
+	// 탭 클릭 시 슬라이더 초기화
+	    $('#tabs-posts a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	        // 활성화된 탭의 콘텐츠를 새로 고침
+	        var target = $(e.target).attr("href");
+	        $(target).find('.slider').slick('refresh');
+	    });
 
     // 사용자 정의 화살표 버튼 클릭 이벤트
     window.moveSlide = function(direction, sliderId) {
@@ -31,22 +38,6 @@ $(document).ready(function(){
         }
     }
 
-    // 파일 미리보기
-    document.getElementById('fileInput').addEventListener('change', function(event) {
-        const fileInput = event.target;
-        const filePreviewContainer = document.getElementById('filePreviewContainer');
-        filePreviewContainer.innerHTML = ''; // Clear previous previews
-
-        Array.from(fileInput.files).forEach(file => {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.width = '100px'; // Adjust the size as needed
-                filePreviewContainer.appendChild(img);
-            }
-            reader.readAsDataURL(file);
-        });
-    });
+    
 
 });

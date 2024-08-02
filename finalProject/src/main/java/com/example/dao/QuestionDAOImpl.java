@@ -28,8 +28,8 @@ public class QuestionDAOImpl implements QuestionDAO{
 	}
 	
 	// 사용자 문의글 수정
-		public void updateQuestion(QuestionVO vo) {
-			mybatis.update("QuestionDAO.updateQuestion", vo);
+	public void updateQuestion(QuestionVO vo) {
+		mybatis.update("QuestionDAO.updateQuestion", vo);
 	}
 	
 	// 사용자 문의글 삭제
