@@ -115,7 +115,7 @@
       <textarea name="review_content" cols="40" rows="10"></textarea></td>
    </tr>
    <tr>
-      <th>파일추가</th>
+      <th>사진/동영상 추가</th>
       <td align="left">
          <input type="file" name="review_file" accept="image/*, video/*" multiple="multiple" id="fileInput">
 		 <div id="filePreviewContainer"></div> <!-- 미리보기 컨테이너 추가 -->

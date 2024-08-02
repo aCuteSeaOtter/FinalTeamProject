@@ -150,11 +150,8 @@ public class LoginController {
 	//header.jsp <a>로그아웃 눌렀을 때
 	@RequestMapping("/logout")
 	   public String logout(HttpSession session) {
-	      // 모든 세션 값 삭제
-		session.removeAttribute("mem");
-	      session.invalidate();
-	      System.out.println("성공");
-	      // 메인 페이지 이동
+		session.invalidate(); // 세션 무효화
+        System.out.println("로그아웃 성공");
 	      return "redirect:/";
 }
 	   

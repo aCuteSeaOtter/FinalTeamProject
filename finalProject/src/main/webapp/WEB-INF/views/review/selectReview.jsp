@@ -92,6 +92,8 @@
     <hr>
     <form action="updateReview" name="myform" id="myform" method="post">
       <input name="review_id" type="hidden" value="${review.REVIEW_ID}" id="review_id"/>
+	  <input type="hidden" name="originalTitle" value="${review.REVIEW_TITLE}">
+	  <input type="hidden" name="originalContent" value="${review.REVIEW_CONTENT}">
       <table class="table table-striped">
         <tr>
           <th style="vertical-align: middle;">제목</th>
@@ -146,7 +148,7 @@
           <td>👁️${review.REVIEW_CNT}</td>
         </tr>
 		<tr>
-		  <th>이미지/영상</th>
+		 <th style="vertical-align: middle;">이미지<br/>/<br/>영상</th>
 		  <td>
 		    <div class="slick-slider">
 		      <!-- 이미지 출력 -->
@@ -163,7 +165,6 @@
 		              <img src="/files/${review.FILE_NAME}" alt="${review.ORIGIN_FILE_NAME}" />
 		            </c:otherwise>
 		          </c:choose>
-		          <br/><span>${review.ORIGIN_FILE_NAME}</span>
 		        </div>
 		      </c:forEach>
 		      <!-- 이미지 출력 -->
@@ -204,17 +205,6 @@
       </table>
     </form>
     <hr>
-
-    <c:if test="${not empty id}">
-      <p>현재 사용자 닉네임: ${nickname}</p>
-    </c:if>
-
-    <c:if test="${not empty review_id}">
-      <p>현재 게시물 번호: ${review.REVIEW_ID}</p>
-    </c:if>
-
-    
-
     <!-- 댓글목록을 서버에서 가지고 와서 출력 -->
     <table id="commentList" class="table table-striped mt-3"></table>
 
@@ -229,7 +219,7 @@
         </div>
         <div class="form-group">
           <label for="comment_content">댓글 추가:</label>
-          <textarea name="comment_content" id="comment_content" class="form-control comment-input"></textarea>
+          <textarea name="comment_content" id="comment_content" class="form-control comment-input" maxlength="66"></textarea>
         </div>
         <div class="form-group">
           <input type="button" value="댓글 작성" id="commentConfirm" class="btn btn-primary">

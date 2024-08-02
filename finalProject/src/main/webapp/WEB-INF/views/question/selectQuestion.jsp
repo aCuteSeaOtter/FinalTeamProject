@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ko">
 
 <head>
   <title>Travel | selectQuestion </title>
@@ -42,7 +42,7 @@
 </head>
 
 <body>
-  <!-- LOADER -->
+<!-- LOADER -->
   <div class="loader-mask">
     <div class="loader">
       <div></div>
@@ -57,23 +57,18 @@
         <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
           <div class="left-con">
             <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i> help@traveltrek.com</a>
-            <!-- left con -->
           </div>
-          <div class="right-con"><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1 (0800) 123
-              456</a>
-            <!-- right con -->
+          <div class="right-con">
+            <a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1 (0800) 123 456</a>
           </div>
-          <!-- top bar inner con -->
         </div>
-        <!-- container -->
       </div>
-      <!-- top bar con -->
     </div>
     <div class="clearfix"></div>
     <jsp:include page="/WEB-INF/views/header.jsp" />
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
+      <img alt="vector" class="vector1 img-fluid position-absolute" src="/assets/images/vector1.png">
       <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
       <div class="container">
         <div class="row">
@@ -89,155 +84,118 @@
                   <li class="breadcrumb-item"><a href="/question/questionList">뒤로가기</a></li>
                 </ol>
               </div>
-              <!-- sub banner inner con -->
             </div>
-            <!-- col-lg-6 -->
           </div>
-          <!-- row -->
         </div>
-        <!-- container -->
       </div>
-
-      <!-- banner con -->
     </section>
-    <!-- bg outer wrapper -->
   </div>
   <!-- CONTACT FORM SECTION  -->
   <section class="float-left w-100 talk-width-our-team-con about-travel-con position-relative main-box padding-top padding-bottom">
-    <img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s"
-      src="/assets/images/vector11.png">
-    <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="/assets/images/vector9.png">
+    <img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s" src="/assets/images/vector11.png">
+    <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s" src="/assets/images/vector9.png">
     <div class="container wow bounceInUp" data-wow-duration="2s">
       <div class="heading-title text-center">
-        <h2 class="">내가 얼마나 싸가지 없이<br>
-          작성했는지 보아요.
-        </h2>
-        <!-- heading title -->
+        <h2 class="">내가 얼마나 싸가지 없이<br>작성했는지 보아요.</h2>
       </div>
       <div class="row">
         <div class="col-12">
           <div class="register-box">
-            <form action="saveQuestion" id="questionWrite" method="POST">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin-top: -3px;">
-                  <div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <input type="hidden" class="form_style" name="que_id" value="${question.que_id}" readonly>
-                      </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div>
+                  <div class="col-12">
+                    <div class="form-group">
+                         <form action="updateQuestion" method="post" onsubmit="return confirmUpdate()">
+                      <label>작성자</label>
+                      <input type="text" class="form_style" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
                     </div>
-                    <div class="col-12">
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>제목</label>
+					  <c:choose>
+	                    <c:when test="${id == question.MEMBER_EMAIL}">
+	                      <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}">
+	                    </c:when>
+	                    <c:otherwise>
+	                      <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
+	                    </c:otherwise>
+	                  </c:choose>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group fon-con">
+                      <label>작성 날짜</label>
+                      <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()) %>" readonly>
+                    </div>
+                  </div>
+				  <!-- 답변 확인-->
+                  <div class="col-md-5">
+                    <input type="checkbox" id="answerCheckbox" name="answer" value="true"> 
+                    <label for="answerCheckbox">답변 확인하기</label>
+                  </div>
+                    <div class="col-12" id="hidden_member_nickname_container">
                       <div class="form-group">
                         <label>작성자</label>
-                        <input type="text" class="form_style" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
+                        <input type="text" id="hidden_member_nickname" class="form_style" name="member_nickname" value="강성욱 관리자" readonly>
                       </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" id="hidden_que_title_container">
                       <div class="form-group">
-                        <c:choose>
-                          <c:when test="${id eq question.MEMBER_EMAIL}">
-                            <!-- 현재 사용자와 DB에서 가져온 질문의 작성자가 일치할 때 -->
-                            <label>제목</label>
-                            <input type="text" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}">
-                          </c:when>
-                          <c:otherwise>
-                            <!-- 작성자가 일치하지 않을 때 -->
-                            <label>제목</label>
-                            <input type="text" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
-                          </c:otherwise>
-                        </c:choose>
+                        <label>제목</label>
+                        <input type="text" id="hidden_que_title" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
                       </div>
                     </div>
-                    <div class="col-12">
+					<div class="col-12" id="hidden_que_regdate_container">
                       <div class="form-group fon-con">
-                        <label>작성 날짜</label>
-                        <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="${question.QUE_REGDATE}" readonly>
+                        <label>답변 날짜</label>
+                        <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="${question.QUE_REGDATE}" readonly>
                       </div>
                     </div>
-                  </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-group mb-0">
-                        <c:choose>
-                          <c:when test="${id eq question.MEMBER_EMAIL}">
-                            <label>문의 내용</label>
-                            <textarea class="form_style" rows="5" name="que_content">${question.QUE_CONTENT}</textarea>
-                          </c:when>
-                          <c:otherwise>
-                            <label>문의 내용</label>
-                            <textarea class="form_style" rows="5" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
-                          </c:otherwise>
-                        </c:choose>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 체크박스 클릭 시 답변 확인-->
-                <div class="col-md-6 right-margin">
-                  <input type="checkbox" id="answerCheckbox" name="answer" value="true">
-                  <label for="answerCheckbox" class="short-label">답변 확인하기</label>
-                </div>
-
-                <!-- 답변 확인 내용 -->
-                <div id="answerContentRow" style="display: none;">
-                  <div class="row right-margin1">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12" style="margin-top: -3px;">
-                      <div>
-                        <div class="col-12">
-                          <div class="form-group">
-                            <input type="hidden" class="form_style" name="que_id" value="${question.que_id}" readonly>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <div class="form-group">
-                            <label>작성자</label>
-                            <input type="text" class="form_style wide-input" name="member_nickname" value="${question.MEMBER_NICKNAME}" readonly>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <div class="form-group">
-                            <label>제목</label>
-                            <input type="text" class="form_style" name="que_title" id="que_title" value="${question.QUE_TITLE}" readonly>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <div class="form-group fon-con">
-                            <label>작성 날짜</label>
-                            <input type="text" class="mb-md-0 form_style" name="que_regdate" id="que_regdate" value="${question.QUE_REGDATE}" readonly>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="form-group mb-0">
-                            <label>문의 내용</label>
-                            <textarea class="form_style large-textarea" rows="5" cols="50" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-            </form>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <label>문의 내용</label>
+					  <c:choose>
+                        <c:when test="${id == question.MEMBER_EMAIL}">
+                          <textarea class="form_style" placeholder="문의 내용을 입력해주세요." rows="5" name="que_content">${question.QUE_CONTENT}</textarea>
+                        </c:when>
+                        <c:otherwise>
+                          <textarea class="form_style" placeholder="문의 내용을 입력해주세요." rows="5" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
+                        </c:otherwise>
+                      </c:choose>
+                    </div>
+                  </div> 
+				  <c:choose>
+				    <c:when test="${id == question.MEMBER_EMAIL}">
+						 
+					      <input type="hidden" name="que_id" value="${question.QUE_ID}">
+						  <input type="hidden" name="originalTitle" value="${question.QUE_TITLE}">
+						  <input type="hidden" name="originalContent" value="${question.QUE_CONTENT}">
+					      <input type="submit" value="수정">
+                         </form>
+					      <a href="deleteQuestion?que_id=${question.QUE_ID}" onclick="return confirmDelete()">삭제</a>
+				    </c:when>
+				  </c:choose>
+				  <div class="col-12" id="hidden_que_content_container">
+                    <div class="form-group mb-0">
+                      <label>답변 내용</label>
+                      <textarea id="hidden_que_content" class="form_style" rows="5" name="que_content" readonly>${question.QUE_CONTENT}</textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- container -->
     </div>
-    <!-- talk with our team con -->
   </section>
   <jsp:include page="/WEB-INF/views/footer.jsp" />
-
-  <!-- BACK TO TOP BUTTON -->
-  <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>

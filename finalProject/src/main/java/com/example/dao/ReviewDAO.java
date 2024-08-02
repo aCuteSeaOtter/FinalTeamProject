@@ -17,6 +17,12 @@ public interface ReviewDAO {
    // 리뷰 총 개수 / 페이징용
    int getTotalCount(HashMap<String, Object> map);
    
+   // 조회수 기준 상위 리뷰 조회
+   List<ReviewVO> getTopReviewsByViewCount(int limit);
+   
+   // 좋아요순 기준 상위 리뷰 조회
+   List<ReviewVO> getTopReviewsByLikeCount(int limit);
+   
    // 리뷰 상세보기
    List<HashMap<String, Object>> getReview(ReviewVO vo);
    

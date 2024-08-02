@@ -26,7 +26,8 @@
 	<update id="updateQuestion" parameterType="QuestionVO">
 		UPDATE QUESTION SET
 		que_title = #{que_title},
-		que_content = #{que_content}
+		que_content = #{que_content},
+		que_regdate = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
 		WHERE que_id = #{que_id}
 	</update>
 	

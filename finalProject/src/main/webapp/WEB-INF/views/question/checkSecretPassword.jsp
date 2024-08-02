@@ -90,13 +90,17 @@
               </div>
 			  <form id="passwordForm" method="get" action="selectQuestion" data-correct-secret="${question.QUE_SECRET}">
 	      		<c:choose>
-	          		<c:when test="${empty param.que_secret}">
-	              		<input type="hidden" name="que_id" value="${param.que_id}">
-	              		<input type="password" name="que_secret" id="que_secret" onkeypress="handleKeyPress(event)" >
-						<i class="fa fa-eye fa-lg password-toggle-icon" id="togglePassword"></i>
-	              		<input type="button" value="확인" onclick="checkPassword()">
-	          		</c:when>
-	          		
+					
+				<c:when test="${empty param.que_secret}">
+				  <input type="hidden" name="que_id" value="${param.que_id}">
+				  <div class="input-group">
+				    <input type="password" name="que_secret" id="que_secret" class="form-control" onkeypress="handleKeyPress(event)">
+				    <i class="fa fa-eye fa-lg password-toggle-icon" id="togglePassword"></i>
+				  </div>
+				  <a href='/question/questionList'><input type='button' class='btn-cancel' value='취소'></a>
+				  <input type="button" value="확인" onclick="checkPassword()" class="btn-confirm">
+				</c:when>
+
 	          		<c:when test="${param.que_secret eq question.que_secret}">
 	             			<input type="hidden" name="que_id" value="${param.que_id}">
 	             			<input type="hidden" name="que_secret" value="${param.que_secret}">
@@ -104,7 +108,7 @@
 	          		</c:when>
 	      		</c:choose>
 	  		</form>
-	  		<a href='/question/questionList'><input type='button' value='닫기'></a>
+	  		
               <!-- sub banner inner con -->
             </div>
             <!-- col-lg-6 -->
