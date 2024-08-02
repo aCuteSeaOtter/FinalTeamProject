@@ -196,17 +196,53 @@ public class ReviewController<SearchCriteria> {
 
    // 글 수정
    @RequestMapping("/updateReview")
-   public String updateReview(ReviewVO vo) {
-      reviewService.updateReview(vo);
+   public String updateReview(ReviewVO vo, HttpServletResponse response,
+		   					  String originalTitle, 
+		   					  @RequestParam("originalContent") String originalContent) throws IOException {
+	  response.setContentType("text/html;charset=UTF-8");
+	  PrintWriter out = response.getWriter();
+	  
+	  
+	  // 유효성 검사를 통해 필드가 비어 있는지 확인
+      if (vo.getReview_title() == null || vo.getReview_title().trim().isEmpty()) {
+          out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
+          out.flush();
+          return null;
+      }
       
+      // 유효성 검사를 통해 필드가 비어 있는지 확인
+      if (vo.getReview_content() == null || vo.getReview_content().trim().isEmpty()) {
+          out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
+          out.flush();
+          return null;
+      }
+      
+      // 기존 값과 새로운 값 비교
+      boolean isTitleChanged = !vo.getReview_title().equals(originalTitle);
+      boolean isContentChanged = !vo.getReview_content().equals(originalContent);
+
+      if (!isTitleChanged && !isContentChanged) {
+          out.println("<script>alert('수정하지 않았습니다.'); history.go(-1);</script>");
+          out.flush();
+          return null;
+      }
+      
+      reviewService.updateReview(vo);
+      out.println("<script>alert('수정되었습니다.'); location.href='reviewList';</script>");
+      out.flush();
       return "redirect:reviewList";
    }
    
    // 글 삭제
    @RequestMapping("/deleteReview")
-   public String deleteReview(ReviewVO vo) {
+   public String deleteReview(ReviewVO vo, HttpServletResponse response) throws IOException{
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+      
       reviewService.deleteReview(vo);
       
+      out.println("<script>alert('삭제되었습니다.'); location.href='reviewList';</script>");
+      out.flush();
       return "redirect:reviewList";
    }
    

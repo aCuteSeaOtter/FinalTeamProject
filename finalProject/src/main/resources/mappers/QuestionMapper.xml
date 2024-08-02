@@ -11,7 +11,7 @@
 	
 	<!-- sql 문의글 검색 및 목록보기-->
 	<select id="questionList" parameterType="map" resultType="hashmap">
-    SELECT q.que_id, q.que_title, m.member_nickname, q.que_content, q.que_regdate, q.que_state
+    SELECT q.*, m.member_nickname
     FROM QUESTION q INNER JOIN MEMBER m
     ON q.member_email = m.member_email
     <where>
@@ -26,7 +26,8 @@
 	<update id="updateQuestion" parameterType="QuestionVO">
 		UPDATE QUESTION SET
 		que_title = #{que_title},
-		que_content = #{que_content}
+		que_content = #{que_content},
+		que_regdate = TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
 		WHERE que_id = #{que_id}
 	</update>
 	
@@ -51,10 +52,11 @@
     </update>
     
     <!-- sql 문의글 상세보기 -->
-	<select id="selectQuestion" parameterType="QuestionVO" resultType="QuestionVO">
-		SELECT *
-		FROM QUESTION
-		WHERE que_id = #{que_id}
+	<select id="selectQuestion" parameterType="QuestionVO" resultType="hashmap">
+		SELECT q.*, m.member_nickname
+	    FROM QUESTION q INNER JOIN MEMBER m
+	    ON q.member_email = m.member_email
+	    WHERE q.que_id = #{que_id}
 	</select>
 	
 	<!-- 문의사항 비밀글 비밀번호 -->

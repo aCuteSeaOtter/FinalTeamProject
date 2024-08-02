@@ -125,22 +125,27 @@
                                                 <!-- 리뷰 제목과 작성자 -->
                                                 <div class="lower-portion">
                                                     <div class="span-i-con">
-                                                        <div>${review.REVIEW_TITLE}</div>
+														<!-- 제목 클릭 시 상세 페이지로 이동 -->
+														<a href="selectReview?review_id=${review.REVIEW_ID}" class="review-title">${review.REVIEW_TITLE}</a><br/>
                                                         <i class="fa-solid fa-user"></i>
                                                         <span class="text-size-14 text-mr">${review.MEMBER_NICKNAME}</span>
                                                     </div>
+													<div class="date">
+	                                                    <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+	                                                    <span class="mb-0 text-size-14">${review.REVIEW_REGDATE}</span>
+	                                                </div>
                                                 </div>
 
                                                 <!-- 리뷰 등록 날짜 -->
                                                 <div class="button-portion">
-                                                    <div class="date">
-                                                        <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
-                                                        <span class="mb-0 text-size-14">${review.REVIEW_REGDATE}</span>
-                                                    </div>
-                                                    <div class="button">
-                                                        <a class="mb-0 read_more text-decoration-none small-read-more" href="selectReview?review_id=${review.REVIEW_ID}">
-                                                            리뷰 보기
-                                                        </a>
+                                                    <div class="likes">
+														<i class="fa-solid fa-thumbs-up"></i>
+														<span class="text-size-14">${review.LIKE_COUNT}</span>
+													</div>
+													<!-- 조회수 표시 -->
+                                                    <div class="views">
+                                                        <i class="fa-solid fa-eye"></i> <!-- 조회수 아이콘 -->
+                                                        <span class="text-size-14">${review.REVIEW_CNT}</span> <!-- 조회수 -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,59 +178,96 @@
                                     </form>
                                 </div>
 
-                                <div class="widget">
-                                    <div class="tabs">
-                                        <ul class="nav nav-tabs" id="tabs-posts" role="tablist" data-aos="fade-up" data-aos-duration="700">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular" aria-selected="true">조회수</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">좋아</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#recent" role="tab" aria-controls="recent" aria-selected="false">Recent</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content" id="tabs-posts-content" data-aos="fade-up" data-aos-duration="700">
-                                            <div class="tab-pane fade show active" id="popular" role="tabpanel">
-                                                <div class="post-thumbnail-list">
-                                                    <div class="post-thumbnail-entry">
-                                                        <img data-aos="fade-up" alt="image" src="/assets/images/side_post_img01.jpg" loading="lazy">
-                                                        <div class="post-thumbnail-content">
-                                                            <a href="/single-blog">A true story, that never been told!</a>
-                                                            <span class="post-date"><i class="far fa-clock"></i> 6m ago</span>
-                                                            <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="featured" role="tabpanel">
-                                                <div class="post-thumbnail-list">
-                                                    <div class="post-thumbnail-entry">
-                                                        <img data-aos="fade-up" alt="image" src="/assets/images/side_post_img03.jpg" loading="lazy">
-                                                        <div class="post-thumbnail-content">
-                                                            <a href="single-blog">Beautiful nature, and rare feathers!</a>
-                                                            <span class="post-date"><i class="far fa-clock"></i> 24h ago</span>
-                                                            <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="recent" role="tabpanel">
-                                                <div class="post-thumbnail-list">
-                                                    <div class="post-thumbnail-entry">
-                                                        <img data-aos="fade-up" alt="image" src="/assets/images/side_post_img02.jpg" loading="lazy">
-                                                        <div class="post-thumbnail-content">
-                                                            <a href="single-blog">The most happiest time of the day!</a>
-                                                            <span class="post-date"><i class="far fa-clock"></i> 11h ago</span>
-                                                            <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+								<div class="widget">
+								    <div class="tabs">
+								        <ul class="nav nav-tabs" id="tabs-posts" role="tablist" data-aos="fade-up" data-aos-duration="700">
+								            <li class="nav-item">
+								                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular" aria-selected="true">조회순</a>
+								            </li>
+								            <li class="nav-item">
+								                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">좋아요순</a>
+								            </li>
+								        </ul>
+								        <div class="tab-content" id="tabs-posts-content" data-aos="fade-up" data-aos-duration="700">
+								            <div class="tab-pane fade show active" id="popular" role="tabpanel">
+								                <div class="post-thumbnail-list">
+								                    <c:forEach items="${topViewReviews}" var="review">
+								                        <div class="post-thumbnail-entry">
+								                            <!-- Slick slider wrapper -->
+								                            <div class="slider-wrapper">
+								                                <div class="slider" id="sidebar-slider-${review.REVIEW_ID}">
+								                                    <c:set var="fileNamesArray" value="${fn:split(review.FILE_NAMES, ',')}"/>
+								                                    <c:forEach items="${fileNamesArray}" var="fileName">
+								                                        <c:if test="${not empty fileName}">
+								                                            <div>
+								                                                <img src="/files/${fileName}" alt="Image">
+								                                            </div>
+								                                        </c:if>
+								                                    </c:forEach>
+								                                </div>
+								                                <!-- 사용자 정의 화살표 버튼 -->
+																<div class="slider-buttons">
+								                                	<button class="slider-button prev" onclick="moveSlide(-1, 'sidebar-slider-${review.REVIEW_ID}'); event.stopPropagation();">❮</button>
+								                                	<button class="slider-button next" onclick="moveSlide(1, 'sidebar-slider-${review.REVIEW_ID}'); event.stopPropagation();">❯</button>
+																</div>
+								                            </div>
+								                            <div class="post-thumbnail-content">
+								                                <a id="sideBarTitleDiv" href="selectReview?review_id=${review.REVIEW_ID}">${review.REVIEW_TITLE}</a>
+								                            </div>
+															<div>
+																<i class="fa-solid fa-user"></i>
+																<span class="text-size-14 text-mr">${review.MEMBER_NICKNAME}</span>
+															</div>
+															<div>
+																<i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+																<span class="mb-0 text-size-14">${review.REVIEW_REGDATE}</span>
+																<i class="fa-solid fa-eye"></i> <!-- 조회수 아이콘 -->
+																<span class="text-size-14">${review.REVIEW_CNT}</span> <!-- 조회수 -->
+															</div>
+								                        </div>
+								                    </c:forEach>
+								                </div>
+								            </div>
+											<div class="tab-pane fade" id="featured" role="tabpanel">
+	                                            <div class="post-thumbnail-list">
+	                                                <c:forEach items="${topLikeReviews}" var="review">
+	                                                    <div class="post-thumbnail-entry">
+	                                                        <!-- Slick slider wrapper -->
+	                                                        <div class="slider-wrapper">
+	                                                            <div class="slider" id="sidebar-slider-like-${review.REVIEW_ID}">
+	                                                                <c:set var="fileNamesArray" value="${fn:split(review.FILE_NAMES, ',')}"/>
+	                                                                <c:forEach items="${fileNamesArray}" var="fileName">
+	                                                                    <c:if test="${not empty fileName}">
+	                                                                        <div>
+	                                                                            <img src="/files/${fileName}" alt="Image">
+	                                                                        </div>
+	                                                                    </c:if>
+	                                                                </c:forEach>
+	                                                            </div>
+	                                                            <!-- 사용자 정의 화살표 버튼 -->
+	                                                            <button class="slider-button prev" onclick="moveSlide(-1, 'sidebar-slider-like-${review.REVIEW_ID}'); event.stopPropagation();">❮</button>
+	                                                            <button class="slider-button next" onclick="moveSlide(1, 'sidebar-slider-like-${review.REVIEW_ID}'); event.stopPropagation();">❯</button>
+	                                                        </div>
+	                                                        <div class="post-thumbnail-content">
+	                                                            <a href="selectReview?review_id=${review.REVIEW_ID}">${review.REVIEW_TITLE}</a>
+	                                                        </div>
+	                                                        <div>
+	                                                            <i class="fa-solid fa-user"></i>
+	                                                            <span class="text-size-14 text-mr">${review.MEMBER_NICKNAME}</span>
+	                                                        </div>
+	                                                        <div>
+	                                                            <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+	                                                            <span class="mb-0 text-size-14">${review.REVIEW_REGDATE}</span>
+	                                                            <i class="fa-solid fa-thumbs-up"></i> <!-- 좋아요 아이콘 -->
+	                                                            <span class="text-size-14">${review.LIKE_COUNT}</span> <!-- 좋아요 수 -->
+	                                                        </div>
+	                                                    </div>
+	                                                </c:forEach>
+	                                            </div>
+	                                        </div>
+								        </div>
+								    </div>
+								</div>
                             </div>
                         </div>
                     </div>

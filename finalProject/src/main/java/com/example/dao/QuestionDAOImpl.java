@@ -28,8 +28,8 @@ public class QuestionDAOImpl implements QuestionDAO{
 	}
 	
 	// 사용자 문의글 수정
-		public void updateQuestion(QuestionVO vo) {
-			mybatis.update("QuestionDAO.updateQuestion", vo);
+	public void updateQuestion(QuestionVO vo) {
+		mybatis.update("QuestionDAO.updateQuestion", vo);
 	}
 	
 	// 사용자 문의글 삭제
@@ -38,7 +38,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 	}
 	
 	// 사용자 문의글 상세보기
-	public QuestionVO selectQuestion (QuestionVO vo) {
+	public HashMap<String, Object> selectQuestion (QuestionVO vo) {
 		return mybatis.selectOne("QuestionDAO.selectQuestion", vo);
 	}
 	

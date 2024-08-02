@@ -148,6 +148,7 @@ public class LoginController {
 
 	//로그아웃
 	@RequestMapping("/logout")
+
 	public  String logout( HttpSession session) {
 		System.out.println("logout");
 		session.removeAttribute("mem");

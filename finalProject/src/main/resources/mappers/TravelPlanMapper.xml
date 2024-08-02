@@ -4,16 +4,47 @@
 
 <mapper namespace="com.example.dao.TravelPlanDAO">
 
-	<!-- travel_plan 테이블에 일정 넣기 -->
+	<!-- 기존의 데이터 수 확인 -->
+	<select id="countTravelPlans" resultType="int">
+	    SELECT COUNT(*)
+	    FROM travel_plan
+	    WHERE info_id = #{info_id} AND plan_day = #{plan_day}
+	</select>
+
+	<!-- travel_plan 테이블에 일정 넣기 (기존에 info_id와 plan_day가 같은 데이터가 있으면 seq값을 기존 데이터의 수만큼 더해서 저장 -->
     <insert id="insertTravelPlan">
 	    INSERT INTO travel_plan (plan_id, info_id, attr_id, plan_day, plan_seq)
-	    VALUES (plan_id_seq.NEXTVAL, #{info_id}, #{attr_id}, #{plan_day}, #{plan_seq})
+	    VALUES (plan_id_seq.NEXTVAL, #{info_id}, #{attr_id}, #{plan_day}, 
+	    (SELECT NVL(MAX(plan_seq), 0) + 1
+	     FROM travel_plan
+	     WHERE info_id = #{info_id} AND plan_day = #{plan_day})
+	    )
 	</insert>
 	
-	<select id="selectTravelPlan" resultType="string">
-		SELECT plan_id
+	<!-- plan/plan에 날짜에 맞게 가져오기 -->
+	<select id="selectTravelPlan" resultType="com.example.domain.TravelPlanVO">
+		SELECT *
 		FROM travel_plan
 		WHERE plan_day = #{plan_day} and info_id = #{info_id}
 	</select>
+	
+	<!-- plan_id로 plan 가져옴 -->
+	<select id="selectTravelPlanById" resultType="com.example.domain.TravelPlanVO">
+		SELECT *
+		FROM travel_plan
+		WHERE plan_id = #{plan_id}
+	</select>
+	
+	<!-- popup에서 모든 항목 삭제 클릭 시 삭제 -->
+	<delete id="deleteAllTravelPlan">
+		DELETE FROM travel_plan
+		WHERE info_id = #{info_id} and plan_day = #{plan_day}
+	</delete>
+	
+	<!-- popup에서 휴지통 클릭 시 해당 요소 삭제 -->
+	<delete id="deleteTravelPlan">
+		DELETE FROM travel_plan
+		WHERE info_id = #{info_id} and plan_day = #{plan_day} and attr_id = #{attr_id}
+	</delete>
 	
 </mapper>

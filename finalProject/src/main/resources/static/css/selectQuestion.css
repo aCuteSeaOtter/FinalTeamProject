@@ -1,0 +1,51 @@
+	.form_style {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      border: none;
+      resize: none;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    
+    #answerContentRow {
+      display: none;
+    }
+    
+    .right-margin {
+    	margin-left: 15px; /* 필요한 만큼 조절 */
+  	}
+  
+  	.right-margin1 {
+    	margin-left: 1px; /* 필요한 만큼 조절 */
+  	}
+  
+  	.short-label {
+	  display: inline-block;
+	  width: 150px; /* 원하는 너비로 설정 */
+	  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+	  overflow: hidden; /* 너비를 넘는 텍스트 숨기기 */
+	}
+	
+	/* wide-input 클래스 추가 */
+	/* .wide-input {
+	  padding : 19px 135px !important;
+	} */
+	
+	#hidden_que_content_container {
+  		margin-top: 150px; /* 원하는 만큼의 공간을 조정 */
+	}

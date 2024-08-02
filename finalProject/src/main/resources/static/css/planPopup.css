@@ -181,7 +181,7 @@
 	top: -10px;
 }
 
-.selectedScrollBox { 
+.selectedScrollBox, .scrollBox { 
 	height: 510px;
 	overflow: auto;
 }

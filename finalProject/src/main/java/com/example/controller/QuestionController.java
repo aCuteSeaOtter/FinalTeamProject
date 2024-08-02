@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.QuestionVO;
 import com.example.domain.UserVO;
@@ -48,7 +51,7 @@ public class QuestionController {
 	@RequestMapping("saveQuestion")
     public String saveQuestion(HttpServletRequest request, HttpSession session,
                                QuestionVO vo, String qPassword,
-                               Model m, HttpServletResponse response) {
+                               Model m, HttpServletResponse response) throws IOException {
         
         // 세션에서 사용자 정보 가져오기
         UserVO member = (UserVO) session.getAttribute("member");
@@ -62,6 +65,23 @@ public class QuestionController {
             String que_secret = request.getParameter("que_secret"); 
             vo.setQue_secret(que_secret);  // QuestionVO에 비밀글 비밀번호 설정
 
+            // 입력 값 검증
+            if (vo.getQue_title() == null || vo.getQue_title().isEmpty()) {
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
+                out.flush();
+                return null;
+            }
+
+            if (vo.getQue_content() == null || vo.getQue_content().isEmpty()) {
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
+                out.flush();
+                return null;
+            }
+            
             questionService.insertQuestion(vo);
 
             return "redirect:/question/questionList";
@@ -77,14 +97,13 @@ public class QuestionController {
 							   String searchCondition, String searchKeyword,
 							   HttpSession session) {
 		String id = (String) session.getAttribute("sess");
-		String nickname = (String) session.getAttribute("nickname");
 		
 		HashMap<String, Object>map = new HashMap<>();
 		map.put("searchCondition", searchCondition);
 		map.put("searchKeyword", searchKeyword);
 		
 		List<QuestionVO> list = questionService.questionList(map);
-		System.out.println(list);
+		System.out.println("questionList:" + list);
 		m.addAttribute("question", list);
 		m.addAttribute("searchCondition",searchCondition);
 		m.addAttribute("searchKeyword",searchKeyword);
@@ -92,38 +111,77 @@ public class QuestionController {
 		return "question/questionList";
 	}
 	
+	// 문의글 상세보기
 	@RequestMapping("selectQuestion")
 	public String selectQuestion(QuestionVO vo, Model m, HttpSession session) {
-		QuestionVO result = questionService.selectQuestion(vo);
+		HashMap<String, Object> question = questionService.selectQuestion(vo);
 		String id = (String) session.getAttribute("sess");
 		m.addAttribute("id", id);
-		m.addAttribute("question", result);
+		m.addAttribute("question", question);
 		
 		return "question/selectQuestion";
 	}
 	
+	// 문의글 수정
 	@RequestMapping("updateQuestion")
-	public String updateQuestion(QuestionVO vo) {
-		questionService.updateQuestion(vo);
-		return "redirect:questionList";
-	}
+	public String updateQuestion(QuestionVO vo, HttpServletResponse response, 
+            					@RequestParam("originalTitle") String originalTitle, 
+            					@RequestParam("originalContent") String originalContent) throws IOException {
+		
+		response.setContentType("text/html;charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+
+	      // 유효성 검사를 통해 필드가 비어 있는지 확인
+	      if (vo.getQue_title() == null || vo.getQue_title().trim().isEmpty()) {
+	          out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
+	          out.flush();
+	          return null;
+	      }
+	      
+	      // 유효성 검사를 통해 필드가 비어 있는지 확인
+	      if (vo.getQue_content() == null || vo.getQue_content().trim().isEmpty()) {
+	          out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
+	          out.flush();
+	          return null;
+	      }
+	      
+	      // 기존 값과 새로운 값 비교
+	      boolean isTitleChanged = !vo.getQue_title().equals(originalTitle);
+	      boolean isContentChanged = !vo.getQue_content().equals(originalContent);
+
+	      if (!isTitleChanged && !isContentChanged) {
+	          out.println("<script>alert('수정하지 않았습니다.'); history.go(-1);</script>");
+	          out.flush();
+	          return null;
+	      }
+		
+		  questionService.updateQuestion(vo);
+		  out.println("<script>alert('수정되었습니다.'); location.href='questionList';</script>");
+		  out.flush();
+		  return "redirect:questionList";
+	  }
 	
+	// 문의글 삭제
 	@RequestMapping("deleteQuestion")
-	public String deleteQuestion(QuestionVO vo, Model m, HttpSession session) {
+	public String deleteQuestion(QuestionVO vo, HttpServletResponse response) throws IOException{
+		response.setContentType("text/html;charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+		
 		questionService.deleteQuestion(vo);
-		String id = (String) session.getAttribute("sess");
-		m.addAttribute("id", id);
+		
+		out.println("<script>alert('삭제되었습니다.'); location.href='questionList';</script>");
+	    out.flush();
 		return "redirect:questionList";
 	}
 	
 	// 사용자의 문의글 비밀글 여부
 	@RequestMapping("checkSecretPassword")
 	public String checkSecretPassword(QuestionVO vo, Model m, HttpSession session) {
-		QuestionVO result = questionService.selectQuestion(vo);
-		String id = (String) session.getAttribute("logid");
+		HashMap<String, Object> result = questionService.selectQuestion(vo);
+		String id = (String) session.getAttribute("sess");
 		m.addAttribute("id", id);
 		m.addAttribute("question", result);
-		return "question/checkQSecret";
+		return "question/checkSecretPassword";
 	}
 }
 

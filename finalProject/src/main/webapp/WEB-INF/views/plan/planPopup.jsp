@@ -89,14 +89,14 @@
 		    <div class="scrollBox"> 
 		    
 		    <!-- 명소 출력 시작 -->
-	        <c:forEach items="${attrList }" var="attr">
+	        <c:forEach items="${attrList}" var="attr">
 				<div class="divBlock">
 		        	<div class="location">
-		        		<img class="thumbnail" src="/images/plan/test.jpg"/>
+		        		<img class="thumbnail" src="${attr.attr_img}"/>
 		        		<div class="contentBox">
-		        			<input type="hidden" class="attrId" value="${attr.attr_id }"/>
-				        	<div class="localTitle">${attr.attr_name }</div>
-				        	<div>카테고리(명소, 식당, 카페), 주소</div>
+		        			<input type="hidden" class="attrId" value="${attr.attr_id}"/>
+				        	<div class="localTitle">${attr.attr_name}</div>
+				        	<div>${attr.attr_local} </div>
 		        		</div>
 				        <img class="selectBox" src="/images/plan/none_select.svg">
 			        </div>
@@ -121,7 +121,7 @@
 		        	</div> 
 		        </div> 
 	        	<div>
-			        <div class="selectedCnt">0</div>
+			        <div class="selectedCnt"><c:out value="${cnt}"/></div>
 			        <div class="deleteAll">모든 항목 삭제</div>
 	        	</div>
 	        	
@@ -129,7 +129,19 @@
 	        	<div class="selectedScrollBox">
 	        	
 			        <!-- 선택한 일정이 추가되는 영역 -->
-			        
+			        <c:forEach items="${selectedAttrList}" var="attr" varStatus="status">
+				        <div class="selectedItem">
+					        <div class="selectedLocation">
+					            <img class="selectedThumbnail" src="${attr.attr_img}"/>
+					            <div class="selectedContentBox">
+					                <input type="hidden" class="attr_id" value="${attr.attr_id}"/>
+					                <div class="selectedLocalTitle">${attr.attr_name}</div>
+					                <div>${attr.attr_local}</div>
+					            </div>
+					            <img class="deleteItem" src="../images/plan/trash.png">
+					        </div>
+					    </div>
+				    </c:forEach>
 				</div>
 	          
 	          

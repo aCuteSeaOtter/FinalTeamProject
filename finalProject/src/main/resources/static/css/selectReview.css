@@ -1,152 +1,181 @@
 @charset "UTF-8";
+
+/* 기본 글꼴 설정 */
 body {
-        font-family: Arial, sans-serif;
-    }
-    table {
-        width: 70%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
-    } 
-    th { 
-        background-color: #f2f2f2;
-        text-align: center;
-    }
-    td {
-        background-color: #fff;
-    }
-    h1 {
-        color: #333;
-    }
-    .reply-form, .reply-list {
-        margin-top: 20px;
-    }
-    .reply-input, textarea {
-        width: 70%;
-        height: 60px;
-        padding: 8px;
-        margin-top: 8px;
-    }
-    .reply-comment {
-        margin-left: 20px;
-        margin-top: 10px;
-    }
-    .reply-form label {
-        display: block;
-        margin-top: 10px;
-    }
-    .reply-form input[type="text"], .reply-form textarea {
-        width: calc(100% - 22px);
-        padding: 10px;
-        margin-top: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    .reply-form input[type="button"] {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .reply-form input[type="button"]:hover {
-        background-color: #45a049;
-    }
-    .action-links a {
-        margin-right: 20px;
-        text-decoration: none;
-        color: #0066cc;
-    }
-    .action-links a:hover {
-        text-decoration: underline;
-    }
-    
-    .like-button, .hate-button{
-    	width:34px;
-    }
-    
-   /* 댓글 및 대댓글의 기본 스타일 CSS */
-   .comment-content {
-       padding: 10px;
-       border-bottom: 1px solid #ddd;
-   }
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+}
 
-   /* 내용과 날짜 위치 변경 */
-   .comment-info {
-       display: flex;
-       justify-content: space-between;
-       font-size: 0.9em;
-       color: #555;
-   }
-   
-   /* 댓쓴이 글씨체 두껍게 */
-   .comment-writer {
-       font-weight: bold;
-   }
-   
-   /* 날짜 글씨 색깔 변경 */
-   .comment-date {
-       color: #999;
-   }
+/* 제목 스타일 설정 */
+h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-   /* 내용과 날짜 위치 변경 */
-   .comment-info2 {
-       overflow: hidden;
-   }
-   
-   span.comment-text{
-   		cursor: pointer;
-   }
-   
-   
-   	/* 좋아요 싫어요 버튼 위치 조정 */
-   	.reaction-buttons {
-	  display: flex;
-	  align-items: center; /* 버튼과 텍스트를 세로 중앙 정렬 */
-	  gap: 20px; /* 버튼과 텍스트 사이의 간격 조정 */
-	}
-	
-	/* ------------ */
+/* 테이블 스타일 설정 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-	/* 슬라이드 컨테이너의 크기를 고정 */
-	.slick-slider {
-	    width: 100%;
-	    max-width: 800px; /* 슬라이드의 최대 너비를 설정 */
-	    margin: auto; /* 중앙 정렬 */
-	}
-	
-	/* 슬라이드 항목의 크기를 고정 */
-	.slick-slide {
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    width: 100%; /* 슬라이드 항목의 가로 너비를 슬라이드 컨테이너의 너비에 맞춤 */
-	}
-	
-	/* 슬라이드 내 이미지와 비디오의 크기 조정 */
-	.slick-slide img,
-	.slick-slide video {
-	    width: 100%; /* 슬라이드 항목의 가로 너비에 맞춤 */
-	    height: 300px; /* 원하는 높이로 설정 */
-	    object-fit: cover; /* 비율 유지하면서 컨테이너를 채움 */
-	}
-	
-	/* 비디오에만 추가적인 스타일 적용 */
-	.slick-slide video {
-	    max-width: 100%; /* 비디오의 최대 너비를 슬라이드 항목의 너비에 맞춤 */
-	    max-height: 300px; /* 비디오의 최대 높이를 설정 */
-	}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
 
-	
-	
+th { 
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
 
-	
+td {
+    background-color: #fff;
+}
 
-   
-   
+/* 테이블 헤더 */
+th {
+    font-weight: bold;
+}
+
+/* 테이블 데이터 */
+td {
+    font-size: 14px;
+}
+
+/* 버튼 스타일 설정 */
+.btn {
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* 액션 링크 스타일 설정 */
+.action-links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 16px;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}
+
+/* 좋아요 및 싫어요 버튼 스타일 */
+.like-button, .hate-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.like-button:hover, .hate-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* 슬라이더 컨테이너 및 항목 스타일 설정 */
+.slick-initialized .slick-slide {
+    display: flex;
+}
+
+.slick-slider {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slick-slide img, .slick-slide video {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 댓글 폼 스타일 설정 */
+.comment-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form .form-group {
+    margin-bottom: 15px;
+}
+
+.comment-form .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.comment-form .form-group input, 
+.comment-form .form-group textarea {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.comment-form .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* 댓글 리스트 스타일 설정 */
+#commentList {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
