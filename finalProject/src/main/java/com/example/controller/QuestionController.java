@@ -124,55 +124,54 @@ public class QuestionController {
 	
 	// 문의글 수정
 	@RequestMapping("updateQuestion")
-	public String updateQuestion(QuestionVO vo, HttpServletResponse response, 
-            					@RequestParam("originalTitle") String originalTitle, 
-            					@RequestParam("originalContent") String originalContent) throws IOException {
-		
-		response.setContentType("text/html;charset=UTF-8");
+	public void updateQuestion(QuestionVO vo, HttpServletResponse response, 
+	                          @RequestParam("originalTitle") String originalTitle, 
+	                          @RequestParam("originalContent") String originalContent) throws IOException {
+	    
+	    response.setContentType("text/html;charset=UTF-8");
 	    PrintWriter out = response.getWriter();
 
-	      // 유효성 검사를 통해 필드가 비어 있는지 확인
-	      if (vo.getQue_title() == null || vo.getQue_title().trim().isEmpty()) {
-	          out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
-	          out.flush();
-	          return null;
-	      }
-	      
-	      // 유효성 검사를 통해 필드가 비어 있는지 확인
-	      if (vo.getQue_content() == null || vo.getQue_content().trim().isEmpty()) {
-	          out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
-	          out.flush();
-	          return null;
-	      }
-	      
-	      // 기존 값과 새로운 값 비교
-	      boolean isTitleChanged = !vo.getQue_title().equals(originalTitle);
-	      boolean isContentChanged = !vo.getQue_content().equals(originalContent);
+	    // 유효성 검사를 통해 필드가 비어 있는지 확인
+	    if (vo.getQue_title() == null || vo.getQue_title().trim().isEmpty()) {
+	        out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
+	    
+	    // 유효성 검사를 통해 필드가 비어 있는지 확인
+	    if (vo.getQue_content() == null || vo.getQue_content().trim().isEmpty()) {
+	        out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
+	    
+	    // 기존 값과 새로운 값 비교
+	    boolean isTitleChanged = !vo.getQue_title().equals(originalTitle);
+	    boolean isContentChanged = !vo.getQue_content().equals(originalContent);
 
-	      if (!isTitleChanged && !isContentChanged) {
-	          out.println("<script>alert('수정하지 않았습니다.'); history.go(-1);</script>");
-	          out.flush();
-	          return null;
-	      }
-		
-		  questionService.updateQuestion(vo);
-		  out.println("<script>alert('수정되었습니다.'); location.href='questionList';</script>");
-		  out.flush();
-		  return "redirect:questionList";
-	  }
-	
+	    if (!isTitleChanged && !isContentChanged) {
+	        out.println("<script>alert('수정하지 않았습니다.'); history.go(-1);</script>");
+	        out.flush();
+	        return;
+	    }
+	    
+	    questionService.updateQuestion(vo);
+	    out.println("<script>alert('수정되었습니다.'); location.href='questionList';</script>");
+	    out.flush();
+	}
+
 	// 문의글 삭제
 	@RequestMapping("deleteQuestion")
-	public String deleteQuestion(QuestionVO vo, HttpServletResponse response) throws IOException{
-		response.setContentType("text/html;charset=UTF-8");
+	public void deleteQuestion(QuestionVO vo, HttpServletResponse response) throws IOException {
+	    response.setContentType("text/html;charset=UTF-8");
 	    PrintWriter out = response.getWriter();
-		
-		questionService.deleteQuestion(vo);
-		
-		out.println("<script>alert('삭제되었습니다.'); location.href='questionList';</script>");
+	    
+	    questionService.deleteQuestion(vo);
+	    
+	    out.println("<script>alert('삭제되었습니다.'); location.href='questionList';</script>");
 	    out.flush();
-		return "redirect:questionList";
 	}
+
 	
 	// 사용자의 문의글 비밀글 여부
 	@RequestMapping("checkSecretPassword")

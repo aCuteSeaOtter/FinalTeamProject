@@ -93,7 +93,6 @@
 						<th>제목</th>
 				        <th>작성자</th>
 						<th>작성일</th>
-						<!--<th>조회수</th>-->
 						<th>답변 유무</th>
 				      </tr>
 					  <c:forEach var="question" items="${question}">
@@ -109,7 +108,6 @@
 								</c:otherwise>
 							</c:choose>
 						</td>
-			        	<!--<td><%= session.getAttribute("nickname") %></td>-->
 						<td>${question.MEMBER_NICKNAME}</td>
 			        	<td>${question.QUE_REGDATE}</td>
 						<td>${question.QUE_STATE}</td>
