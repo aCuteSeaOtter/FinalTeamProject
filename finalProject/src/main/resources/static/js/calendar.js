@@ -242,6 +242,7 @@ $(function() {
 	
     // '선택하기'버튼 클릭 이벤트
     $('.selBtn').on('click', function() {
+		localStorage.clear();
         if(selectedDates.length > 0) {
             let formattedDates = selectedDates.map((date, index) => 
                 `${date.toISOString().split('T')[0]} (${selDay[index]})`
@@ -251,8 +252,6 @@ $(function() {
             $('.end').val('도착일 : ' + formattedDates[formattedDates.length - 1]);
             
 			localStorage.setItem('selectedDates', formattedDates);	// 브라우저 스토리지에 저장
-			//localStorage.setItem('selectedStartDate', formattedDates[0]); // 첫번째 날 저장
-			//localStorage.setItem('selectedEndDate', formattedDates[formattedDates.length-1]); // 마지막 날 저장
         }
     });
 

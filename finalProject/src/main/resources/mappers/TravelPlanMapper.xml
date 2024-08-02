@@ -14,10 +14,15 @@
 	<!-- travel_plan 테이블에 일정 넣기 (기존에 info_id와 plan_day가 같은 데이터가 있으면 seq값을 기존 데이터의 수만큼 더해서 저장 -->
     <insert id="insertTravelPlan">
 	    INSERT INTO travel_plan (plan_id, info_id, attr_id, plan_day, plan_seq)
-	    VALUES (plan_id_seq.NEXTVAL, #{info_id}, #{attr_id}, #{plan_day}, 
-	    (SELECT NVL(MAX(plan_seq), 0) + 1
-	     FROM travel_plan
-	     WHERE info_id = #{info_id} AND plan_day = #{plan_day})
+	    SELECT plan_id_seq.NEXTVAL, #{info_id}, #{attr_id}, #{plan_day}, 
+	           (SELECT NVL(MAX(plan_seq), 0) + 1
+	            FROM travel_plan
+	            WHERE info_id = #{info_id} AND plan_day = #{plan_day})
+	    FROM dual
+	    WHERE NOT EXISTS (
+	        SELECT 1
+	        FROM travel_plan
+	        WHERE info_id = #{info_id} AND attr_id = #{attr_id} AND plan_day = #{plan_day}
 	    )
 	</insert>
 	

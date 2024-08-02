@@ -134,7 +134,7 @@
 					        <div class="selectedLocation">
 					            <img class="selectedThumbnail" src="${attr.attr_img}"/>
 					            <div class="selectedContentBox">
-					                <input type="hidden" class="attr_id" value="${attr.attr_id}"/>
+					                <input type="text" class="attr_id" value="${attr.attr_id}"/>
 					                <div class="selectedLocalTitle">${attr.attr_name}</div>
 					                <div>${attr.attr_local}</div>
 					            </div>
@@ -174,6 +174,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/plan.js"></script>
+  <script src="/js/planPopup.js"></script>
 </body>
 
 </html>
