@@ -63,7 +63,7 @@ public class TravelPlanController {
 	            }
 	        }
 		}
-		 
+		System.out.println("컨트롤러 : " + detailedAttr);
 		
 		return detailedAttr;
 	}
