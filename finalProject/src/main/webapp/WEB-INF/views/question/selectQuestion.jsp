@@ -131,23 +131,23 @@
                     </div>
                   </div>
                   <!-- 답변 확인-->
-                  <div class="col-md-5">
+                  <div class="col-md-5 answer_check">
                     <input type="checkbox" id="answerCheckbox" name="answer" value="true"> 
                     <label for="answerCheckbox">답변 확인하기</label>
                   </div>
-                  <div class="col-12" id="hidden_member_nickname_container" style="display:none;">
+                  <div class="col-12 hidden-field" id="hidden_member_nickname_container" style="display:none;">
                     <div class="form-group">
                       <label>작성자</label>
                       <input type="text" id="hidden_member_nickname" class="form_style" name="member_nickname" value="강성욱 관리자" readonly>
                     </div>
                   </div>
-                  <div class="col-12" id="hidden_que_title_container" style="display:none;">
+                  <div class="col-12 hidden-field" id="hidden_que_title_container" style="display:none;">
                     <div class="form-group">
                       <label>제목</label>
-                      <input type="text" id="hidden_que_title" class="form_style" name="" value="답변 내용" readonly>
+                      <input type="text" id="hidden_que_title" class="form_style" name="" value="답변 제목" readonly>
                     </div>
                   </div>
-                  <div class="col-12" id="hidden_que_regdate_container" style="display:none;">
+                  <div class="col-12 hidden-field" id="hidden_que_regdate_container" style="display:none;">
                     <div class="form-group fon-con">
                       <label>답변 날짜</label>
                       <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="que_regdate" value="2012-01-23 01:23:45" readonly>
@@ -157,7 +157,7 @@
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="row">
-                  <div class="col-12">
+                  <div class="col-12 quesiton_content hidden-field" id="question_content">
                     <div class="form-group mb-0">
                       <label>문의 내용</label>
                       <c:choose>
@@ -170,17 +170,21 @@
                       </c:choose>
                     </div>
                   </div> 
+				  
                   <c:choose>
                     <c:when test="${id == question.MEMBER_EMAIL}">
                       <input type="hidden" name="que_id" value="${question.QUE_ID}">
                       <input type="hidden" name="originalTitle" value="${question.QUE_TITLE}">
                       <input type="hidden" name="originalContent" value="${question.QUE_CONTENT}">
-                      <input type="submit" class="form_style btn btn-primary" value="수정">
+					  <div class="button-container" id="button-container">
+						<button type="button" class="form_style btn-delete" onclick="confirmDelete(${question.QUE_ID})">삭제</button>
+		                <input type="submit" class="form_style btn-custom" value="수정">
+					  </div>
                     </form>
-                      <a href="deleteQuestion?que_id=${question.QUE_ID}" class="form_style btn btn-danger" onclick="return confirmDelete()">삭제</a>
                     </c:when>
                   </c:choose>
-                  <div class="col-12" id="hidden_que_content_container" style="display:none;">
+				  
+                  <div class="col-12 hidden-field" id="hidden_que_content_container" style="display:none;">
                     <div class="form-group mb-0">
                       <label>답변 내용</label>
                       <textarea id="hidden_que_content" class="form_style" rows="5" name="" readonly>답변 내용</textarea>

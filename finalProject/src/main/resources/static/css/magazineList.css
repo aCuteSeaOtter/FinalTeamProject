@@ -1,0 +1,36 @@
+hr{
+	width: 165% !important; /* 원하는 너비를 설정 */
+	border-top: 1px solid rgba(0, 0, 0, .5) !important;
+}
+
+.text-right {
+	text-align: left !important;
+}
+
+.inline-elements {
+  display: flex;
+  justify-content: space-between; /* 요소들 사이에 동일한 간격을 둠 */
+  align-items: center; /* 세로로 가운데 정렬 */
+}
+
+.inline-elements .links {
+  margin-right: -289px !important; 
+  display: flex;
+  gap: 14px; /* 링크 사이의 간격 조정 */
+}
+
+.inline-elements a {
+  margin-left: 10px !important; /* a 태그 사이의 간격 조정 */
+}
+
+.link-item {
+  margin-left: -2px !important; /* a 태그 사이의 간격 조정 */
+  position: relative; /* ::before 가상 요소를 위치시키기 위해 필요 */
+}
+
+.link-item:not(:last-child)::after {
+  content: "|"; /* 수직선 내용 */
+  position: absolute;
+  right: -15px; /* 위치 조정 */
+  color: #000; /* 수직선 색상 */
+}

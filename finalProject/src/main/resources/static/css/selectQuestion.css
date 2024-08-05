@@ -1,5 +1,5 @@
 	.form_style {
-      width: 100%;
+      /* width: 100%; */
       padding: 10px;
       margin: 5px 0;
       box-sizing: border-box;
@@ -47,6 +47,74 @@
 	} */
 	
 	#hidden_que_content_container {
-  		margin-top: 150px; /* 원하는 만큼의 공간을 조정 */
+  		margin-top: 111px; /* 원하는 만큼의 공간을 조정 */
 	}
 	
+	.btn-custom {
+	  color: white !important;
+	  background-color: #1ec28b !important;
+	  padding: 7px 28px !important; /* 더 작은 내부 여백 */
+	  width: 80px !important; /* 고정된 너비 */
+  	  height: 30px !important; /* 고정된 높이 */
+  	  cursor: pointer !important;
+	}
+	
+	.btn-delete {
+	  font-size: 14px;
+	  color: white !important;
+	  background-color: #1ec28b !important;
+	  padding: 7px 29px !important; /* 더 작은 내부 여백 */
+	  width: 80px !important; /* 고정된 너비 */
+	  height: 30px !important; /* 고정된 높이 */
+	  cursor: pointer !important;
+	  text-decoration: none;
+	  display: inline-block;
+	  white-space: nowrap; /* 텍스트 줄바꿈 제거 */
+	  line-height: normal; /* 버튼 높이와 동일하게 설정하여 텍스트 수직 중앙 정렬 */
+	  text-align: center; /* 텍스트 중앙 정렬 */
+	}
+	
+	.button-container {
+	  display: flex;
+	  gap: 10px; /* 버튼 사이의 간격을 조절 */
+	  margin-left: 61.5%;
+	}
+	
+	@media (max-width: 850px){
+		.quesiton_content {
+			margin-top: -102%;
+		}
+		
+		.answer_check {
+			margin-top: 90% !important;
+	        margin-bottom: 6%;
+	        z-index: 10;
+		}
+		
+		#hidden_que_content_container {
+    		margin-top: -35px;
+    		position: relative;
+		}
+		
+		.button-container {
+		   display: flex;
+		   gap: 10px;
+		   margin-left: 29.5%;
+		   margin-top: -48%;
+		   z-index: 10;
+		}
+		
+		.hidden-field.show {
+		   display: block;
+		   margin-top: 10px; /* 원하는 여백 추가 */
+		  /* 다른 스타일 조정 가능 */
+		}
+		
+		#question_content.show {
+		   margin-top: -209.5%;
+		}
+		
+		#button-container.show {
+		   margin-top: -155.8%;
+		}
+}
