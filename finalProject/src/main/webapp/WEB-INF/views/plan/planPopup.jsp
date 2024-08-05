@@ -89,7 +89,7 @@
 		    <div class="scrollBox"> 
 		    
 		    <!-- 명소 출력 시작 -->
-	        <c:forEach items="${attrList}" var="attr">
+	        <%-- <c:forEach items="${attrList}" var="attr">
 				<div class="divBlock">
 		        	<div class="location">
 		        		<img class="thumbnail" src="${attr.attr_img}"/>
@@ -101,7 +101,7 @@
 				        <img class="selectBox" src="/images/plan/none_select.svg">
 			        </div>
 		        </div>
-			</c:forEach>
+			</c:forEach> --%>
 		        <!-- 명소 출력 끝 -->
 		        
 	        </div>

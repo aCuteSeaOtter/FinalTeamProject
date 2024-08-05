@@ -18,6 +18,7 @@ public class AttrController {
 	@Autowired
 	private AttrService attrService;
 	
+	/*
 	// plan/planPopup에 모든 명소 불러오기
 	@RequestMapping("/plan/planPopup")
 	public String attr(Model m, @RequestParam("selectedAttrIds") List<Integer> selectedAttrIds) {
@@ -26,7 +27,7 @@ public class AttrController {
 	    List<AttrVO> defaultAttrList = new ArrayList<>();
 
 	    if (selectedAttrIds != null && !selectedAttrIds.isEmpty()) {
-	        // selectedAttrIds가 비어있지 않은 경우
+	        // selectedAttrIds가 비어있지 않은 경우 (기존에 선택한 명소가 있을 경우)
 	        for (Integer id : selectedAttrIds) {
 	            List<AttrVO> attrList = attrService.selectAttrList(id);
 	            if (attrList != null) {
@@ -51,33 +52,10 @@ public class AttrController {
 		
 		
 		return "/plan/planPopup";
+	}*/
+	
+	@RequestMapping("/plan/planPopup")
+	public String attr() {
+		return "plan/planPopup";
 	}
-	
-	
-	// plan/planPopup에 한번 선택했던 명소 불러오기
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	@PostMapping("/travelPlan")
-    @ResponseBody
-    public List<AttrVO> insertPlan(@RequestParam("day") int day, @RequestParam(value="data[]") List<Integer> data) {
-        List<AttrVO> result = attrService.insertPlan(day, data);
-        System.out.println(result);
-        return result;
-    }*/
 } 

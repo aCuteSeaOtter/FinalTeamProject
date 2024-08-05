@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,6 @@ import com.example.service.TravelPlanService;
 
 import jakarta.servlet.http.HttpSession;
 
-@Controller
 @RestController
 public class TravelPlanController {
 	
@@ -87,6 +87,39 @@ public class TravelPlanController {
         System.out.println("개인 항목 삭제");
         
         return "완료";
+	}
+	
+	
+	// 명소 검색하기
+	@PostMapping("/searchAttr")
+	public List<AttrVO> searchAttrByKeyword(@RequestParam("keyword") String keyword) {
+		List<AttrVO> result = attrService.searchAttrByKeyword(keyword);
+		
+		return result;
+	}
+	
+	
+	// 모든 명소 불러오기
+	@GetMapping("/getAllAttractions")
+	public List<AttrVO> selectAllAttr() {
+		List<AttrVO> result = attrService.selectAttrList();
+		return result;
+	}
+	
+	// 선택한 명소 불러오기
+	@GetMapping("/getSelectedAttractions")
+	public List<AttrVO> selectedAttr(@RequestParam("selectedAttrIds") List<Integer> selectedAttrIds) {
+		System.out.println("selectedAttrIds : "+ selectedAttrIds);
+		List<AttrVO> selectedAttrList = new ArrayList<>();
+		
+		for (Integer id : selectedAttrIds) {
+            List<AttrVO> attrList = attrService.selectAttrList(id);
+            if (attrList != null) {
+                selectedAttrList.addAll(attrList); // 선택된 ID들에 대한 결과를 통합
+            }
+        }
+		System.out.println(selectedAttrList);
+		return selectedAttrList;
 	}
 	
 	

@@ -7,6 +7,7 @@ public interface AttrService {
 	List<AttrVO> selectAttrList();
 	List<AttrVO> selectAttrList(int selectedAttrIds);
 	AttrVO selectAttrListById(Integer id);
+	List<AttrVO> searchAttrByKeyword(String keyword);
 	
 	
 	

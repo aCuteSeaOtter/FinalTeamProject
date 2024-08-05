@@ -22,4 +22,11 @@
         WHERE attr_id = #{attd_id}
     </select>
     
+    <!-- 검색어를 이용한 명소 검색 -->
+    <select id="searchAttrByKeyword" resultType="com.example.domain.AttrVO">
+	    SELECT * FROM attr
+	    WHERE attr_name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+	       OR attr_local LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+	</select>
+    
 </mapper>
