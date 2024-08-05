@@ -26,7 +26,10 @@ public class AttrServiceImpl implements AttrService {
         return attrDAO.selectAttrListById(id);
     }
 	
-    
+ 	// 검색어를 이용한 명소 검색
+    public List<AttrVO> searchAttrByKeyword(String keyword) {
+        return attrDAO.searchAttrByKeyword(keyword);
+    }
     
     
     
