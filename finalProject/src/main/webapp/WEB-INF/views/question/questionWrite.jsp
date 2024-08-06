@@ -131,7 +131,7 @@
                     <div class="col-12">
                       <div class="form-group">
                         <label>제목</label>
-                        <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title">
+                        <input type="text" class="form_style" placeholder="50자 이내로 제목을 입력해주세요." name="que_title" id="que_title" required>
                       </div>
                     </div>
                     <div class="col-12">
@@ -157,8 +157,9 @@
 					</div>
 					  <div class="col-md-12">
 						<input type="password" name="que_secret" class="form-control"
-						 	   id ="passwordInput" placeholder="비밀글에 대한 비밀번호를 남겨주세요.">
+						 	   id ="passwordInput" placeholder="4~16자의 영문, 숫자를 사용해주세요.">
 						  <i class="fa fa-eye fa-lg password-toggle-icon" id="togglePassword"></i>
+						  <span class="pwcheck-message"></span> <!-- 유효성 검사 메시지 표시 -->
 					  </div>
 					</div>
                   </div>
@@ -168,7 +169,7 @@
                     <div class="col-12">
                       <div class="form-group mb-0">
                         <label>문의 내용</label>
-                        <textarea class="form_style" placeholder="문의 내용을 입력해주세요." rows="5" name="que_content"></textarea>
+                        <textarea class="form_style" placeholder="1000자 이내로 문의 내용을 입력해주세요." rows="5" name="que_content" required></textarea>
                       </div>
                     </div>
                     <div class="col-12">

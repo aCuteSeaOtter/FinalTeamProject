@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -38,6 +39,7 @@
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
   <link rel="stylesheet" href="/css/magazineList.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/blog.css" type="text/css">
 </head>
 
 <body>
@@ -98,32 +100,98 @@
       <!-- banner con -->
     </section>
     <!-- WHAT WE SERVE SECTION -->
-    <section class="float-left w-100 what-we-serve-con service-serve-con position-relative main-box padding-bottom">
-      <img alt="vector" class="vector4 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-        src="/assets/images/vector4.png">
-      <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-        src="/assets/images/vector5.png">
-      <div class="container wow bounceInUp" data-wow-duration="2s">
-        <div class="row">
-          <div class="col-lg-5">
-            <h4 class="mustard-text text-uppercase">#전체</h4>
-            <hr>
-            <div class="inline-elements">
-              <h6 class="text-uppercase text-right mb-0">총 필요하다 건</h6>
-              <div class="links ml-auto">
-                <a href="#" class="link-item">최신순</a>
-                <a href="#" class="link-item">인기순</a>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <!-- row -->
-        </div>
-	    <
-        <!-- container -->
-      </div>
-      <!-- what we serve con -->
-    </section>
+	<section class="float-left w-100 what-we-serve-con service-serve-con position-relative main-box padding-bottom">
+	  <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s" src="/assets/images/vector5.png">
+		<div class="container">
+			<div class="row MagazineCotents">
+				<div class="col-xl-9 col-lg-9">
+					<ul class="magazineUl">
+					  <c:forEach items="${magazineList}" var="magazine">
+						<li>
+						  <div class="magazine-image">
+						    <img src="${magazine.artl_img}" alt="${magazine.artl_name}"/>
+						  </div>
+						  <div class="magazine-info">
+						    <a href="${magazine.artl_link}">${magazine.artl_name}</a>
+						    <p>${magazine.artl_local}</p>
+						    <c:set var="magazineTag" value="${fn:split(magazine.artl_pri_tag, '#')}"/>
+						    <div class="magazine-tags">
+						      <c:forEach items="${magazineTag}" var="tag">
+						        <span>#${tag}</span>
+						      </c:forEach>
+						    </div>
+						  </div>
+						  <div class="magazine-hover-title">${magazine.artl_title}</div> <!-- 부제 표시 -->
+						</li>
+					  </c:forEach>
+					</ul>
+				</div>
+				<div class="sidebar sticky-sidebar col-xl-3">
+                    <div class="theiaStickySidebar">
+                        <div class="widget widget-newsletter" data-aos="fade-up" data-aos-duration="700">
+                            <form id="widget-search-form-sidebar" class="form-inline" method="get" action="reviewList">
+                                <div class="input-group">
+                                    <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="Search for reviews...">
+                                    <div class="input-group-append">
+                                        <span class="input-group-btn">
+                                            <button type="submit" id="widget-widget-search-form-button" class="btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+						<div class="widget">
+						    <div class="tabs">
+						        <ul class="nav nav-tabs" id="tabs-posts" role="tablist" data-aos="fade-up" data-aos-duration="700">
+						            <li class="nav-item">
+						                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular" aria-selected="true">지역</a>
+						            </li>
+						            <li class="nav-item">
+						                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">태그</a>
+						            </li>
+						        </ul>
+						        <div class="tab-content" id="tabs-posts-content" data-aos="fade-up" data-aos-duration="700">
+						            <div class="tab-pane fade show active" id="popular" role="tabpanel">
+						                <div class="post-thumbnail-list">
+											<ul class="tag_list area_list js_one" id="arealist">
+												<li id="0"><button type="button" class="btn"><span>#전체</span></button></li>
+												<li id="1"><button type="button" class="btn"><span>#서울</span></button></li>
+												<li id="6"><button type="button" class="btn"><span>#부산</span></button></li>
+												<li id="4"><button type="button" class="btn"><span>#대구</span></button></li>
+												<li id="2"><button type="button" class="btn"><span>#인천</span></button></li>
+												<li id="5"><button type="button" class="btn"><span>#광주</span></button></li>
+												<li id="3"><button type="button" class="btn"><span>#대전</span></button></li>
+												<li id="7"><button type="button" class="btn"><span>#울산</span></button></li>
+												<li id="8"><button type="button" class="btn"><span>#세종</span></button></li>
+												<li id="31"><button type="button" class="btn"><span>#경기</span></button></li>
+												<li id="32"><button type="button" class="btn"><span>#강원</span></button></li>
+												<li id="33"><button type="button" class="btn"><span>#충북</span></button></li>
+												<li id="34"><button type="button" class="btn"><span>#충남</span></button></li>
+												<li id="35"><button type="button" class="btn"><span>#경북</span></button></li>
+												<li id="36"><button type="button" class="btn"><span>#경남</span></button></li>
+												<li id="37"><button type="button" class="btn"><span>#전북</span></button></li>
+												<li id="38"><button type="button" class="btn"><span>#전남</span></button></li>
+												<li id="39"><button type="button" class="btn"><span>#제주</span></button></li>
+											</ul>
+						                </div>
+						            </div>
+									<div class="tab-pane fade" id="featured" role="tabpanel">
+                                        <div class="post-thumbnail-list">
+                                            테스트2
+                                        </div>
+                                    </div>
+						        </div>
+						    </div>
+						</div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	  <!-- what we serve con -->
+	</section>
+
     <!-- bg outer wrapper -->
   </div>
   <jsp:include page="/WEB-INF/views/footer.jsp" />
@@ -141,6 +209,7 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
+  
 </body>
 
 </html>

@@ -48,10 +48,15 @@
             display: block;
         }
        
-        .col-md-6 p,
+        .col-md-6 p {
+		    font-size: 18px;
+		   	color: var(--navy-color);
+        	margin-left: 16px;
+        }
+
 		.col-md-4 p {
-    	font-size: 18px;
-    	color: var(--navy-color);
+		   	font-size: 18px;
+		   	color: var(--navy-color);
 		}
 		
 		/* 비밀글 여부 항목에 상하 공백 추가 */
@@ -96,13 +101,38 @@
 		}
 		
 		.password-toggle-icon {
-            position: absolute;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
+            position: absolute !important;
+            right: 30px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            cursor: pointer !important;
         }
         
         input#passwordInput.form-control {
            font-family: auto;
         }
+        
+        .pwcheck-message {
+		    display: block;
+		    margin-top: 5px;
+		    color: red;
+		    position: absolute;
+		    bottom: -28px; /* Adjust this value as necessary */
+		    left: 16px;
+		}
+		
+		.position-relative {
+		    position: relative;
+		}
+		
+		@media (max-width: 850px){
+			.pwcheck-message {
+				display: block;
+			    margin-top: 5px;
+			    color: red;
+			    position: absolute;
+			    bottom: -28px;
+			    left: 16px;
+			    white-space: nowrap; /* 텍스트 줄 바꿈을 방지합니다 */
+			}
+		}

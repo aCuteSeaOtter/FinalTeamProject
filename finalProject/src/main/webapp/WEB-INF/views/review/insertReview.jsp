@@ -87,7 +87,7 @@
 <table border="1">
    <tr>
       <th width="70">제목</th><td align="left">
-      <input type="text" name="review_title"/></td>
+      <input type="text" name="review_title" placeholder="50자 이내로 제목을 입력해주세요." required/></td>
    </tr>
    <tr>
       <th >작성자</th><td align="left">
@@ -112,7 +112,7 @@
    </tr>
    <tr>
       <th>내용</th><td align="left">
-      <textarea name="review_content" cols="40" rows="10"></textarea></td>
+      <textarea name="review_content" cols="40" rows="10" placeholder="1000자 이내로 내용을 입력해주세요." required></textarea></td>
    </tr>
    <tr>
       <th>사진/동영상 추가</th>

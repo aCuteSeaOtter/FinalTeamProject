@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.domain.LoginVO;
 import com.example.domain.ReviewFileVO;
 import com.example.domain.ReviewVO;
-import com.example.domain.UserVO;
 import com.example.service.ReviewService;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -81,6 +81,15 @@ public class ReviewController<SearchCriteria> {
        m.addAttribute("currentPage", page);
        m.addAttribute("totalPages", totalPages);
 
+       // 사이드바에 조회수 기준 상위 3개 리뷰 추가
+       List<ReviewVO> topViewReviews = reviewService.getTopReviewsByViewCount(3);
+       m.addAttribute("topViewReviews", topViewReviews);
+       System.out.println("조회순 상위 리뷰 3개 : " + topViewReviews);
+       
+       List<ReviewVO> topLikeReviews = reviewService.getTopReviewsByLikeCount(3);
+       m.addAttribute("topLikeReviews",topLikeReviews);
+       System.out.println("좋아요순 상위 리뷰 3개 : " + topLikeReviews);
+       
        return "/review/reviewList";
    }
 
@@ -102,11 +111,11 @@ public class ReviewController<SearchCriteria> {
        model.addAttribute("review", result.get("reviewOne"));
 
        // 세션에서 사용자 ID 가져오기, 사용자 nickname 가져오기
-       String id = (String) session.getAttribute("sess");
-       String nickname = (String) session.getAttribute("nickname");
+       LoginVO member = (LoginVO) session.getAttribute("member");
        
-       if (id != null) {
-           model.addAttribute("id", id);
+       if (member != null) {
+    	   String nickname = member.getMember_nickname();
+           model.addAttribute("nickname", nickname);
        }
    }
 
@@ -190,8 +199,9 @@ public class ReviewController<SearchCriteria> {
        }
 
        reviewService.insertReview(vo, fileList);
-       
-       return "redirect:reviewList";
+       out.println("<script>alert('작성 완료되었습니다.'); location.href='reviewList';</script>");
+       out.flush();
+       return null;
    }
 
    // 글 수정
@@ -249,7 +259,7 @@ public class ReviewController<SearchCriteria> {
    @RequestMapping("/insertReview")
    public String viewPage(Model m, HttpSession session, HttpServletResponse response) throws IOException {
        // 세션에서 사용자 닉네임 가져오기
-       UserVO member = (UserVO) session.getAttribute("member");
+       LoginVO member = (LoginVO) session.getAttribute("member");
 
        if (member != null) {
            String nickname = member.getMember_nickname();
@@ -257,7 +267,7 @@ public class ReviewController<SearchCriteria> {
            return "review/insertReview";  // insertReview.jsp 페이지로 이동
        } else {
            System.out.println("닉네임이 null입니다. 세션에 닉네임이 설정되지 않았습니다.");
-           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/user/userLogin");
+           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/index");
            return null;  // 팝업을 띄우고 리다이렉트가 처리되므로 null 반환
        }
    }

@@ -85,25 +85,25 @@
   
   <table class="table table-striped">
     <tr>
-        <th>항목</th>
+        <th>항목</th>  
         <th>내용</th>
     </tr>
     <c:if test="${not empty review_id}">
         <tr>
-            <td>게시물 번호</td>
-            <td>${review_id}</td>
+            <td>게시물</td>
+            <td>${review.review_content}</td>
         </tr>
     </c:if>
     <c:if test="${not empty comment_id}">
         <tr>
-            <td>댓글 번호</td>
-            <td>${comment_id}</td>
+            <td>댓글</td>
+            <td>${comments.comment_content}</td>
         </tr>
     </c:if>
     <c:if test="${not empty reply_id}">
         <tr>
-            <td>대댓글 번호</td>
-            <td>${reply_id}</td>
+            <td>대댓글</td>
+            <td>${reply.reply_content}</td>
         </tr>
     </c:if>
 </table>
@@ -121,6 +121,7 @@
         <option value="욕설">욕설</option>
         <option value="부적절한 내용">부적절한 내용</option>
         <option value="기타">기타</option>
+		<option value="허위 정보">허위 정보</option>
     </select>
     
     <label for="report_content">신고 사유:</label>

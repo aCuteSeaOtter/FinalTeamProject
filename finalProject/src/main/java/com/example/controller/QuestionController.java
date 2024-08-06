@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.domain.AnswerVO;
+import com.example.domain.LoginVO;
 import com.example.domain.QuestionVO;
 import com.example.domain.UserVO;
+import com.example.service.AnswerService;
 import com.example.service.QuestionService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,18 +30,20 @@ public class QuestionController {
 	@Autowired
 	private QuestionService questionService;
 	
+	@Autowired
+    private AnswerService answerService;
+	
 	// 문의글 작성 페이지 이동
 	@RequestMapping("questionWrite")
 	public String insertQuestion(Model m, HttpSession session,
 								HttpServletResponse response) {
 		// 세션에서 사용자 닉네임 가져오기
-	    UserVO member = (UserVO) session.getAttribute("member");
+		LoginVO member = (LoginVO) session.getAttribute("member");
 	    String id = (String) session.getAttribute("sess");
 	    
 	    if (member != null) {
 	           String nickname = member.getMember_nickname();
 	           m.addAttribute("nickname", nickname);
-	           System.out.println("문의 페이지에서 가져온 값:" + id);
 	           return "question/questionWrite"; 
 	       } else {
 	           System.out.println("닉네임이 null입니다. 세션에 닉네임이 설정되지 않았습니다.");
@@ -53,8 +58,11 @@ public class QuestionController {
                                QuestionVO vo, String qPassword,
                                Model m, HttpServletResponse response) throws IOException {
         
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
         // 세션에서 사용자 정보 가져오기
-        UserVO member = (UserVO) session.getAttribute("member");
+        LoginVO member = (LoginVO) session.getAttribute("member");
         
         if (member != null) {
             String member_email = member.getMember_email();
@@ -67,27 +75,24 @@ public class QuestionController {
 
             // 입력 값 검증
             if (vo.getQue_title() == null || vo.getQue_title().isEmpty()) {
-                response.setContentType("text/html; charset=UTF-8");
-                PrintWriter out = response.getWriter();
                 out.println("<script>alert('제목을 입력해주세요.'); history.go(-1);</script>");
                 out.flush();
                 return null;
             }
 
             if (vo.getQue_content() == null || vo.getQue_content().isEmpty()) {
-                response.setContentType("text/html; charset=UTF-8");
-                PrintWriter out = response.getWriter();
                 out.println("<script>alert('내용을 입력해주세요.'); history.go(-1);</script>");
                 out.flush();
                 return null;
             }
             
             questionService.insertQuestion(vo);
-
-            return "redirect:/question/questionList";
+            out.println("<script>alert('작성이 완료되었습니다.'); location.href='/question/questionList';</script>");
+            out.flush();
+            return null;
         } else {
             // 회원 정보가 세션에 없을 경우 로그인 페이지로 리다이렉트
-            return "redirect:user/login";
+            return "redirect:login/loginForm";
         }
     }
 	
@@ -113,11 +118,14 @@ public class QuestionController {
 	
 	// 문의글 상세보기
 	@RequestMapping("selectQuestion")
-	public String selectQuestion(QuestionVO vo, Model m, HttpSession session) {
-		HashMap<String, Object> question = questionService.selectQuestion(vo);
+	public String selectQuestion(QuestionVO qvo, Model m, HttpSession session,
+								 AnswerVO avo) {
+		HashMap<String, Object> question = questionService.selectQuestion(qvo);
+		AnswerVO answer = answerService.selectAnswer(avo);
 		String id = (String) session.getAttribute("sess");
 		m.addAttribute("id", id);
 		m.addAttribute("question", question);
+		m.addAttribute("answer", answer);
 		
 		return "question/selectQuestion";
 	}

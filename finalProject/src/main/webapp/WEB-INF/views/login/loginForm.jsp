@@ -111,14 +111,14 @@
 					<div class="col-12"><!--12-->
 					<div class="login-group">
 					 <label for="memberEmail">이메일</label>
-				 <input type="email" style="width:250px; height:50px;" name="member_email" value="uuu@fff.net"placeholder="Enter Your Email Address"
+				 <input type="email" style="width:250px; height:50px;" name="member_email" value=""placeholder="Enter Your Email Address"
 			id="email"required>
 		 </div> 
 	</div>
 	<div class="col-12">
 	<div class="login-group">
 	    <label for="memberPass">비밀번호</label>
-	<input type="password" style="width:250px;" placeholder="Enter Your passwords" name="member_pass"value="12345678$"
+	<input type="password" style="width:250px;" placeholder="Enter Your passwords" name="member_pass"value=""
 	 id="password"required>
 	   </div>
 	   </div>

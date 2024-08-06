@@ -3,185 +3,76 @@
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html lang="ko">
-	<link rel="stylesheet" href="/css/calendar.css" type="text/css">
-	<link rel="stylesheet" href="/css/realLogin.css" type="text/css">
+<head>
+    <link rel="stylesheet" href="${path}/css/calendar.css" type="text/css">
+    <link rel="stylesheet" href="${path}/css/realLogin.css" type="text/css">
+</head>
+<body>
 <!-- HEADER SECTION -->
-    <header id="header" class="w-100 flaot-left header-con main-box position-relative">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="/">
-            <figure class="mb-0">
-              <img src="<c:url value='/assets/images/logo-icon.png' />" alt="logo-icon">
-            </figure>
-          </a> 
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-	                <a class="nav-link p-0" href="/">홈</a>
-	            </li>
-				<li class="nav-item">
-	                <a class="nav-link p-0" href="/review/reviewList">여행후기</a>
-	            </li>
-				<li class="nav-item">
-	                <a class="nav-link p-0" href="/login/main">매거진</a>
-	            </li>
+<header id="header" class="w-100 float-left header-con main-box position-relative">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">
+        <figure class="mb-0">
+          <img src="<c:url value='/assets/images/logo-icon.png' />" alt="logo-icon">
+        </figure>
+      </a> 
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link p-0" href="/">홈</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-0" href="/review/reviewList">여행후기</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-0" href="/magazine/magazineList">매거진</a>
+            </li>
+        </ul>
+        <div class="header-contact">
+          <ul class="list-unstyled mb-0" id="header-session">
+            <c:if test="${not empty sessionScope.member}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown4" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       "${sessionScope.member.member_nickname}"님 로그인중
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                        <a class="dropdown-item" href="/login/mypage">마이페이지</a>
+                        <a class="dropdown-item" href="/question/questionList">문의사항</a>
+                        <a class="dropdown-item" href="${path}/login/logout">로그아웃</a>
+                    </div>
+                </li>
+            </c:if>
 
-			 
-			 		
-			  <!--
-              <li class="nav-item active">
-                <a class="nav-link p-0" href="/index">Home</a>
-				</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link p-0" href="/about">About Us</a>
-              </li>
-			  <li class="nav-item">
-			  	<a class="nav-link p-0" href="/user/userLogin">가상 로그인</a>
-			  </li>
-			  
-              <li class="nav-item">
-                <a class="nav-link p-0" href="/destinations">Destination</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link p-0 dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <a class="dropdown-item" href="booking">Booking</a>
-                  <a class="dropdown-item" href="faq">Faq</a>
-                  <a class="dropdown-item" href="contact">Contact</a>
-                  <a class="dropdown-item" href="team">Team</a>
-                  <a class="dropdown-item" href="service">Service</a>
-                  <a class="dropdown-item" href="testimonial">Testimonial</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle p-0" href="blog" id="navbarDropdown4" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                  <a class="dropdown-item" href="blog">Blog</a>
-                  <a class="dropdown-item" href="load-more">Load More</a>
-                  <a class="dropdown-item" href="single-blog">Single Blog</a>
-                  <a class="dropdown-item" href="one-column">One Column</a>
-                  <a class="dropdown-item" href="two-column">Two Column</a>
-                  <a class="dropdown-item" href="three-column">Three Column</a>
-                  <a class="dropdown-item" href="three-colum-sidbar">Three Column Sidbar</a>
-                  <a class="dropdown-item" href="four-column">Four Column</a>
-                  <a class="dropdown-item" href="six-colum-full-wide">Six Column</a>
-                </div>
-				-->
-              </li>
-            </ul>
-            <div class="header-contact">
-              <ul class="list-unstyled mb-0">
-				<!--
-                <li><a href="contact" class="live-chat-btn d-inline-block"><i class="fa-solid fa-comment-dots"></i>
-                    Live Chat</a></li>
-					-->	
-				 <!--[ ${sessionScope.mem}]-->
-				
-				<!-- [ ${sessionScope}]-->
-				
-				<c:if test="${not empty sessionScope.mem}">
-				    <li class="nav-item">
-				        <a class="nav-link p-0">
-				            "${sessionScope.mem.member_nickname}"님 로그인중
-				        </a>
-				        <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-				            <a class="dropdown-item" href="/login/mypage">마이페이지</a>
-				            <a class="dropdown-item" href="/review/reviewList">후기내역</a>
-				            <a class="dropdown-item" href="/login/logout">로그아웃</a>
-				        </div>
-				    </li>
-				</c:if>
-
-				<c:if test="${empty sessionScope}">
-				    <li class="nav-item">
-				        <a href="/login/loginForm" class="live-chat-btn d-inline-block">
-				            로그인
-				        </a>
-				    </li>
-				</c:if>
-		
-
-						
-								 
-			<!--	 <c:choose>		
-				<c:when test="${not empty sessionScope}">
-				<li class="nav-item">
-					<a class="nav-link p-0">
-						${sessionScope.mem.member_nickname}님 로그인중 </a>
-					<div class="dropdown-menu" aria-lebelledby="navbarDropdown4">
-					<a class="dropdown-item" href="/login/mypage">마이페이지</a>
-					 <a class="dropdown-item" href="/review/reviewList">후기내역</a>
-					<a class="dropdown-item" href="/login/logout">로그아웃</a>
-					</div>	
-					</li>
-				</c:when>
-					
-				<c:otherwise>
-						<li class="nav-item">
-				<a href="/login/loginForm" class="live-chat-btn d-inline-block">
-				    	로그인
-				</a>
-				</li>
-				</c:otherwise>
-				</c:choose>-->
-	
-				
-                <!-- list unstyled -->
-              </ul>
-              <!-- header contact -->
-            </div>
-          
-          </div>
-        </nav>
-        <!-- container -->
+            <c:if test="${empty sessionScope.member}">
+                <li class="nav-item">
+                    <a href="/login/loginForm" class="live-chat-btn d-inline-block">
+                        로그인
+                    </a>
+                </li>
+            </c:if>
+          </ul>
+          <!-- header contact -->
+        </div>
       </div>
-      <!-- header-con -->
-    </header>
-	<script src="/assets/js/jquery.min.js"></script>
-	<script src="/assets/js/popper.min.js"></script>
-	<script src="/assets/js/bootstrap.min.js"></script>
-	<script src="/assets/js/custom.js"></script>
-	
-	<script>
-	      document.addEventListener('DOMContentLoaded', function () {
-	          var navItems = document.querySelectorAll('.nav-item.dropdown');
-	          
-	          navItems.forEach(function (navItem) {
-	              var dropdownMenu = navItem.querySelector('.dropdown-menu');
-	              
-	              navItem.addEventListener('mouseover', function () {
-	                  dropdownMenu.style.display = 'block';
-	              });
-	              
-	              dropdownMenu.addEventListener('mouseover', function () {
-	                  dropdownMenu.style.display = 'block';
-	              });
-	              
-	              navItem.addEventListener('mouseout', function (event) {
-	                  if (!navItem.contains(event.relatedTarget)) {
-	                      dropdownMenu.style.display = 'none';
-	                  }
-	              });
-	              
-	              dropdownMenu.addEventListener('mouseout', function (event) {
-	                  if (!dropdownMenu.contains(event.relatedTarget)) {
-	                      dropdownMenu.style.display = 'none';
-	                  }
-	              });
-	          });
-	      });
-	
-			
-	</script>
+    </nav>
+    <!-- container -->
+  </div>
+  <!-- header-con -->
+</header>
+<script src="${path}/assets/js/jquery.min.js"></script>
+<script src="${path}/assets/js/popper.min.js"></script>
+<script src="${path}/assets/js/bootstrap.min.js"></script>
+<script src="${path}/assets/js/custom.js"></script>
+<script src="${path}/js/header.js"></script>
 
-	  
+</body>
+</html>
