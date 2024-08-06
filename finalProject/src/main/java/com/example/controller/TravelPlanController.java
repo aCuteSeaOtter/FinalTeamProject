@@ -1,13 +1,14 @@
 package com.example.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,7 +56,6 @@ public class TravelPlanController {
 			// plan의 attr_id로 attr을 가져옴
 			if (plan != null) {
 	            AttrVO attr = attrService.selectAttrListById(plan.getAttr_id());
-	            
 
 	            // attr을 리스트로 반환
 	            if (attr != null) {
@@ -63,8 +63,6 @@ public class TravelPlanController {
 	            }
 	        }
 		}
-		System.out.println("컨트롤러 : " + detailedAttr);
-		
 		return detailedAttr;
 	}
 	
@@ -84,7 +82,6 @@ public class TravelPlanController {
 		String info_id = (String)session.getAttribute("info_id");
 		
         travelPlanService.deleteTravelPlan(info_id, plan_day, attr_id);
-        System.out.println("개인 항목 삭제");
         
         return "완료";
 	}
@@ -108,17 +105,15 @@ public class TravelPlanController {
 	
 	// 선택한 명소 불러오기
 	@GetMapping("/getSelectedAttractions")
-	public List<AttrVO> selectedAttr(@RequestParam("attrIds") List<Integer> selectedAttrIds) {
-		System.out.println("selectedAttrIds : "+ selectedAttrIds);
-		List<AttrVO> selectedAttrList = new ArrayList<>();
+	public List<Map<String, Object>> selectedAttr(@RequestParam("day") int plan_day, @RequestParam("attrIds") List<Integer> selectedAttrIds) {
+		List<Map<String, Object>> selectedAttrList = new ArrayList<>();
 		
-		for (Integer id : selectedAttrIds) {
-            List<AttrVO> attrList = attrService.selectAttrList(id);
+		for (Integer attr_id : selectedAttrIds) {
+			List<Map<String, Object>> attrList = travelPlanService.selectedAttrList(attr_id, plan_day);
             if (attrList != null) {
                 selectedAttrList.addAll(attrList); // 선택된 ID들에 대한 결과를 통합
             }
         }
-		System.out.println(selectedAttrList);
 		return selectedAttrList;
 	}
 	

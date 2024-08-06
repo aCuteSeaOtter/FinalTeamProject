@@ -1,3 +1,27 @@
+let currentPage = 1;
+const itemsPerPage = 20;
+let totalPages = 1;
+
+function initializePagination() {
+    const $divBlocks = $('.divBlock');
+    totalPages = Math.ceil($divBlocks.length / itemsPerPage);
+    showPage(currentPage);
+}
+
+function showPage(page) {
+    const $divBlocks = $('.divBlock');
+    $divBlocks.hide();
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    $divBlocks.slice(start, end).show();
+    updatePaginationButtons();
+}
+
+function updatePaginationButtons() {
+    $('.prevPage').prop('disabled', currentPage === 1);
+    $('.nextPage').prop('disabled', currentPage === totalPages);
+}
+
 $(function() {
     // 로컬스토리지에서 선택된 날짜 목록을 가져와 배열로 변환
     var selectedDates = localStorage.getItem('selectedDates') ? localStorage.getItem('selectedDates').split(',') : [];
@@ -34,7 +58,6 @@ $(function() {
     $('.selectedScrollBox .selectedItem').each(function() {
         // 각 selectedItem 요소 내의 attr_id 클래스를 가진 input 요소의 값 추출
         var attrId = $(this).find('.attr_id').val();
-        opener.console.log(attrId);
 
         // attrId가 undefined가 아닌지 확인
         if (attrId) {
@@ -42,10 +65,21 @@ $(function() {
         }
     });
 
-    // 임시로 selectedAttrIdDataMap[day] 데이터 확인용 버튼
-    $('.searchPng').click(function() {
-        opener.console.log("저장된 값 : ", selectedAttrIdDataMap[day]);
-    });
+	
+	// 명소 클릭 시 modal에 명소 소개 출력
+	$(document).on('click', '.contentBox', function() {
+		// 모달 버튼과 모달창 가져오기
+		var modal = $('.myModal');
+		
+		modal.css({'display' : 'block'});
+		
+		$(document).on('click', '.closeBtn', function() {
+			modal.css({'display' : 'none'});
+		});
+			
+	}); // end $(document).on('click', '.contentBox', function()
+	
+    
 
     // 삭제 아이콘 호버 시 색상 변경
     $(document).on('mouseenter', '.deleteItem', function() {
@@ -53,6 +87,7 @@ $(function() {
             $(this).attr('src', '/images/plan/trash_red.png');
         }
     });
+	
 
     // 삭제 아이콘에서 마우스 떠날 시 색상 복원
     $(document).on('mouseleave', '.deleteItem', function() {
@@ -60,62 +95,9 @@ $(function() {
             $(this).attr('src', '/images/plan/trash.png');
         }
     });
-
-    // 삭제 아이콘 클릭 시 아이템 제거 및 이미지 상태 변경
-    $(document).on('click', '.deleteItem', function() {
-        var selectedItem = $(this).closest('.selectedItem');
-        var selectedLocalTitleText = selectedItem.find(".selectedLocalTitle").text();
-        var attr_id = selectedItem.find('.attr_id').val();
-
-        // 삭제가 클릭된 명소의 프론트 삭제
-        selectedItem.remove();
-        // 선택된 명소 카운트
-        updateCnt(-1);
-
-        // 선택 박스 이미지 상태 업데이트
-        $(".selectBox").each(function() {
-            if ($(this).attr('src').includes('/images/plan/place_select.svg')) {
-                var $divBlock = $(this).closest('.divBlock');
-                if ($divBlock.find(".localTitle").text() === selectedLocalTitleText) {
-                    $(this).attr('src', '/images/plan/none_select.svg');
-                    return false;
-                }
-            }
-        }); // end selectBox.each
-		
-		
-        opener.console.log("attr_id 삭제 전 : ", selectedAttrIdDataMap[day]);
-		
-		
-		selectedAttrIdDataMap[day] = selectedAttrIdDataMap[day].filter(id => id !== attr_id);
-		opener.console.log("!!"+selectedAttrIdDataMap[day].length);//여기
-        updateLocalStorage();
-		
-		
-		
-        // 'popupDataX'로 로컬스토리지에 배열 저장
-        localStorage.setItem('popupData' + day, selectedAttrIdDataMap[day]);
-        opener.console.log("'popupData' : " + localStorage.getItem('popupData' + day));
-
-        $.ajax({
-            url: '/deleteTravelPlan',
-            type: 'POST',
-            data: { day: day, attr_id: attr_id },
-            success: function(response) {
-                opener.console.log('/deleteTravelPlan Success : ', response);
-            },
-            error: function(error) {
-                opener.console.log('/deleteTravelPlan Error : ', error);
-            }
-        }); // end ajax
-
-        opener.console.log("attr_id 삭제 후 : ", selectedAttrIdDataMap[day]);
-
-        // plan/plan에서 선택된 요소 삭제
-        opener.$('#inputData-' + day).empty();
-    }); // end $(document).on('click', '.deleteItem', function()
-
-    // 선택박스 클릭 시 이미지 상태 및 선택된 항목 처리
+	
+	
+	// 선택박스 클릭 시 이미지 상태 및 선택된 항목 처리
     $(document).on('click', '.selectBox', function() {
         const currentSrc = $(this).attr('src');
         var divBlock = $(this).closest('.divBlock');
@@ -147,7 +129,7 @@ $(function() {
                     <div class="selectedLocation">
                         <img class="selectedThumbnail" src="${selectedThumbnailSrc}"/>
                         <div class="selectedContentBox">
-                            <input type="text" class="attr_id" value="${selectedAttrId}"/>
+                            <input type="hidden" class="attr_id" value="${selectedAttrId}"/>
                             <div class="selectedLocalTitle">${selectedLocalTitleText}</div>
                             <div>${selectedDescriptionText}</div>
                         </div>
@@ -156,8 +138,6 @@ $(function() {
                 </div>
             `;
             $(".selectedScrollBox").append(newItem);
-
-            opener.console.log("선택 후 : " + selectedAttrIdDataMap[day]);
 
         // 선택박스 선택 후
         } else {
@@ -197,10 +177,56 @@ $(function() {
                     return false;
                 } // end if
             }); // end selectedItem.each
-
-            opener.console.log("선택 후 : " + selectedAttrIdDataMap[day]);
         } // end if
     }); // end $(".selectBox").on("click", function()
+	
+
+    // 삭제 아이콘 클릭 시 아이템 제거 및 이미지 상태 변경
+    $(document).on('click', '.deleteItem', function() {
+        var selectedItem = $(this).closest('.selectedItem');
+        var selectedLocalTitleText = selectedItem.find(".selectedLocalTitle").text();
+        var attr_id = selectedItem.find('.attr_id').val();
+
+        // 삭제가 클릭된 명소의 프론트 삭제
+        selectedItem.remove();
+        // 선택된 명소 카운트
+        updateCnt(-1);
+
+        // 선택 박스 이미지 상태 업데이트
+        $(".selectBox").each(function() {
+            if ($(this).attr('src').includes('/images/plan/place_select.svg')) {
+                var $divBlock = $(this).closest('.divBlock');
+                if ($divBlock.find(".localTitle").text() === selectedLocalTitleText) {
+                    $(this).attr('src', '/images/plan/none_select.svg');
+                    return false;
+                }
+            }
+        }); // end selectBox.each
+		
+		
+		selectedAttrIdDataMap[day] = selectedAttrIdDataMap[day].filter(id => id !== attr_id);
+        updateLocalStorage();
+		
+		
+        // 'popupDataX'로 로컬스토리지에 배열 저장
+        localStorage.setItem('popupData' + day, selectedAttrIdDataMap[day]);
+
+        $.ajax({
+            url: '/deleteTravelPlan',
+            type: 'POST',
+            data: { day: day, attr_id: attr_id },
+            success: function(response) {
+                opener.console.log('/deleteTravelPlan Success : ', response);
+            },
+            error: function(error) {
+                opener.console.log('/deleteTravelPlan Error : ', error);
+            }
+        }); // end ajax
+
+        // plan/plan에서 선택된 요소 삭제
+        opener.$('#inputData-' + day).empty();
+    }); // end $(document).on('click', '.deleteItem', function()
+
 
     // '모든 항목 삭제' 클릭 시 모든 선택된 아이템 제거
     $(".deleteAll").on('click', function() {
@@ -221,13 +247,9 @@ $(function() {
             }
         }); // end ajax
 
-        opener.console.log("전체삭제 전: ", selectedAttrIdDataMap[day]);
-
         // 배열 초기화
         selectedAttrIdDataMap[day] = [];
         updateLocalStorage();
-
-        opener.console.log("전체삭제 후: ", selectedAttrIdDataMap[day]);
 
         // plan/plan에서 선택된 요소 삭제
         opener.$('#inputData-' + day).empty();
@@ -275,9 +297,23 @@ $(function() {
 
         // plan/plan에서 선택된 요소 삭제
         opener.$('#inputData-' + day).empty();
-
-        opener.console.log("저장 : " + selectedAttrIdDataMap[day]);
     }); // end $('.save-btn').on('click', function()
+	
+	
+	$('.nextPage').click(function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+        }
+    });
+
+    $('.prevPage').click(function() {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+        }
+    });
+	
 
     // 검색 기능
     $('.searchBar').on('keyup', function() {
@@ -288,12 +324,12 @@ $(function() {
             type: 'POST',
             data: { keyword: keyword },
             success: function(response) {
-                opener.console.log('/searchAttr Success : ', response);
                 if (response) {
                     $('.scrollBox').empty();
 
                     renderAttractions(response);
                     highlightSelectedAttractions();
+					initializePagination(); // 페이지네이션 초기화
                 }
             },
             error: function(error, xhr) {
@@ -315,6 +351,7 @@ $(function() {
             success: function(response) {
                 renderAttractions(response);
                 highlightSelectedAttractions();
+				initializePagination(); // 페이지네이션 초기화
             },
             error: function(error) {
                 console.log('Error loading attractions:', error);
@@ -332,7 +369,7 @@ $(function() {
             $.ajax({
                 url: '/getSelectedAttractions',
                 type: 'GET',
-                data: { attrIds: selectedAttrIdDataMap[day] },
+                data: { day: day, attrIds: selectedAttrIdDataMap[day] },
                 success: function(response) {
                     renderSelectedAttractions(response);
                 },
@@ -352,11 +389,11 @@ $(function() {
             var selectedItem = `
                 <div class="selectedItem">
                     <div class="selectedLocation">
-                        <img class="selectedThumbnail" src="${attr.attr_img}"/>
+                        <img class="selectedThumbnail" src="${attr.ATTR_IMG}"/>
                         <div class="selectedContentBox">
-                            <input type="text" class="attr_id" value="${attr.attr_id}"/>
-                            <div class="selectedLocalTitle">${attr.attr_name}</div>
-                            <div>${attr.attr_local}</div>
+                            <input type="hidden" class="attr_id" value="${attr.ATTR_ID}"/>
+                            <div class="selectedLocalTitle">${attr.ATTR_NAME}</div>
+                            <div>${attr.ATTR_LOCAL}</div>
                         </div>
                         <img class="deleteItem" src="../images/plan/trash.png">
                     </div>
@@ -406,7 +443,9 @@ $(function() {
             <div>
                 <div>${data.attr_name}</div>
                 <div>${data.attr_local}</div>
-                <input type="text" class="attr_id" value="${data.attr_id}"/>
+                <input type="hidden" class="attr_id" value="${data.attr_id}"/>
+				<input type="text" class="attr_lat" value="${data.attr_lat}"/>
+				<input type="text" class="attr_lon" value="${data.attr_lon}"/>
             </div>
         `;
 
@@ -427,7 +466,7 @@ $(function() {
                     <div class="location">
                         <img class="thumbnail" src="${attr.attr_img}"/>
                         <div class="contentBox">
-                            <input type="text" class="attrId" value="${attr.attr_id}"/>
+                            <input type="hidden" class="attrId" value="${attr.attr_id}"/>
                             <div class="localTitle">${attr.attr_name}</div>
                             <div>${attr.attr_local}</div>
                         </div>
@@ -437,5 +476,6 @@ $(function() {
             `;
             $('.scrollBox').append(attractionHtml);
         });
+		initializePagination(); // 페이지네이션 초기화
     }
 }) // end function()

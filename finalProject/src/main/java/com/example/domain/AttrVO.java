@@ -16,4 +16,6 @@ public class AttrVO {
 	private String attr_website;
 	private String attr_fee;
 	private String info_addr;
+	private String attr_lat;
+	private String attr_lon;
 }
