@@ -54,7 +54,7 @@
   <!-- OUTER BG WRAPPER -->
 
    <div class="clearfix"></div>
-    	<jsp:include page="/WEB-INF/views/header2.jsp" />
+    	<jsp:include page="/WEB-INF/views/header.jsp" />
 
   </div>
 

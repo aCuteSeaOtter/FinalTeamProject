@@ -108,7 +108,7 @@ public class TravelPlanController {
 	
 	// 선택한 명소 불러오기
 	@GetMapping("/getSelectedAttractions")
-	public List<AttrVO> selectedAttr(@RequestParam("selectedAttrIds") List<Integer> selectedAttrIds) {
+	public List<AttrVO> selectedAttr(@RequestParam("attrIds") List<Integer> selectedAttrIds) {
 		System.out.println("selectedAttrIds : "+ selectedAttrIds);
 		List<AttrVO> selectedAttrList = new ArrayList<>();
 		

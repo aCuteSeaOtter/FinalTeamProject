@@ -72,7 +72,7 @@ $(function() {
 	    selectedAttrIdDataMap[day] = attrIds;
 
 	    console.log("장소추가 시작 : " + selectedAttrIdDataMap[day]);
-		localStorage.setItem('popupData' + day, selectedAttrIdDataMap[day]);
+		localStorage.setItem('popupData' + day, JSON.stringify(selectedAttrIdDataMap[day]));
 		
 		
 		// popup창 열기
