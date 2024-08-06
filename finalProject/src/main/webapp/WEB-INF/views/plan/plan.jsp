@@ -134,7 +134,7 @@
   <button id="back-to-top-btn" title="Back to Top"></button>
   
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=<!-- HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y -->"></script>
+  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y"></script>
 
   
   <script src="/assets/js/jquery.min.js"></script>
@@ -149,7 +149,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/plan.js"></script>
-  <script src="/js/tmap.js"></script>
+  <!-- <script src="/js/tmap.js"></script> -->
   
   
   

@@ -31,6 +31,7 @@
 		SELECT *
 		FROM travel_plan
 		WHERE plan_day = #{plan_day} and info_id = #{info_id}
+		ORDER BY plan_seq ASC
 	</select>
 	
 	<!-- plan_id로 plan 가져옴 -->
@@ -51,5 +52,14 @@
 		DELETE FROM travel_plan
 		WHERE info_id = #{info_id} and plan_day = #{plan_day} and attr_id = #{attr_id}
 	</delete>
+	
+	<!-- plan_id로 plan 가져옴 -->
+	<select id="selectedAttrList" resultType="hashmap">
+		SELECT tp.attr_id attr_id, a.attr_name attr_name, a.attr_local attr_local, a.attr_img attr_img
+        FROM   travel_plan tp INNER JOIN attr a
+        ON     tp.attr_id = a.attr_id
+        WHERE  tp.attr_id = #{attr_id} AND tp.plan_day = #{plan_day}
+        ORDER BY tp.plan_seq ASC
+	</select>
 	
 </mapper>

@@ -5,14 +5,14 @@ $(function() {
 	//경로그림정보
 	var drawInfoArr = [];
 		// 1. 지도 띄우기
-		map = new Tmapv2.Map("map_div", {
+		/*map = new Tmapv2.Map("map_div", {
 			center: new Tmapv2.LatLng(37.56701114710962, 126.9973611831669),
 			width : "100%",
 			height : "800px",
 			zoom : 15,
 			zoomControl : true,
 			scrollwheel : true
-		});
+		});*/
 		
 		// 시작, 도착 심볼찍기
 		// 시작
@@ -76,7 +76,7 @@ $(function() {
 		});
 		
 		var headers = {}; 
-		headers["appKey"]="/*HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y*/";
+		headers["appKey"]="HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y";
 		
 		$.ajax({
 			type:"POST",

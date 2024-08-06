@@ -17,7 +17,7 @@
     
     <!-- attr_id로 attr 리스트 가져오기 -->
     <select id="selectAttrListById" resultType="com.example.domain.AttrVO">
-        SELECT attr_id, attr_name, attr_local
+        SELECT attr_id, attr_name, attr_local, attr_lat, attr_lon
         FROM ATTR
         WHERE attr_id = #{attd_id}
     </select>
