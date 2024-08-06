@@ -4,43 +4,58 @@
 
 <mapper namespace="com.example.dao.ReviewDAO">
 
-	<!-- 리뷰 목록 출력 -->
-	<select id="getReviewList" parameterType="map" resultType="hashmap">
-	    WITH paginated_reviews AS (
-	        SELECT r.review_id,
-	               r.review_title,
-	               r.review_regdate,
-	               m.member_nickname,
-	               LISTAGG(ri.file_name, ',') WITHIN GROUP (ORDER BY ri.file_name) AS file_names,
-	               ROW_NUMBER() OVER (ORDER BY r.review_id DESC) AS rn
-	        FROM review r
-	        INNER JOIN member m ON r.member_email = m.member_email
-	        LEFT JOIN review_img ri ON r.review_id = ri.review_id
-	        <where>
-	            <if test="searchKeyword != null and searchKeyword != ''">
-	                ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
-	            </if>
-	        </where>
-	        GROUP BY r.review_id, r.review_title, r.review_regdate, m.member_nickname
-	    )
-	    SELECT *
-	    FROM paginated_reviews
-	    WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
-	</select>
-	
-	<!-- 총 리뷰 수 조회 -->
-	<select id="getTotalCount" parameterType="map" resultType="int">
-	    SELECT COUNT(*)
-	    FROM review r
-	    INNER JOIN member m ON r.member_email = m.member_email
-	    LEFT JOIN review_img ri ON r.review_id = ri.review_id
-	    <where>
-	        <if test="searchKeyword != null and searchKeyword != ''">
-	            ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
-	        </if>
-	    </where>
-	</select>
-	    
+   <!-- 리뷰 목록 출력 -->
+   <select id="getReviewList" parameterType="map" resultType="hashmap">
+       WITH review_images AS (
+           SELECT ri.review_id,
+                  LISTAGG(ri.file_name, ',') WITHIN GROUP (ORDER BY ri.file_name) AS file_names
+           FROM review_img ri
+           GROUP BY ri.review_id
+       ),
+       review_likes AS (
+           SELECT r.review_id,
+                  COUNT(l.like_id) AS like_count
+           FROM review r
+           LEFT JOIN likes l ON r.review_id = l.review_id
+           GROUP BY r.review_id
+       ),
+       paginated_reviews AS (
+           SELECT r.review_id,
+                  r.review_title,
+                  r.review_regdate,
+                  r.review_cnt,
+                  m.member_nickname,
+                  COALESCE(ri.file_names, '') AS file_names,
+                  COALESCE(rl.like_count, 0) AS like_count,
+                  ROW_NUMBER() OVER (ORDER BY COALESCE(rl.like_count, 0) DESC, r.review_id DESC) AS rn
+           FROM review r
+           INNER JOIN member m ON r.member_email = m.member_email
+           LEFT JOIN review_images ri ON r.review_id = ri.review_id
+           LEFT JOIN review_likes rl ON r.review_id = rl.review_id
+           <where>
+               <if test="searchKeyword != null and searchKeyword != ''">
+                   ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+               </if>
+           </where>
+       )
+       SELECT *
+       FROM paginated_reviews
+       WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
+   </select>
+
+   
+   <!-- 총 리뷰 수 조회 -->
+   <select id="getTotalCount" parameterType="map" resultType="int">
+       SELECT COUNT(*)
+       FROM review r
+       INNER JOIN member m ON r.member_email = m.member_email
+       <where>
+           <if test="searchKeyword != null and searchKeyword != ''">
+               ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+           </if>
+       </where>
+   </select>
+       
 
    
    <!-- 리뷰 상세보기 -->
@@ -66,7 +81,7 @@
        WHERE r.review_id = #{review_id}
    </select>
 
-	<!-- 리뷰 작성 -->
+   <!-- 리뷰 작성 -->
    <insert id="insertReview" parameterType="ReviewVO">
       INSERT INTO review
       ( review_id, review_title, review_content, review_cnt, review_star, member_email, review_regdate)
@@ -94,5 +109,64 @@
         SET review_cnt = review_cnt + 1
         WHERE review_id = #{review_id}
     </update>
+    
+    <!-- 조회순 기준 쿼리 추가 -->
+    <select id="getTopReviewsByViewCount" parameterType="int" resultType="hashmap">
+          <![CDATA[
+             WITH review_images AS (
+                 SELECT ri.review_id,
+                        LISTAGG(ri.file_name, ',') WITHIN GROUP (ORDER BY ri.file_name) AS file_names
+                 FROM review_img ri
+                 GROUP BY ri.review_id
+             )
+             SELECT * FROM (
+                 SELECT r.review_id,
+                        r.review_title,
+                        r.review_regdate,
+                        r.review_cnt,
+                        m.member_nickname,
+                        COALESCE(ri.file_names, '') AS file_names,
+                        ROW_NUMBER() OVER (ORDER BY r.review_cnt DESC) AS rn
+                 FROM review r
+                 INNER JOIN member m ON r.member_email = m.member_email
+                 LEFT JOIN review_images ri ON r.review_id = ri.review_id
+             )
+             WHERE rn <= 3
+          ]]>
+   </select>
+   
+   <!-- 좋아요 기준 쿼리 추가 -->
+    <select id="getTopReviewsByLikeCount" parameterType="int" resultType="hashmap">
+        <![CDATA[
+        WITH review_images AS (
+          SELECT ri.review_id,
+                 LISTAGG(ri.file_name, ',') WITHIN GROUP (ORDER BY ri.file_name) AS file_names
+          FROM review_img ri
+          GROUP BY ri.review_id
+      ),
+      review_likes AS (
+          SELECT r.review_id,
+                 COUNT(l.like_id) AS like_count
+          FROM review r
+          LEFT JOIN likes l ON r.review_id = l.review_id
+          GROUP BY r.review_id
+      )
+      SELECT * 
+      FROM (
+          SELECT r.review_id,
+                 r.review_title,
+                 r.review_regdate,
+                 m.member_nickname,
+                 COALESCE(ri.file_names, '') AS file_names,
+                 COALESCE(rl.like_count, 0) AS like_count,
+                 ROW_NUMBER() OVER (ORDER BY COALESCE(rl.like_count, 0) DESC) AS rn
+          FROM review r
+          INNER JOIN member m ON r.member_email = m.member_email
+          LEFT JOIN review_images ri ON r.review_id = ri.review_id
+          LEFT JOIN review_likes rl ON r.review_id = rl.review_id
+      )
+      WHERE rn <= 3
+        ]]>
+    </select>
     
 </mapper>

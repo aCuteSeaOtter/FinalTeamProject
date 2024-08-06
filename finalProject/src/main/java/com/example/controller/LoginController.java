@@ -136,7 +136,7 @@ public class LoginController {
 		LoginVO result = loginService.checkLogin(loginVO);
 		if(result!=null) {
 			//로그인 성공 시 세션에 사용자 정보 저장
-			session.setAttribute("mem", result);
+			session.setAttribute("member", result);
 			System.out.println("--------------------------------------");
 			System.out.println("if: " + result);
 			return "redirect:/"; // index였음
@@ -150,9 +150,9 @@ public class LoginController {
 	@RequestMapping("/logout")
 
 	public  String logout( HttpSession session) {
-		System.out.println("logout");
 		session.removeAttribute("mem");
 		session.invalidate();
+		System.out.println("로그아웃 완료");
 	   
 	  return "redirect:/";
 	}

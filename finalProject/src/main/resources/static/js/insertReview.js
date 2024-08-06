@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const previewContainer = document.getElementById('filePreviewContainer');
 
     if (!fileInput || !previewContainer) {
-        console.error('필수 DOM 요소가 누락되었습니다.');
         return;
     }
 
@@ -93,6 +92,46 @@ $(document).ready(function() {
             $(this).val(''); // 파일 선택 초기화
         }
     });
-	
-	
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const titleInput = document.querySelector('input[name="review_title"]');
+    const contentTextarea = document.querySelector('textarea[name="review_content"]');
+
+    titleInput.addEventListener('input', function() {
+        if (titleInput.value.length > 50) {
+            alert('제목은 50자를 초과할 수 없습니다.');
+            titleInput.value = titleInput.value.substring(0, 50);
+        }
+    });
+
+    contentTextarea.addEventListener('input', function() {
+        if (contentTextarea.value.length > 1000) {
+            alert('내용은 1000자를 초과할 수 없습니다.');
+            contentTextarea.value = contentTextarea.value.substring(0, 1000);
+        }
+    });
+
+    const form = document.getElementById('myform');
+
+    form.addEventListener('submit', function(event) {
+        if (titleInput.value.length > 50) {
+            alert('제목은 50자를 초과할 수 없습니다.');
+            event.preventDefault();
+            return false;
+        }
+
+        if (contentTextarea.value.length > 1000) {
+            alert('내용은 1000자를 초과할 수 없습니다.');
+            event.preventDefault();
+            return false;
+        }
+
+        if (!confirm('작성하시겠습니까?')) {
+            event.preventDefault();
+            alert('작성이 취소되었습니다.');
+            return false;
+        }
+    });
+});
+

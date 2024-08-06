@@ -135,22 +135,23 @@
                     <input type="checkbox" id="answerCheckbox" name="answer" value="true"> 
                     <label for="answerCheckbox">답변 확인하기</label>
                   </div>
+                      <input type="hidden" name="ans_id" value="${answer.ans_id}">
                   <div class="col-12 hidden-field" id="hidden_member_nickname_container" style="display:none;">
                     <div class="form-group">
                       <label>작성자</label>
-                      <input type="text" id="hidden_member_nickname" class="form_style" name="member_nickname" value="강성욱 관리자" readonly>
+                      <input type="text" id="hidden_member_nickname" class="form_style" name="admin_id" value="${answer.admin_id}" readonly>
                     </div>
                   </div>
                   <div class="col-12 hidden-field" id="hidden_que_title_container" style="display:none;">
                     <div class="form-group">
                       <label>제목</label>
-                      <input type="text" id="hidden_que_title" class="form_style" name="" value="답변 제목" readonly>
+                      <input type="text" id="hidden_que_title" class="form_style" name="ans_title" value="${answer.ans_title}" readonly>
                     </div>
                   </div>
                   <div class="col-12 hidden-field" id="hidden_que_regdate_container" style="display:none;">
                     <div class="form-group fon-con">
                       <label>답변 날짜</label>
-                      <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="que_regdate" value="2012-01-23 01:23:45" readonly>
+                      <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="ans_regdate" value="${answer.ans_regdate}" readonly>
                     </div>
                   </div>
                 </div>
@@ -187,9 +188,13 @@
                   <div class="col-12 hidden-field" id="hidden_que_content_container" style="display:none;">
                     <div class="form-group mb-0">
                       <label>답변 내용</label>
-                      <textarea id="hidden_que_content" class="form_style" rows="5" name="" readonly>답변 내용</textarea>
+                      <textarea id="hidden_que_content" class="form_style" rows="5" name="ans_content" readonly>${answer.ans_content}</textarea>
                     </div>
                   </div>
+				  
+	            <c:if test="${empty answer}">
+	                <p>답변이 존재하지 않습니다.</p>
+	            </c:if>
                 </div>
               </div>
             </div>

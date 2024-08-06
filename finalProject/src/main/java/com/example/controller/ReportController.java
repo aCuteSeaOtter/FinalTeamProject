@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.domain.LoginVO;
 import com.example.domain.ReportVO;
 import com.example.service.ReportService;
 
@@ -35,12 +36,11 @@ public class ReportController {
     		Model model,
     		HttpSession session) {
 		
-		// 세션에서 사용자 ID 가져오기
-        String id = (String) session.getAttribute("sess");
+			LoginVO member = (LoginVO) session.getAttribute("member");
         
         // 세션에서 가져온 ID를 모델에 추가
-        if (id != null) {
-        	model.addAttribute("id", id);
+        if (member != null) {
+        	model.addAttribute("id", member);
         } else {
             System.out.println("id값이 null입니다. 세션에 id가 설정되지 않았습니다.");
         }

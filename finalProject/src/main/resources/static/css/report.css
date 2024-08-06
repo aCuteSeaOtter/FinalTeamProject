@@ -23,6 +23,8 @@
         margin-top: 5px;
         border: 1px solid #ccc;
         border-radius: 4px;
+        border: none;
+      	resize: none;
     }
     select, input[type="submit"] {
         padding: 10px;
