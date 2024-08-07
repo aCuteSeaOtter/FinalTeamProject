@@ -24,7 +24,3 @@
     a:hover {
     	color:#73848c !important;
     }
-    
-	tr {
-	    border-bottom: 1px solid #eee; /* 각 행의 하단에 연한 회색 테두리 추가 */
-	}
