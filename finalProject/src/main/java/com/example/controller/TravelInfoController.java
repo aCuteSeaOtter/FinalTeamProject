@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.domain.TravelInfoVO;
+import com.example.domain.LoginVO;
 import com.example.service.TravelInfoService;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -30,7 +28,7 @@ public class TravelInfoController {
 							 @RequestParam("dates") String dates,
 							 @RequestParam("who_tag") String who_tag, 
 							 @RequestParam("style_tag") String styleTags,
-							 HttpServletRequest request) {
+							 HttpSession session) {
 		
 		List<String> dateList = Arrays.asList(dates.split(","));
 		List<String> styleTagList = Arrays.asList(styleTags.split(","));
@@ -41,13 +39,14 @@ public class TravelInfoController {
 		String start_date = dateList.get(0);
 		String end_date = dateList.get(dateList.size()-1);
 		
+		LoginVO member = (LoginVO)session.getAttribute("member");
+		String member_email = member.getMember_email();
 		// 서비스 호출하여 데이터 저장
-		travelInfoService.insertTravelInfo(info_name, trip_place, start_date, end_date, who_tag, style_tag);
+		travelInfoService.insertTravelInfo(member_email, info_name, trip_place, start_date, end_date, who_tag, style_tag);
 		
 		// info_id 가져오기
 		String info_id = travelInfoService.selectTravelInfo();
 		
-		HttpSession session = request.getSession();
 		session.setAttribute("info_id", info_id);
 		session.setAttribute("info_name", info_name);
 		session.setAttribute("trip_place", trip_place);

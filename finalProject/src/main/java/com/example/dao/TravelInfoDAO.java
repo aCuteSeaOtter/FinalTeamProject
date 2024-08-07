@@ -17,6 +17,7 @@ import com.example.domain.PlanVO;
 */
 @Mapper		// Mapper 호출 
 public interface TravelInfoDAO {
-	void insertTravelInfo(String info_name, String trip_place, String start_date, String end_date, String who_tag, String style_tag);
+	void insertTravelInfo(String member_email, String info_name, String trip_place, String start_date, String end_date, String who_tag, String style_tag);
 	String selectTravelInfo();
+	int existsByMemberEmail(@Param("memberEmail") String memberEmail);
 }

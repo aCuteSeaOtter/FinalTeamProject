@@ -7,12 +7,18 @@
 	<!-- travel_info 테이블에 일정 넣기 -->
     <insert id="insertTravelInfo">
 	    INSERT INTO travel_info (info_id, member_email, info_name, trip_place, start_date, end_date, who_tag, style_tag)
-	    VALUES (info_id_seq.NEXTVAL, 'dkthnt06@gmail.com', #{info_name}, #{trip_place}, #{start_date}, #{end_date}, #{who_tag}, #{style_tag})
+	    VALUES (info_id_seq.NEXTVAL, #{member_email}, #{info_name}, #{trip_place}, #{start_date}, #{end_date}, #{who_tag}, #{style_tag})
 	</insert>
 	
 	<!-- info_id 가져오기 -->
 	<select id='selectTravelInfo' resultType='string'>
 		SELECT info_id_seq.currval FROM DUAL
 	</select>
+	
+	<select id="existsByMemberEmail" resultType="int">
+       SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+       FROM TRAVEL_INFO
+       WHERE MEMBER_EMAIL = #{memberEmail}
+   	</select>
 	
 </mapper>
