@@ -145,8 +145,8 @@
   <script src="/assets/js/video-popup.js"></script>
   <script src="/assets/js/video-section.js"></script>
   <script src="/assets/js/jquery.validate.js"></script>
-  <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/search.js"></script>
   <script src="/js/plan.js"></script>
   <!-- <script src="/js/tmap.js"></script> -->

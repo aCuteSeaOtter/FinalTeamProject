@@ -111,6 +111,7 @@
     height: 50px;
     border-radius: 5px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .contentBox {
@@ -225,6 +226,10 @@
 	color: black;
 }
 
+.contentBox {
+	cursor: pointer;
+}
+
 
 
 /* 모달 스타일 */
@@ -263,4 +268,45 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* 콘텐츠 스타일 */
+.content {
+    margin: 20px 0; /* 상하 여백 */
+}
+
+.content .attr_name {
+    margin-top: 0; /* 상단 여백 제거 */
+    margin-bottom: 10px;
+    color: #333; /* 어두운 회색 */
+    font-size: 30px; /* 글꼴 크기 */
+}
+
+.content .attr_tag {
+	color: gray;
+	margin-bottom: 40px;
+}
+
+.content .attr_img {
+    max-width: 100%; /* 이미지 너비를 부모 요소에 맞춤 */
+    height: auto; /* 자동 높이 조정 */
+    border-radius: 5px; /* 둥근 모서리 */
+    margin-bottom: 35px;
+}
+
+.content .info_content {
+	margin-bottom: 50px;
+}
+
+.content .info_addr {
+	margin-bottom: 10px;
+}
+
+.content .info_guide {
+	margin-bottom: 10px;
+}
+
+.content .gps, .content .tel {
+	width: 25px;
+	height: 25px;
 }

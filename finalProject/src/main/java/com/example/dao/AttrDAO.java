@@ -20,19 +20,8 @@ public interface AttrDAO {
 	public List<AttrVO> selectAttrList(int selectedAttrIds);
 	// 검색어를 이용한 명소 검색
 	List<AttrVO> searchAttrByKeyword(String keyword);
+	
 	public AttrVO selectAttrListById(Integer id);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//	public List<AttrVO> insertPlan(@Param("day") int day, @Param("attrIds") List<Integer> attrIds);
+	public List<AttrVO> selectAttrInfo(int attr_id);
 }

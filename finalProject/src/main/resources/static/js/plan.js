@@ -122,7 +122,6 @@ $(function() {
 	        optimizeRoute(attractions);
 	    }
 	});
-	console.log("총 명소 수:", attractions.length);
     
 });
 

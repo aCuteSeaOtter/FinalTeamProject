@@ -31,27 +31,8 @@ public class AttrServiceImpl implements AttrService {
         return attrDAO.searchAttrByKeyword(keyword);
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-	public List<AttrVO> insertPlan(int day, List<Integer> attrIds) {
-        List<AttrVO> result = new ArrayList<>();
-        for (Integer attrId : attrIds) {
-        	attrDAO.insertPlanItem(day, attrId);
-        	AttrVO attrVO = attrDAO.selectInsertedPlan(day, attrId);
-            result.add(attrVO);
-        }
-        return result;
-    }*/
+    // 검색어를 이용한 명소 검색
+    public List<AttrVO> selectAttrInfo(int attr_id) {
+        return attrDAO.selectAttrInfo(attr_id);
+    }
 } 
