@@ -57,8 +57,8 @@
   <!-- OUTER BG WRAPPER -->
   <div class="bg-outer-wrapper float-left w-100">
       </div>
-    <div class="clearfix"></div>
-   
+    <div class="clearfix"></div> 
+    
     <!-- bg outer wrapper -->
   </div>
    <!-- NEWS AND ARTICLES SECTION -->
@@ -67,8 +67,9 @@
       <div class="heading-title text-center">
       <h3 style="font-weight: bold; color:black;">어디로 여행을 떠나시나요?</h3>
       <br/>
-      <input type="text" class="input-field" placeholder="검색어를 입력하세요" onkeypress="handleKeyPress(event)">
-      <i class="icon fas fa-search" onClick="goToNextPage()"></i>
+      <input type="text" class="input-field" id="searchInput" placeholder="검색어를 입력하세요" 
+	  oninput="filterImages()">
+      <i class="icon fas fa-search" onClick="filterImages()"></i>
      </div>
      <br/>
      <br/>
@@ -76,23 +77,23 @@
      <br/>
 
       <!--////////이미지///////////-->
-      <div class="row">
+      <div class="row" id="image">
          <c:forEach var="location" items="${localList}">
-             <div class="col-lg-4 col-md-4 col-sm-6">
+             <div class="col-lg-4 col-md-4 col-sm-6" data-name="${location.local_name_kor}"><!--${location.local_name_eng.toLowerCase()}-->
                  <div class="article-box position-relative">
                      <figure class="image-container">
-                         <img class="img-fluid" src="${location.local_image}" alt="이미지">
-                     </figure>
+						<a href="/calendar/calendar">
+						    <img class="img-fluid" src="${location.local_image}" alt="이미지" style="width:400px; height:300px; cursor:pointer;">
+							</a>
+						</figure>
                      <div class="bottom-left">
                          <span class="d-block text-white"></span>
-                         <a href="/calendar/calendar">
-                             <h6 class="text-white">
-                                 ${location.local_name_eng}
-                             </h6>
-                             <h6 class="text-white">
-                                 ${location.local_name_kor}
-                             </h6>
-                         </a>
+                           <h6 class="text-white">
+                                ${location.local_name_eng}
+                          </h6>
+                         <h6 class="text-white">
+                             ${location.local_name_kor}
+                          </h6>
                      </div> <!-- bottom left -->
                  </div> <!-- article box -->
              </div><!-- col -->
@@ -114,8 +115,24 @@
   <script src="assets/js/video-section.js"></script>
   <script src="assets/js/jquery.validate.js"></script>
   <script src="assets/js/wow.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/custom.js"></script> 
   <script src="assets/js/search.js"></script>
-
+<script>
+	
+	function filterImages() {
+	    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+	    const images = document.querySelectorAll('#image .col-lg-4, #image .col-md-4, #image .col-sm-6');
+	    
+	    images.forEach(image => {
+	        const name = image.getAttribute('data-name').toLowerCase();
+	        if (name.includes(searchInput)) {
+	            image.style.display = '';
+	        } else {
+	            image.style.display = 'none';
+	        }
+	    });
+	}
+	
+	</script>
 </body>
 </html>

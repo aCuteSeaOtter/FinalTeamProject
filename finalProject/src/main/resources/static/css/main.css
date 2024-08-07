@@ -14,7 +14,7 @@
 11. Footer / .footer-con
 */
 /*------------------------------------------------------------------
-# [Color Codes]
+# [Color Codes] 
 
 #   primary--color: #1ec28b;
 #   black--color: #000000;
@@ -47,31 +47,16 @@ ul{
    list-style-type:none;
    padding:0px;
 }
-
+ 
 /* main-images */
+/*.article-box{
+	position:relative;
+	margin-bottom:30px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}*/
 
-.article-box{
-   position:relative;
-   height:100px;
-
-}
-
-.image-container{
-   margin-top:80px;
-   margin-bottom:30px;
-}
-
-.bottom-left{
-   position:absolute;
-   width:100px;
-   box-sizing:border-box;   
-}
-
-.bottom-left h6{
-   top:100px;
-   bottom:50px;
-   font-size:11px;
-   margin:0;
+ .bottom-left h6{
+	margin:5px 0;
 }
 
 /*--------------------  */

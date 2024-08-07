@@ -9,7 +9,7 @@ import com.example.dao.LocalDAO;
 import com.example.domain.LocalVO;
 
 @Service
-public class LocalServiceImpl implements LocalService {
+public class LocalServiceImpl implements LocalService { 
 
    @Autowired
    private LocalDAO localDAO;
@@ -17,7 +17,7 @@ public class LocalServiceImpl implements LocalService {
    @Override
    public LocalVO findLocalById(int local_id) {
       return localDAO.getLocalById(local_id);
-   }
+   } 
 
    @Override
    public List<LocalVO> getAllLocals(LocalVO localVO) {

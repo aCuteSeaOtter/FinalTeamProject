@@ -19,7 +19,7 @@ public class LocalController {
    private LocalService localService;
 
 
-   @RequestMapping("/")
+   @RequestMapping("/")  
    public String getLocalList(Model m, LocalVO localVO) {
       System.out.println("/ 첫페이지");
       List<LocalVO>localList = localService.getAllLocals(localVO);
