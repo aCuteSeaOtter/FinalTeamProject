@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.domain.LocalVO;
 
 public interface LocalService {
-	LocalVO findLocalById(int local_id);
-	List<LocalVO>getAllLocals(String local_image);
+   LocalVO findLocalById(int local_id);
+   List<LocalVO>getAllLocals(LocalVO localVO);
+
 }

@@ -11,17 +11,17 @@ import com.example.domain.LocalVO;
 @Service
 public class LocalServiceImpl implements LocalService {
 
-	@Autowired
-	private LocalDAO localDAO;
+   @Autowired
+   private LocalDAO localDAO;
 
-	@Override
-	public LocalVO findLocalById(int local_id) {
-		return localDAO.getLocalById(local_id);
-	}
+   @Override
+   public LocalVO findLocalById(int local_id) {
+      return localDAO.getLocalById(local_id);
+   }
 
-	@Override
-	public List<LocalVO> getAllLocals(String local_image) {
-		return localDAO.getAllLocals(local_image);
-	}
+   @Override
+   public List<LocalVO> getAllLocals(LocalVO localVO) {
+      return localDAO.getAllLocals(localVO);
+   }
 
 }
