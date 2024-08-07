@@ -3,29 +3,43 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.LocalDAO">
 
+<insert	id="insertFile" parameterType="com.example.domain.LocalVO">
+INSERT INTO location
+(
+	local_id,
+	local_name_eng,
+	local_content,
+	local_image,
+	local_name_kor
+)
+VALUES
+(
+ local_id_seq.NEXTVAL,
+ #{local_name_eng},
+ #{local_content},
+ #{local_image},
+ #{local_name_kor}
+)
+</insert>
+
+<!-- 
 <select id="getLocalById" parameterType="int"
 resultType="com.example.domain.LocalVO">
-	SELECT local_id,
-		 	local_name,
+	SELECT 	local_id,
+		 	local_name_eng,
 		 	local_content,
-		 	local_image
+		 	local_image,
+		 	local_name_kor
 	FROM 	location
-	WHERE local_id = #{local_id}
+	WHERE 	local_id = #{local_id}
 </select>
-
-<select id="getAllLocals" resultType="com.example.domain.LocalVO">
-	SELECT local_id, 
-			local_name,
-			local_content,
-			local_image
-	FROM	location		
-
-
-
+ -->
+  
+ <select id="getAllLocals" parameterType="String" resultType="com.example.domain.LocalVO">
+	SELECT 	local_name_eng,
+		 	local_image,
+		 	local_name_kor
+	FROM	location
+	WHERE 	local_image=#{local_image}
 </select>
-
-
-
-
-
 </mapper>

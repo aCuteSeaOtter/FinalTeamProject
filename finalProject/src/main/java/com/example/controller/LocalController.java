@@ -18,21 +18,35 @@ public class LocalController {
 	private LocalService localService;
 
 
-	/*@RequestMapping("/index")
+	@RequestMapping("/")
 	public String getLocalList(Model m) {
-		List<LocalVO>localList = localService.getAllLocals();
-		System.out.println(localList);
+		System.out.println("첫페이지");
+		List<LocalVO>localList = localService.getAllLocals(null);
 		m.addAttribute("localList", localList);
 		
 		return "index";
 
-}*/
-
-	 
+	}
+	
 	@GetMapping("/location")
-public String getLocation(Model m) {
-		List<LocalVO>localList = localService.getAllLocals();
-		m.addAttribute("localList", localList);
+		public String getLocation(Model m) {
+		List<LocalVO>localList = localService.getAllLocals(null);
+		System.out.println("컨트롤러: " + localList.size());
+		m.addAttribute("locations", localList);
 		return "index";
 	}
+	
+/*	@GetMapping("/popup")
+	public String popUp(Model m) {
+		LocalVO localVO = new LocalVO();
+		localVO.setLocal_name_eng("local_name_eng");
+		localVO.setLocal_name_kor("local_name_kor");
+		localVO.setLocal_image("local_image");
+		localVO.setLocal_content("local_content");
+		
+		m.addAttribute("localVO", localVO);
+
+		
+			return "index";
+	}*/
 }
