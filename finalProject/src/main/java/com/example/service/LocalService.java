@@ -6,6 +6,5 @@ import com.example.domain.LocalVO;
 
 public interface LocalService {
 	LocalVO findLocalById(int local_id);
-	List<LocalVO>getAllLocals();
+	List<LocalVO>getAllLocals(String local_image);
 }
- 

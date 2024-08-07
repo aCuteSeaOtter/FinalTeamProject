@@ -3,7 +3,7 @@
 
 1. Body
 2. Header / .header-con
-3. Banner / .banner-con
+3. Banner / .banner-con 
 4. Booking Tabs / .search-booking-tab-con
 5. What we serve / .what-we-serve-con
 6. Travel Tours & Packages / .travel-tour-con
@@ -48,7 +48,7 @@ ul{
 	padding:0px;
 }
 
-  .article-box {
+/*  .article-box {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
@@ -59,9 +59,9 @@ ul{
         }
         .article-box img {
             width: 200%;
-            height: 200%; /* 이미지가 컨테이너에 맞게 조정됨 */
-            object-fit: cover; /* 이미지 비율 유지 */
-        }
+            height: 200%; 
+            object-fit: cover;
+        }*/
 
 /*.object-center{
 	object-fit:cover;

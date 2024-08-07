@@ -20,8 +20,8 @@ public class LocalServiceImpl implements LocalService {
 	}
 
 	@Override
-	public List<LocalVO> getAllLocals() {
-		return localDAO.getAllLocals();
+	public List<LocalVO> getAllLocals(String local_image) {
+		return localDAO.getAllLocals(local_image);
 	}
-	
+
 }

@@ -7,7 +7,7 @@ import com.example.domain.*;
 
 @Mapper
 public interface LocalDAO {
-
+	void insertFile(LocalVO vo);
 	LocalVO getLocalById(int local_id);
-	List<LocalVO>getAllLocals();
+	List<LocalVO>getAllLocals(String local_image);
 }
