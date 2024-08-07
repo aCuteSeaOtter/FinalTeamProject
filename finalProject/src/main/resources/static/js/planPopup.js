@@ -67,16 +67,45 @@ $(function() {
 
 	
 	// 명소 클릭 시 modal에 명소 소개 출력
-	$(document).on('click', '.contentBox', function() {
+	$(document).on('click', '.contentBox, .thumbnail', function() {
+		// 클릭한 명소의 id
+		let id = $(this).closest('.divBlock').find('.attrId').val();
+		
+		$.ajax({
+            url: '/selectInfo',
+            type: 'POST',
+            data: {
+                id: id
+            },
+            success: function(response) {
+				opener.console.log(response);
+				let content;
+				$.each(response, function(index, info) {
+					content = `
+						<div class="attr_name">${info.attr_name}</div>
+						<div class="attr_tag">${info.attr_tag}</div>
+						<div><img class="attr_img" src="${info.attr_img}"></div>
+						<div class="info_content">${info.info_content}</div>
+						<div class="info_addr"><img class="gps" src="/images/plan/gps.png">주소 : ${info.info_addr || '주소 정보 없음'}</div>
+						<div class="info_guide"><img class="tel" src="/images/plan/tel.png">연락 : ${info.info_guide || '연락처 정보 없음'}</div>
+					`;
+				});
+				$('.content').html(content);
+            },
+            error: function(error) {
+                opener.console.log('Error saving session data:', error);
+            }
+        });
+		
+
 		// 모달 버튼과 모달창 가져오기
 		var modal = $('.myModal');
-		
+
 		modal.css({'display' : 'block'});
-		
+
 		$(document).on('click', '.closeBtn', function() {
 			modal.css({'display' : 'none'});
 		});
-			
 	}); // end $(document).on('click', '.contentBox', function()
 	
     
@@ -444,8 +473,8 @@ $(function() {
                 <div>${data.attr_name}</div>
                 <div>${data.attr_local}</div>
                 <input type="hidden" class="attr_id" value="${data.attr_id}"/>
-				<input type="text" class="attr_lat" value="${data.attr_lat}"/>
-				<input type="text" class="attr_lon" value="${data.attr_lon}"/>
+				<input type="hidden" class="attr_lat" value="${data.attr_lat}"/>
+				<input type="hidden" class="attr_lon" value="${data.attr_lon}"/>
             </div>
         `;
 
@@ -466,7 +495,7 @@ $(function() {
                     <div class="location">
                         <img class="thumbnail" src="${attr.attr_img}"/>
                         <div class="contentBox">
-                            <input type="hidden" class="attrId" value="${attr.attr_id}"/>
+                            <input type="hidden" name="attrId" class="attrId" value="${attr.attr_id}"/>
                             <div class="localTitle">${attr.attr_name}</div>
                             <div>${attr.attr_local}</div>
                         </div>

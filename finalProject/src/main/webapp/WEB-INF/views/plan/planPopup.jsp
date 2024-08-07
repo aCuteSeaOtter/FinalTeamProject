@@ -85,15 +85,16 @@
 	        </div>
 	        <div class="search"><input type="text" class="searchBar" placeholder="검색어를 입력하세요"/><img class="searchPng" src="/images/plan/search.png"/></div><hr/>
 	        
+	        
 	        <div class="myModal">
 				<div class="modal-content">
 					<span class="closeBtn">&times;</span>
-					<p>모달 내용</p>
-					<p>모달 내용</p>
-					<p>모달 내용</p>
+					<div class="content">
+					<!-- 내용 출력 -->
+					</div>
 				</div>
 			</div>
-	        
+			
 		    <div class="scrollBox"> 
 		    
 		    <!-- 명소 출력 시작 -->
