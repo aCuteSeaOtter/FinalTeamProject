@@ -1,6 +1,30 @@
-
-    table {
+	table {
       width: 100%;
       border-collapse: collapse;
     }
- 
+    
+    @keyframes rainbow {
+	    0% { color: red; }
+	    16.7% { color: orange; }
+	    33.4% { color: yellow; }
+	    50.1% { color: green; }
+	    66.8% { color: blue; }
+	    83.5% { color: indigo; }
+	    100% { color: violet; }
+	}
+
+	/* 제목 태그 색상 */
+	td a {
+	    color: #1ec28b; /* 기본 색상 */
+	    animation: rainbow 8s infinite; /* 애니메이션 적용 */
+	    text-decoration: none; /* 기본 링크 밑줄 제거 */
+	}
+    
+    /* 제목에 커서 갖다댔을 시 */
+    a:hover {
+    	color:#73848c !important;
+    }
+    
+	tr {
+	    border-bottom: 1px solid #eee; /* 각 행의 하단에 연한 회색 테두리 추가 */
+	}

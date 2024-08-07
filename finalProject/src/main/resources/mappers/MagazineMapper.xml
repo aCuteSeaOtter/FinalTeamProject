@@ -4,9 +4,46 @@
 
 <mapper namespace="com.example.dao.MagazineDAO">
 
-    <select id="selectMagazineList" resultType="com.example.domain.MagazineVO">
-        SELECT *
-        FROM ARTICLE
-    </select>
+    <select id="getMagazineList" parameterType="map" resultType="com.example.domain.MagazineVO">
+	    WITH magazine_filtered AS (
+	    SELECT a.artl_id,
+	           a.artl_name,
+	           a.artl_img,
+	           a.artl_link,
+	           a.artl_local,
+	           a.artl_pri_tag,
+	           a.artl_title,
+	           ROW_NUMBER() OVER (ORDER BY a.artl_id DESC) AS rn
+	    FROM ARTICLE a
+	    <where>
+	        <if test="searchKeyword != null and searchKeyword != ''">
+	            LOWER(a.artl_name) LIKE '%' || LOWER(#{searchKeyword}) || '%' OR
+	            LOWER(a.artl_local) LIKE '%' || LOWER(#{searchKeyword}) || '%' OR
+	            LOWER(a.artl_pri_tag) LIKE '%' || LOWER(#{searchKeyword}) || '%' OR
+	            LOWER(a.artl_title) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+	        </if>
+	    </where>
+	)
+	SELECT *
+	FROM magazine_filtered
+	WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
+	</select>
+
+	<!-- 총 리뷰 수 조회 -->
+	<select id="getTotalCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM ARTICLE a
+	    <where>
+	        <if test="searchKeyword != null and searchKeyword != ''">
+	            LOWER(a.artl_name) LIKE '%' || LOWER(#{searchKeyword}) || '%' OR
+	            LOWER(a.artl_local) LIKE '%' || LOWER(#{searchKeyword}) || '%' OR
+	            LOWER(a.artl_pri_tag) LIKE '%' || LOWER(#{searchKeyword}) || '%' OR
+	            LOWER(a.artl_title) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+	        </if>
+	    </where>
+	</select>
+
+
+
     
 </mapper>

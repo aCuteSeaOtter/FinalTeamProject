@@ -47,6 +47,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
                         <a class="dropdown-item" href="/login/mypage">마이페이지</a>
                         <a class="dropdown-item" href="/question/questionList">문의사항</a>
+						<a class="dropdown-item" href="/notice/noticeList">공지사항</a>
                         <a class="dropdown-item" href="${path}/login/logout">로그아웃</a>
                     </div>
                 </li>

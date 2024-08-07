@@ -51,26 +51,7 @@
 	    </div>
 	    <!-- OUTER BG WRAPPER -->
 	    <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-	        <!-- TOP BAR SECTION -->
-	        <div class="w-100 float-left top-bar-con main-box">
-	            <div class="container">
-	                <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-	                    <div class="left-con">
-	                        <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i>
-	                            help@traveltrek.com</a>
-	                        <!-- left con -->
-	                    </div>
-	                    <div class="right-con"><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1
-	                            (0800) 123
-	                            456</a>
-	                        <!-- right con -->
-	                    </div>
-	                    <!-- top bar inner con -->
-	                </div>
-	                <!-- container -->
-	            </div>
-	            <!-- top bar con -->
-	        </div>
+	        
 		<div class="clearfix"></div>
 	<!-- OUTER BG WRAPPER -->
 	  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
@@ -81,39 +62,13 @@
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
   	    <div class="container">
   	      <div class="row">
-  
-  
-  <table class="table table-striped">
-    <tr>
-        <th>항목</th>  
-        <th>내용</th>
-    </tr>
-    <c:if test="${not empty review_id}">
-        <tr>
-            <td>게시물</td>
-            <td>${review.review_content}</td>
-        </tr>
-    </c:if>
-    <c:if test="${not empty comment_id}">
-        <tr>
-            <td>댓글</td>
-            <td>${comments.comment_content}</td>
-        </tr>
-    </c:if>
-    <c:if test="${not empty reply_id}">
-        <tr>
-            <td>대댓글</td>
-            <td>${reply.reply_content}</td>
-        </tr>
-    </c:if>
-</table>
 
 <!-- 신고 처리 폼 -->
-<form action="saveReport" method="post">
+<form action="saveReport" method="post" onsubmit="return confirmSubmit();">
     <input type="hidden" name="review_id" value="${review_id}">
     <input type="hidden" name="comment_id" value="${comment_id}">
     <input type="hidden" name="reply_id" value="${reply_id}">
-    <input type="hidden" name="member_email" value="${member_email}"> <!-- 여기도 필드명 변경 -->
+    <input type="hidden" name="member_email" value="${member.member_email}"> <!-- 여기도 필드명 변경 -->
     
     <label for="report_type">신고 유형:</label>
     <select name="report_type" id="report_type" required>
@@ -127,7 +82,7 @@
     <label for="report_content">신고 사유:</label>
     <textarea name="report_content" id="report_content" rows="4" required></textarea>
     
-    <input type="submit" value="신고 제출">
+    <input type="submit" class="report-btn" value="신고 제출">
 </form>
 
 
@@ -153,5 +108,6 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
+  <script src="/js/report.js"></script>
 </body>
 </html>

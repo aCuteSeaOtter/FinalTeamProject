@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -10,6 +11,9 @@ import com.example.domain.MagazineVO;
 @Mapper 
 public interface MagazineDAO {
 	// 기본 명소 출력
-	public List<MagazineVO> selectMagazineList();
+	public List<MagazineVO> getMagazineList(HashMap<String, Object> map);
+	
+	// 페이징용
+	int getTotalCount(HashMap<String, Object> map);
 	
 }
