@@ -7,7 +7,7 @@
 INSERT INTO location
 (
    local_id,
-   local_name_eng,
+   local_name_eng, 
    local_content,
    local_image,
    local_name_kor
