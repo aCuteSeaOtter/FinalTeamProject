@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.wrapper {
+	width: 100%;
+}
+
+.block {
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+    align-items: center; /* 세로 가운데 정렬 */
+    position: relative; /* 필요한 경우 */
+    border: solid 1px none; /* 테두리 추가 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 은은한 그림자 추가 */
+    border-radius: 10px;
+    background: #f8f8f8;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+	margin-right: 30%;
+}

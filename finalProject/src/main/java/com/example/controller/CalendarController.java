@@ -17,8 +17,7 @@ public class CalendarController {
 	
 	// 세션에서 로그인 정보 받아오기
 	@RequestMapping("calendar/calendar")
-	public String sessionData(HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
+	public String sessionData(HttpSession session) throws Exception {
 		session.setAttribute("local", "지역");	// 로그인 구현되면 지우기
 		String local = (String) session.getAttribute("local");	// 세션에 저장된 변수명
 		
