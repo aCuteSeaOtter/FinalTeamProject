@@ -59,26 +59,7 @@
 	    </div>
 	    <!-- OUTER BG WRAPPER -->
 	    <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-	        <!-- TOP BAR SECTION -->
-	        <div class="w-100 float-left top-bar-con main-box">
-	            <div class="container">
-	                <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-	                    <div class="left-con">
-	                        <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i>
-	                            help@traveltrek.com</a>
-	                        <!-- left con -->
-	                    </div>
-	                    <div class="right-con"><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1
-	                            (0800) 123
-	                            456</a>
-	                        <!-- right con -->
-	                    </div>
-	                    <!-- top bar inner con -->
-	                </div>
-	                <!-- container -->
-	            </div>
-	            <!-- top bar con -->
-	        </div>
+	        
 		<div class="clearfix"></div>
 	<!-- OUTER BG WRAPPER -->
 	  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
@@ -184,12 +165,12 @@
 
 			<div id="post-${review.review_id}">
 			  <div class="reaction-buttons">
-			    <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="like-button">
+			    <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="like-button">
 			      <img src="/images/review/unlike.jpg" alt="Like" class="img-fluid">
 			    </div>
 			    <span class="count" id="like-count">0</span>
 			    
-			    <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${id}" class="hate-button">
+			    <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="hate-button">
 			      <img src="/images/review/unhate2.jpg" alt="Hate" class="img-fluid">
 			    </div>
 			    <span class="count"id="hate-count-${review.REVIEW_ID}">0</span>
@@ -215,7 +196,7 @@
         <div class="form-group">
           <label for="member_nickname">작성자:</label>
           <input type="text" name="member_nickname" id="member_nickname" value="${nickname}" class="form-control" readonly>
-          <input type="hidden" name="member_email" id="member_email" value="${id}" readonly>
+          <input type="hidden" name="member_email" id="member_email" value="${member_email}" readonly>
         </div>
         <div class="form-group">
           <label for="comment_content">댓글 추가:</label>

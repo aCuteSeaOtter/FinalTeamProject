@@ -115,10 +115,12 @@ public class ReviewController<SearchCriteria> {
        
        if (member != null) {
     	   String nickname = member.getMember_nickname();
+    	   String email = member.getMember_email(); // 이메일 가져오기
            model.addAttribute("nickname", nickname);
+           model.addAttribute("member_email", email); // 모델에 이메일 추가
+           
        }
    }
-
    
    // 리뷰 작성 후 저장
    @RequestMapping("/saveReview")
@@ -127,7 +129,7 @@ public class ReviewController<SearchCriteria> {
            @RequestParam(value = "review_title", required = false) String reviewTitle,
            @RequestParam(value = "review_content", required = false) String reviewContent,
            @RequestParam(value = "review_star", required = false) String reviewStar,
-           ReviewVO vo, HttpSession session, HttpServletResponse response) throws IOException {
+           ReviewVO vo, HttpSession session, HttpServletResponse response, Model model) throws IOException {
 
 	   	   response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
@@ -156,12 +158,24 @@ public class ReviewController<SearchCriteria> {
 	        out.flush();
 	        return null;
 	    }
+	    
+	 // 세션에서 member 객체 가져오기
+	    LoginVO member = (LoginVO) session.getAttribute("member");
+	    if (member == null) {
+	        // 회원 정보가 세션에 없을 경우 로그인 페이지로 리다이렉트
+	        return "redirect:login/loginForm";
+	    }
 
+	    // member 객체에서 이메일 가져오기
+	    String memberEmail = member.getMember_email();
+	    vo.setMember_email(memberEmail);
+	    System.out.println("Member email: " + memberEmail);
+	    
 	   // 입력값 설정
        vo.setReview_title(reviewTitle);
        vo.setReview_content(reviewContent);
        vo.setReview_star(Integer.parseInt(reviewStar));
-       vo.setMember_email((String) session.getAttribute("sess"));
+       vo.setMember_email(memberEmail);
        // 년원일 시분초
        vo.setReview_regdate(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
 

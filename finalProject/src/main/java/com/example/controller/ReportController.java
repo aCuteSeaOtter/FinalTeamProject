@@ -49,6 +49,7 @@ public class ReportController {
         System.out.println("review_id: " + review_id);
         System.out.println("comment_id: " + comment_id);
         System.out.println("reply_id: " + reply_id);
+        System.out.println("report id:: " + member);
 
         // URL 파라미터를 모델에 추가
         if (review_id != null) {
@@ -72,15 +73,21 @@ public class ReportController {
              @RequestParam(value = "comment_id", required = false) String comment_id,
              @RequestParam(value = "reply_id", required = false) String reply_id) {
 		
-		// 세션에서 사용자 ID 가져오기
-        String id = (String) session.getAttribute("sess");
+		// 세션에서 사용자 객체 가져오기
+	    LoginVO member = (LoginVO) session.getAttribute("member");
 
-        // ReportVO에 사용자 ID 설정
-        vo.setMember_email(id);
+        // 사용자 객체가 존재하는지 확인
+        if (member != null) {
+            // ReportVO에 사용자 이메일 설정
+            vo.setMember_email(member.getMember_email());
+        } else {
+            // 사용자 객체가 없을 경우 처리 (로그인이 필요한 경우 등)
+            System.out.println("사용자 객체가 세션에 없습니다.");
+            return;
+        }
         
         // 작성 완료 시 팝업 메시지 띄운 후 해당 페이지로 이동
 		reportService.insertReport(vo);
 		PopUp.popUpMove(response, "신고가 완료되었습니다.", "/review/reviewList");
-		
 	}
 }

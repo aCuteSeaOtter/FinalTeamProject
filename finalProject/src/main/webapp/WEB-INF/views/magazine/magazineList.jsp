@@ -129,18 +129,18 @@
 				<div class="sidebar sticky-sidebar col-xl-3">
                     <div class="theiaStickySidebar">
                         <div class="widget widget-newsletter" data-aos="fade-up" data-aos-duration="700">
-                            <form id="widget-search-form-sidebar" class="form-inline" method="get" action="reviewList">
-                                <div class="input-group">
-                                    <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="Search for reviews...">
-                                    <div class="input-group-append">
-                                        <span class="input-group-btn">
-                                            <button type="submit" id="widget-widget-search-form-button" class="btn">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
+							<form id="widget-search-form-sidebar" class="form-inline" method="get" action="magazineList">
+							    <div class="input-group">
+							        <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="Search for magazines...">
+							        <div class="input-group-append">
+							            <span class="input-group-btn">
+							                <button type="submit" id="widget-widget-search-form-button" class="btn">
+							                    <i class="fa fa-search"></i>
+							                </button>
+							            </span>
+							        </div>
+							    </div>
+							</form>
                         </div>
 						<div class="widget">
 						    <div class="tabs">
@@ -156,24 +156,24 @@
 						            <div class="tab-pane fade show active" id="popular" role="tabpanel">
 						                <div class="post-thumbnail-list">
 											<ul class="tag_list area_list js_one" id="arealist">
-												<li id="0"><button type="button" class="btn"><span>#전체</span></button></li>
-												<li id="1"><button type="button" class="btn"><span>#서울</span></button></li>
-												<li id="6"><button type="button" class="btn"><span>#부산</span></button></li>
-												<li id="4"><button type="button" class="btn"><span>#대구</span></button></li>
-												<li id="2"><button type="button" class="btn"><span>#인천</span></button></li>
-												<li id="5"><button type="button" class="btn"><span>#광주</span></button></li>
-												<li id="3"><button type="button" class="btn"><span>#대전</span></button></li>
-												<li id="7"><button type="button" class="btn"><span>#울산</span></button></li>
-												<li id="8"><button type="button" class="btn"><span>#세종</span></button></li>
-												<li id="31"><button type="button" class="btn"><span>#경기</span></button></li>
-												<li id="32"><button type="button" class="btn"><span>#강원</span></button></li>
-												<li id="33"><button type="button" class="btn"><span>#충북</span></button></li>
-												<li id="34"><button type="button" class="btn"><span>#충남</span></button></li>
-												<li id="35"><button type="button" class="btn"><span>#경북</span></button></li>
-												<li id="36"><button type="button" class="btn"><span>#경남</span></button></li>
-												<li id="37"><button type="button" class="btn"><span>#전북</span></button></li>
-												<li id="38"><button type="button" class="btn"><span>#전남</span></button></li>
-												<li id="39"><button type="button" class="btn"><span>#제주</span></button></li>
+												<li id="0"><button type="button" class="btn"><span>전체</span></button></li>
+												<li id="1"><button type="button" class="btn"><span>서울</span></button></li>
+												<li id="6"><button type="button" class="btn"><span>부산</span></button></li>
+												<li id="4"><button type="button" class="btn"><span>대구</span></button></li>
+												<li id="2"><button type="button" class="btn"><span>인천</span></button></li>
+												<li id="5"><button type="button" class="btn"><span>광주</span></button></li>
+												<li id="3"><button type="button" class="btn"><span>대전</span></button></li>
+												<li id="7"><button type="button" class="btn"><span>울산</span></button></li>
+												<li id="8"><button type="button" class="btn"><span>세종</span></button></li>
+												<li id="31"><button type="button" class="btn"><span>경기</span></button></li>
+												<li id="32"><button type="button" class="btn"><span>강원</span></button></li>
+												<li id="33"><button type="button" class="btn"><span>충북</span></button></li>
+												<li id="34"><button type="button" class="btn"><span>충남</span></button></li>
+												<li id="35"><button type="button" class="btn"><span>경북</span></button></li>
+												<li id="36"><button type="button" class="btn"><span>경남</span></button></li>
+												<li id="37"><button type="button" class="btn"><span>전북</span></button></li>
+												<li id="38"><button type="button" class="btn"><span>전남</span></button></li>
+												<li id="39"><button type="button" class="btn"><span>제주</span></button></li>
 											</ul>
 						                </div>
 						            </div>
@@ -191,9 +191,64 @@
 		</div>
 	  <!-- what we serve con -->
 	</section>
+	
+	<!-- 페이지네이션 링크 -->
+	<div class="pagination">
+	    <!-- 이전 페이지 링크 -->
+	    <c:if test="${currentPage > 1}">
+	        <a href="?searchKeyword=${searchKeyword}&page=${currentPage - 1}">Previous</a>
+	    </c:if>
 
-    <!-- bg outer wrapper -->
-  </div>
+	    <!-- 페이지 번호 링크 -->
+	    <c:choose>
+	        <c:when test="${totalPages <= 10}">
+	            <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
+	            <c:forEach var="i" begin="1" end="${totalPages}">
+	                <a href="?searchKeyword=${searchKeyword}&page=${i}" 
+	                   class="${i == currentPage ? 'active' : ''}">${i}</a>
+	            </c:forEach>
+	        </c:when>
+	        <c:otherwise>
+	            <!-- 페이지가 10페이지 초과인 경우 -->
+	            <c:if test="${currentPage > 4}">
+	                <a href="?searchKeyword=${searchKeyword}&page=1">1</a>
+	                <span>...</span>
+	            </c:if>
+
+	            <c:set var="startPage" value="${currentPage - 3}" />
+	            <c:set var="endPage" value="${currentPage + 3}" />
+	            
+	            <!-- startPage가 1보다 작으면 1로 설정 -->
+	            <c:if test="${startPage < 1}">
+	                <c:set var="startPage" value="1" />
+	            </c:if>
+	            
+	            <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
+	            <c:if test="${endPage > totalPages}">
+	                <c:set var="endPage" value="${totalPages}" />
+	            </c:if>
+
+	            <c:forEach var="i" begin="${startPage}" end="${endPage}">
+	                <c:if test="${i > 0 && i <= totalPages}">
+	                    <a href="?searchKeyword=${searchKeyword}&page=${i}" 
+	                       class="${i == currentPage ? 'active' : ''}">${i}</a>
+	                </c:if>
+	            </c:forEach>
+
+	            <c:if test="${currentPage < totalPages - 3}">
+	                <span>...</span>
+	                <a href="?searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
+	            </c:if>
+	        </c:otherwise>
+	    </c:choose>
+
+	    <!-- 다음 페이지 링크 -->
+	    <c:if test="${currentPage < totalPages}">
+	        <a href="?searchKeyword=${searchKeyword}&page=${currentPage + 1}">Next</a>
+	    </c:if>
+	</div>
+
+
   <jsp:include page="/WEB-INF/views/footer.jsp" />
 
   <!-- BACK TO TOP BUTTON -->
@@ -209,6 +264,7 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
+  <script src="/js/magazineList.js"></script>
   
 </body>
 

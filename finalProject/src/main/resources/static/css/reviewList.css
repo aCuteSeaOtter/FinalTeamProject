@@ -89,18 +89,18 @@
 
 /* 사이드바 title 글자 width 이상 넘어간 글자 숨기기 */
 .post-thumbnail-content a{
-	overflow : hidden; 
+   overflow : hidden; 
 }
 /* 사이드바 글자색 변경 */
-.sidebar .post-thumbnail-list #sideBarTitleDiv {
-	color: #007bff;
+.sidebar .post-thumbnail-list .sideBarTitleDiv {
+   color: #007bff;
 
 }
 /* 사이드바 제목, 달력 아이콘 색상 변경 */
 .fa-solid {
-	color: var(--primary--color);
+   color: var(--primary--color);
 }
-	
+   
 
 
 /* 새글 등록 버튼 컨테이너를 우측 정렬 */
@@ -227,9 +227,17 @@
 
 /*우측 하단 최상단 올리기 버튼*/
 #back-to-top-btn {
-    z-index: 9999 !important; /* 다른 요소 위에 보이도록 */
+    z-index: 9999; /* 다른 요소 위에 보이도록 */
 }
 
+.blog-box .review-title, a.sideBarTitleDiv  {
+    display: block; /* 블록 요소로 설정 */
+    width: 100%; /* 부모 요소의 너비를 가득 채움 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-
-
+.float-left{
+	float:none !important;
+}

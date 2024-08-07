@@ -34,7 +34,7 @@
            LEFT JOIN review_likes rl ON r.review_id = rl.review_id
            <where>
                <if test="searchKeyword != null and searchKeyword != ''">
-                   ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+                   LOWER(${searchCondition}) LIKE '%' || LOWER(#{searchKeyword}) || '%'
                </if>
            </where>
        )
@@ -42,6 +42,7 @@
        FROM paginated_reviews
        WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
    </select>
+
 
    
    <!-- 총 리뷰 수 조회 -->
@@ -51,7 +52,7 @@
        INNER JOIN member m ON r.member_email = m.member_email
        <where>
            <if test="searchKeyword != null and searchKeyword != ''">
-               ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+               LOWER(${searchCondition}) LIKE '%' || LOWER(#{searchKeyword}) || '%'
            </if>
        </where>
    </select>
