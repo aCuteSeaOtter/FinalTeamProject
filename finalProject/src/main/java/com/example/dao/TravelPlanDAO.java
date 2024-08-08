@@ -23,5 +23,5 @@ public interface TravelPlanDAO {
 	int countTravelPlans(String info_id, int plan_day);
 	void deleteAllTravelPlan(String info_id, int plan_day);
 	void deleteTravelPlan(String info_id, int plan_day, int attr_id);
-	public List<Map<String, Object>> selectedAttrList(int attr_id, int plan_day);
+	public List<Map<String, Object>> selectedAttrList(int attr_id, int plan_day, int info_id);
 }

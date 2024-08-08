@@ -106,15 +106,18 @@ public class TravelPlanController {
 	
 	// 선택한 명소 불러오기
 	@GetMapping("/getSelectedAttractions")
-	public List<Map<String, Object>> selectedAttr(@RequestParam("day") int plan_day, @RequestParam("attrIds") List<Integer> selectedAttrIds) {
+	public List<Map<String, Object>> selectedAttr(@RequestParam("day") int plan_day, @RequestParam("attrIds") List<Integer> selectedAttrIds, @RequestParam("infoId") int info_id) {
 		List<Map<String, Object>> selectedAttrList = new ArrayList<>();
 		
 		for (Integer attr_id : selectedAttrIds) {
-			List<Map<String, Object>> attrList = travelPlanService.selectedAttrList(attr_id, plan_day);
+			System.out.println("selectedAttrIds : " + selectedAttrIds.size() + " attr_id : " + attr_id);
+			List<Map<String, Object>> attrList = travelPlanService.selectedAttrList(attr_id, plan_day, info_id);
+			System.out.println("attrList : " + attrList);
             if (attrList != null) {
                 selectedAttrList.addAll(attrList); // 선택된 ID들에 대한 결과를 통합
             }
         }
+		
 		return selectedAttrList;
 	}
 	

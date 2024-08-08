@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.MyPlanDAO;
-import com.example.dao.PlanListDAO;
+import com.example.dao.MyPageDAO;
 
 //** 
 @Service	// Service 호출 

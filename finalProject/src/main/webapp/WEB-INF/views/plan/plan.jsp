@@ -71,6 +71,7 @@
 	      <div class="row">
 	        <div class="col-lg-4">
 	        	<div>
+	        		<input type="hidden" value="<%= session.getAttribute("info_id") %>" class="info_id">
 	        		<div class="title"><%= session.getAttribute("info_name") %></div>
 	        	</div>
 	        	<div class="selectedDate" name="dates">

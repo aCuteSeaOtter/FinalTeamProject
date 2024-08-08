@@ -41,7 +41,7 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 		travelPlanDAO.deleteTravelPlan(info_id, plan_day, attr_id);
 	}
 	
-	public List<Map<String, Object>> selectedAttrList(int attr_id, int plan_day) {
-        return travelPlanDAO.selectedAttrList(attr_id, plan_day);
+	public List<Map<String, Object>> selectedAttrList(int attr_id, int plan_day, int info_id) {
+        return travelPlanDAO.selectedAttrList(attr_id, plan_day, info_id);
     }
 } 

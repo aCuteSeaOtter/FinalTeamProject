@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-  <link rel="stylesheet" href="/css/planList.css" type="text/css">
+  <link rel="stylesheet" href="/css/myPlan.css" type="text/css">
 </head>
 
 <body>
@@ -75,8 +75,15 @@
 			        <div class="col-lg-3">
 			        	<div class="wrapper">
 			        		<div class="block">
-			        			<h2>${list.PLAN_DAY}일차</h2>
-			        			<div>${list.ATTR_NAME}</div>
+			        			<h2>${list.plan_day}일차</h2>
+			        			<div>
+			        				<ul>
+			        				<c:forEach var="attr" items="${list.attr_name}">
+				        				<li>${attr.ATTR_NAME}</li>
+				        			</c:forEach>
+				        			</ul>
+			        			</div>
+			        			
 			        		</div>
 			        	</div>
 					    
