@@ -159,6 +159,7 @@
 
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
+  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y"></script>
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>

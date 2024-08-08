@@ -6,11 +6,18 @@
 	
 	<!-- plan_id로 plan 가져옴 -->
 	<select id="selectMyPlan" resultType="hashmap">
-		SELECT tp.plan_day plan_day, tp.plan_seq plan_seq, a.attr_name attr_name
-		FROM travel_info ti
-		JOIN travel_plan tp ON ti.info_id = tp.info_id
-		JOIN attr a ON tp.attr_id = a.attr_id
-        WHERE  ti.info_id = #{info_id}
+		SELECT 
+            tp.plan_day,
+            tp.plan_seq,
+            a.attr_name
+        FROM 
+            travel_plan tp
+        JOIN 
+            attr a ON tp.attr_id = a.attr_id
+        WHERE 
+            tp.info_id = #{infoId}
+        ORDER BY 
+            tp.plan_day, tp.plan_seq
 	</select>
 	
 </mapper>

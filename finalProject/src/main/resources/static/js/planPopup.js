@@ -40,6 +40,8 @@ $(function() {
 
     // day 값 설정
     day = parseInt(localStorage.getItem('dayNum').match(/\d+/)[0]);
+	
+	let info_id = localStorage.getItem("infoId");
 
 
 	if (!Array.isArray(selectedAttrIdDataMap[day])) {
@@ -49,7 +51,6 @@ $(function() {
 	
     loadAllAttractions();
     loadSelectedAttractions();
-	opener.console.log("D"+selectedAttrIdDataMap[day].length);
 
     // 로컬스토리지에서 x일차 값 출력
     $('.dayNum2').text(localStorage.getItem('dayNum'));
@@ -398,7 +399,7 @@ $(function() {
             $.ajax({
                 url: '/getSelectedAttractions',
                 type: 'GET',
-                data: { day: day, attrIds: selectedAttrIdDataMap[day] },
+                data: { day: day, attrIds: selectedAttrIdDataMap[day], infoId: info_id },
                 success: function(response) {
                     renderSelectedAttractions(response);
                 },

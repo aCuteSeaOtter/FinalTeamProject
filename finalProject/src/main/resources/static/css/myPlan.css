@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+body {
+    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+}
+
+.col-lg-3 {
+    padding: 15px;
+}
+
+.wrapper {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.block {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.block:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.block h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e1e4e8;
+}
+
+.block ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.block li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.block li:last-child {
+    border-bottom: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) {
+    .col-lg-3 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-lg-3 {
+        width: 100%;
+    }
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wrapper {
+    animation: fadeIn 0.5s ease-out forwards;
+}

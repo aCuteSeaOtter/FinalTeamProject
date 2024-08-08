@@ -1,7 +1,11 @@
 package com.example.controller;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +26,35 @@ public class MyPlanController {
 	public String selectMyPlan(@RequestParam("info_id") int info_id, RedirectAttributes r) {
 		List<Map<String, Object>> result = myPlanService.selectMyPlan(info_id);
 		
+		// plan_day 값을 추출하되, null 체크를 포함합니다.
+		List<Integer> planDays = result.stream()
+			    .map(map -> {Object planDay = map.get("PLAN_DAY");
+			        return ((BigDecimal) planDay).intValue();
+			    })
+			    .filter(Objects::nonNull)
+			    .distinct()
+			    .sorted()
+			    .collect(Collectors.toList());
 		
+		// plan_day로 그룹화
+	    Map<Integer, List<Map<String, Object>>> groupedPlans = result.stream()
+	        .collect(Collectors.groupingBy(
+	            map -> ((BigDecimal) map.get("PLAN_DAY")).intValue(),
+	            Collectors.toList()
+	        ));
+	    
+	    // 결과를 정렬된 형태로 변환합니다.
+	    List<Map<String, Object>> organizedPlans = planDays.stream()
+	        .map(day -> {
+	            Map<String, Object> dayPlan = new HashMap<>();
+	            dayPlan.put("plan_day", day);
+	            dayPlan.put("attr_name", groupedPlans.get(day));
+	            return dayPlan;
+	        })
+	        .collect(Collectors.toList());
 		
+		r.addFlashAttribute("myPlan", organizedPlans);
 		
-		r.addFlashAttribute("myPlan", result);
-		System.out.println(result);
 		return "redirect:plan/myPlan";
 	}
 	
