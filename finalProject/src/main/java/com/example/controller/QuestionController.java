@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.domain.AnswerVO;
 import com.example.domain.LoginVO;
 import com.example.domain.QuestionVO;
-import com.example.domain.UserVO;
 import com.example.service.AnswerService;
 import com.example.service.QuestionService;
 
