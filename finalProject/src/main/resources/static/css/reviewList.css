@@ -195,12 +195,14 @@
     background-color: #1ec28b;
     border-color: #1ec28b;
     color: #ffffff;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 }
 
 .widget-newsletter .btn:hover {
     background-color: #148f62;
     border-color: #148f62;
+    transform: scale(1.05); /* 살짝 확대 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 }
 
 /* 리뷰 박스 크기 조절 */
@@ -240,4 +242,8 @@
 
 .float-left{
 	float:none !important;
+}
+
+#sideBarTitleDiv {
+	color:#007bff;
 }

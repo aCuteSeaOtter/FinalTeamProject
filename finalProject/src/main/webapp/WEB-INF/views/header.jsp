@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="${path}/css/calendar.css" type="text/css">
     <link rel="stylesheet" href="${path}/css/realLogin.css" type="text/css">
+	<link rel="stylesheet" href="${path}/css/header.css" type="text/css">
 </head>
 <body>
 <!-- HEADER SECTION -->
@@ -55,7 +56,7 @@
 
             <c:if test="${empty sessionScope.member}">
                 <li class="nav-item">
-                    <a href="/login/loginForm" class="live-chat-btn d-inline-block">
+                    <a href="/login/loginForm" class="live-chat-btn d-inline-block login-btn">
                         로그인
                     </a>
                 </li>

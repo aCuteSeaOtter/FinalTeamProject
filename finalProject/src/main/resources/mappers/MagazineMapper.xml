@@ -42,8 +42,59 @@
 	        </if>
 	    </where>
 	</select>
-
-
+	
+	
+	<select id="getTotalCountForArea" parameterType="String" resultType="int">
+	    SELECT COUNT(*)
+	    FROM ARTICLE
+	    WHERE REGEXP_SUBSTR(ARTL_LOCAL, '[^ ]+', 1, 1) = #{area}
+	</select>
 
     
+    <select id="findMagazinesByArea" parameterType="map" resultType="com.example.domain.MagazineVO">
+	    WITH magazine_filtered AS (
+	        SELECT a.artl_id,
+	               a.artl_name,
+	               a.artl_img,
+	               a.artl_link,
+	               a.artl_local,
+	               a.artl_pri_tag,
+	               a.artl_title,
+	               ROW_NUMBER() OVER (ORDER BY a.artl_id DESC) AS rn
+	        FROM ARTICLE a
+	        WHERE REGEXP_SUBSTR(a.artl_local, '[^ ]+', 1, 1) = #{area}
+	    )
+	    SELECT *
+	    FROM magazine_filtered
+	    WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
+	</select>
+	
+	<select id="getTotalCountForTag" parameterType="String" resultType="int">
+	    <![CDATA[
+	    SELECT COUNT(*)
+	    FROM ARTICLE
+	    WHERE INSTR(ARTL_PRI_TAG, #{tag}) > 0
+	    ]]>
+	</select>
+	
+	<select id="findMagazinesByTag" parameterType="map" resultType="com.example.domain.MagazineVO">
+	    <![CDATA[
+	    WITH magazine_filtered AS (
+	        SELECT a.artl_id,
+	               a.artl_name,
+	               a.artl_img,
+	               a.artl_link,
+	               a.artl_local,
+	               a.artl_pri_tag,
+	               a.artl_title,
+	               ROW_NUMBER() OVER (ORDER BY a.artl_id DESC) AS rn
+	        FROM ARTICLE a
+	        WHERE INSTR(a.artl_pri_tag, #{tag}) > 0
+	    )
+	    SELECT *
+	    FROM magazine_filtered
+	    WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
+	    ]]>
+	</select>
+
 </mapper>

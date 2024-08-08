@@ -101,7 +101,6 @@
     </section>
     <!-- WHAT WE SERVE SECTION -->
 	<section class="float-left w-100 what-we-serve-con service-serve-con position-relative main-box padding-bottom">
-	  <img alt="vector" class="vector5 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s" src="/assets/images/vector5.png">
 		<div class="container">
 			<div class="row MagazineCotents">
 				<div class="col-xl-9 col-lg-9">
@@ -155,31 +154,45 @@
 						        <div class="tab-content" id="tabs-posts-content" data-aos="fade-up" data-aos-duration="700">
 						            <div class="tab-pane fade show active" id="popular" role="tabpanel">
 						                <div class="post-thumbnail-list">
-											<ul class="tag_list area_list js_one" id="arealist">
-												<li id="0"><button type="button" class="btn"><span>전체</span></button></li>
-												<li id="1"><button type="button" class="btn"><span>서울</span></button></li>
-												<li id="6"><button type="button" class="btn"><span>부산</span></button></li>
-												<li id="4"><button type="button" class="btn"><span>대구</span></button></li>
-												<li id="2"><button type="button" class="btn"><span>인천</span></button></li>
-												<li id="5"><button type="button" class="btn"><span>광주</span></button></li>
-												<li id="3"><button type="button" class="btn"><span>대전</span></button></li>
-												<li id="7"><button type="button" class="btn"><span>울산</span></button></li>
-												<li id="8"><button type="button" class="btn"><span>세종</span></button></li>
-												<li id="31"><button type="button" class="btn"><span>경기</span></button></li>
-												<li id="32"><button type="button" class="btn"><span>강원</span></button></li>
-												<li id="33"><button type="button" class="btn"><span>충북</span></button></li>
-												<li id="34"><button type="button" class="btn"><span>충남</span></button></li>
-												<li id="35"><button type="button" class="btn"><span>경북</span></button></li>
-												<li id="36"><button type="button" class="btn"><span>경남</span></button></li>
-												<li id="37"><button type="button" class="btn"><span>전북</span></button></li>
-												<li id="38"><button type="button" class="btn"><span>전남</span></button></li>
-												<li id="39"><button type="button" class="btn"><span>제주</span></button></li>
+											<ul class="tag_list area_list js_one" id="areaList">
+												<li id="all_area"><button type="button" class="btn"><span>전체</span></button></li>
+												<li id="area1"><button type="button" class="btn"><span>서울</span></button></li>
+												<li id="area2"><button type="button" class="btn"><span>부산</span></button></li>
+												<li id="area3"><button type="button" class="btn"><span>대구</span></button></li>
+												<li id="area4"><button type="button" class="btn"><span>인천</span></button></li>
+												<li id="area5"><button type="button" class="btn"><span>광주</span></button></li>
+												<li id="area6"><button type="button" class="btn"><span>대전</span></button></li>
+												<li id="area7"><button type="button" class="btn"><span>울산</span></button></li>
+												<li id="area8"><button type="button" class="btn"><span>세종</span></button></li>
+												<li id="area9"><button type="button" class="btn"><span>경기</span></button></li>
+												<li id="area10"><button type="button" class="btn"><span>강원</span></button></li>
+												<li id="area11"><button type="button" class="btn"><span>충북</span></button></li>
+												<li id="area12"><button type="button" class="btn"><span>충남</span></button></li>
+												<li id="area13"><button type="button" class="btn"><span>경북</span></button></li>
+												<li id="area14"><button type="button" class="btn"><span>경남</span></button></li>
+												<li id="area15"><button type="button" class="btn"><span>전북</span></button></li>
+												<li id="area16"><button type="button" class="btn"><span>전남</span></button></li>
+												<li id="area17"><button type="button" class="btn"><span>제주</span></button></li>
 											</ul>
 						                </div>
 						            </div>
 									<div class="tab-pane fade" id="featured" role="tabpanel">
                                         <div class="post-thumbnail-list">
-                                            테스트2
+											<div class="post-thumbnail-list">
+												<ul class="tag_list js_one" id="tagList">
+													<li id="all_tag"><button type="button" class="btn"><span>전체</span></button></li>
+													<li id="tag1"><button type="button" class="btn"><span>자연</span></button></li>
+													<li id="tag2"><button type="button" class="btn"><span>추천</span></button></li>
+													<li id="tag3"><button type="button" class="btn"><span>여행</span></button></li>
+													<li id="tag4"><button type="button" class="btn"><span>스파</span></button></li>
+													<li id="tag5"><button type="button" class="btn"><span>건강</span></button></li>
+													<li id="tag6"><button type="button" class="btn"><span>관광</span></button></li>
+													<li id="tag7"><button type="button" class="btn"><span>풍경</span></button></li>
+													<li id="tag8"><button type="button" class="btn"><span>바다</span></button></li>
+													<li id="tag9"><button type="button" class="btn"><span>호수</span></button></li>
+													<li id="tag10"><button type="button" class="btn"><span>감성</span></button></li>
+												</ul>
+							                </div>
                                         </div>
                                     </div>
 						        </div>
@@ -264,7 +277,7 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
-  <script src="/js/magazineList.js"></script>
+  <script src="/js/magazine.js"></script>
   
 </body>
 

@@ -2,12 +2,16 @@ package com.example.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.MagazineVO;
 import com.example.service.MagazineService;
@@ -63,6 +67,52 @@ public class MagazineController {
 
 	    return "magazine/magazineList"; // JSP 파일 경로와 일치해야 함
 	}
+
+	@GetMapping("/filterMagazines")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> filterMagazines(
+	    @RequestParam(value = "area", required = false) String area,
+	    @RequestParam(value = "tag", required = false) String tag,
+	    @RequestParam(defaultValue = "1") int page) {
+	    
+	    int pageSize = 10; // 페이지당 아이템 수
+
+	    // 페이징 처리를 위한 맵 생성
+	    HashMap<String, Object> map = new HashMap<>();
+	    map.put("area", area);
+	    map.put("tag", tag);
+	    map.put("offset", (page - 1) * pageSize);
+	    map.put("pageSize", pageSize);
+	    System.out.println("페이징 맵 : " + map);
+
+	    List<MagazineVO> magazines;
+	    int totalCount;
+
+	    if (tag != null && !tag.isEmpty()) {
+	        // 태그로 필터링
+	        magazines = magazineService.findMagazinesByTag(map);
+	        totalCount = magazineService.getTotalCountForTag(tag);
+	    } else {
+	        // 지역으로 필터링
+	        magazines = magazineService.findMagazinesByArea(map);
+	        totalCount = magazineService.getTotalCountForArea(area);
+	    }
+
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
+	    System.out.println("totalCount : " + totalCount + " totalPages : " + totalPages);
+
+	    // 응답 맵 생성
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("magazines", magazines);
+	    response.put("totalPages", totalPages);
+	    response.put("currentPage", page);
+
+	    return ResponseEntity.ok(response);
+	}
+
+
+
 
 
 

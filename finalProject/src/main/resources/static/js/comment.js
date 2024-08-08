@@ -92,7 +92,7 @@ $(function() {
                     // 댓글 아래에 대댓글 입력 폼 추가
                     var replyFormRow = $('<tr/>').addClass('reply-form-row').hide().data('parent_id', commentId);
                     var replyFormTd = $('<td colspan="7"/>').append(
-                        $('<textarea/>').addClass('reply-input').attr('placeholder', '대댓글을 입력하세요...')
+                        $('<textarea/>').addClass('reply-input').attr('placeholder', '대댓글을 입력하세요.')
                     ).append(
                         $('<button/>').addClass('reply-submit').data('parent_id', commentId).text('대댓글 작성')
                     );

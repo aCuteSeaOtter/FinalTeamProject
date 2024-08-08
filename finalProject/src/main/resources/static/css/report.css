@@ -37,4 +37,9 @@
     .report-btn {
     	background: #1ec28b;
     	color: white;
+    	cursor: pointer;
+    }
+    
+    .report-btn:hover{
+    	background:#148f62;
     }

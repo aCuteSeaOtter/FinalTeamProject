@@ -6,9 +6,9 @@ $(document).ready(function() {
     function updateLikeStatus() {
         $.get(`/likes/${reviewId}/${nickname}`, function(status) {
             if (status == 1) {
-                $("#like-button img").attr("src", "/images/review/like.jpg");
+                $("#like-button i").removeClass("fa-regular").addClass("fa-solid");
             } else {
-                $("#like-button img").attr("src", "/images/review/unlike.jpg");
+                $("#like-button i").removeClass("fa-solid").addClass("fa-regular");
             }
         });
     }
@@ -26,7 +26,7 @@ $(document).ready(function() {
             return; // 클릭 이벤트 종료
         }
 
-        const likeState = $("#like-button img").attr("src").includes("unlike.jpg") ? 1 : 0;
+        const likeState = $("#like-button i").hasClass("fa-regular") ? 1 : 0;
 
         $.post(`/likes/${reviewId}/${nickname}`, { likeState: likeState }, function() {
             updateLikeStatus();

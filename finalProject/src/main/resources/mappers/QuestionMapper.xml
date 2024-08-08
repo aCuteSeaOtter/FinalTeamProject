@@ -9,18 +9,30 @@
 		VALUES( que_id_seq.NEXTVAL, #{member_email}, #{que_title}, #{que_content}, 'N', #{que_secret}, TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS') )
 	</insert>
 	
-	<!-- sql 문의글 검색 및 목록보기-->
-	<select id="questionList" parameterType="map" resultType="hashmap">
-    SELECT q.*, m.member_nickname
-    FROM QUESTION q INNER JOIN MEMBER m
-    ON q.member_email = m.member_email
-    <where>
-        <if test="searchKeyword != null and searchKeyword != ''">
-            ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
-        </if>
-    </where>
-    	ORDER BY q.que_id
-	</select>
+	<!-- 공지사항 목록 조회 -->
+    <select id="getNoticeList" parameterType="map" resultType="com.example.domain.NoticeVO">
+        SELECT * FROM (
+            SELECT n.*, ROW_NUMBER() OVER (ORDER BY notice_id) AS rn
+            FROM NOTICE n
+            <where>
+                <if test="searchKeyword != null and searchKeyword != ''">
+                    ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+                </if>
+            </where>
+        )
+        WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
+    </select>
+
+    <!-- 총 공지사항 수 조회 -->
+    <select id="getTotalCount" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM NOTICE
+        <where>
+            <if test="searchKeyword != null and searchKeyword != ''">
+                ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
+            </if>
+        </where>
+    </select>
 	
 	<!-- sql 문의글 update문 -->
 	<update id="updateQuestion" parameterType="QuestionVO">

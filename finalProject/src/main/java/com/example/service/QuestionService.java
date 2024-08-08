@@ -27,4 +27,7 @@ public interface QuestionService {
 	
 	// 삭제 시 N 반환
 	void updateQuestionStatusToN(QuestionVO vo);
+
+	// 문의 총 개수 / 페이징용
+	int getTotalCount(HashMap<String, Object> map);
 }

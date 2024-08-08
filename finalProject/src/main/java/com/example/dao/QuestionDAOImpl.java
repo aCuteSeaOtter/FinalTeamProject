@@ -56,4 +56,8 @@ public class QuestionDAOImpl implements QuestionDAO{
 	public String checkSecretPassword(String que_id) {
         return mybatis.selectOne("QuestionDAO.checkSecretPassword", que_id);
 	    }
+	
+	public int getTotalCount(HashMap<String, Object> map) {
+        return mybatis.selectOne("QuestionDAO.getTotalCount", map);
+    }
 }

@@ -125,6 +125,15 @@
 		    position: relative;
 		}
 		
+		#submit{
+			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+		}
+		
+		#submit:hover{
+			background:#148f62;
+			transform: scale(1.05); /* 살짝 확대 */
+    		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+		}
 		@media (max-width: 850px){
 			.pwcheck-message {
 				display: block;
