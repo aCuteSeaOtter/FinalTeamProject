@@ -30,4 +30,6 @@ public interface QuestionDAO {
 	
 	// 사용자 비밀글 비밀번호
 	String checkSecretPassword(String que_id);
+	
+	int getTotalCount(HashMap<String, Object> map);
 }

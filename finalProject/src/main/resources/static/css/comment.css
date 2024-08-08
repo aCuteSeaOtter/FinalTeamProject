@@ -65,16 +65,17 @@
 /* 댓글 작성자 스타일 설정 */
 .reply-commenter {
     font-weight: bold;
-
+    font-size:16px;
 }
 
 .reply-comment , .comment-text {
-	font-family: "Jost", sans-serif;
+	font-family: 'tway', sans-serif;
+	font-size:16px;
 }
 
 /* 대댓글 제출 버튼 스타일 설정 */
 .reply-submit {
-    background-color: #4CAF50; /* 버튼 배경색 */
+    background-color: #1ec28b; /* 기본 배경색 */
     color: white; /* 버튼 글자색 */
     border: none; /* 버튼 테두리 없음 */
     padding: 10px 20px; /* 버튼 내부 여백 */
@@ -85,15 +86,16 @@
     margin: 10px 0; /* 버튼과 다른 요소 사이의 여백 */
     border-radius: 4px; /* 버튼 모서리 둥글기 */
     cursor: pointer; /* 커서 포인터로 변경 */
-    transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+    position: relative; /* 상대적 위치 설정 */
+    top: -18px; /* 위로 10px 이동 */
+    margin-left: 3px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* 배경색과 크기 변화 효과 */
 }
 
 .reply-submit:hover {
-    background-color: #45a049; /* 배경색 어두워짐 */
-}
-
-.reply-submit:active {
-    background-color: #388e3c; /* 배경색 더 어두워짐 */
+    background-color: #148f62; /* 호버 시 배경색 */
+    transform: scale(1.05); /* 살짝 확대 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 }
 
 /* 댓글 및 대댓글 삭제 버튼 스타일 설정 */
@@ -131,11 +133,12 @@
     justify-content: space-between;
     font-size: 0.9em;
     color: #555;
+    font-family: 'tway', sans-serif;
 }
 
 .comment-writer {
     font-weight: bold;
-    font-size:18px;
+    font-size:16px;
 }
 
 .comment-date {
@@ -148,6 +151,8 @@
 
 span.comment-text {
     cursor: pointer;
+    font-family: 'tway', sans-serif;
+    font-size: 16px;
 }
 
 /* 좋아요 및 싫어요 버튼 위치 조정 */

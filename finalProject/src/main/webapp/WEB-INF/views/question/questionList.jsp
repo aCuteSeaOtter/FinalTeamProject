@@ -111,9 +111,64 @@
     <!-- bg outer wrapper -->
   </div>
   <!-- CONTACT FORM SECTION  -->
-  <jsp:include page="/WEB-INF/views/footer.jsp" />
   </section>
+  
+  <!-- 페이지네이션 링크 -->
+  	   <div class="pagination">
+  	       <!-- 이전 페이지 링크 -->
+  	       <c:if test="${currentPage > 1}">
+  	           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage - 1}" class="pagination-button">Previous</a>
+  	       </c:if>
 
+  	       <!-- 페이지 번호 링크 -->
+  	       <c:choose>
+  	           <c:when test="${totalPages <= 10}">
+  	               <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
+  	               <c:forEach var="i" begin="1" end="${totalPages}">
+  	                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+  	                      class="${i == currentPage ? 'active' : ''}">${i}</a>
+  	               </c:forEach>
+  	           </c:when>
+  	           <c:otherwise>
+  	               <!-- 페이지가 10페이지 초과인 경우 -->
+  	               <c:if test="${currentPage > 4}">
+  	                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=1">1</a>
+  	                   <span>...</span>
+  	               </c:if>
+
+  	               <c:set var="startPage" value="${currentPage - 3}" />
+  	               <c:set var="endPage" value="${currentPage + 3}" />
+  	               
+  	               <!-- startPage가 1보다 작으면 1로 설정 -->
+  	               <c:if test="${startPage < 1}">
+  	                   <c:set var="startPage" value="1" />
+  	               </c:if>
+  	               
+  	               <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
+  	               <c:if test="${endPage > totalPages}">
+  	                   <c:set var="endPage" value="${totalPages}" />
+  	               </c:if>
+
+  	               <c:forEach var="i" begin="${startPage}" end="${endPage}">
+  	                   <c:if test="${i > 0 && i <= totalPages}">
+  	                       <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+  	                          class="${i == currentPage ? 'active' : ''}">${i}</a>
+  	                   </c:if>
+  	               </c:forEach>
+
+  	               <c:if test="${currentPage < totalPages - 3}">
+  	                   <span>...</span>
+  	                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
+  	               </c:if>
+  	           </c:otherwise>
+  	       </c:choose>
+
+  	       <!-- 다음 페이지 링크 -->
+  	       <c:if test="${currentPage < totalPages}">
+  	           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage + 1}" class="pagination-button">Next</a>
+  	       </c:if>
+  	   </div>
+<jsp:include page="/WEB-INF/views/footer.jsp" />
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>

@@ -188,7 +188,7 @@
 								                                    <c:forEach items="${fileNamesArray}" var="fileName">
 								                                        <c:if test="${not empty fileName}">
 								                                            <div>
-								                                                <img src="/files/${fileName}" alt="Image">
+								                                                <img src="/files/${fileName}" alt="Image" onclick="window.location.href='selectReview?review_id=${review.REVIEW_ID}'">
 								                                            </div>
 								                                        </c:if>
 								                                    </c:forEach>

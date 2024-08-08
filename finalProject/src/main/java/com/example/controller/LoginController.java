@@ -84,8 +84,6 @@ public class LoginController {
 	@RequestMapping("/loginForm")
 	public void loginForm() {
 		
-		
-		
 	}
 	@RequestMapping("/agreeForm")
 	public void agreeForm() {
@@ -137,8 +135,6 @@ public class LoginController {
 		if(result!=null) {
 			//로그인 성공 시 세션에 사용자 정보 저장
 			session.setAttribute("member", result);
-			System.out.println("--------------------------------------");
-			System.out.println("if: " + result);
 			return "redirect:/"; // index였음
 		}
 		else {
@@ -161,10 +157,10 @@ public class LoginController {
 	//마이페이지 ( 예시 )
 	@RequestMapping("/mypage")
 	public String myPage(HttpSession session) {
-	    LoginVO mem = (LoginVO) session.getAttribute("mem");
-	    if (mem != null) {
+	    LoginVO member = (LoginVO) session.getAttribute("member");
+	    if (member != null) {
 	        // 사용자 정보를 세션에서 가져오고 페이지를 보여줍니다.
-	        return "mypage";
+	        return "/login/mypage";
 	    } else {
 	        // 비로그인 상태일 때 로그인 페이지로 리디렉션
 	        return "redirect:/loginForm";

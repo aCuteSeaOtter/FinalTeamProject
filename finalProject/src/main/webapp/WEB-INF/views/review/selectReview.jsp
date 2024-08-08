@@ -166,12 +166,12 @@
 			<div id="post-${review.review_id}">
 			  <div class="reaction-buttons">
 			    <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="like-button">
-			      <img src="/images/review/unlike.jpg" alt="Like" class="img-fluid">
+			      <i class="fa-regular fa-thumbs-up"></i>
 			    </div>
 			    <span class="count" id="like-count">0</span>
 			    
 			    <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="hate-button">
-			      <img src="/images/review/unhate2.jpg" alt="Hate" class="img-fluid">
+			      <i class="fa-regular fa-thumbs-down"></i>
 			    </div>
 			    <span class="count"id="hate-count-${review.REVIEW_ID}">0</span>
 				<c:if test="${id == review.MEMBER_EMAIL}">

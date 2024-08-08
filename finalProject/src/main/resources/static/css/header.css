@@ -1,0 +1,13 @@
+/* 로그인 버튼 */
+.login-btn{
+	background:#1ec28b !important;
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 로그인 버튼 hover */
+.login-btn:hover{
+	background-color: #148f62 !important; /* 호버 시 배경색 */
+    color: white;
+    transform: scale(1.05); /* 살짝 확대 */
+   	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}

@@ -37,7 +37,4 @@ $(document).ready(function() {
             $('#' + sliderId).slick('slickPrev');
         }
     }
-
-    
-
 });

@@ -7,10 +7,10 @@ $(document).ready(function() {
         function updateHateStatus() {
             $.get(`/hates/${reviewId}/${memberEmail}`, function(status) {
                 if (status == 1) {
-                    postDiv.find("[id^='hate-button-'] img").attr("src", "/images/review/hate2.jpg");
+                    postDiv.find("[id^='hate-button-'] i").removeClass("fa-regular").addClass("fa-solid");
                 } else {
-                    postDiv.find("[id^='hate-button-'] img").attr("src", "/images/review/unhate2.jpg");
-                } 
+                    postDiv.find("[id^='hate-button-'] i").removeClass("fa-solid").addClass("fa-regular");
+                }
             });
         }
 
@@ -27,7 +27,9 @@ $(document).ready(function() {
                 return; // 클릭 이벤트 종료
             }
 
-            $.post(`/hates/${reviewId}/${memberEmail}`, function() {
+            const hateState = postDiv.find("[id^='hate-button-'] i").hasClass("fa-regular") ? 1 : 0;
+
+            $.post(`/hates/${reviewId}/${memberEmail}`, { hateState: hateState }, function() {
                 updateHateStatus();
                 updateHateCount();
             });

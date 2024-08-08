@@ -61,11 +61,13 @@ body {
        padding: 10px 20px;
        border-radius: 4px;
        cursor: pointer;
-       transition: background-color 0.3s ease;
+       transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
    }
 
    input[type="submit"]:hover {
-       background-color: #ff8900;
+       background-color: #148f62;
+       transform: scale(1.05); /* 살짝 확대 */
+    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
    }
 
    fieldset {
@@ -188,10 +190,15 @@ body {
 	    transition: background-color 0.3s ease; /* 배경색 변화 효과 */
 	    font-size: 16px; /* 글자 크기 */
 	    text-align: center; /* 글자 중앙 정렬 */
+	    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 	}
 	
 	.reviewList-btn:hover {
-	    background-color: #ff8900; /* 호버 시 배경색 */
+	    background-color: #148f62; /* 호버 시 배경색 */
+	    color: white;
+	    text-decoration: none;
+	    transform: scale(1.05); /* 살짝 확대 */
+    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 	}
 	
 

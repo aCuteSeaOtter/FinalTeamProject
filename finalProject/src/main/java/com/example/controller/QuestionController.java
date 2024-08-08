@@ -97,25 +97,48 @@ public class QuestionController {
     }
 	
 	// 문의글 검색 및 목록 출력
-	@RequestMapping("questionList")
-	public String questionList(HttpServletResponse response, Model m,
-							   String searchCondition, String searchKeyword,
-							   HttpSession session) {
-		String id = (String) session.getAttribute("sess");
-		
-		HashMap<String, Object>map = new HashMap<>();
-		map.put("searchCondition", searchCondition);
-		map.put("searchKeyword", searchKeyword);
-		
-		List<QuestionVO> list = questionService.questionList(map);
-		System.out.println("questionList:" + list);
-		m.addAttribute("question", list);
-		m.addAttribute("searchCondition",searchCondition);
-		m.addAttribute("searchKeyword",searchKeyword);
+    @RequestMapping("questionList")
+    public String questionList(HttpServletResponse response, Model m,
+                               @RequestParam(required = false) String searchCondition,
+                               @RequestParam(required = false) String searchKeyword,
+                               @RequestParam(defaultValue = "1") int page,
+                               HttpSession session) {
+        String id = (String) session.getAttribute("sess");
 
-		return "question/questionList";
-	}
-	
+        int pageSize = 10; // 페이지당 문의글 수
+        int offset = (page - 1) * pageSize; // 오프셋 계산
+
+        // 검색 조건 및 키워드를 위한 맵 생성
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("searchCondition", searchCondition);
+        map.put("searchKeyword", searchKeyword);
+        map.put("offset", offset);
+        map.put("pageSize", pageSize);
+
+        // 총 문의글 수 조회
+        int totalCount = questionService.getTotalCount(map);
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
+        // 현재 페이지가 유효한지 확인
+        if (page < 1) {
+            page = 1; // 페이지는 1보다 작을 수 없음
+        } else if (page > totalPages) {
+            page = totalPages; // 페이지가 총 페이지 수보다 클 수 없음
+        }
+
+        // 문의글 목록 조회
+        List<QuestionVO> list = questionService.questionList(map);
+
+        // 모델에 문의글 목록 및 페이지 정보 추가
+        m.addAttribute("question", list);
+        m.addAttribute("searchCondition", searchCondition);
+        m.addAttribute("searchKeyword", searchKeyword);
+        m.addAttribute("currentPage", page);
+        m.addAttribute("totalPages", totalPages);
+
+        return "question/questionList";
+    }
+
 	// 문의글 상세보기
 	@RequestMapping("selectQuestion")
 	public String selectQuestion(QuestionVO qvo, Model m, HttpSession session,

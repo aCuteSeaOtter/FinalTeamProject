@@ -10,7 +10,7 @@ body {
 
 /* 제목 스타일 설정 */
 h1 {
-    color: #4CAF50;
+    color: #1ec28b;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -32,7 +32,7 @@ th, td {
 }
 
 th { 
-    background-color: #4CAF50;
+    background-color: #1ec28b;
     color: white;
     text-align: center;
 }
@@ -48,7 +48,7 @@ th {
 
 /* 테이블 데이터 */
 td {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* 버튼 스타일 설정 */
@@ -64,12 +64,15 @@ td {
 }
 
 .btn-primary {
-    background-color: #4CAF50;
+    background-color: #1ec28b;
     color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 }
 
 .btn-primary:hover {
-    background-color: #45a049;
+    background-color: #148f62;
+    transform: scale(1.02); /* 살짝 확대 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 }
 
 .btn-secondary {
@@ -97,19 +100,11 @@ td {
 .like-button, .hate-button {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    display: flex;
+    display: inline-flex; /* 아이콘이 인라인으로 표시되도록 설정 */
     align-items: center;
     justify-content: center;
-    background-color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.like-button:hover, .hate-button:hover {
-    background-color: #f0f0f0;
+    font-size:35px;
 }
 
 /* 슬라이더 컨테이너 및 항목 스타일 설정 */
@@ -182,4 +177,12 @@ td {
 
 .form-control:disabled, .form-control[readonly] {
 	background: white;
+}
+
+.reply-input{
+	resize: none;
+	width: 50%;
+    height: 100px; /* 원하는 높이 값 */
+    padding-left: 2px; /* 왼쪽 여백 추가 */
+    
 }

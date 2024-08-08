@@ -23,9 +23,38 @@ public class MagazineServiceImpl implements MagazineService {
         return magazineDAO.getMagazineList(map);
     }
     
+    public List<MagazineVO> findMagazinesByArea(HashMap<String, Object> map) {
+        int offset = (int) map.get("offset");
+        int pageSize = (int) map.get("pageSize");
+        
+        System.out.println("offset : " + offset + " pageSize : " + pageSize);
+        return magazineDAO.findMagazinesByArea(map);
+    }
+    
+    public List<MagazineVO> findMagazinesByTag(HashMap<String, Object> map) {
+        int offset = (int) map.get("offset");
+        int pageSize = (int) map.get("pageSize");
+        
+        // 페이징 정보를 맵에 추가
+        map.put("offset", offset);
+        map.put("pageSize", pageSize);
+        
+        return magazineDAO.findMagazinesByTag(map);
+    }
+    
     // 리뷰 총 개수 / 페이징용
     public int getTotalCount(HashMap<String, Object> map) {
         return magazineDAO.getTotalCount(map);
     }
+    
+    public int getTotalCountForArea(String area) {
+        return magazineDAO.getTotalCountForArea(area);
+    }
+    
+    public int getTotalCountForTag(String tag) {
+        return magazineDAO.getTotalCountForTag(tag);
+    }
+    
+   
 
 } 

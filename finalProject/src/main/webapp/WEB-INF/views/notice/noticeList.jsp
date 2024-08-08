@@ -44,89 +44,174 @@
 <body>
     <!-- LOADER -->
     <div class="loader-mask">
-        <div class="loader">
-            <div></div>
-            <div></div>
-        </div>
+      <div class="loader">
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <!-- OUTER BG WRAPPER -->
     <div class="bg-outer-wrapper booking-wrapper float-left w-100">
-        <div class="clearfix"></div>
+      <div class="clearfix"></div>
         <jsp:include page="/WEB-INF/views/header.jsp" />
 
         <!-- BANNER SECTION -->
         <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-            <img alt="vector" class="vector1 img-fluid position-absolute" src="/assets/images/vector1.png">
-            <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
+          <img alt="vector" class="vector1 img-fluid position-absolute" src="/assets/images/vector1.png">
+          <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="sub-banner-inner-con padding-bottom">
-                            <h1>공지사항</h1>
-                            <p class="font-size-20">여기는 공지사항</p>
-                            <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="/index">Home</a></li>
-                                </ol>
-                            </div>
-                            <!-- sub banner inner con -->
-                        </div>
-                        <!-- col-lg-6 -->
-                    </div>
-                    <!-- row -->
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="sub-banner-inner-con padding-bottom">
+                    <h1>공지사항</h1>
+                      <p class="font-size-20">여기는 공지사항</p>
+                      <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
+                        <ol class="breadcrumb mb-0">
+                          <li class="breadcrumb-item">
+						    <a href="/index">Home</a>
+						  </li>
+                        </ol>
+                      </div>
+                  <!-- sub banner inner con -->
+                  </div>
+                <!-- col-lg-7 -->
                 </div>
-                <!-- container -->
+              <!-- row -->
+              </div>
+            <!-- container -->
             </div>
-            <!-- banner con -->
+        <!-- banner con -->
         </section>
-
+ 	              
         <!-- NOTICE LIST SECTION -->
         <section class="float-left w-100 faq-con position-relative main-box padding-bottom">
-            <div class="container wow bounceInUp" data-wow-duration="2s">
-                <div class="heading-title text-center">
-                    <h2>공지사항</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="accordian-section-inner position-relative">
-                            <div class="accordian-inner">
-                                <div id="secure_accordion1">
-                                    <c:forEach var="notice" items="${noticeList}" varStatus="status">
-                                        <div class="accordion-card">
-                                            <div class="card-header" id="heading${status.index}">
-                                                <a href="#" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse${status.index}"
-                                                   aria-expanded="false" aria-controls="collapse${status.index}">
-                                                    <h4>${notice.notice_title}</h4>
-                                                    <i class="fa-solid fa-angle-down"></i>
-                                                </a>
-                                            </div>
-                                            <div id="collapse${status.index}" class="collapse" aria-labelledby="heading${status.index}">
-                                                <div class="card-body">
-                                                    <p class="text-size-16 text-left mb-0">${notice.notice_content}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- col -->
-                </div>
-                <!-- row -->
+          <div class="container wow bounceInUp" data-wow-duration="2s">
+            <div class="heading-title text-center">
+              <h2>공지사항</h2>
             </div>
-            <!-- container -->
+            <div class="row">
+              <div class="col-lg-6 col-md-12 col-sm-12 col-12 notice-column">
+                <div class="accordian-section-inner position-relative">
+                  <div class="accordian-inner">
+                    <div id="secure_accordion1">
+                      <c:forEach var="notice" items="${noticeList}" varStatus="status">
+                        <c:if test="${status.index lt 5}">
+                          <div class="accordion-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                              <a href="#" class="btn btn-link toggle-content">
+                                <h4>${notice.notice_title}</h4>
+                              </a>
+                              <div class="notice-date">
+                                <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+                                   ${notice.notice_regdate}
+                              </div>
+                            </div>
+                            <div class="card-body content-body" style="display: none;">
+                              <p class="text-size-16 text-left mb-0">${notice.notice_content}</p>
+                            </div>
+                          </div>
+                        </c:if>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12 col-12 notice-column">
+                <div class="accordian-section-inner position-relative">
+                  <div class="accordian-inner">
+                    <div id="secure_accordion2">
+                      <c:forEach var="notice" items="${noticeList}" varStatus="status">
+                        <c:if test="${status.index ge 5}">
+                          <div class="accordion-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                              <a href="#" class="btn btn-link toggle-content">
+                                <h4>${notice.notice_title}</h4>
+                                <i class="fa-solid fa-angle-down"></i>
+                              </a>
+                              <div class="notice-date">
+                                <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+                                   ${notice.notice_regdate}
+                              </div>
+                            </div>
+                            <div class="card-body content-body" style="display: none;">
+                              <p class="text-size-16 text-left mb-0">${notice.notice_content}</p>
+                            </div>
+                          </div>
+                        </c:if>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- row -->
+          </div>
+        <!-- container -->
         </section>
-    </div>
+      </div>
 
-	<!-- FOOTER SECTION -->
-	<jsp:include page="/WEB-INF/views/footer.jsp" />
+	  <!-- 페이지네이션 링크 -->
+	  	   <div class="pagination">
+	  	       <!-- 이전 페이지 링크 -->
+	  	       <c:if test="${currentPage > 1}">
+	  	           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage - 1}" class="pagination-button">Previous</a>
+	  	       </c:if>
+
+	  	       <!-- 페이지 번호 링크 -->
+	  	       <c:choose>
+	  	           <c:when test="${totalPages <= 10}">
+	  	               <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
+	  	               <c:forEach var="i" begin="1" end="${totalPages}">
+	  	                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+	  	                      class="${i == currentPage ? 'active' : ''}">${i}</a>
+	  	               </c:forEach>
+	  	           </c:when>
+	  	           <c:otherwise>
+	  	               <!-- 페이지가 10페이지 초과인 경우 -->
+	  	               <c:if test="${currentPage > 4}">
+	  	                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=1">1</a>
+	  	                   <span>...</span>
+	  	               </c:if>
+
+	  	               <c:set var="startPage" value="${currentPage - 3}" />
+	  	               <c:set var="endPage" value="${currentPage + 3}" />
+	  	               
+	  	               <!-- startPage가 1보다 작으면 1로 설정 -->
+	  	               <c:if test="${startPage < 1}">
+	  	                   <c:set var="startPage" value="1" />
+	  	               </c:if>
+	  	               
+	  	               <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
+	  	               <c:if test="${endPage > totalPages}">
+	  	                   <c:set var="endPage" value="${totalPages}" />
+	  	               </c:if>
+
+	  	               <c:forEach var="i" begin="${startPage}" end="${endPage}">
+	  	                   <c:if test="${i > 0 && i <= totalPages}">
+	  	                       <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+	  	                          class="${i == currentPage ? 'active' : ''}">${i}</a>
+	  	                   </c:if>
+	  	               </c:forEach>
+
+	  	               <c:if test="${currentPage < totalPages - 3}">
+	  	                   <span>...</span>
+	  	                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
+	  	               </c:if>
+	  	           </c:otherwise>
+	  	       </c:choose>
+
+	  	       <!-- 다음 페이지 링크 -->
+	  	       <c:if test="${currentPage < totalPages}">
+	  	           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage + 1}" class="pagination-button">Next</a>
+	  	       </c:if>
+	  	   </div>
+    <!-- FOOTER SECTION -->
+    <jsp:include page="/WEB-INF/views/footer.jsp" />
     <!-- BACK TO TOP BUTTON -->
     <button id="back-to-top-btn" title="Back to Top"></button>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/custom.js"></script>
+	<script src="/js/noticeList.js"></script>
 </body>
 
 </html>

@@ -55,4 +55,9 @@ public class QuestionServiceImpl implements QuestionService{
 	public String checkSecretPassword(String que_id) {
 	    return questionDAO.checkSecretPassword(que_id);
 	}
+	
+	// 문의 총 개수 / 페이징용
+    public int getTotalCount(HashMap<String, Object> map) {
+        return questionDAO.getTotalCount(map);
+    }
 }
