@@ -31,4 +31,32 @@
         ORDER BY 	ti.info_id DESC
 	</select>
 	
+	<!-- myPage 나의 후기 -->
+	<select id="selectReviewList" resultType="hashmap">
+		SELECT 	*
+        FROM   	review
+        WHERE  	member_email = #{user_id}
+        ORDER BY	review_regdate DESC
+	</select>
+	
+	<!-- myPage 나의 신고 -->
+	<select id="selectReportList" resultType="hashmap">
+		SELECT 	rv.member_email rv_member_email, rv.review_title review_title, rv.review_content review_content,
+				c.member_email c_member_email, c.comment_content comment_content,
+				rp.member_email rp_member_email, rp.reply_content reply_content,
+				r.report_id report_id, r.category category, r.report_regdate report_regdate, r.report_type report_type
+        FROM   	report r 
+        LEFT JOIN 	review rv 	ON 	r.review_id  = rv.review_id
+        LEFT JOIN	comments c 	ON 	r.comment_id = c.comment_id
+        LEFT JOIN 	reply rp 	ON 	r.reply_id   = rp.reply_id
+        WHERE  	r.member_email = #{user_id}
+        ORDER BY	r.report_id DESC
+	</select>
+	
+	<!-- 신고한 게시글로 이동 -->
+	<select id="selectReport" resultType="int">
+		SELECT 	review_id
+        FROM   	report
+        WHERE  	report_id = #{report_id}
+	</select>
 </mapper>

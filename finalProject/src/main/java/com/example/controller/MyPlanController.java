@@ -22,6 +22,7 @@ public class MyPlanController {
 	@Autowired
 	private MyPlanService myPlanService;
 	
+	// myPage 일정 상세보기
 	@PostMapping("/selectMyPlan")
 	public String selectMyPlan(@RequestParam("info_id") int info_id, RedirectAttributes r) {
 		List<Map<String, Object>> result = myPlanService.selectMyPlan(info_id);

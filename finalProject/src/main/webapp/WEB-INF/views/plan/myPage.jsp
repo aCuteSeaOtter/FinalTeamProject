@@ -46,28 +46,27 @@
 </head>
 
 <body>
-  <!-- 로더 -->
+  <!-- LOADER -->
   <div class="loader-mask">
     <div class="loader">
       <div></div>
       <div></div>
     </div>
   </div>
-  <!-- 외부 배경 래퍼 -->
-  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-    <!-- 상단 바 섹션 -->
+  <!-- OUTER BG WRAPPER -->
   
-      </div>
-      <!-- 상단 바 컨 -->
+  <div class="bg-outer-wrapper float-left w-100">
+    <div class="clearfix"></div> 
+    <!-- HEADER SECTION -->
+
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+
+
     </div>
-    <div class="clearfix"></div>
-    <jsp:include page="/WEB-INF/views/header.jsp" />
-    <!-- 외부 배경 래퍼 -->
-  </div>
   
   <!-- 주요 목적지 섹션 -->
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
-	    <div class="container full-height-container">
+	    <div class="container full-height-container myPage-container">
 	      <div id="tab" class="row">
 	      
 	        <div id="total" class="tab-content">
@@ -83,7 +82,8 @@
 				            </div>
 				            <div class="profile-item">
 				                <span class="profile-label">비밀번호:</span>
-				                <input type="password" class="form-control profile-value changeable pass" value="${info.MEMBER_PASS}" readonly>
+				                <input type="password" class="form-control profile-value changeable pass" value="${info.MEMBER_PASS}" readonly></input>
+				                <i class="secret fas fa-eye"></i>
 				            </div>
 				            <div class="profile-item">
 				                <span class="profile-label">성별:</span>
@@ -114,7 +114,7 @@
 	        	<div class="content-2">
 				    <div class="t-left">
 			            <c:forEach items="${planList}" var="list">
-			                <div class="wrapper">
+			                <div class="myPlan-wrapper wrap">
 			                <form action="/selectMyPlan" method="post" id="myPlanForm">
 			                    <div class="block">
 			                        <div class="left">
@@ -132,32 +132,133 @@
 			                </div>
 			            </c:forEach>
 				    </div>
+				    <c:if test="${not empty planList}"> 
 				    <div class="pagination-container">
-				        <input type="button" value="prevPage" class="prevPage btn"/>
-				        <input type="button" value="nextPage" class="nextPage btn"/>
+				        <input type="button" value="prevPage" class="planPrevPage prevPage btn"/>
+				        <input type="button" value="nextPage" class="planNextPage nextPage btn"/>
 				    </div>
+				    </c:if>
 			    </div>
 			    
 			    <!-- 나의 후기 -->
 	        	<div class="content-3">
 			    	<div class="t-left">
-			    		<input type="text" class="form-control" value=""/>
-			    		<input type="text" class="form-control" value=""/>
-			    		<input type="text" class="form-control" value=""/>
-			    		<input type="text" class="form-control" value=""/>
-			    		<input type="text" class="form-control" value=""/>
+				    	<c:forEach items="${reviewList}" var="list">
+				    		<div class="review-wrapper wrap">
+				                <form action="/selectMyReview" method="post" id="myReviewForm">
+				                    <div class="block">
+				                        <div class="left">
+				                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.MEMBER_EMAIL}</div>
+				                            <div><i class="fas fa-magnifying-glass"></i><strong>제목:</strong> ${list.REVIEW_TITLE}</div>
+				                            <div><i class="fas fa-calendar-alt"></i><strong>등록일:</strong> ${list.REVIEW_REGDATE}</div>
+				                            <div><i class="fas fa-eye"></i><strong>조회수:</strong> ${list.REVIEW_CNT}</div>
+				                        </div>
+				                        <div class="right">
+				                            <div><i class="fas fa-star"></i><strong>별점:</strong> ${list.REVIEW_STAR}</div>
+				                            <div><i class="fas fa-thumbs-up"></i><strong>좋아요:</strong> ${list.REVIEW_LIKE}</div>
+				                            <div><i class="fas fa-thumbs-down"></i><strong>싫어요:</strong> ${list.REVIEW_HATE}</div>
+				                            <div><input type="hidden" name="review_id" class="review_id" value="${list.REVIEW_ID}"></div>
+				                        </div>
+				                    </div>
+				                </form>
+			                </div>
+		                </c:forEach>
 			    	</div>
+			    	<c:if test="${not empty reviewList}">
+			    	<div class="pagination-container">
+				        <input type="button" value="prevPage" class="reviewPrevPage prevPage btn"/>
+				        <input type="button" value="nextPage" class="reviewNextPage nextPage btn"/>
+				    </div>
+				    </c:if>
 			    </div>
 			    
 			    <!-- 나의 신고 -->
 	        	<div class="content-4">
 			    	<div class="t-left">
-			    		<input type="button" class="btn" value="버튼1"/>
-						<input type="button" class="btn" value="버튼2"/>
-						<input type="button" class="btn" value="버튼3"/>
-						<input type="button" class="btn" value="버튼4"/>
-						<input type="button" class="btn" value="버튼5"/>
+			    		<c:forEach items="${reportList}" var="list">
+				    		<div class="report-wrapper wrap">
+				                <form action="/selectReport" method="post" id="reportForm">
+				                    <div class="block">
+				                    	<c:choose>
+				                    		
+				                    		<c:when test="${list.CATEGORY eq '게시글'}">
+				                    			<div class="left">
+						                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.RV_MEMBER_EMAIL}</div>
+						                            <div><i class="fas fa-magnifying-glass"></i><strong>게시글 제목:</strong> ${list.REVIEW_TITLE}</div>
+						                        	<div><i class="fas fa-book"></i><strong>게시글 내용:</strong> 
+						                            	<c:choose>
+										                    <c:when test="${fn:length(list.REVIEW_CONTENT) > 8}">
+										                        ${fn:substring(list.REVIEW_CONTENT, 0, 8)}...
+										                    </c:when>
+										                    <c:otherwise>
+										                        ${list.REVIEW_CONTENT}
+										                    </c:otherwise>
+										                </c:choose>
+									                </div>
+						                        </div>
+						                        <div class="right">
+						                            <div><i class="fas fa-magnifying-glass"></i><strong>신고 유형:</strong> ${list.REPORT_TYPE}</div>
+						                            <div><i class="fas fa-calendar-alt"></i><strong>신고일:</strong> ${list.REPORT_REGDATE}</div>
+						                            <div><input type="hidden" name="report_id" class="report_id" value="${list.REPORT_ID}"></div>
+						                        </div>
+				                    		</c:when>
+				                    		
+				                    		<c:when test="${list.CATEGORY eq '댓글'}">
+				                    			<div class="left">
+						                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.C_MEMBER_EMAIL}</div>
+						                            <div><i class="fas fa-magnifying-glass"></i><strong>게시글 제목:</strong> ${list.REVIEW_TITLE}</div>
+						                        	<div><i class="fas fa-comment"></i><strong>댓글 내용:</strong>
+						                            	<c:choose>
+										                    <c:when test="${fn:length(list.COMMENT_CONTENT) > 8}">
+										                        ${fn:substring(list.COMMENT_CONTENT, 0, 8)}...
+										                    </c:when>
+										                    <c:otherwise>
+										                        ${list.COMMENT_CONTENT}
+										                    </c:otherwise>
+										                </c:choose>
+						                            </div>
+						                        </div>
+						                        <div class="right">
+						                            <div><i class="fas fa-magnifying-glass"></i><strong>신고 유형:</strong> ${list.REPORT_TYPE}</div>
+						                            <div><i class="fas fa-calendar-alt"></i><strong>신고일:</strong> ${list.REPORT_REGDATE}</div>
+						                            <div><input type="hidden" name="report_id" class="report_id" value="${list.REPORT_ID}"></div>
+						                        </div>
+				                    		</c:when>
+				                    		
+				                    		<c:when test="${list.CATEGORY eq '대댓글'}">
+				                    			<div class="left">
+						                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.RP_MEMBER_EMAIL}</div>
+						                            <div><i class="fas fa-magnifying-glass"></i><strong>게시글 제목:</strong> ${list.REVIEW_TITLE}</div>
+						                        	<div><i class="fas fa-reply"></i><strong>대댓글 내용:</strong>
+						                            	<c:choose>
+										                    <c:when test="${fn:length(list.REPLY_CONTENT) > 8}">
+										                        ${fn:substring(list.REPLY_CONTENT, 0, 8)}...
+										                    </c:when>
+										                    <c:otherwise>
+										                        ${list.REPLY_CONTENT}
+										                    </c:otherwise>
+										                </c:choose>
+						                            </div>
+						                        </div>
+						                        <div class="right">
+						                            <div><i class="fas fa-magnifying-glass"></i><strong>신고 유형:</strong> ${list.REPORT_TYPE}</div>
+						                            <div><i class="fas fa-calendar-alt"></i><strong>신고일:</strong> ${list.REPORT_REGDATE}</div>
+						                            <div><input type="hidden" name="report_id" class="report_id" value="${list.REPORT_ID}"></div>
+						                        </div>
+				                    		</c:when>
+				                        	
+			                        	</c:choose>
+				                    </div>
+				                </form>
+			                </div>
+		                </c:forEach>
 			    	</div>
+			    	<c:if test="${not empty reportList}">
+			    	<div class="pagination-container">
+				        <input type="button" value="prevPage" class="reportPrevPage prevPage btn"/>
+				        <input type="button" value="nextPage" class="reportNextPage nextPage btn"/>
+				    </div>
+				    </c:if>
 			    </div>
 			    
 			</div>
@@ -165,9 +266,9 @@
 			<div id="menutab" >
 			
 				<div class="t-right">
-		                <div class="wrapper2">
-		                    <div class="block2">
-		                    	<div class="menu">내 정보<input type="hidden" class="tabId" value="1"/></div>
+		                <div class="tab-wrapper">
+		                    <div class="tab-block">
+		                    	<div class="menu selected">내 정보<input type="hidden" class="tabId" value="1"/></div>
 		                    	<div class="menu">나의 일정<input type="hidden" class="tabId" value="2"/></div>
 		                    	<div class="menu">나의 후기<input type="hidden" class="tabId" value="3"/></div>
 		                    	<div class="menu">나의 신고<input type="hidden" class="tabId" value="4"/></div>

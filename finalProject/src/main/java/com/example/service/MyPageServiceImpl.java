@@ -30,4 +30,19 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<Map<String, Object>> selectPlanList(String user_id) {
 		return myPageDAO.selectPlanList(user_id);
     }
+	
+	// 나의 후기
+	public List<Map<String, Object>> selectReviewList(String user_id) {
+		return myPageDAO.selectReviewList(user_id);
+    }
+	
+	// 나의 신고
+	public List<Map<String, Object>> selectReportList(String user_id) {
+		return myPageDAO.selectReportList(user_id);
+	}
+	
+	// 신고한 게시글로 이동
+	public int selectReport(int report_id) {
+		return myPageDAO.selectReport(report_id);
+	}
 } 

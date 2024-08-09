@@ -8,6 +8,10 @@ body {
     padding: 0;
 }
 
+strong {
+	color: black;
+}
+
 .content-1 {
 	
 }
@@ -24,7 +28,7 @@ body {
 	display: none;
 }
 
-.container {
+.myPage-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -92,6 +96,22 @@ body {
     border-bottom: 2px solid #1877f2;
 }
 
+.pass {
+	font-family: Arial;
+	font-weight: bold;
+}
+
+.secret {
+	color: black;
+	width: 20px;
+	height: 20px;
+	transform: translateX(-27px) translateY(1.5px);
+}
+
+.secret:hover {
+	cursor: pointer;
+}
+
 .profile-review-count {
     background-color: #e7f3ff;
     color: #1877f2;
@@ -101,7 +121,7 @@ body {
 }
 
 .edit-button {
-    background-color: #1877f2;
+    background-color: #1bbc9b;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -112,7 +132,7 @@ body {
 }
 
 .edit-button:hover {
-    background-color: #166fe5;
+    background-color: #1d927b;
 }
 
 
@@ -131,7 +151,7 @@ body {
     width: 100%;
 }
 
-.wrapper {
+.wrap {
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
@@ -177,8 +197,14 @@ body {
     transition: background-color 0.3s;
 }
 
-.menu:hover {
-    background-color: #e0e0e0;
+.selected {
+	background-color: #1bbc9b;
+	color: white;
+}
+
+#menutab .menu:hover {
+    background-color: #1bbc9b !important;
+    color: white !important;
 }
 
 /* 페이지네이션 스타일 */
@@ -216,7 +242,7 @@ body {
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-    .container {
+    .myPage-container {
         flex-direction: column;
     }
 
@@ -240,6 +266,8 @@ body {
 
 /* 아이콘 스타일 */
 i {
+	width:25px;
+	height:25px;
     margin-right: 5px;
     color: #007bff;
 }
