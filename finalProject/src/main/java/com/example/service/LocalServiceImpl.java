@@ -21,7 +21,8 @@ public class LocalServiceImpl implements LocalService {
 
    @Override
    public List<LocalVO> getAllLocals(LocalVO localVO) {
-      return localDAO.getAllLocals(localVO);
+	   return localDAO.getAllLocals(localVO);
    }
 
-}
+} 
+ 

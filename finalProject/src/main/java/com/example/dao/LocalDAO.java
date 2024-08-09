@@ -10,5 +10,7 @@ public interface LocalDAO {
    void insertFile(LocalVO vo);
    LocalVO getLocalById(int local_id); 
    List<LocalVO>getAllLocals(LocalVO vo);
-   List<LocalVO>getLocalList(LocalVO vo); 
+   List<LocalVO>getLocalList(LocalVO vo);
+   List<LocalVO>findAll(LocalVO vo);
 }
+  
