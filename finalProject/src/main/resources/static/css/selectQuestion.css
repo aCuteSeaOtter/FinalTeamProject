@@ -47,7 +47,7 @@
 	} */
 	
 	#hidden_que_content_container {
-  		margin-top: 149px; /* 원하는 만큼의 공간을 조정 */
+  		margin-top: 111px; /* 원하는 만큼의 공간을 조정 */
 	}
 	
 	.btn-custom {
@@ -57,8 +57,14 @@
 	  width: 80px !important; /* 고정된 너비 */
   	  height: 30px !important; /* 고정된 높이 */
   	  cursor: pointer !important;
+  	  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 	}
 	
+	.btn-custom:hover{
+		background-color: #148f62;
+		transform: scale(1.05); /* 살짝 확대 */
+    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+	}
 	.btn-delete {
 	  font-size: 14px;
 	  color: white !important;
@@ -72,12 +78,20 @@
 	  white-space: nowrap; /* 텍스트 줄바꿈 제거 */
 	  line-height: normal; /* 버튼 높이와 동일하게 설정하여 텍스트 수직 중앙 정렬 */
 	  text-align: center; /* 텍스트 중앙 정렬 */
+	  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+	}
+	
+	.btn-delete:hover{
+		background-color: #148f62;
+		transform: scale(1.05); /* 살짝 확대 */
+    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 	}
 	
 	.button-container {
 	  display: flex;
 	  gap: 10px; /* 버튼 사이의 간격을 조절 */
 	  margin-left: 61.5%;
+	  margin-top: -3px;
 	}
 	
 	@media (max-width: 850px){
