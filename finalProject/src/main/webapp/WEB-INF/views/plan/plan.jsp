@@ -97,6 +97,7 @@
 	        
 	        <!-- Tmap -->
 	        <div class="col-lg-8 mapBlock">
+	        <div><input type="button" class="btn" value="저장"></div>
 	        <div>&nbsp&nbsp</div>
 	          
 	          <p id="result"></p>

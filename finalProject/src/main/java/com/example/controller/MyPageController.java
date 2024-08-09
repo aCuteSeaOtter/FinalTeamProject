@@ -38,6 +38,15 @@ public class MyPageController {
 		List<Map<String, Object>> planList = myPageService.selectPlanList(user_id);
 		m.addAttribute("planList", planList);
 		
+		// 나의 후기
+		List<Map<String, Object>> reviewList = myPageService.selectReviewList(user_id);
+		m.addAttribute("reviewList", reviewList);
+		
+		// 나의 신고
+		List<Map<String, Object>> reportList = myPageService.selectReportList(user_id);
+		m.addAttribute("reportList", reportList);
+		System.out.println(reportList);
+		
 		return "plan/myPage";
 	}
 	
@@ -55,4 +64,21 @@ public class MyPageController {
 		
 		return "plan/myPage";
 	}
+	
+	// myPage 후기 상세보기
+	@PostMapping("/selectMyReview")
+	public String selectMyReview (@RequestParam("review_id") int review_id) {
+	   
+		return "redirect:review/selectReview?review_id="+review_id;
+	}
+	
+	// myPage 신고한 게시글로 이동
+	@PostMapping("/selectReport")
+	public String selectReport (@RequestParam("report_id") int report_id) {
+		
+		int review_id =  myPageService.selectReport(report_id);
+	   
+		return "redirect:review/selectReview?review_id="+review_id;
+	}
+
 } 

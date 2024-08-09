@@ -25,4 +25,13 @@ public interface MyPageDAO {
 	
 	// 나의 일정
 	List<Map<String, Object>> selectPlanList(String user_id);
+	
+	// 나의 후기
+	List<Map<String, Object>> selectReviewList(String user_id);
+	
+	// 나의 신고
+	List<Map<String, Object>> selectReportList(String user_id);
+	
+	// 신고한 게시글로 이동
+	int selectReport(int report_id);
 }

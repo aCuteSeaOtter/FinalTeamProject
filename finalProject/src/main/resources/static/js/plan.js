@@ -129,7 +129,7 @@ function initTmap() {
     map = new Tmapv2.Map("map_div", {
         center: new Tmapv2.LatLng(37.56701114710962, 126.9973611831669),
         width: "100%",
-        height: "800px",
+        height: "610px",
         zoom: 15,
         zoomControl: true,
         scrollwheel: true

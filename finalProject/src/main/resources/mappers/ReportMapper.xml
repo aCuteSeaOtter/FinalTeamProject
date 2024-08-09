@@ -7,7 +7,7 @@
 	<insert id="insertReport" parameterType="ReportVO">
 		INSERT INTO report
 		(report_id, review_id, comment_id, reply_id, member_email,
-		 report_state, report_type, report_content, report_regdate)
+		 report_state, report_type, report_content, report_regdate, category)
 		  
 		VALUES(
 		report_id_seq.NEXTVAL, 
@@ -25,7 +25,19 @@
 			NULL
 		</if>, 
 		#{member_email}, 'N', #{report_type}, #{report_content}, 
-		TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'))
+		TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+		<choose>
+            <when test="comment_id != null and reply_id == null">
+                '댓글'
+            </when>
+            <when test="comment_id != null and reply_id != null">
+                '대댓글'
+            </when>
+            <when test="comment_id == null and reply_id == null">
+                '게시글'
+            </when>
+        </choose>
+		)
 	</insert>
 	
 </mapper>
