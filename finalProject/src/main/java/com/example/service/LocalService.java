@@ -8,4 +8,4 @@ public interface LocalService {
    LocalVO findLocalById(int local_id);
    List<LocalVO>getAllLocals(LocalVO localVO);
  
-}  
+}   

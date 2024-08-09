@@ -22,7 +22,7 @@ VALUES
 )
 </insert>
 
-<!-- 
+<!--  
 <select id="getLocalById" parameterType="int"
 resultType="com.example.domain.LocalVO">
    SELECT    local_id,

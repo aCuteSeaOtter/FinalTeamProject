@@ -13,4 +13,4 @@ public interface LocalDAO {
    List<LocalVO>getLocalList(LocalVO vo);
    List<LocalVO>findAll(LocalVO vo);
 }
- 
+  

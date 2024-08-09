@@ -3,7 +3,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html lang="ko">
-
+ 
 <head>
   <title> HOTSPOT | Home </title>
   <meta charset="UTF-8">  

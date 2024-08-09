@@ -12,4 +12,4 @@ public class LocalVO {
 	private String local_name_kor;
 	
 }
- 
+  

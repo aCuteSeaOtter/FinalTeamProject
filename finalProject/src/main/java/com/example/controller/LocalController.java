@@ -14,7 +14,7 @@ import com.example.service.LocalService;
 
 @Controller
 public class LocalController {
-
+ 
    @Autowired
    private LocalService localService;
 
