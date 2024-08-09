@@ -161,7 +161,7 @@
                   </div> 
 				  
                   <c:choose>
-                    <c:when test="${id == question.MEMBER_EMAIL}">
+                    <c:when test="${id == question.member_email}">
                       <input type="hidden" name="que_id" value="${question.QUE_ID}">
                       <input type="hidden" name="originalTitle" value="${question.QUE_TITLE}">
                       <input type="hidden" name="originalContent" value="${question.QUE_CONTENT}">

@@ -174,7 +174,7 @@
 			      <i class="fa-regular fa-thumbs-down"></i>
 			    </div>
 			    <span class="count"id="hate-count-${review.REVIEW_ID}">0</span>
-				<c:if test="${id == review.MEMBER_EMAIL}">
+				<c:if test="${id == review.member_email}">
 	              <button type="submit" class="btn btn-primary"onclick="return confirmUpdate()">글 수정</button>
 	              <a href="deleteReview?review_id=${review.REVIEW_ID}" class="btn btn-danger" onclick="return confirmDelete()">글삭제</a>
 	            </c:if>
