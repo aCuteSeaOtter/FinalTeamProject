@@ -68,7 +68,7 @@
   <jsp:include page="/WEB-INF/views/header.jsp" />
 
   <!-- Review Details Section -->
-  <div class="container mt-5">
+  <div class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
     <h1>글 상세</h1>
     <hr>
     <form action="updateReview" name="myform" id="myform" method="post">
@@ -80,7 +80,7 @@
           <th style="vertical-align: middle;">제목</th>
           <td>
             <c:choose>
-              <c:when test="${id == review.MEMBER_EMAIL}">
+              <c:when test="${member.member_email == review.MEMBER_EMAIL}">
                 <input name="review_title" type="text" value="${review.REVIEW_TITLE}" class="form-control"/>
               </c:when>
               <c:otherwise>
@@ -111,7 +111,7 @@
           <th style="vertical-align: middle;">내용</th>
           <td>
             <c:choose>
-              <c:when test="${id == review.MEMBER_EMAIL}">
+              <c:when test="${member.member_email == review.MEMBER_EMAIL}">
                 <textarea name="review_content" cols="40" rows="10" class="form-control">${review.REVIEW_CONTENT}</textarea>
               </c:when>
               <c:otherwise>
@@ -174,7 +174,7 @@
 			      <i class="fa-regular fa-thumbs-down"></i>
 			    </div>
 			    <span class="count"id="hate-count-${review.REVIEW_ID}">0</span>
-				<c:if test="${id == review.member_email}">
+				<c:if test="${member.member_email == review.MEMBER_EMAIL}">
 	              <button type="submit" class="btn btn-primary"onclick="return confirmUpdate()">글 수정</button>
 	              <a href="deleteReview?review_id=${review.REVIEW_ID}" class="btn btn-danger" onclick="return confirmDelete()">글삭제</a>
 	            </c:if>

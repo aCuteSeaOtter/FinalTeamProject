@@ -42,38 +42,24 @@
 
     <!-- OUTER BG WRAPPER -->
     <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-        
-
         <div class="clearfix"></div>
         <jsp:include page="/WEB-INF/views/header.jsp" />
-
-        <!-- BANNER SECTION -->
-        <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-            <img alt="vector" class="vector1 img-fluid position-absolute" src="/assets/images/vector1.png">
-            <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="sub-banner-inner-con padding-bottom">
-                            <h1>리뷰 목록</h1>
-                            <p class="font-size-20">모두 함께 상세보기를 보아요🥵</p>
-                            <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="/index">Home</a></li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- MAIN SECTION -->
-    <section class="blog-posts blogpage-section three-column-con w-100 float-left">
+    <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
         <div class="container">
             <div class="row wow fadeInUp">
                 <div id="blog" class="col-xl-12">
+					<div class="sub-banner-inner-con padding-bottom">
+                        <h1>리뷰 목록</h1>
+                        <p class="font-size-20">모두 함께 상세보기를 보아요🥵</p>
+                        <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="/index">Home</a></li>
+                            </ol>
+                        </div>
+                    </div>
                     <!-- 버튼을 우측 정렬하고 스타일링하기 위한 새로운 div 추가 -->
                     <div class="button-container text-right mb-3">
                         <a href="insertReview" class="btn btn-primary">새글 등록</a>
