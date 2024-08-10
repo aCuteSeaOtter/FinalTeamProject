@@ -14,7 +14,7 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	@Autowired
     private NoticeDAO noticeDAO;
-	
+
 	public List<NoticeVO> getNoticeList(HashMap<String, Object> map) {
         return noticeDAO.getNoticeList(map);
     }

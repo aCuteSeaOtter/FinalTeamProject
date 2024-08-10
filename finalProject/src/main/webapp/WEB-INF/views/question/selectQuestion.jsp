@@ -54,35 +54,22 @@
     
     <div class="clearfix"></div>
     <jsp:include page="/WEB-INF/views/header.jsp" />
-    <!-- BANNER SECTION -->
-    <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1 img-fluid position-absolute" src="/assets/images/vector1.png">
-      <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="sub-banner-inner-con padding-bottom">
-              <h1>문의사항</h1>
-              <p class="font-size-20">내가 작성한 문의에요🥵💦💦<br>
-                뒤로 가기는<br>
-                ⬇️ 아래 링크 클릭
-              </p>
-              <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="/question/questionList">뒤로가기</a></li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
   <!-- CONTACT FORM SECTION  -->
   <section class="float-left w-100 talk-width-our-team-con about-travel-con position-relative main-box padding-top padding-bottom">
-    <img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s" src="/assets/images/vector11.png">
-    <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s" src="/assets/images/vector9.png">
     <div class="container wow bounceInUp" data-wow-duration="2s">
+		<div class="sub-banner-inner-con padding-bottom">
+          <h1>문의사항</h1>
+          <p class="font-size-20">내가 작성한 문의에요🥵💦💦<br>
+            뒤로 가기는<br>
+            ⬇️ 아래 링크 클릭
+          </p>
+          <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/question/questionList">뒤로가기</a></li>
+            </ol>
+          </div>
+        </div>
       <div class="heading-title text-center">
         <h2 class="">내가 얼마나 싸가지 없이<br>작성했는지 보아요.</h2>
       </div>
@@ -103,7 +90,7 @@
                     <div class="form-group">
                       <label>제목</label>
                       <c:choose>
-                        <c:when test="${id == question.MEMBER_EMAIL}">
+                        <c:when test="${member.member_email == question.MEMBER_EMAIL}">
                           <input type="text" class="form_style" placeholder="제목을 입력해주세요." name="que_title" id="que_title" value="${question.QUE_TITLE}">
                         </c:when>
                         <c:otherwise>
@@ -127,19 +114,19 @@
                   <div class="col-12 hidden-field" id="hidden_member_nickname_container" style="display:none;">
                     <div class="form-group">
                       <label>작성자</label>
-                      <input type="text" id="hidden_member_nickname" class="form_style" name="admin_id" value="${answer.admin_id}" readonly>
+                      <input type="text" id="hidden_member_nickname" class="form_style" name="admin_id" value="${answer.admin_id}" placeholder="아직 답변이 달리지 않았습니다." readonly>
                     </div>
                   </div>
                   <div class="col-12 hidden-field" id="hidden_que_title_container" style="display:none;">
                     <div class="form-group">
                       <label>제목</label>
-                      <input type="text" id="hidden_que_title" class="form_style" name="ans_title" value="${answer.ans_title}" readonly>
+                      <input type="text" id="hidden_que_title" class="form_style" name="ans_title" value="${answer.ans_title}" placeholder="아직 답변이 달리지 않았습니다." readonly>
                     </div>
                   </div>
                   <div class="col-12 hidden-field" id="hidden_que_regdate_container" style="display:none;">
                     <div class="form-group fon-con">
                       <label>답변 날짜</label>
-                      <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="ans_regdate" value="${answer.ans_regdate}" readonly>
+                      <input type="text" id="hidden_que_regdate" class="mb-md-0 form_style" name="ans_regdate" value="${answer.ans_regdate}" placeholder="아직 답변이 달리지 않았습니다." readonly>
                     </div>
                   </div>
                 </div>
@@ -150,7 +137,7 @@
                     <div class="form-group mb-0">
                       <label>문의 내용</label>
                       <c:choose>
-                        <c:when test="${id == question.MEMBER_EMAIL}">
+                        <c:when test="${member.member_email == question.MEMBER_EMAIL}">
                           <textarea class="form_style" placeholder="문의 내용을 입력해주세요." rows="5" name="que_content">${question.QUE_CONTENT}</textarea>
                         </c:when>
                         <c:otherwise>
@@ -161,7 +148,7 @@
                   </div> 
 				  
                   <c:choose>
-                    <c:when test="${id == question.member_email}">
+                    <c:when test="${member.member_email == question.MEMBER_EMAIL}">
                       <input type="hidden" name="que_id" value="${question.QUE_ID}">
                       <input type="hidden" name="originalTitle" value="${question.QUE_TITLE}">
                       <input type="hidden" name="originalContent" value="${question.QUE_CONTENT}">
@@ -176,7 +163,7 @@
                   <div class="col-12 hidden-field" id="hidden_que_content_container" style="display:none;">
                     <div class="form-group mb-0">
                       <label>답변 내용</label>
-                      <textarea id="hidden_que_content" class="form_style" rows="5" name="ans_content" readonly>${answer.ans_content}</textarea>
+                      <textarea id="hidden_que_content" class="form_style" rows="5" name="ans_content" placeholder="아직 답변이 달리지 않았습니다." readonly>${answer.ans_content}</textarea>
                     </div>
                   </div>
                 </div>

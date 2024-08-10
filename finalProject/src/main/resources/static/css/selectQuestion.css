@@ -47,7 +47,8 @@
 	} */
 	
 	#hidden_que_content_container {
-  		margin-top: 111px; /* 원하는 만큼의 공간을 조정 */
+  		margin-top: 450px; /* 원하는 만큼의 공간을 조정 */
+  		position: absolute;
 	}
 	
 	.btn-custom {
@@ -94,6 +95,10 @@
 	  margin-top: -3px;
 	}
 	
+	.about-travel-con {
+    	background: linear-gradient(to bottom, #b2f3de 0%, #ffffff 100%) !important;
+	}
+	
 	@media (max-width: 850px){
 		.quesiton_content {
 			margin-top: -102%;
@@ -103,11 +108,6 @@
 			margin-top: 90% !important;
 	        margin-bottom: 6%;
 	        z-index: 10;
-		}
-		
-		#hidden_que_content_container {
-    		margin-top: -35px;
-    		position: relative;
 		}
 		
 		.button-container {

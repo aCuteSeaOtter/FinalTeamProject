@@ -53,44 +53,24 @@
     
     <div class="clearfix"></div>
     <jsp:include page="/WEB-INF/views/header.jsp" />
-    <!-- BANNER SECTION -->
-    <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
-      <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="sub-banner-inner-con padding-bottom">
-              <h1>문의사항</h1>
-              <p class="font-size-20">화끈한 문의를 작성해 보아요🥵💦<br>
-									  다른 사람이 작성한 문의는<br>
-									  ⬇️ 아래 링크 클릭
-              </p>
-              <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="/question/questionList">⭐문의 목록 보기⭐</a></li>
-                </ol>
-              </div>
-              <!-- sub banner inner con -->
-            </div>
-            <!-- col-lg-6 -->
-          </div>
-          <!-- row -->
-        </div>
-        <!-- container -->
-      </div>
-
-      <!-- banner con -->
-    </section>
-    <!-- bg outer wrapper -->
   </div>
   <!-- CONTACT FORM SECTION  -->
   <section class="float-left w-100 talk-width-our-team-con about-travel-con position-relative main-box padding-top padding-bottom">
-    <img alt="vector" class="vector11 img-fluid position-absolute wow bounceInUp" data-wow-duration="2s"
-      src="/assets/images/vector11.png">
-    <img alt="vector" class="vector9 wow bounceInUp img-fluid position-absolute" data-wow-duration="2s"
-      src="/assets/images/vector9.png">
+    
     <div class="container wow bounceInUp" data-wow-duration="2s">
+		<div class="sub-banner-inner-con padding-bottom">
+          <h1>문의사항</h1>
+          <p class="font-size-20">화끈한 문의를 작성해 보아요🥵💦<br>
+								  다른 사람이 작성한 문의는<br>
+								  ⬇️ 아래 링크 클릭
+          </p>
+          <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/question/questionList">⭐문의 목록 보기⭐</a></li>
+            </ol>
+          </div>
+          <!-- sub banner inner con -->
+        </div>
 		<div class="heading-title text-center">
 		  <h2 class="">질문이 있으신가요?<br>
 		        언제든지 문의를 남겨주세요.<br>
