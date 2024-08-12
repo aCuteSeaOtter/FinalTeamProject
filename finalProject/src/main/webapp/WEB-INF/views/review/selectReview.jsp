@@ -69,9 +69,25 @@
 
   <!-- Review Details Section -->
   <div class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
+	
     <h1>글 상세</h1>
     <hr>
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-12">
     <form action="updateReview" name="myform" id="myform" method="post">
+		<c:forEach items="${myPlan}" var="dayPlan">
+		     <div class="day-plan-item">
+		         <h3 class="day-title">${dayPlan.plan_day}일차</h3>
+		         <ul class="attraction-list">
+		             <c:forEach items="${dayPlan.attr_name}" var="attr">
+		                 <li class="attraction-item">
+		                     <i class="fa fa-map-marker-alt"></i> ${attr.ATTR_NAME}
+		                 </li>
+		             </c:forEach>
+		         </ul>
+		     </div>
+		 </c:forEach>
       <input name="review_id" type="hidden" value="${review.REVIEW_ID}" id="review_id"/>
 	  <input type="hidden" name="originalTitle" value="${review.REVIEW_TITLE}">
 	  <input type="hidden" name="originalContent" value="${review.REVIEW_CONTENT}">
@@ -184,33 +200,37 @@
           </td>
         </tr>
       </table>
+	      </div>
+	    </div>
+	  </div>
     </form>
     <hr>
-    <!-- 댓글목록을 서버에서 가지고 와서 출력 -->
-    <table id="commentList" class="table table-striped mt-3"></table>
+	<!-- 댓글목록을 서버에서 가지고 와서 출력 -->
+	<div class="container"> <!-- 추가된 컨테이너 -->
+	  <table id="commentList" class="table table-striped mt-3"></table>
 
-    <!-- 댓글 입력 폼 -->
-    <div class="comment-form mt-3">
-      <form name="commentFrm" id="commentFrm">
-        <input type="hidden" name="review_id" id="review_id" value="${review.REVIEW_ID}">
-        <div class="form-group">
-          <label for="member_nickname">작성자:</label>
-          <input type="text" name="member_nickname" id="member_nickname" value="${nickname}" class="form-control" readonly>
-          <input type="hidden" name="member_email" id="member_email" value="${member_email}" readonly>
-        </div>
-        <div class="form-group">
-          <label for="comment_content">댓글 추가:</label>
-          <textarea name="comment_content" id="comment_content" class="form-control comment-input" maxlength="66"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="button" value="댓글 작성" id="commentConfirm" class="btn btn-primary">
-        </div>
-      </form>
-    </div>
+	  <!-- 댓글 입력 폼 -->
+	  <div class="comment-form mt-3">
+	    <form name="commentFrm" id="commentFrm">
+	      <input type="hidden" name="review_id" id="review_id" value="${review.REVIEW_ID}">
+	      <div class="form-group">
+	        <label for="member_nickname">작성자:</label>
+	        <input type="text" name="member_nickname" id="member_nickname" value="${nickname}" class="form-control" readonly>
+	        <input type="hidden" name="member_email" id="member_email" value="${member_email}" readonly>
+	      </div>
+	      <div class="form-group">
+	        <label for="comment_content">댓글 추가:</label>
+	        <textarea name="comment_content" id="comment_content" class="form-control comment-input" maxlength="66"></textarea>
+	      </div>
+	      <div class="form-group text-center"> <!-- 중앙 정렬 -->
+	        <input type="button" value="댓글 작성" id="commentConfirm" class="btn btn-primary">
+	      </div>
+	    </form>
+	  </div>
 
-    <a href="insertReview" class="btn btn-secondary mt-3">글등록</a>
-    <a href="reviewList" class="btn btn-secondary mt-3">글목록</a>
-  </div>
+	    <a href="insertReview" class="btn btn-secondary mt-3">글등록</a>
+	    <a href="reviewList" class="btn btn-secondary mt-3">글목록</a>
+	</div> <!-- 추가된 컨테이너 끝 -->
 
   <!-- FOOTER SECTION -->
   <jsp:include page="/WEB-INF/views/footer.jsp" />

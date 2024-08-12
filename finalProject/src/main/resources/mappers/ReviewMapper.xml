@@ -27,7 +27,7 @@
                   m.member_nickname,
                   COALESCE(ri.file_names, '') AS file_names,
                   COALESCE(rl.like_count, 0) AS like_count,
-                  ROW_NUMBER() OVER (ORDER BY COALESCE(rl.like_count, 0) DESC, r.review_id DESC) AS rn
+                  ROW_NUMBER() OVER (ORDER BY r.review_id DESC) AS rn
            FROM review r
            INNER JOIN member m ON r.member_email = m.member_email
            LEFT JOIN review_images ri ON r.review_id = ri.review_id
@@ -81,13 +81,30 @@
            ON r.member_email = m.member_email
        WHERE r.review_id = #{review_id}
    </select>
+   
+   <!-- 여행 계획 및 속성 정보 조회 -->
+	<select id="getMyPlan" parameterType="ReviewVO" resultType="hashmap">
+	    SELECT
+	        tp.plan_day,
+	        tp.plan_seq,
+	        a.attr_name
+	    FROM
+	        travel_plan tp
+	    LEFT OUTER JOIN
+	        attr a ON tp.attr_id = a.attr_id
+	    WHERE
+	        tp.info_id = (SELECT info_id FROM review WHERE review_id = #{review_id})
+	    ORDER BY
+	        tp.plan_day, tp.plan_seq
+	</select>
+   
 
    <!-- 리뷰 작성 -->
    <insert id="insertReview" parameterType="ReviewVO">
       INSERT INTO review
-      ( review_id, review_title, review_content, review_cnt, review_star, member_email, review_regdate)
+      ( review_id, review_title, review_content, review_cnt, review_star, member_email, review_regdate,info_id)
       VALUES
-      ( review_id_seq.NEXTVAL, #{review_title}, #{review_content}, 0, #{review_star}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'))
+      ( review_id_seq.NEXTVAL, #{review_title}, #{review_content}, 0, #{review_star}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'), #{info_id})
    </insert>
    
    <!-- 리뷰 수정 -->

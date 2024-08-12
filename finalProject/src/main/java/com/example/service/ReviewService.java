@@ -2,7 +2,7 @@ package com.example.service;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import com.example.domain.ReviewFileVO;
 import com.example.domain.ReviewVO;
@@ -22,7 +22,8 @@ public interface ReviewService {
    List<ReviewVO> getTopReviewsByLikeCount(int limit);
    
    // 리뷰 상세보기
-   HashMap<String, Object> getReview(ReviewVO vo); 
+   HashMap<String, Object> getReview(ReviewVO vo);
+   List<Map<String, Object>> getMyPlan(ReviewVO vo);
    
    // 리뷰 작성
    void insertReview(ReviewVO vo, List<ReviewFileVO> fileList);

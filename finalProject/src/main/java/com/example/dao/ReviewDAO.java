@@ -2,7 +2,7 @@ package com.example.dao;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,6 +25,7 @@ public interface ReviewDAO {
    
    // 리뷰 상세보기
    List<HashMap<String, Object>> getReview(ReviewVO vo);
+   List<Map<String, Object>> getMyPlan(ReviewVO vo);
    
    // 리뷰 작성
    void insertReview(ReviewVO vo);

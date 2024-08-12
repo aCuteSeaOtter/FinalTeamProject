@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,8 +59,7 @@ public class ReviewServiceImpl implements ReviewService {
         
         // 리뷰 리스트 전체를 담을 리스트 생성
         List<HashMap<String, Object>> reviews = new ArrayList<>();
-        // 리스트 하나를 담을 reviewOne 생성
-        HashMap<String, Object> reviewOne = new HashMap<String, Object>(); 
+        
         // 리뷰 목록 반복문
         for(int i = 0; i < reviewList.size(); i++) {
            // 현재 리뷰를 가져옴
@@ -74,6 +74,10 @@ public class ReviewServiceImpl implements ReviewService {
         result.put("reviews", reviews); 
         
         return result;
+    }
+    
+    public List<Map<String, Object>> getMyPlan(ReviewVO vo) {
+        return reviewDAO.getMyPlan(vo); // 적절한 Mapper 호출
     }
 
     // 리뷰 작성
