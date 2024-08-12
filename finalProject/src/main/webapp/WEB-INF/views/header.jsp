@@ -46,7 +46,7 @@
                        "${sessionScope.member.member_nickname}"님 로그인중
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                        <a class="dropdown-item" href="/plan/mypage">마이페이지</a>
+                        <a class="dropdown-item" href="/plan/myPage">마이페이지</a>
                         <a class="dropdown-item" href="/question/questionList">문의사항</a>
 						<a class="dropdown-item" href="/notice/noticeList">공지사항</a>
                         <a class="dropdown-item" href="${path}/login/logout">로그아웃</a>
