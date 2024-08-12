@@ -96,6 +96,14 @@ public class ReviewServiceImpl implements ReviewService {
                 reviewFileDAO.insertFile(fvo);
             }
         }
+        
+        // 회원의 리뷰 개수 +
+        plusMemberReview(vo.getMember_email());
+    }
+    
+    // 리뷰 작성시 MEMBER_REVIEW 값 +1
+    public void plusMemberReview(String memberEmail) {
+        reviewDAO.plusMemberReview(memberEmail);
     }
     
     // 리뷰 수정
@@ -104,8 +112,19 @@ public class ReviewServiceImpl implements ReviewService {
     }
     
     // 리뷰 삭제
+    @Transactional
     public void deleteReview(ReviewVO vo) {
-        reviewDAO.deleteReview(vo);
+    	// 회원의 리뷰 개수 -
+    	System.out.println("글 삭제 / MEMBER_REVIEW -1 / 삭제할 글 주인 email : " + vo.getMember_email() );
+    	minusMemberReview(vo.getMember_email());
+        System.out.println("MEMBER_REVIEW -1 테스트 1번");
+    	reviewDAO.deleteReview(vo);
+    	System.out.println("글 삭제 완료");
+    }
+    
+    // 리뷰 작성시 MEMBER_REVIEW 값 -1
+    public void minusMemberReview(String memberEmail) {
+        reviewDAO.minusMemberReview(memberEmail);
     }
     
     // 리뷰 조회수

@@ -24,6 +24,7 @@ import com.example.domain.LoginVO;
 import com.example.domain.ReviewFileVO;
 import com.example.domain.ReviewVO;
 import com.example.service.ReviewService;
+import com.example.service.TravelInfoService;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -42,6 +43,8 @@ public class ReviewController<SearchCriteria> {
    @Autowired 
    private ReviewService reviewService;
    
+   @Autowired
+   private TravelInfoService travelInfoService;
    
    // 리뷰 목록보기
    @RequestMapping("/reviewList")
@@ -96,6 +99,8 @@ public class ReviewController<SearchCriteria> {
        
        return "/review/reviewList";
    }
+   
+   
 
 
 
@@ -240,7 +245,9 @@ public class ReviewController<SearchCriteria> {
         	   // 파일 이름 생성
                String fileName = System.currentTimeMillis() + "_" + originFileName;
                // 저장 경로
-               String filePath = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\files\\" + fileName;
+               // 파일을 저장할 경로를 프로젝트의 static 디렉토리로 설정
+               String filePath = System.getProperty("user.dir") + "/src/main/resources/static/files/" + fileName;
+
                System.out.println("filepath"+filePath);
 
                try {
@@ -256,6 +263,7 @@ public class ReviewController<SearchCriteria> {
                fvo.setOrigin_file_name(originFileName);
                fvo.setFile_name(fileName);
                fvo.setFile_path(filePath);
+               
 
                // fileList에 ReviewFileVO 객체 추가
                fileList.add(fvo);
@@ -321,8 +329,39 @@ public class ReviewController<SearchCriteria> {
    }
    
    @RequestMapping("/insertReview")
-   public String viewPage(Model m, HttpSession session, HttpServletResponse response) throws IOException {
-       // 세션에서 사용자 닉네임 가져오기
+   public String viewPage(@RequestParam("info_id") int info_id,Model m, HttpSession session, HttpServletResponse response) throws IOException {
+	   List<Map<String, Object>> result = travelInfoService.selectPlan(info_id);
+       System.out.println("selectPlan : " + result);
+       
+       List<Integer> planDays = result.stream()
+               .map(map -> {
+                   Object planDay = map.get("PLAN_DAY");
+                   return ((BigDecimal) planDay).intValue();
+               })
+               .filter(Objects::nonNull)
+               .distinct()
+               .sorted()
+               .collect(Collectors.toList());
+
+       Map<Integer, List<Map<String, Object>>> groupedPlans = result.stream()
+           .collect(Collectors.groupingBy(
+               map -> ((BigDecimal) map.get("PLAN_DAY")).intValue(),
+               Collectors.toList()
+           ));
+
+       List<Map<String, Object>> organizedPlans = planDays.stream()
+           .map(day -> {
+               Map<String, Object> dayPlan = new HashMap<>();
+               dayPlan.put("plan_day", day);
+               dayPlan.put("attr_name", groupedPlans.get(day));
+               return dayPlan;
+           })
+           .collect(Collectors.toList());
+
+       m.addAttribute("myPlan", organizedPlans);
+       System.out.println("myPlan : " + organizedPlans);
+	   
+	   // 세션에서 사용자 닉네임 가져오기
        LoginVO member = (LoginVO) session.getAttribute("member");
 
        if (member != null) {

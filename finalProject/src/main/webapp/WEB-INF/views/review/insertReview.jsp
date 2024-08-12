@@ -64,10 +64,23 @@
 	  </div>
 	  <!-- TOP DESTINATIONS SECTION -->
 	  <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
+		
 		    <div class="container">
 		      <div class="row">
 		        <div class="col-lg-12">
 <form action="saveReview" name="myform" id="myform" method="post" enctype="multipart/form-data">
+	<c:forEach items="${myPlan}" var="dayPlan">
+			         <div class="day-plan-item">
+			             <h3 class="day-title">${dayPlan.plan_day}일차</h3>
+			             <ul class="attraction-list">
+			                 <c:forEach items="${dayPlan.attr_name}" var="attr">
+			                     <li class="attraction-item">
+			                         <i class="fa fa-map-marker-alt"></i> ${attr.ATTR_NAME}
+			                     </li>
+			                 </c:forEach>
+			             </ul>
+			         </div>
+			     </c:forEach>
 <input type="hidden" name="info_id" value="${param.info_id}" />
 <table border="1">
    <tr>
@@ -108,7 +121,7 @@
    </tr>
    <tr>
       <th colspan="2" align="center">
-      <input type="submit" value=" 새글 등록 "/></th>
+      <input type="submit" value=" 새글 등록"/></th>
    </tr>
 </table>
 </form>

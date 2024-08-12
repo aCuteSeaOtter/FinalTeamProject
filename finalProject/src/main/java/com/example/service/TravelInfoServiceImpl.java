@@ -1,8 +1,13 @@
 package com.example.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.example.dao.TravelInfoDAO;
+import com.example.domain.TravelInfoVO;
 
 //** 
 @Service	// Service 호출 
@@ -23,5 +28,18 @@ public class TravelInfoServiceImpl implements TravelInfoService {
     public boolean hasTravelInfo(String memberEmail) {
         int result = travelInfoDAO.existsByMemberEmail(memberEmail);
         return result > 0; // 1이면 true, 0이면 false
+    }
+
+    public List<TravelInfoVO> getAllTravelInfo() {
+        return travelInfoDAO.getAllTravelInfo();
+    }
+    
+    public TravelInfoVO getTravelInfoById(int infoId) {
+        return travelInfoDAO.getTravelInfoById(infoId);
+    }
+    
+    // 상세보기
+    public List<Map<String, Object>> selectPlan(int info_id) {
+		return travelInfoDAO.selectPlan(info_id);
     }
 } 

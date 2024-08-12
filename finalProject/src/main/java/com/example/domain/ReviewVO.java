@@ -17,5 +17,6 @@ public class ReviewVO {
    private int    	review_star;    // 리뷰 별점
    private int    	review_like;    // 리뷰 좋아요
    private int    	review_hate;    // 리뷰 싫어요
+   private int		info_id; 		// 일정 번호
 }
 
