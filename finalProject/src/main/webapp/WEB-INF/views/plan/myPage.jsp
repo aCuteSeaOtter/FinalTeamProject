@@ -134,8 +134,8 @@
 				    </div>
 				    <c:if test="${not empty planList}"> 
 				    <div class="pagination-container">
-				        <input type="button" value="prevPage" class="planPrevPage prevPage btn"/>
-				        <input type="button" value="nextPage" class="planNextPage nextPage btn"/>
+				        <input type="button" value="이전" class="planPrevPage prevPage btn"/>
+				        <input type="button" value="다음" class="planNextPage nextPage btn"/>
 				    </div>
 				    </c:if>
 			    </div>
@@ -166,8 +166,8 @@
 			    	</div>
 			    	<c:if test="${not empty reviewList}">
 			    	<div class="pagination-container">
-				        <input type="button" value="prevPage" class="reviewPrevPage prevPage btn"/>
-				        <input type="button" value="nextPage" class="reviewNextPage nextPage btn"/>
+				        <input type="button" value="이전" class="reviewPrevPage prevPage btn"/>
+				        <input type="button" value="다음" class="reviewNextPage nextPage btn"/>
 				    </div>
 				    </c:if>
 			    </div>
@@ -255,8 +255,8 @@
 			    	</div>
 			    	<c:if test="${not empty reportList}">
 			    	<div class="pagination-container">
-				        <input type="button" value="prevPage" class="reportPrevPage prevPage btn"/>
-				        <input type="button" value="nextPage" class="reportNextPage nextPage btn"/>
+				        <input type="button" value="이전" class="reportPrevPage prevPage btn"/>
+				        <input type="button" value="다음" class="reportNextPage nextPage btn"/>
 				    </div>
 				    </c:if>
 			    </div>
