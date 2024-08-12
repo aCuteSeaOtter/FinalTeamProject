@@ -55,9 +55,7 @@
     <div class="clearfix"></div>
     <jsp:include page="/WEB-INF/views/header.jsp" />
     <!-- BANNER SECTION -->
-    <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
-      <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
+    <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">

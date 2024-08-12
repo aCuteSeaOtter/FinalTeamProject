@@ -3,9 +3,13 @@ package com.example.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -99,7 +103,7 @@ public class ReviewController<SearchCriteria> {
    // 리뷰 상세보기
    @RequestMapping("/selectReview")
    public void getReview(@RequestParam int review_id, Model model, HttpSession session, ReviewVO vo) {
-	   // 리뷰 ID 설정
+       // 리뷰 ID 설정
        vo.setReview_id(review_id);
 
        // 조회수 증가 함수
@@ -110,17 +114,63 @@ public class ReviewController<SearchCriteria> {
        model.addAttribute("reviews", result.get("reviews"));
        model.addAttribute("review", result.get("reviewOne"));
 
+       // 여행 계획 정보 조회
+       List<Map<String, Object>> myPlan = reviewService.getMyPlan(vo);
+       System.out.println("controller myPlan list : " + myPlan);
+       
+       // 여행 계획 데이터 전처리
+       List<Integer> planDays = myPlan.stream()
+           .map(map -> {
+               Object planDay = map.get("PLAN_DAY");
+               if (planDay instanceof BigDecimal) {
+                   return ((BigDecimal) planDay).intValue();
+               }
+               return null;
+           })
+           .filter(Objects::nonNull)
+           .distinct()
+           .sorted()
+           .collect(Collectors.toList());
+
+       System.out.println("planDays : " + planDays); // 추가된 로그
+
+       Map<Integer, List<Map<String, Object>>> groupedPlans = myPlan.stream()
+           .filter(map -> {
+               Object planDay = map.get("PLAN_DAY");
+               return planDay instanceof BigDecimal;
+           })
+           .collect(Collectors.groupingBy(
+               map -> ((BigDecimal) map.get("PLAN_DAY")).intValue(),
+               Collectors.toList()
+           ));
+
+       System.out.println("groupedPlans : " + groupedPlans); // 추가된 로그
+
+       List<Map<String, Object>> organizedPlans = planDays.stream()
+           .map(day -> {
+               Map<String, Object> dayPlan = new HashMap<>();
+               dayPlan.put("plan_day", day);
+               dayPlan.put("attr_name", groupedPlans.get(day));
+               return dayPlan;
+           })
+           .collect(Collectors.toList());
+
+       System.out.println("controller myPlan : " + organizedPlans); // 추가된 로그
+
+       model.addAttribute("myPlan", organizedPlans);
+
        // 세션에서 사용자 ID 가져오기, 사용자 nickname 가져오기
        LoginVO member = (LoginVO) session.getAttribute("member");
        
        if (member != null) {
-    	   String nickname = member.getMember_nickname();
-    	   String email = member.getMember_email(); // 이메일 가져오기
+           String nickname = member.getMember_nickname();
+           String email = member.getMember_email(); // 이메일 가져오기
            model.addAttribute("nickname", nickname);
            model.addAttribute("member_email", email); // 모델에 이메일 추가
-           
        }
    }
+
+
    
    // 리뷰 작성 후 저장
    @RequestMapping("/saveReview")
@@ -281,7 +331,7 @@ public class ReviewController<SearchCriteria> {
            return "review/insertReview";  // insertReview.jsp 페이지로 이동
        } else {
            System.out.println("닉네임이 null입니다. 세션에 닉네임이 설정되지 않았습니다.");
-           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/index");
+           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/review/reviewList");
            return null;  // 팝업을 띄우고 리다이렉트가 처리되므로 null 반환
        }
    }

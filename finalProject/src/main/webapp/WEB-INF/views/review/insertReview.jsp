@@ -68,6 +68,7 @@
 		      <div class="row">
 		        <div class="col-lg-12">
 <form action="saveReview" name="myform" id="myform" method="post" enctype="multipart/form-data">
+<input type="hidden" name="info_id" value="${param.info_id}" />
 <table border="1">
    <tr>
       <th width="70">제목</th><td align="left">

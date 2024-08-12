@@ -47,7 +47,7 @@
     </div>
 
     <!-- MAIN SECTION -->
-    <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
+    <section class="blog-posts blogpage-section three-column-con w-100 float-left">
         <div class="container">
             <div class="row wow fadeInUp">
                 <div id="blog" class="col-xl-12">

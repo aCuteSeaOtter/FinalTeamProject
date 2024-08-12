@@ -247,3 +247,7 @@
 #sideBarTitleDiv {
 	color:#007bff;
 }
+
+.blog-tabs-section, .blogpage-section{
+	background: linear-gradient(to bottom, #b2f3de 0%, #ffffff 100%) !important;
+}
