@@ -27,12 +27,16 @@ public interface ReviewService {
    
    // 리뷰 작성
    void insertReview(ReviewVO vo, List<ReviewFileVO> fileList);
+   // 리뷰 작성시 MEMBER_REVIEW 값 +1
+   void plusMemberReview(String memberEmail);
    
    // 리뷰 수정
    void updateReview(ReviewVO vo);
    
    // 리뷰 삭제
    void deleteReview(ReviewVO vo);
+   // 리뷰 작성시 MEMBER_REVIEW 값 -1
+   void minusMemberReview(String memberEmail);
    
    // 리뷰 조회수
    void incrementViewCount(ReviewVO vo);

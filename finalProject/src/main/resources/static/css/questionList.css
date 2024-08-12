@@ -28,7 +28,8 @@
 .pagination {
     display: block; /* 기본 블록 요소 */
     text-align: center; /* 중앙 정렬 */
-    background: #b2f3de;
+    background: white;
+    margin: 20px 0
 }
 
 .pagination a {
@@ -57,4 +58,8 @@
 .pagination a:focus {
     outline: none; /* 기본 포커스 테두리 제거 */
     box-shadow: 0 0 0 3px rgba(30, 194, 139, 0.5); /* 배경색에 맞춘 그림자 */
+}
+
+.float-left{
+	float:none !important;	
 }

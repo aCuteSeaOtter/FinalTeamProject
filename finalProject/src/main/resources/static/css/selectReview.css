@@ -231,3 +231,8 @@ td {
     color: #1ec28b;
     margin-right: 10px;
 }
+
+.main-box {
+	padding-left: 0% !important;
+    padding-right: 0% !important;
+}

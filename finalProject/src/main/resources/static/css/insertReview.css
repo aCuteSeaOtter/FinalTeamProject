@@ -201,5 +201,42 @@ body {
     	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 	}
 	
-
-   
+	/* Day Plan Item Styles */
+	.day-plan-item {
+	    background-color: #ffffff;
+	    border: 1px solid #ddd;
+	    border-radius: 8px;
+	    padding: 15px;
+	    margin-bottom: 20px;
+	    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+	
+	.day-title {
+	    font-size: 1.5rem;
+	    color: #1ec28b;
+	    margin-bottom: 10px;
+	    border-bottom: 2px solid #1ec28b;
+	    padding-bottom: 5px;
+	}
+	
+	.attraction-list {
+	    list-style: none;
+	    padding: 0;
+	    margin: 0;
+	}
+	
+	.attraction-item {
+	    font-size: 1.1rem;
+	    color: #333;
+	    margin-bottom: 8px;
+	    display: flex;
+	    align-items: center;
+	}
+	
+	.attraction-item i {
+	    color: #1ec28b;
+	    margin-right: 10px;
+	}
+		
+	
+	   
