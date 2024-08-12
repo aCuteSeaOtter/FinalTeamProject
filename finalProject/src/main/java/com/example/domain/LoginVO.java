@@ -25,7 +25,7 @@ public class LoginVO{
    
  
 	//년 월 일
-	private int year;
+	private int year; 
 	private int month;
 	private int day;
 

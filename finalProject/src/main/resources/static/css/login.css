@@ -120,8 +120,9 @@ Headings: "Jost", sans-serif;
 }
 
 .main-box{
-	   background:#b2f3de;
-}
+background: linear-gradient(to bottom, rgb(178, 243, 222, 20%) 0%, #ffffff 100%);	   
+	   
+ }
 .manage-button{
 	display:inline-block;
 	width:260px;

@@ -21,7 +21,7 @@ VALUES
  #{local_name_kor}
 )
 </insert>
-
+ 
 <!--  
 <select id="getLocalById" parameterType="int"
 resultType="com.example.domain.LocalVO">

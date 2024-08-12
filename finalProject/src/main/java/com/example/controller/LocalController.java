@@ -29,7 +29,7 @@ public class LocalController {
       m.addAttribute("localList", localList);
       return "index";
 }
-   
+    
 
    @GetMapping("/location")
    public String getLoc(Model m,LocalVO localVO) {

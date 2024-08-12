@@ -23,7 +23,7 @@
 #   navy-color: #2b2945;
 #   mustard-color: #ff8900;
 #   yellow-color: #fdb913;
-#   light-green-color: #b2f3de;
+#   light-green-color: #b2f3de; 
 
 */
 /*------------------------------------------------------------------
@@ -46,7 +46,60 @@ html {
     scroll-behavior: smooth;
     overflow-y:auto;
 }
+/*비밀번호찾기*/
 
+.d-flex{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.col-8{
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+}
+
+#injeungbunho{
+margin-right: 10px; /* 버튼과의 간격을 설정 */
+}
+.align-items-right{
+	align-items:center;
+}
+
+.login-group{
+	margin-bottom: 1rem;
+	
+}
+.login-box{
+	max-width:500px;
+	margin:auto;
+	padding:20px;
+}
+.flex-container{
+	display:flex;
+	justify-content:center; /* 수평 가운데 정렬 */
+    align-items:center; /* 수직 가운데 정렬 */
+	text-align:center;
+}
+
+
+#injeungCheckBtn{
+		 background-color:#2dca73; /* 배경색 설정 (예시) */
+         border: none;
+         cursor: pointer;	
+         border-radius:12px;
+         color:white;
+         width:50px;
+}
+#emailCheckBtn{
+		 width:50px;	    
+	     background-color:#2dca73; /* 배경색 설정 (예시) */
+         border: none;
+         cursor: pointer;	
+         border-radius:12px;
+         color:white;
+}
 
 .col-lg-4, .col-md-4, .col-sm-6{
 	padding:15px;
@@ -85,6 +138,9 @@ html {
          border: none;
          cursor: pointer;	
          border-radius:12px;
+         justify-content:center; /* 수평 가운데 정렬 */
+    	align-items:center; /* 수직 가운데 정렬 */
+		text-align:center;
 }
 
 a,

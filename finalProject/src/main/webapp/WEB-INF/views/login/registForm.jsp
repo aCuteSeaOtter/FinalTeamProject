@@ -123,9 +123,9 @@
 					  <br/>
 					    <div class="col-12"><!--6--><!--12-->
 					    <div class="form-birth">
-					  <label>생년월일</label>
+					  	<label>생년월일</label>
 					  						
-					  	<select name="year" id="year1" style="width:49px; height:30px;" required></select>년
+					  	<select name="year" id="year1" style="width:50px; height:30px;" required></select>년
 					  	<select name="month"id="month1"style="width:35px; height:30px;"required></select>월
 					  	<select name="day"	id="day1"  style="width:30px; height:30px;"required></select>일
 					  	</div>

@@ -1,19 +1,15 @@
 package com.example.service;
 
-import java.util.HashMap;
 
 import com.example.domain.LoginVO;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
-import jakarta.servlet.http.HttpSession;
 
 
 public interface LoginService {
 
 	void registForm(LoginVO LoginVO);
 	//MemberVO loginForm(MemberVO memberVO);  
-	void updateForm(LoginVO LoginVO);
-	void deleteForm(LoginVO LoginVO);
+	//boolean authenticate(String member_email, String member_pass);
 
 	void insertkakao(LoginVO LoginVO);
 	
