@@ -107,6 +107,13 @@
       ( review_id_seq.NEXTVAL, #{review_title}, #{review_content}, 0, #{review_star}, #{member_email}, TO_CHAR(SYSDATE,'YY-MM-DD HH24:MI:SS'), #{info_id})
    </insert>
    
+   <!-- MEMBER_REVIEW 값 +1 -->
+   <update id="plusMemberReview" parameterType="ReviewVO">
+	   UPDATE member
+	   SET member_review = member_review + 1
+	   WHERE member_email = #{member_email}
+	</update>
+   
    <!-- 리뷰 수정 -->
    <update id="updateReview" parameterType="ReviewVO">
       UPDATE review SET
@@ -120,6 +127,13 @@
       DELETE FROM review
       WHERE review_id = #{review_id}
    </delete>
+   
+   <!-- MEMBER_REVIEW 값 -1 -->
+   <update id="minusMemberReview" parameterType="ReviewVO">
+	   UPDATE member
+	   SET member_review = member_review - 1
+	   WHERE member_email = #{member_email}
+	</update>
    
    <!-- 리뷰 조회수 증가 -->
    <update id="incrementViewCount" parameterType="ReviewVO">

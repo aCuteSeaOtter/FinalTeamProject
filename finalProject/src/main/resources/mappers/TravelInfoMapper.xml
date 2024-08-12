@@ -20,5 +20,34 @@
        FROM TRAVEL_INFO
        WHERE MEMBER_EMAIL = #{memberEmail}
    	</select>
+   	
+    <!-- 모든 데이터를 가져오는 쿼리 -->
+    <select id="getAllTravelInfo" resultType="com.example.domain.TravelInfoVO">
+        SELECT * FROM TRAVEL_INFO
+    </select>
+
+    <!-- 특정 info_id를 기준으로 데이터를 가져오는 쿼리 -->
+    <select id="getTravelInfoById" resultType="com.example.domain.TravelInfoVO">
+        SELECT * FROM TRAVEL_INFO
+        WHERE INFO_ID = #{info_id}
+    </select>
+    
+    <!-- plan_id로 plan 가져옴 -->
+	<select id="selectPlan" resultType="hashmap">
+		SELECT 
+            tp.plan_day,
+            tp.plan_seq,
+            a.attr_name
+        FROM 
+            travel_plan tp
+        JOIN 
+            attr a ON tp.attr_id = a.attr_id
+        WHERE 
+            tp.info_id = #{infoId}
+        ORDER BY 
+            tp.plan_day, tp.plan_seq
+	</select>
+
+
 	
 </mapper>

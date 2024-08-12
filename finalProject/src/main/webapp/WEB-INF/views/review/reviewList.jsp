@@ -60,10 +60,6 @@
                             </ol>
                         </div>
                     </div>
-                    <!-- 버튼을 우측 정렬하고 스타일링하기 위한 새로운 div 추가 -->
-                    <div class="button-container text-right mb-3">
-                        <a href="insertReview" class="btn btn-primary">새글 등록</a>
-                    </div>
 
                     <div class="row">
                         <!-- 게시물 목록 -->

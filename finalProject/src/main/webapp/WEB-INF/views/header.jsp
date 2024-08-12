@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" href="${path}/css/calendar.css" type="text/css">
     <link rel="stylesheet" href="${path}/css/realLogin.css" type="text/css">
-	<link rel="stylesheet" href="${path}/css/header.css" type="text/css">
+   <link rel="stylesheet" href="${path}/css/header.css" type="text/css">
 </head>
 <body>
 <!-- HEADER SECTION -->
@@ -30,6 +30,9 @@
             <li class="nav-item active">
                 <a class="nav-link p-0" href="/">홈</a>
             </li>
+         <li class="nav-item">
+               <a class="nav-link p-0" href="/plan/planList">일정</a>
+           </li>
             <li class="nav-item">
                 <a class="nav-link p-0" href="/review/reviewList">여행후기</a>
             </li>
@@ -48,7 +51,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
                         <a class="dropdown-item" href="/plan/myPage">마이페이지</a>
                         <a class="dropdown-item" href="/question/questionList">문의사항</a>
-						<a class="dropdown-item" href="/notice/noticeList">공지사항</a>
+                  <a class="dropdown-item" href="/notice/noticeList">공지사항</a>
                         <a class="dropdown-item" href="${path}/login/logout">로그아웃</a>
                     </div>
                 </li>
