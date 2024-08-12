@@ -104,7 +104,7 @@
  <div class="row">
         <div class="col-12">
           <div class="login-box">
-            <form id="loginForm" action="/login/" method="POST"><!--/login/logincheck-->
+            <form id="loginForm" action="/login/" method="POST" onsubmit="return checkPassword(event)"><!--/login/logincheck-->
 				<div class="col-lg-10 col-md-10 col-sm-12 col-12 ">
 					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
                 			
@@ -132,7 +132,7 @@
     <div class="manage-button">
 	      <button onClick="checkPassword()" type="submit" name="submit"
 	      class="login_now text-white text-decoration-none w-100">로그인</button>
-			<p	id="error-msg" style="color:red; display:none;">비밀번호가 일치하지않습니다</p>
+			<p id="error-msg" style="color:red; display:none;">비밀번호가 일치하지않습니다</p>
 	  </div>
 	 </div>
 	<hr/>
@@ -146,6 +146,11 @@
           </div>
                 <!--<p>${error}</p>-->
 			  </form>
+			  <!--error message-->
+			  <c:if test="${not empty errorMessage}">
+			<p style="color:red;">${errorMessage}</p>	
+		  
+		  </c:if>
           </div>
         </div>
 		</div>
@@ -173,21 +178,43 @@
   
   
 	<script>
-function checkPassword(){
-	// 사용자가 입력한 비밀번호
-	var inputPassword=document.getElementById("fname").value();
-	var dbPassword=;
-	
-	// 비번 비교
-	if(inputPassword == dbPassword){
-		alert('성공');
+/*	function checkPassword(event) {
+		    event.preventDefault(); // 폼 제출 기본 동작 방지
+
+		    // 사용자가 입력한 비밀번호
+		    var inputPassword = document.getElementById("password").value;
+		    var dbPassword = "expectedPassword"; // 테스트용 비밀번호
+
+		    // 비밀번호 비교
+		    if (inputPassword === dbPassword) {
+		        alert('성공');
+		    } else {
+		        // 비밀번호 불일치 시 메시지 표시
+		        var errorMsg = document.getElementById("error-msg");
+		        errorMsg.style.display = "block";
+		    }
+		}*/
 		
-	}else{
-		//일치하지 않을 시
-		var errorMsg=document.getElementById("error-msg");
-		errorMsg.style.display="block";
-	}
-}
+		
+		function checkPassword(event) {
+		        // 사용자가 입력한 비밀번호
+		        var inputPassword = document.getElementById("password").value;
+		        var errorMsg = document.getElementById("error-msg");
+
+		        // 테스트용 비밀번호 (서버 검증으로 대체해야 함)
+		       // var expectedPassword = "expectedPassword"; 
+
+		        // 비밀번호 비교
+		        if (inputPassword === expectedPassword) {
+		            // 로그인 성공 시
+		            alert('로그인 성공');
+		            return true; // 폼 제출 계속
+		        } else {
+		            // 비밀번호 불일치 시 메시지 표시
+		            errorMsg.style.display = "block";
+		            return false; // 폼 제출 중지
+		        }
+		    }
 </script>
 	  
 </body>

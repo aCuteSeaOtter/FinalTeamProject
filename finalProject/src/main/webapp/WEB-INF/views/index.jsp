@@ -115,7 +115,7 @@
    	<div class="modal-content fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center 
    	bg-black bg-opacity-25 focus:outline-none z-50" tabindex="-1">
    	<div class="modal-inner bg-white p-4 rounded shadow-lg">
-   		<div class="relative m-4 md:m-8 bg-white rounded-lg shadow max-h-[82vh] overflow-y-auto w-full md:w-auto">
+   		<div class="relative m-4 md:m-8 bg-white rounded-lg shadow max-h-[82vh] w-full md:w-auto">
    		<span class="close">&times;</span>
 	<!--<div class="flex flex-col justify-center max-w-screen-lg">-->
    		<div class="flex flex-row flex-wrap px-8 py-8 bg-white rounded-lg md:flex-nowrap md:flex-inherit md:px-16 md:py-16">
@@ -132,8 +132,7 @@
      
    		</div><!--relative m-4 md:m-8 bg-white rounded-lg shadow max-h-[82vh] overflow-y-auto w-full md:w-auto-->
   <!-- 	</div>-->
-   	
-	</div><!--relative flex flex-col-->		
+   	</div><!--relative flex flex-col-->		
   		
    		<div class="relative hidden md:flex items-center justify-center">
    			<div class="relative w-full h-[300px]">
@@ -142,7 +141,7 @@
    		</div><!--relative flex-col items-center -->		
 		<div class="plan items-center justify-center mt-4">
 		  <div class="w-full">
-			 <a href="#" class="button">
+			 <a href="calendar/calendar" class="buttonCal">
 			<div class="font-bold">일정만들기</div>
 		  	<i class="ml-2 text-lg fa-solid fa-chevron-right md:block"></i>
 		   </a>
@@ -227,6 +226,13 @@
 	            modal.style.display = "none";
 	        }
 	    }
+		
+		// ESC 키로 모달 닫기
+		    document.addEventListener('keydown', function(event) {
+		        if (event.key === 'Escape') {
+		            modal.style.display = 'none'; // 모달 닫기
+		        }
+		    });
 	}
 </script>
 </body>

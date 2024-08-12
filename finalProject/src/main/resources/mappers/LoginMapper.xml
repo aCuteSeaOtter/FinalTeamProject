@@ -16,7 +16,7 @@
         SYSDATE,
         0
   
-)
+) 
 </insert> 
 
 <insert	id="kakaoinsert" parameterType="HashMap">

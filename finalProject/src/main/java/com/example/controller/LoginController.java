@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.LoginVO;
@@ -56,21 +57,6 @@ public class LoginController {
 
 
 
-	@RequestMapping("/loginMain")
-	public void loginMain(){
-		
-	} 
-	@RequestMapping("/updateForm")
-	public String updateForm() {
-		return "updateForm";
-		
-	} 
-	
-	@RequestMapping("/deleteForm")
-	public String deleteForm() {
-		return "/";
-		
-	}
 	//회원가입 화면 요청 처리
 	@RequestMapping("/registForm")
 	public void registForm() {
@@ -79,7 +65,7 @@ public class LoginController {
 	//비밀번호찾기
 	@RequestMapping("/findpass")
 	public void findpass() {
-			}
+	}
 	
 	@RequestMapping("/loginForm")
 	public void loginForm() {
@@ -129,19 +115,45 @@ public class LoginController {
 
 	// 로그인을 위해 아이디와 비밀번호를 입력하고 로그인 버튼을 눌렸을 때
 	@PostMapping("/") //logincheck
-	public String checkLogin(LoginVO loginVO, HttpSession session)
+	public ModelAndView checkLogin(HttpSession session, @RequestParam String member_email, @RequestParam String member_pass) //LoginVO loginVO
 	{
+		/*추가한 것*/
+		LoginVO loginVO = new LoginVO();
+		loginVO.setMember_email(member_email);
+		loginVO.setMember_pass(member_pass);
+	
 		LoginVO result = loginService.checkLogin(loginVO);
+		ModelAndView modelAndView = new ModelAndView();
+		
 		if(result!=null) {
 			//로그인 성공 시 세션에 사용자 정보 저장
 			session.setAttribute("member", result);
-			return "redirect:/"; // index였음
+			modelAndView.setViewName("redirect:/"); 	// return "redirect:/";
+			
+		}else {
+			
+			// 로그인 실패 시 오류 메시지 추가
+			modelAndView.setViewName("login/loginForm");// 로그인창 뷰페이지 지정	return "redirect:/loginForm";
+			modelAndView.addObject("errorMessage", "Invalid email or password");
 		}
-		else {
-			return "redirect:/loginForm"; // 로그인창 뷰페이지 지정
-		}
+		return modelAndView;
 	}
 
+/*	@PostMapping("/loginForm")
+	public ResponseEntity<String>login(@RequestParam String member_email, @RequestParam String member_pass){
+		boolean isAuthenicated = loginService.authenticate(member_email, member_pass);
+		
+		if(!isAuthenicated) {
+
+			return ResponseEntity.ok("로그인 성공");
+		}else {
+			
+			return ResponseEntity.status(HttpStatus.SC_UNAUTHORIZED).body("비밀번호가 일치하지 않습니다");
+		}
+	}*/
+	
+	
+	
 	//로그아웃
 	@RequestMapping("/logout")
 
@@ -155,7 +167,7 @@ public class LoginController {
 
 		
 	//마이페이지 ( 예시 )
-	@RequestMapping("/mypage")
+/*	@RequestMapping("/mypage")
 	public String myPage(HttpSession session) {
 	    LoginVO member = (LoginVO) session.getAttribute("member");
 	    if (member != null) {
@@ -165,7 +177,7 @@ public class LoginController {
 	        // 비로그인 상태일 때 로그인 페이지로 리디렉션
 	        return "redirect:/loginForm";
 	    }
-	}
+	}*/
 	
 		//홈
 //    @RequestMapping("/")
@@ -173,6 +185,7 @@ public class LoginController {
 //        return "/";
 //}
 
+	
 	
 	
 	@RequestMapping("/savecontact")

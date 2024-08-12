@@ -6,9 +6,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,18 +41,6 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public void updateForm(LoginVO loginVO) {
-		 
-		 
-	}
-
-	@Override
-	public void deleteForm(LoginVO loginVO) {
-	
-		
-	}
-
-	@Override
 	public void savecontact(LoginVO loginVO) {
 
 	}
@@ -59,7 +52,10 @@ public class LoginServiceImpl implements LoginService{
 		
 	
 		// 사용자 입력 정보로 DB에서 사용자 정보 조회
+		
 		LoginVO result = loginDAO.checkLogin(loginVO);
+		
+	
 		if (result != null) {
 		    System.out.println("DB에서 가져온 사용자 정보: " + result);
 		    // DB에 저장된 비밀번호와 사용자 입력 비밀번호 비교
@@ -73,12 +69,12 @@ public class LoginServiceImpl implements LoginService{
 		} else {
 		    return null; // 사용자 정보가 없음
 		}
-    
-	}
+    }
 	@Override
 	public void insertkakao(LoginVO memberVO) {
 						
 }
+
 
 
 

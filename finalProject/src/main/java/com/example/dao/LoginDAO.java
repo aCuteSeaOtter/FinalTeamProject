@@ -12,12 +12,8 @@ public interface LoginDAO {
 
 	public 	void registForm(LoginVO loginVO);
 	//public MemberVO loginForm(MemberVO memberVO); 
-	public	void updateForm(LoginVO loginVO);
-	public 	void deleteForm(LoginVO loginVO);
-	
-
 	public LoginVO checkLogin(LoginVO loginVO);
-	  
+	public LoginVO findByEmail(String member_email);  
 	
 	// 이미 가입된 회원인지 확인하는 메소드
 	public LoginVO findkakao(@Param("memberEmail") String memberEmail,
