@@ -180,22 +180,29 @@
 		    </div>
 
 			<div id="post-${review.review_id}">
-			  <div class="reaction-buttons">
-			    <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="like-button">
-			      <i class="fa-regular fa-thumbs-up"></i>
+			    <div class="reaction-buttons">
+			        <div id="like-button" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="like-button">
+			            <i class="fa-regular fa-thumbs-up"></i>
+			        </div>
+			        <span class="count" id="like-count">0</span>
+
+			        <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="hate-button">
+			            <i class="fa-regular fa-thumbs-down"></i>
+			        </div>
+			        <span class="count" id="hate-count-${review.REVIEW_ID}">0</span>
+			        
+			        <c:if test="${member.member_email == review.MEMBER_EMAIL}">
+			            <button type="submit" class="btn btn-primary" onclick="return confirmUpdate()">글 수정</button>
+			            <a href="deleteReview?review_id=${review.REVIEW_ID}" class="btn btn-danger" onclick="return confirmDelete()">글삭제</a>
+			        </c:if>
+			        
+			        <div>
+			            <i class="fa-solid fa-comment"></i>
+						<span id="comment-count">${review.COMMENT_COUNT}</span>
+			        </div>
 			    </div>
-			    <span class="count" id="like-count">0</span>
-			    
-			    <div id="hate-button-${review.review_id}" data-review_id="${review.REVIEW_ID}" data-nickname="${member_email}" class="hate-button">
-			      <i class="fa-regular fa-thumbs-down"></i>
-			    </div>
-			    <span class="count"id="hate-count-${review.REVIEW_ID}">0</span>
-				<c:if test="${member.member_email == review.MEMBER_EMAIL}">
-	              <button type="submit" class="btn btn-primary"onclick="return confirmUpdate()">글 수정</button>
-	              <a href="deleteReview?review_id=${review.REVIEW_ID}" class="btn btn-danger" onclick="return confirmDelete()">글삭제</a>
-	            </c:if>
-			  </div>
 			</div>
+
 				
           </td>
         </tr>
@@ -250,5 +257,6 @@
   <script src="/assets/js/search.js"></script>
   <script src="/js/selectReview.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="/js/commentCount.js"></script>
 </body>
 </html>

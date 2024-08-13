@@ -16,4 +16,6 @@ import com.example.domain.CommentVO;
 	
 	// 댓글 삭제
 	public int deleteComment(Integer comment_id);
+	
+	Integer getCommentCount(Integer review_id);
 } 

@@ -33,4 +33,8 @@ public class CommentServiceImpl implements CommentService{
 	public Integer deleteComment(Integer comment_id) {
 		return CommentDAO.deleteComment(comment_id);
 	}
+	
+	public Integer getCommentCount(Integer review_id) {
+	    return CommentDAO.getCommentCount(review_id);
+	}
 }

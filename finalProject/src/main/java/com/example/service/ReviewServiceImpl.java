@@ -131,4 +131,8 @@ public class ReviewServiceImpl implements ReviewService {
     public void incrementViewCount(ReviewVO vo) {
         reviewDAO.incrementViewCount(vo);
     }
+    
+    public int getCommentCount(int review_id) {
+        return reviewDAO.getCommentCount(review_id);
+    }
 }

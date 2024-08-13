@@ -23,4 +23,10 @@
     <delete id="deleteComment" parameterType="int">
         DELETE FROM comments WHERE comment_id = #{comment_id}
     </delete>
+    
+    <select id="getCommentCount" parameterType="int" resultType="int">
+	    SELECT COUNT(*) 
+	    FROM comments
+	    WHERE review_id = #{review_id}
+	</select>
 </mapper>
