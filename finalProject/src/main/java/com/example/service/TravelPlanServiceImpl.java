@@ -33,6 +33,10 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 		return travelPlanDAO.countTravelPlans(info_id, plan_day);
 	}
 	
+	public int countTravelPlans(int info_id, int plan_day) {
+		return travelPlanDAO.countTravelPlans(info_id, plan_day);
+	}
+	
 	public void deleteAllTravelPlan(String info_id, int plan_day) {
 		travelPlanDAO.deleteAllTravelPlan(info_id, plan_day);
 	}
@@ -44,4 +48,12 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 	public List<Map<String, Object>> selectedAttrList(int attr_id, int plan_day, int info_id) {
         return travelPlanDAO.selectedAttrList(attr_id, plan_day, info_id);
     }
+	
+	public void updateTravelPlan(int info_id, int attr_id, int plan_day, int plan_seq) {
+		travelPlanDAO.updateTravelPlan(info_id, attr_id, plan_day, plan_seq);
+    }
+	
+	public void delPlan(int info_id, int plan_day) {
+		travelPlanDAO.delPlan(info_id, plan_day);
+	}
 } 

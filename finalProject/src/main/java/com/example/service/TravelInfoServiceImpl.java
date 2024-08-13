@@ -42,4 +42,8 @@ public class TravelInfoServiceImpl implements TravelInfoService {
     public List<Map<String, Object>> selectPlan(int info_id) {
 		return travelInfoDAO.selectPlan(info_id);
     }
+    
+    public List<String> calDates(int infoId) {
+        return travelInfoDAO.calDates(infoId);
+    }
 } 

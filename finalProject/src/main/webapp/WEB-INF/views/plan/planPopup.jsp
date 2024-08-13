@@ -100,8 +100,8 @@
 		    <!-- 명소 출력 시작 -->
 		        
 	        </div>
-	        <input type="button" value="prevPage" class="prevPage btn"/>
-	        <input type="button" value="nextPage" class="nextPage btn"/>
+	        <input type="button" value="이전" class="prevPage btn"/>
+	        <input type="button" value="다음" class="nextPage btn"/>
 	        
 	          <!-- col -->
 	        </div>

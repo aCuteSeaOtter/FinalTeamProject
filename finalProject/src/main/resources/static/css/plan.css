@@ -182,11 +182,24 @@
 }
 
 
+.title-box {
+	display: flex;
+	justify-content: space-between;
+}
+
+
 .title {
 	color: black;
 	font-family: 'tway';
 	font-size: 25px;	
 	margin-bottom: 5px;
+	display: inline-block;
+}
+
+
+.save-btn {
+	display: inline-block;
+	align-items: center; /* 수직 중앙 정렬 */
 }
 
 

@@ -50,6 +50,11 @@ public class TravelInfoController {
         String end_date = dateList.get(dateList.size()-1);
         
         LoginVO member = (LoginVO)session.getAttribute("member");
+        if (member == null) {
+	        // 회원 정보가 세션에 없을 경우 로그인 페이지로 리다이렉트
+	        return "redirect:/login/loginForm";
+	    }
+        
         String member_email = member.getMember_email();
         // 서비스 호출하여 데이터 저장
         travelInfoService.insertTravelInfo(member_email, info_name, trip_place, start_date, end_date, who_tag, style_tag);

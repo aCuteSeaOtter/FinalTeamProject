@@ -45,7 +45,6 @@ public class MyPageController {
 		// 나의 신고
 		List<Map<String, Object>> reportList = myPageService.selectReportList(user_id);
 		m.addAttribute("reportList", reportList);
-		System.out.println(reportList);
 		
 		return "plan/myPage";
 	}

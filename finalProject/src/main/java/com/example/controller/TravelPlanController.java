@@ -36,7 +36,7 @@ public class TravelPlanController {
 		
 		// 명소의 수 만큼 데이터 저장
 		for (int i = 0; i < attr_id.size(); i++) {
-	        int plan_seq = getNextPlanSeq(info_id, plan_day); // Calculate the next sequence value
+	        int plan_seq = getNextPlanSeq(info_id, plan_day);
 	        travelPlanService.insertTravelPlan(info_id, attr_id.get(i), plan_day, plan_seq);
 	    }
 		
@@ -99,8 +99,15 @@ public class TravelPlanController {
 	
 	// 모든 명소 불러오기
 	@GetMapping("/getAllAttractions")
-	public List<AttrVO> selectAllAttr() {
-		List<AttrVO> result = attrService.selectAttrList();
+	public List<AttrVO> selectAllAttr(HttpSession session) {
+		String localName = (String)session.getAttribute("local");
+		
+		String[] parts = localName.trim().split("\\s+");
+	    String local = parts[parts.length - 1];
+	    
+	    System.out.println(local);
+
+		List<AttrVO> result = attrService.selectAttrList(local);
 		return result;
 	}
 	
@@ -124,8 +131,7 @@ public class TravelPlanController {
 	
 	
 	private int getNextPlanSeq(String info_id, int plan_day) {
-	    // Fetch the count of existing plans with the same info_id and plan_day
 	    int existingPlansCount = travelPlanService.countTravelPlans(info_id, plan_day);
-	    return existingPlansCount + 1; // Return next sequence value
+	    return existingPlansCount + 1;
 	}
 } 

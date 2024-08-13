@@ -12,15 +12,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.domain.AttrVO;
+import com.example.service.AttrService;
 import com.example.service.MyPlanService;
+import com.example.service.TravelInfoService;
+import com.example.service.TravelPlanService;
 
 @Controller
 public class MyPlanController {
 	
 	@Autowired
 	private MyPlanService myPlanService;
+	
+	@Autowired
+	private AttrService attrService;
+	
+	@Autowired
+    private TravelInfoService travelInfoService;
+	
+	@Autowired
+	private TravelPlanService travelPlanService;
 	
 	// myPage 일정 상세보기
 	@PostMapping("/selectMyPlan")
@@ -55,13 +69,57 @@ public class MyPlanController {
 	        .collect(Collectors.toList());
 		
 		r.addFlashAttribute("myPlan", organizedPlans);
-		
 		return "redirect:plan/myPlan";
+	}
+	
+	// myPage 일정 상세 모달
+	@PostMapping("/editAttr")
+	@ResponseBody
+	public List<AttrVO> editAttr(@RequestParam("trip_place") String tripPlace) {
+		String[] parts = tripPlace.trim().split("\\s+");
+	    String trip_place = parts[parts.length - 1];
+		
+		List<AttrVO> result = attrService.editAttrList(trip_place);
+		
+		return result;
+	}
+	
+	// 선택된 날짜
+	@PostMapping("/calDates")
+	@ResponseBody
+	public List<String> calDates(@RequestParam("info_id") int infoId) {
+		// info_id로 선택한 날짜들 가져오기
+        List<String> result = travelInfoService.calDates(infoId);
+        
+		return result;
+	}
+	
+	// 일정 편집
+	@PostMapping("/editPlan")
+	@ResponseBody
+	public String editPlan(@RequestParam("day") int plan_day, @RequestParam(value="data") List<Integer> attr_id, @RequestParam("info_id") int info_id) {
+		
+		// 일정 비우기
+		travelPlanService.delPlan(info_id, plan_day);
+		
+		// 명소의 수 만큼 데이터 저장
+		for (int i = 0; i < attr_id.size(); i++) {
+	        int plan_seq = getNextPlanSeq(info_id, plan_day);
+	        travelPlanService.updateTravelPlan(info_id, attr_id.get(i), plan_day, plan_seq);
+	    }
+		
+		return "편집성공";
 	}
 	
 	@RequestMapping("/plan/myPlan")
 	public String myPlan() {
 		
 		return "plan/myPlan";
+	}
+	
+	
+	private int getNextPlanSeq(int info_id, int plan_day) {
+	    int existingPlansCount = travelPlanService.countTravelPlans(info_id, plan_day);
+	    return existingPlansCount + 1;
 	}
 } 

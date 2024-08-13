@@ -3,17 +3,17 @@ const itemsPerPage = 20;
 let totalPages = 1;
 
 function initializePagination() {
-    const $divBlocks = $('.divBlock');
-    totalPages = Math.ceil($divBlocks.length / itemsPerPage);
+    const divBlocks = $('.divBlock');
+    totalPages = Math.ceil(divBlocks.length / itemsPerPage);
     showPage(currentPage);
 }
 
 function showPage(page) {
-    const $divBlocks = $('.divBlock');
-    $divBlocks.hide();
+    const divBlocks = $('.divBlock');
+    divBlocks.hide();
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    $divBlocks.slice(start, end).show();
+    divBlocks.slice(start, end).show();
     updatePaginationButtons();
 }
 
@@ -104,9 +104,24 @@ $(function() {
 
 		modal.css({'display' : 'block'});
 
+		// 'X' 버튼을 눌렀을 때 모달 닫기
 		$(document).on('click', '.closeBtn', function() {
 			modal.css({'display' : 'none'});
 		});
+		
+		// 모달 영역 밖을 클릭했을 때 모달 닫기
+	    $(document).on('click', function(event) {
+	        if ($(event.target).is('.myModal')) {
+	            modal.css({'display': 'none'});
+	        }
+	    });
+				
+		// ESC 키를 눌렀을 때 모달 닫기
+	    $(document).on('keydown', function(event) {
+	        if (event.key === 'Escape' || event.keyCode === 27) {
+	            modal.css({'display': 'none'});
+	        }
+	    });
 	}); // end $(document).on('click', '.contentBox', function()
 	
     
