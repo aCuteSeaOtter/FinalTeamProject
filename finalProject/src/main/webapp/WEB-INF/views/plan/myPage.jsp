@@ -55,11 +55,11 @@
   </div>
   <!-- OUTER BG WRAPPER -->
   
-  <div class="bg-outer-wrapper float-left w-100">
-    <div class="clearfix"></div> 
-    <!-- HEADER SECTION -->
+	<div class="bg-outer-wrapper float-left w-100">
+    	<div class="clearfix"></div> 
+    	<!-- HEADER SECTION -->
 
-	<jsp:include page="/WEB-INF/views/header.jsp" />
+		<jsp:include page="/WEB-INF/views/header.jsp" />
 
 
     </div>
@@ -155,8 +155,26 @@
 				                        </div>
 				                        <div class="right">
 				                            <div><i class="fas fa-star"></i><strong>별점:</strong> ${list.REVIEW_STAR}</div>
-				                            <div><i class="fas fa-thumbs-up"></i><strong>좋아요:</strong> ${list.REVIEW_LIKE}</div>
-				                            <div><i class="fas fa-thumbs-down"></i><strong>싫어요:</strong> ${list.REVIEW_HATE}</div>
+				                            <div><i class="fas fa-thumbs-up"></i><strong>좋아요:</strong>
+				                            	<c:choose>
+											        <c:when test="${list.LIKE_STATE != null}">
+											            ${list.LIKE_STATE}
+											        </c:when>
+											        <c:otherwise>
+											            0
+											        </c:otherwise>
+											    </c:choose>
+				                            </div>
+				                            <div><i class="fas fa-thumbs-down"></i><strong>싫어요:</strong> 
+				                            	<c:choose>
+											        <c:when test="${list.HATE_STATE != null}">
+											            ${list.HATE_STATE}
+											        </c:when>
+											        <c:otherwise>
+											            0
+											        </c:otherwise>
+											    </c:choose>
+				                            </div>
 				                            <div><input type="hidden" name="review_id" class="review_id" value="${list.REVIEW_ID}"></div>
 				                        </div>
 				                    </div>

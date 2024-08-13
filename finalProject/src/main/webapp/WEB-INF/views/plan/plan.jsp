@@ -70,9 +70,10 @@
 	    <div class="container full-height-container">
 	      <div class="row">
 	        <div class="col-lg-4">
-	        	<div>
+	        	<div class="title-box">
 	        		<input type="hidden" value="<%= session.getAttribute("info_id") %>" class="info_id">
 	        		<div class="title"><%= session.getAttribute("info_name") %></div>
+	        		<div class="save-btn"><input type="button" class="btn" value="저장"></div>
 	        	</div>
 	        	<div class="selectedDate" name="dates">
 	        		<%= session.getAttribute("start_date") %> ~ <%= session.getAttribute("end_date") %>
@@ -97,7 +98,6 @@
 	        
 	        <!-- Tmap -->
 	        <div class="col-lg-8 mapBlock">
-	        <div><input type="button" class="btn" value="저장"></div>
 	        <div>&nbsp&nbsp</div>
 	          
 	          <p id="result"></p>

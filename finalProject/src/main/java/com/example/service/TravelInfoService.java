@@ -12,8 +12,11 @@ public interface TravelInfoService {
 	boolean hasTravelInfo(String memberEmail);
     
 	public List<TravelInfoVO> getAllTravelInfo();
+	
     TravelInfoVO getTravelInfoById(int infoId);
     
     List<Map<String, Object>> selectPlan(int info_id);
+    
+    public List<String> calDates(int infoId);
 } 
  

@@ -48,6 +48,19 @@
             tp.plan_day, tp.plan_seq
 	</select>
 
-
+	<select id="calDates" resultType="java.lang.String">
+	<![CDATA[  
+		WITH date_range AS (
+		    SELECT
+		        TO_DATE('2024-08-21', 'YYYY-MM-DD') + LEVEL - 1 AS day
+		    FROM
+		        dual
+		    CONNECT BY
+		        LEVEL <= (TO_DATE('2024-09-02', 'YYYY-MM-DD') - TO_DATE('2024-08-21', 'YYYY-MM-DD') + 1)
+		)
+		SELECT TO_CHAR(day, 'YYYY-MM-DD') AS formatted_day
+		FROM date_range
+	]]>
+	</select>
 	
 </mapper>

@@ -25,18 +25,23 @@
 	<!-- myPage 나의 일정 -->
 	<select id="selectPlanList" resultType="hashmap">
 		SELECT 	DISTINCT ti.info_id info_id, ti.info_name info_name, ti.member_email member_email, ti.trip_place trip_place, ti.start_date start_date, ti.end_date end_date
-        FROM   	travel_info ti JOIN travel_plan tp
-        ON     	tp.info_id = ti.info_id
+        FROM   	travel_info ti 
+        JOIN 	travel_plan tp		ON     	tp.info_id = ti.info_id
         WHERE  	ti.member_email = #{user_id}
         ORDER BY 	ti.info_id DESC
 	</select>
 	
 	<!-- myPage 나의 후기 -->
 	<select id="selectReviewList" resultType="hashmap">
-		SELECT 	*
-        FROM   	review
-        WHERE  	member_email = #{user_id}
-        ORDER BY	review_regdate DESC
+		SELECT 	r.member_email member_email, r.review_title review_title, r.review_regdate review_regdate, r.review_cnt review_cnt, r.review_star review_star, r.review_id review_id,
+				MAX(l.like_state) like_state,
+				MAX(h.hate_state) hate_state
+        FROM   	review r 
+        LEFT JOIN 	likes l 	ON r.review_id = l.review_id
+        LEFT JOIN 	hate h		ON r.review_id = h.review_id
+        WHERE  	r.member_email = #{user_id}
+        GROUP BY	r.member_email, r.review_title, r.review_regdate, r.review_cnt, r.review_star, r.review_id
+        ORDER BY	r.review_regdate DESC
 	</select>
 	
 	<!-- myPage 나의 신고 -->

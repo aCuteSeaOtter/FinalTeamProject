@@ -53,43 +53,73 @@
       <div></div>
     </div>
   </div>
-  <!-- 외부 배경 래퍼 -->
-  <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-    <!-- 상단 바 섹션 -->
+  <!-- OUTER BG WRAPPER -->
   
-      </div>
-      <!-- 상단 바 컨 -->
+	<div class="bg-outer-wrapper float-left w-100">
+    	<div class="clearfix"></div> 
+    	<!-- HEADER SECTION -->
+
+		<jsp:include page="/WEB-INF/views/header.jsp" />
+
+
     </div>
-    <div class="clearfix"></div>
-    <jsp:include page="/WEB-INF/views/header.jsp" />
-    <!-- 외부 배경 래퍼 -->
-  </div>
   
   <!-- 주요 목적지 섹션 -->
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 	    <div class="container full-height-container">
 			<div class="row">
+				<h2></h2>
 				<c:forEach items="${myPlan}" var="list">
-	      
 				
 			        <div class="col-lg-3">
 			        	<div class="wrapper">
 			        		<div class="block">
-			        			<h2>${list.plan_day}일차</h2>
+			        			<span>${list.plan_day}</span>
+			        			<span>일차</span>
 			        			<div>
 			        				<ul>
 			        				<c:forEach var="attr" items="${list.attr_name}">
 				        				<li>${attr.ATTR_NAME}</li>
+				        				<input type="hidden" class="attr_id" value="${attr.ATTR_ID}">
+				        				<input type="hidden" class="info_id" value="${attr.INFO_ID}">
+				        				<input type="hidden" class="trip_place" value="${attr.TRIP_PLACE}">
 				        			</c:forEach>
 				        			</ul>
 			        			</div>
-			        			
+				        		
 			        		</div>
 			        	</div>
 					    
 					<!-- col -->
 			        </div>
 				</c:forEach>
+				
+				
+				<div class="myModal">
+					<div class="modal-content">
+						<span class="closeBtn">&times;</span>
+						<div class="content">
+						
+							<!-- 내용 출력 -->
+							<div class="search">
+								<input type="text" class="searchBar" placeholder="검색어를 입력하세요"/>
+								<input type="button" class="btn saveBtn" value="저장"/>
+							</div>
+							<hr/>
+							
+							<div class="scrollBox"> 
+		    
+						    <!-- 명소 출력 시작 -->
+						        
+					        </div>
+					        <input type="button" value="이전" class="prevPage btn"/>
+					        <input type="button" value="다음" class="nextPage btn"/>
+			                
+						</div>
+					</div>
+				</div>
+				
+				
 	        <!-- row -->
       		</div>
       <!-- 컨테이너 -->
@@ -115,7 +145,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/search.js"></script>
-  <script src="/js/planList.js"></script>
+  <script src="/js/myPlan.js"></script>
   <!-- <script src="/js/tmap.js"></script> -->
   
   

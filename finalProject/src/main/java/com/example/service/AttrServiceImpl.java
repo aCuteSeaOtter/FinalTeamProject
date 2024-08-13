@@ -14,12 +14,16 @@ public class AttrServiceImpl implements AttrService {
 	@Autowired
 	private AttrDAO attrDAO;
 	
-    public List<AttrVO> selectAttrList() {
-        return attrDAO.selectAttrList();
+    public List<AttrVO> selectAttrList(String local) {
+        return attrDAO.selectAttrList(local);
     }
     
     public List<AttrVO> selectAttrList(int selectedAttrIds) {
         return attrDAO.selectAttrList(selectedAttrIds);
+    }
+    
+    public List<AttrVO> editAttrList(String trip_place) {
+        return attrDAO.editAttrList(trip_place);
     }
     
     public AttrVO selectAttrListById(Integer id) {

@@ -24,8 +24,11 @@ public interface TravelInfoDAO {
 	int existsByMemberEmail(@Param("memberEmail") String memberEmail);
     
 	public List<TravelInfoVO> getAllTravelInfo();
+	
     TravelInfoVO getTravelInfoById(int infoId);
     
     // 상세보기
     List<Map<String, Object>> selectPlan(int info_id);
+    
+    public List<String> calDates(int infoId);
 }

@@ -9,8 +9,11 @@
         SELECT *
         FROM ATTR
         <where>
-	        <if test="attr_id != null">
+	        <!-- <if test="attr_id != null">
 	            AND attr_id = #{attr_id}
+	        </if> -->
+	        <if test="local != null">
+	            AND info_addr LIKE '%' || #{local} || '%'
 	        </if>
 	    </where>
     </select>
@@ -20,6 +23,20 @@
         SELECT attr_id, attr_name, attr_local, attr_lat, attr_lon
         FROM ATTR
         WHERE attr_id = #{attd_id}
+    </select>
+    
+    <!-- myPage attr 리스트 받아오기 -->
+    <select id="editAttrList" resultType="com.example.domain.AttrVO">
+        SELECT *
+        FROM ATTR
+        <where>
+	        <!-- <if test="attr_id != null">
+	            AND attr_id = #{attr_id}
+	        </if> -->
+	        <if test="trip_place != null">
+	            AND info_addr LIKE '%' || #{trip_place} || '%'
+	        </if>
+	    </where>
     </select>
     
     <!-- 검색어를 이용한 명소 검색 -->

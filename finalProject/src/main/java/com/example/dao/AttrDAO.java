@@ -15,9 +15,11 @@ import com.example.domain.AttrVO;
 @Mapper		// Mapper 호출 
 public interface AttrDAO {
 	// 기본 명소 출력
-	public List<AttrVO> selectAttrList();
+	public List<AttrVO> selectAttrList(String local);
 	// id를 이용한 명소 출력
 	public List<AttrVO> selectAttrList(int selectedAttrIds);
+	// id를 이용한 명소 출력
+	public List<AttrVO> editAttrList(String trip_place);
 	// 검색어를 이용한 명소 검색
 	List<AttrVO> searchAttrByKeyword(String keyword);
 	
