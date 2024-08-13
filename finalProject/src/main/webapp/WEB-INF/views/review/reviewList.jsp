@@ -112,11 +112,17 @@
 														<i class="fa-solid fa-thumbs-up"></i>
 														<span class="text-size-14">${review.LIKE_COUNT}</span>
 													</div>
+													
+													<div>
+											            <i class="fa-solid fa-comment"></i>
+														<span class="count">${review.COMMENT_COUNT}</span>
+											        </div>
 													<!-- 조회수 표시 -->
                                                     <div class="views">
                                                         <i class="fa-solid fa-eye"></i> <!-- 조회수 아이콘 -->
                                                         <span class="text-size-14">${review.REVIEW_CNT}</span> <!-- 조회수 -->
                                                     </div>
+													
                                                 </div>
                                             </div>
                                         </div>

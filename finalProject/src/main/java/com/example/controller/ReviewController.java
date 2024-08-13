@@ -100,11 +100,6 @@ public class ReviewController<SearchCriteria> {
        return "/review/reviewList";
    }
    
-   
-
-
-
-   
    // 리뷰 상세보기
    @RequestMapping("/selectReview")
    public void getReview(@RequestParam int review_id, Model model, HttpSession session, ReviewVO vo) {
@@ -119,11 +114,13 @@ public class ReviewController<SearchCriteria> {
        model.addAttribute("reviews", result.get("reviews"));
        model.addAttribute("review", result.get("reviewOne"));
 
+       // 댓글 수 조회
+       int commentCount = reviewService.getCommentCount(review_id);
+       model.addAttribute("commentCount", commentCount);
+
        // 여행 계획 정보 조회
        List<Map<String, Object>> myPlan = reviewService.getMyPlan(vo);
-       System.out.println("controller myPlan list : " + myPlan);
-       
-       // 여행 계획 데이터 전처리
+
        List<Integer> planDays = myPlan.stream()
            .map(map -> {
                Object planDay = map.get("PLAN_DAY");
@@ -137,8 +134,6 @@ public class ReviewController<SearchCriteria> {
            .sorted()
            .collect(Collectors.toList());
 
-       System.out.println("planDays : " + planDays); // 추가된 로그
-
        Map<Integer, List<Map<String, Object>>> groupedPlans = myPlan.stream()
            .filter(map -> {
                Object planDay = map.get("PLAN_DAY");
@@ -149,8 +144,6 @@ public class ReviewController<SearchCriteria> {
                Collectors.toList()
            ));
 
-       System.out.println("groupedPlans : " + groupedPlans); // 추가된 로그
-
        List<Map<String, Object>> organizedPlans = planDays.stream()
            .map(day -> {
                Map<String, Object> dayPlan = new HashMap<>();
@@ -160,13 +153,10 @@ public class ReviewController<SearchCriteria> {
            })
            .collect(Collectors.toList());
 
-       System.out.println("controller myPlan : " + organizedPlans); // 추가된 로그
-
        model.addAttribute("myPlan", organizedPlans);
 
        // 세션에서 사용자 ID 가져오기, 사용자 nickname 가져오기
        LoginVO member = (LoginVO) session.getAttribute("member");
-       
        if (member != null) {
            String nickname = member.getMember_nickname();
            String email = member.getMember_email(); // 이메일 가져오기

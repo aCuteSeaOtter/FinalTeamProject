@@ -42,4 +42,6 @@ public interface ReviewDAO {
    
    // 리뷰 조회수
    void incrementViewCount(ReviewVO vo);
+ 
+   int getCommentCount(int review_id);
 }

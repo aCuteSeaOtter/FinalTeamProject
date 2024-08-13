@@ -13,4 +13,6 @@ public interface CommentService {
 	public List<Map<String, Object>> selectAllComment(Integer review_id);
 	// 댓글삭제
 	Integer deleteComment(Integer comment_id);
+	
+	Integer getCommentCount(Integer review_id);
 }

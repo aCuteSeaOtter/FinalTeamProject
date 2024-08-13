@@ -40,8 +40,18 @@ public class CommentController {
 	
 	// 댓글 삭제
 	@DeleteMapping("comments/{comment_id}")
-	public Integer delete(@PathVariable Integer comment_id) {
-		// comment_id에 해당하는 댓글을 삭제하고 삭제된 댓글 수를 반환
-		return commentService.deleteComment(comment_id);
+	public String delete(@PathVariable Integer comment_id) {
+	    // comment_id에 해당하는 댓글을 삭제하고 삭제 결과에 따라 문자열 반환
+	    Integer result = commentService.deleteComment(comment_id);
+	    if (result > 0) {
+	        return "success"; // 삭제 성공
+	    } else {
+	        return "fail"; // 삭제 실패
+	    }
+	}
+	
+	@GetMapping("commentCount")
+	public Integer getCommentCount(Integer review_id) {
+	    return commentService.getCommentCount(review_id);
 	}
 }
