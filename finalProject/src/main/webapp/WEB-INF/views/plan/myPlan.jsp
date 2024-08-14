@@ -66,30 +66,43 @@
   
   <!-- 주요 목적지 섹션 -->
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
+  		
 	    <div class="container full-height-container">
+	    	<h1>일정 상세</h1>
 			<div class="row">
 				<h2></h2>
 				<c:forEach items="${myPlan}" var="list">
-				
+					
 			        <div class="col-lg-3">
 			        	<div class="wrapper">
 			        		<div class="block">
 			        			<span>${list.plan_day}</span>
 			        			<span>일차</span>
+			        			<input type="button" class="attr-edit-btn btn" value="편집">
 			        			<div>
-			        				<ul>
+			        				<ul class="sortable">
 			        				<c:forEach var="attr" items="${list.attr_name}">
-				        				<li>${attr.ATTR_NAME}</li>
-				        				<input type="hidden" class="attr_id" value="${attr.ATTR_ID}">
-				        				<input type="hidden" class="info_id" value="${attr.INFO_ID}">
-				        				<input type="hidden" class="trip_place" value="${attr.TRIP_PLACE}">
+				        				<li>
+					        				<c:choose>
+							                    <c:when test="${fn:length(attr.ATTR_NAME) > 7}">
+							                        ${fn:substring(attr.ATTR_NAME, 0, 7)}...
+							                    </c:when>
+							                    <c:otherwise>
+							                        ${attr.ATTR_NAME}
+							                    </c:otherwise>
+							                </c:choose>
+				        					<img src="/images/plan/sortable.png" class="sortable-png">
+				        					<input type="hidden" class="attr_id" value="${attr.ATTR_ID}">
+					        				<input type="hidden" class="info_id" value="${attr.INFO_ID}">
+					        				<input type="hidden" class="trip_place" value="${attr.TRIP_PLACE}">
+				        				</li>
 				        			</c:forEach>
 				        			</ul>
 			        			</div>
 				        		
 			        		</div>
 			        	</div>
-					    
+					    <input type="button" class="edit-btn btn btn-primary" value="수정">
 					<!-- col -->
 			        </div>
 				</c:forEach>
@@ -103,7 +116,6 @@
 							<!-- 내용 출력 -->
 							<div class="search">
 								<input type="text" class="searchBar" placeholder="검색어를 입력하세요"/>
-								<input type="button" class="btn saveBtn" value="저장"/>
 							</div>
 							<hr/>
 							
@@ -114,6 +126,7 @@
 					        </div>
 					        <input type="button" value="이전" class="prevPage btn"/>
 					        <input type="button" value="다음" class="nextPage btn"/>
+					        <input type="button" class="btn saveBtn" value="저장"/>
 			                
 						</div>
 					</div>
@@ -135,6 +148,8 @@
 
   
   <script src="/assets/js/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="/assets/js/popper.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>
   <script src="/assets/js/owl.carousel.js"></script>

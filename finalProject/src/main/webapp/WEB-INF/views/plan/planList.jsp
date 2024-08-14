@@ -132,68 +132,107 @@
   	              </div>
   	            </form>
   	          </div>
+			  <div class="widget">
+                  <div class="tabs">
+                      <ul class="nav nav-tabs" id="tabs-posts" role="tablist" data-aos="fade-up" data-aos-duration="700">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular" aria-selected="true">스타일</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">대상</a>
+                          </li>
+                      </ul>
+                      <div class="tab-content" id="tabs-posts-content" data-aos="fade-up" data-aos-duration="700">
+                          <div class="tab-pane fade show active" id="popular" role="tabpanel">
+                              <div class="post-thumbnail-list">
+								<ul class="tag_list style_list js_one" id="styleList">
+								    <li id="style1"><button type="button" class="btn" data-value="역사">역사</button></li>
+								    <li id="style2"><button type="button" class="btn" data-value="음식">음식</button></li>
+								    <li id="style3"><button type="button" class="btn" data-value="자연">자연</button></li>
+								    <li id="style4"><button type="button" class="btn" data-value="체험">체험</button></li>
+								    <li id="style5"><button type="button" class="btn" data-value="관광">관광</button></li>
+								    <li id="style6"><button type="button" class="btn" data-value="문화">문화</button></li>
+								    <li id="style7"><button type="button" class="btn" data-value="쇼핑">쇼핑</button></li>
+								    <li id="style8"><button type="button" class="btn" data-value="드라이브">드라이브</button></li>
+								</ul>
+                              </div>
+                          </div>
+                          <div class="tab-pane fade" id="featured" role="tabpanel">
+                              <div class="post-thumbnail-list">
+                                  <div class="post-thumbnail-list">
+									<ul class="tag_list js_one" id="whoList">
+									    <li id="who1"><button type="button" class="btn" data-value="혼자">혼자</button></li>
+									    <li id="who2"><button type="button" class="btn" data-value="친구">친구</button></li>
+									    <li id="who3"><button type="button" class="btn" data-value="연인">연인</button></li>
+									    <li id="who4"><button type="button" class="btn" data-value="가족">가족</button></li>
+									</ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
   	        </div>
   	      </div>
 	    </div>
 	  </div>
 	</section>
 
+	<!-- 페이지네이션 링크 -->
+		   <div class="pagination">
+		       <!-- 이전 페이지 링크 -->
+		       <c:if test="${currentPage > 1}">
+		           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage - 1}" class="pagination-button">Previous</a>
+		       </c:if>
 
-    <!-- 페이지네이션 링크 -->
-    <div class="pagination">
-      <!-- 이전 페이지 링크 -->
-      <c:if test="${currentPage > 1}">
-        <a href="?searchKeyword=${searchKeyword}&page=${currentPage - 1}">이전</a>
-      </c:if>
+		       <!-- 페이지 번호 링크 -->
+		       <c:choose>
+		           <c:when test="${totalPages <= 10}">
+		               <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
+		               <c:forEach var="i" begin="1" end="${totalPages}">
+		                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+		                      class="${i == currentPage ? 'active' : ''}">${i}</a>
+		               </c:forEach>
+		           </c:when>
+		           <c:otherwise>
+		               <!-- 페이지가 10페이지 초과인 경우 -->
+		               <c:if test="${currentPage > 4}">
+		                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=1">1</a>
+		                   <span>...</span>
+		               </c:if>
 
-      <!-- 페이지 번호 링크 -->
-      <c:choose>
-        <c:when test="${totalPages <= 10}">
-          <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
-          <c:forEach var="i" begin="1" end="${totalPages}">
-            <a href="?searchKeyword=${searchKeyword}&page=${i}" 
-               class="${i == currentPage ? 'active' : ''}">${i}</a>
-          </c:forEach>
-        </c:when>
-        <c:otherwise>
-          <!-- 페이지가 10페이지 초과인 경우 -->
-          <c:if test="${currentPage > 4}">
-            <a href="?searchKeyword=${searchKeyword}&page=1">1</a>
-            <span>...</span>
-          </c:if>
+		               <c:set var="startPage" value="${currentPage - 3}" />
+		               <c:set var="endPage" value="${currentPage + 3}" />
+		               
+		               <!-- startPage가 1보다 작으면 1로 설정 -->
+		               <c:if test="${startPage < 1}">
+		                   <c:set var="startPage" value="1" />
+		               </c:if>
+		               
+		               <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
+		               <c:if test="${endPage > totalPages}">
+		                   <c:set var="endPage" value="${totalPages}" />
+		               </c:if>
 
-          <c:set var="startPage" value="${currentPage - 3}" />
-          <c:set var="endPage" value="${currentPage + 3}" />
-          
-          <!-- startPage가 1보다 작으면 1로 설정 -->
-          <c:if test="${startPage < 1}">
-            <c:set var="startPage" value="1" />
-          </c:if>
-          
-          <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
-          <c:if test="${endPage > totalPages}">
-            <c:set var="endPage" value="${totalPages}" />
-          </c:if>
+		               <c:forEach var="i" begin="${startPage}" end="${endPage}">
+		                   <c:if test="${i > 0 && i <= totalPages}">
+		                       <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+		                          class="${i == currentPage ? 'active' : ''}">${i}</a>
+		                   </c:if>
+		               </c:forEach>
 
-          <c:forEach var="i" begin="${startPage}" end="${endPage}">
-            <c:if test="${i > 0 && i <= totalPages}">
-              <a href="?searchKeyword=${searchKeyword}&page=${i}" 
-                 class="${i == currentPage ? 'active' : ''}">${i}</a>
-            </c:if>
-          </c:forEach>
+		               <c:if test="${currentPage < totalPages - 3}">
+		                   <span>...</span>
+		                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
+		               </c:if>
+		           </c:otherwise>
+		       </c:choose>
 
-          <c:if test="${currentPage < totalPages - 3}">
-            <span>...</span>
-            <a href="?searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
-          </c:if>
-        </c:otherwise>
-      </c:choose>
-
-      <!-- 다음 페이지 링크 -->
-      <c:if test="${currentPage < totalPages}">
-        <a href="?searchKeyword=${searchKeyword}&page=${currentPage + 1}">다음</a>
-      </c:if>
-    </div>
+		       <!-- 다음 페이지 링크 -->
+		       <c:if test="${currentPage < totalPages}">
+		           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage + 1}" class="pagination-button">Next</a>
+		       </c:if>
+		   </div>
 
     <jsp:include page="/WEB-INF/views/footer.jsp" />
 
@@ -210,6 +249,7 @@
     <script src="/assets/js/wow.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/search.js"></script>
+	<script src="/js/planList.js"></script>
     
   </body>
 

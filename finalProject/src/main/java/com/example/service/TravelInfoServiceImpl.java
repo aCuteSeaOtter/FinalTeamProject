@@ -30,8 +30,8 @@ public class TravelInfoServiceImpl implements TravelInfoService {
         return result > 0; // 1이면 true, 0이면 false
     }
 
-    public List<TravelInfoVO> getAllTravelInfo() {
-        return travelInfoDAO.getAllTravelInfo();
+    public List<TravelInfoVO> getAllTravelInfo(Map<String, Object> params) {
+        return travelInfoDAO.getAllTravelInfo(params);
     }
     
     public TravelInfoVO getTravelInfoById(int infoId) {
@@ -45,5 +45,34 @@ public class TravelInfoServiceImpl implements TravelInfoService {
     
     public List<String> calDates(int infoId) {
         return travelInfoDAO.calDates(infoId);
+    }
+    
+    // 페이징
+    public int getTotalCount(Map<String, Object> params) {
+        return travelInfoDAO.getTotalCount(params);
+    }
+    
+ // 스타일 필터링
+    @Override
+    public List<TravelInfoVO> filterByStyle(Map<String, Object> params) {
+        return travelInfoDAO.filterByStyle(params);
+    }
+
+    // 대상 필터링
+    @Override
+    public List<TravelInfoVO> filterByWho(Map<String, Object> params) {
+        return travelInfoDAO.filterByWho(params);
+    }
+
+    // 스타일 필터링에 대한 총 항목 수 조회
+    @Override
+    public int getTotalCountForStyle(String style) {
+        return travelInfoDAO.getTotalCountForStyle(style);
+    }
+
+    // 대상 필터링에 대한 총 항목 수 조회
+    @Override
+    public int getTotalCountForWho(String who) {
+        return travelInfoDAO.getTotalCountForWho(who);
     }
 } 

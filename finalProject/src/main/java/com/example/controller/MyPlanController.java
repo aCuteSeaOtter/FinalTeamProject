@@ -10,16 +10,20 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.AttrVO;
+import com.example.domain.LoginVO;
 import com.example.service.AttrService;
 import com.example.service.MyPlanService;
 import com.example.service.TravelInfoService;
 import com.example.service.TravelPlanService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MyPlanController {
@@ -69,6 +73,7 @@ public class MyPlanController {
 	        .collect(Collectors.toList());
 		
 		r.addFlashAttribute("myPlan", organizedPlans);
+		
 		return "redirect:plan/myPlan";
 	}
 	
@@ -111,8 +116,35 @@ public class MyPlanController {
 		return "편집성공";
 	}
 	
+	@PostMapping("/updateSeq")
+	@ResponseBody
+	public String updateSeq(@RequestBody Map<String, Object> data) {
+		List<Map<String, Object>> itemIndices = (List<Map<String, Object>>) data.get("itemIndices");
+		
+		if (itemIndices != null) {
+            for (Map<String, Object> item : itemIndices) {
+            	String attr_id  = (String) item.get("id");
+            	int plan_seq    = (int) item.get("index");
+            	String info_id  = (String) item.get("info_id");
+            	String plan_day = (String) item.get("day");
+            	
+                travelPlanService.updateSeq(attr_id, plan_seq, info_id, plan_day);
+            }
+        }
+		
+		return "성공";
+	}
+	
+	
+	
 	@RequestMapping("/plan/myPlan")
-	public String myPlan() {
+	public String myPlan(HttpSession session) {
+		
+		LoginVO member = (LoginVO)session.getAttribute("member");
+        if (member == null) {
+	        // 회원 정보가 세션에 없을 경우 로그인 페이지로 리다이렉트
+	        return "redirect:/login/loginForm";
+	    }
 		
 		return "plan/myPlan";
 	}

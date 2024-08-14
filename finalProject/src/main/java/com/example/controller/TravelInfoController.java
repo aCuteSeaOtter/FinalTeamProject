@@ -9,16 +9,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.LoginVO;
 import com.example.domain.TravelInfoVO;
-import com.example.domain.TravelPlanVO;
 import com.example.service.TravelInfoService;
 
 import jakarta.servlet.http.HttpSession;
@@ -73,10 +73,48 @@ public class TravelInfoController {
         return "redirect:/plan/plan";
     }
     
+    // 여행 계획 목록 보기
     @RequestMapping("/plan/planList")
-    public String getPlanList(Model m) {
-    	List<TravelInfoVO> travelInfoList = travelInfoService.getAllTravelInfo();
+    public String getPlanList(Model m,
+                              @RequestParam(required = false) String searchCondition,
+                              @RequestParam(required = false) String searchKeyword,
+                              @RequestParam(defaultValue = "1") int page) {
+
+        int pageSize = 6; // 페이지당 여행 계획 수
+        
+        // 페이지와 페이지당 데이터 수를 이용해 offset 계산
+        int offset = (page - 1) * pageSize;
+
+        // 검색 조건 및 키워드를 위한 맵 생성
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("searchCondition", searchCondition);
+        map.put("searchKeyword", searchKeyword);
+        map.put("offset", offset);
+        map.put("pageSize", pageSize);
+
+        // 총 여행 계획 수 조회
+        int totalCount = travelInfoService.getTotalCount(map);  // 해당 서비스 메서드 구현 필요
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+        
+        System.out.println("총 갯수 : " + totalCount + " // 총 페이지 수 : " +  totalPages);
+
+        // 현재 페이지가 유효한지 확인
+        if (page < 1) {
+            page = 1; // 페이지는 1보다 작을 수 없음
+        } else if (page > totalPages) {
+            page = totalPages; // 페이지가 총 페이지 수보다 클 수 없음
+        }
+
+        // 여행 계획 목록 조회
+        List<TravelInfoVO> travelInfoList = travelInfoService.getAllTravelInfo(map);
+
+        // 모델에 여행 계획 목록 및 페이지 정보 추가
         m.addAttribute("travelInfoList", travelInfoList);
+        m.addAttribute("searchCondition", searchCondition);
+        m.addAttribute("searchKeyword", searchKeyword);
+        m.addAttribute("currentPage", page);
+        m.addAttribute("totalPages", totalPages);
+
         return "/plan/planList";
     }
     
@@ -116,6 +154,42 @@ public class TravelInfoController {
         return "/plan/selectPlan";
     }
 
+    @GetMapping("/plan/filterTravel")
+    public ResponseEntity<Map<String, Object>> filterTravel(
+            @RequestParam String filterType,
+            @RequestParam String value,
+            @RequestParam(defaultValue = "1") int page) {
 
+        int pageSize = 6; // 페이지당 여행 계획 수
+        int offset = (page - 1) * pageSize;
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("offset", offset);
+        map.put("pageSize", pageSize);
+
+        Map<String, Object> response = new HashMap<>();
+        List<TravelInfoVO> travelInfoList;
+        int totalPages;
+
+        if ("style".equals(filterType)) {
+            map.put("style", value);
+            travelInfoList = travelInfoService.filterByStyle(map);
+            int totalCount = travelInfoService.getTotalCountForStyle(value);
+            totalPages = (int) Math.ceil((double) totalCount / pageSize);
+        } else if ("who".equals(filterType)) {
+            map.put("who", value);
+            travelInfoList = travelInfoService.filterByWho(map);
+            int totalCount = travelInfoService.getTotalCountForWho(value);
+            totalPages = (int) Math.ceil((double) totalCount / pageSize);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
+        response.put("travelInfoList", travelInfoList);
+        response.put("currentPage", page);
+        response.put("totalPages", totalPages);
+
+        return ResponseEntity.ok(response);
+    }
 
 }

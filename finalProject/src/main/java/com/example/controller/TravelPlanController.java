@@ -104,8 +104,6 @@ public class TravelPlanController {
 		
 		String[] parts = localName.trim().split("\\s+");
 	    String local = parts[parts.length - 1];
-	    
-	    System.out.println(local);
 
 		List<AttrVO> result = attrService.selectAttrList(local);
 		return result;
@@ -117,9 +115,8 @@ public class TravelPlanController {
 		List<Map<String, Object>> selectedAttrList = new ArrayList<>();
 		
 		for (Integer attr_id : selectedAttrIds) {
-			System.out.println("selectedAttrIds : " + selectedAttrIds.size() + " attr_id : " + attr_id);
 			List<Map<String, Object>> attrList = travelPlanService.selectedAttrList(attr_id, plan_day, info_id);
-			System.out.println("attrList : " + attrList);
+			
             if (attrList != null) {
                 selectedAttrList.addAll(attrList); // 선택된 ID들에 대한 결과를 통합
             }

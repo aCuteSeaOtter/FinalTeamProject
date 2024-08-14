@@ -27,14 +27,51 @@ var selectedAttrIdDataMap = {};
 let day;
 
 $(function() {
-	
+	var modal;
 	let infoId;
 	
-	$('.block').on('click', function() {
-		infoId 	  = $(this).find('.info_id').val();
-		let tripPlace = $(this).find('.trip_place').val();
+	$('.sortable').sortable({
+		update: function(event, ui) {
+			ReservationSeq  = $(this).sortable('toArray').toString();
+			var itemIndices = [];
+			infoId 			= $(this).find('.info_id').val();
+			day 			= $(this).closest('.block').find('span:nth-child(1)').html();
+			
+			$(this).closest('.col-lg-3').find('.edit-btn').css({'display': 'block'});
+			
+			$(this).find('li').each(function(index) {
+				var itemId = $(this).find('.attr_id').val();
+				itemIndices.push({ id: itemId, index: index+1, info_id: infoId, day: day });
+		    });
+			
+			$('.edit-btn').off('click').on('click', function() {
+				
+				$.ajax({
+	                url: '/updateSeq',
+	                type: 'POST',
+	                contentType: 'application/json',
+	                data: JSON.stringify({
+	                    itemIndices: itemIndices
+	                }),
+	                success: function(response) {
+	                    console.log('/updateSeq success : ' + response);
+						alert('수정되었습니다.');
+						
+	                },
+	                error: function(xhr, status, error) {
+	                    console.log('/updateSeq error : ' + error);
+	                }
+	            });
+			});
+		}
+	});
+	
+	$('.attr-edit-btn').on('click', function() {
+		infoId 	  = $(this).closest('div').find('.info_id').val();
+		let tripPlace = $(this).closest('div').find('.trip_place').val();
 		
-		day = $(this).find('span:nth-child(1)').html();
+		day = $(this).closest('div').find('span:nth-child(1)').html();
+		
 		var attrIds = []; // 빈 배열 생성
 		
 		let selectedDates = [];
@@ -50,11 +87,7 @@ $(function() {
 			error: function(error) {
 				console.log("/calDates error : ", error);
 			}
-		})
-		
-
-	    
-		
+		});
 		
 		// 각 날짜에 대한 배열 초기화
 	    for (let i = 0; i < selectedDates.length; i++) {
@@ -63,11 +96,10 @@ $(function() {
 		
 		if (!Array.isArray(selectedAttrIdDataMap[day])) {
 	        selectedAttrIdDataMap[day] = [];
-	        
 	    }
 		
 		// .attr_id 클래스를 가진 모든 input 요소를 선택
-	    $(this).find('.attr_id').each(function() {
+	    $(this).closest('div').find('.attr_id').each(function() {
 	        // 각 input 요소의 값을 배열에 추가
 	        attrIds.push($(this).val());
 			
@@ -75,83 +107,11 @@ $(function() {
 	    });
 		
 		// 모달 버튼과 모달창 가져오기
-		var modal = $('.myModal');
+		modal = $('.myModal');
 		modal.css({'display' : 'block'});
 		
 		loadAllAttractions(tripPlace);
 		
-		
-		
-		var keyword = $('.searchBar').val();
-		
-		
-		
-		$('.nextPage').click(function() {
-	        if (currentPage < totalPages) {
-	            currentPage++;
-	            showPage(currentPage);
-	        }
-	    });
-
-	    $('.prevPage').click(function() {
-	        if (currentPage > 1) {
-	            currentPage--;
-	            showPage(currentPage);
-	        }
-	    });
-		
-		// 선택박스 클릭 시 이미지 상태 및 선택된 항목 처리
-	    $(document).on('click', '.selectBox', function() {
-	        const currentSrc = $(this).attr('src');
-			var divBlock = $(this).closest('.divBlock');
-
-	        // 선택박스 선택 전
-	        if (currentSrc.includes('/images/plan/none_select.svg')) {
-	            $(this).attr('src', '/images/plan/place_select.svg');
-				
-				var selectedAttrId = divBlock.find(".attrId").val();
-				
-	            // day에 대한 배열이 초기화되어 있는지 확인
-	            if (!Array.isArray(selectedAttrIdDataMap[day])) {
-	                selectedAttrIdDataMap[day] = [];
-	            }
-
-	            // 배열에 선택된 명소 id 저장
-	            selectedAttrIdDataMap[day].push(selectedAttrId);
-				console.log(selectedAttrIdDataMap[day]);
-
-	        // 선택박스 선택 후
-	        } else {
-	            $(this).attr('src', '/images/plan/none_select.svg');
-				
-				var canceledAttrId = divBlock.find(".attrId").val();
-                selectedAttrIdDataMap[day] = selectedAttrIdDataMap[day].filter(id => id !== canceledAttrId);
-				
-				console.log(selectedAttrIdDataMap[day]);
-				
-	        } // end if
-	    }); // end $(".selectBox").on("click", function()
-		
-		
-		
-		// '저장' 버튼을 눌렀을 때
-		$('.saveBtn').on('click', function() {
-			$.ajax({
-				url: '/editPlan',
-				type: 'POST',
-				data: { day: day, data: selectedAttrIdDataMap[day], info_id: infoId },
-				success: function(response) {
-					console.log('/editPlan success : ', response);
-					alert("저장되었습니다.");
-					modal.css({'display' : 'none'});
-					window.location.href = '/plan/myPage';
-				},
-				error: function(error) {
-					console.log('/editPlan error : ', error);
-				}
-			});
-		});
-
 		// 'X' 버튼을 눌렀을 때 모달 닫기
 		$(document).on('click', '.closeBtn', function() {
 			modal.css({'display' : 'none'});
@@ -170,7 +130,108 @@ $(function() {
 	            modal.css({'display': 'none'});
 	        }
 	    });
+		
+		
 	}); // end .block
+	
+	// '저장' 버튼을 눌렀을 때
+	$('.saveBtn').on('click', function() {
+		$.ajax({
+			url: '/editPlan',
+			type: 'POST',
+			data: { day: day, data: selectedAttrIdDataMap[day], info_id: infoId },
+			success: function(response) {
+				console.log('/editPlan success : ', response);
+				modal.css({'display' : 'none'});
+				window.location.href = '/plan/myPage';
+			},
+			error: function(error) {
+				console.log('/editPlan error : ', error);
+			}
+		});
+		alert("저장되었습니다.");
+	});
+	
+	
+	$('.nextPage').click(function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+        }
+    });
+
+    $('.prevPage').click(function() {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+        }
+    });
+	
+	// 선택박스 클릭 시 이미지 상태 및 선택된 항목 처리
+    $(document).on('click', '.selectBox', function() {
+        const currentSrc = $(this).attr('src');
+		var divBlock = $(this).closest('.divBlock');
+
+        // 선택박스 선택 전
+        if (currentSrc.includes('/images/plan/none_select.svg')) {
+            $(this).attr('src', '/images/plan/place_select.svg');
+			
+			var selectedAttrId = divBlock.find(".attrId").val();
+			
+            // day에 대한 배열이 초기화되어 있는지 확인
+            if (!Array.isArray(selectedAttrIdDataMap[day])) {
+                selectedAttrIdDataMap[day] = [];
+            }
+
+            // 배열에 선택된 명소 id 저장
+            selectedAttrIdDataMap[day].push(selectedAttrId);
+			console.log(selectedAttrIdDataMap[day]);
+
+        // 선택박스 선택 후
+        } else {
+            $(this).attr('src', '/images/plan/none_select.svg');
+			
+			var canceledAttrId = divBlock.find(".attrId").val();
+            selectedAttrIdDataMap[day] = selectedAttrIdDataMap[day].filter(id => id !== canceledAttrId);
+			
+			console.log(selectedAttrIdDataMap[day]);
+			
+        } // end if
+		
+    }); // end $(".selectBox").on("click", function()
+	
+	// 검색 기능
+    $('.searchBar').on('keyup', function() {
+        var keyword = $('.searchBar').val();
+
+        $.ajax({
+            url: '/searchAttr',
+            type: 'POST',
+            data: { keyword: keyword },
+            success: function(response) {
+                if (response) {
+                    $('.scrollBox').empty();
+
+                    renderAttractions(response);
+					initializePagination(); // 페이지네이션 초기화
+					
+					// 기존에 선택되어있으면 체크표시
+					if (selectedAttrIdDataMap[day].length > 0) {
+				        $('.selectBox').each(function() {
+				            var selectedAttrId = $(this).closest('.divBlock').find('.attrId').val();
+							
+				            if (selectedAttrIdDataMap[day].includes(selectedAttrId)) {
+				                $(this).attr('src', '/images/plan/place_select.svg');
+				            } // end if
+				        }); // end selectBox.each
+				    } // end if
+                }
+            },
+            error: function(error, xhr) {
+                opener.console.log('/searchAttr Error : ', xhr.responseText);
+            }
+        }); // end ajax
+    }); // end $('.searchBar').keypress(function(e)
 })
 
 // 페이지 로드 시 모든 명소 불러오기
@@ -181,7 +242,6 @@ function loadAllAttractions(tripPlace) {
 		data: { trip_place: tripPlace },
         success: function(response) {
             renderAttractions(response);
-            //highlightSelectedAttractions();
 			initializePagination(); // 페이지네이션 초기화
 			
 			// 기존에 선택되어있으면 체크표시

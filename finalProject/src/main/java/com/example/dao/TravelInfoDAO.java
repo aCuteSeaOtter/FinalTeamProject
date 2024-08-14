@@ -19,11 +19,12 @@ import com.example.domain.TravelInfoVO;
 @Mapper		// Mapper 호출 
 public interface TravelInfoDAO {
 	void insertTravelInfo(String member_email, String info_name, String trip_place, String start_date, String end_date, String who_tag, String style_tag);
+	
 	String selectTravelInfo();
 	
 	int existsByMemberEmail(@Param("memberEmail") String memberEmail);
     
-	public List<TravelInfoVO> getAllTravelInfo();
+	public List<TravelInfoVO> getAllTravelInfo(Map<String, Object> params);
 	
     TravelInfoVO getTravelInfoById(int infoId);
     
@@ -31,4 +32,19 @@ public interface TravelInfoDAO {
     List<Map<String, Object>> selectPlan(int info_id);
     
     public List<String> calDates(int infoId);
+    
+    // 페이징
+    public int getTotalCount(Map<String, Object> params);
+    
+    // 스타일 필터링
+    List<TravelInfoVO> filterByStyle(Map<String, Object> params);
+    
+    // 대상 필터링
+    List<TravelInfoVO> filterByWho(Map<String, Object> params);
+
+    // 스타일 필터링에 대한 총 항목 수 조회
+    int getTotalCountForStyle(String style);
+
+    // 대상 필터링에 대한 총 항목 수 조회
+    int getTotalCountForWho(String who);
 }

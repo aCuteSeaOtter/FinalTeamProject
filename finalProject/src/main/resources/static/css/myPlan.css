@@ -5,8 +5,12 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-.container {
-    padding: 40px 20px;
+section {
+	/* padding-top: 50px !important; */
+}
+
+h1 {
+	margin-bottom: 30px;
 }
 
 .row {
@@ -94,8 +98,24 @@ body {
 	font-family: 'tway';
 }
 
-.saveBtn {
-	
+.sortable-png {
+	width: 25px;
+	height: 25px;
+	float: right;
+}
+
+.attr-edit-btn {
+	background-color: #1bbc9b;
+	color: white;
+	height: 35px;
+	float: right;
+	transform: translateY(-5px);
+}
+
+.edit-btn {
+	display: none;
+	height: 35px;
+	margin-top: 10px;
 }
 
 .scrollBox { 
@@ -220,6 +240,55 @@ body {
   cursor: pointer;
 }
 
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .myModal {
+    width: 95%; /* 화면 너비의 95%로 조정 */
+    height: 90%; /* 화면 높이의 90%로 조정 */
+  }
+
+  .modal-content {
+    padding: 15px; /* 패딩을 줄여서 더 많은 화면 공간 활용 */
+  }
+
+  .thumbnail {
+    width: 40px; /* 작은 화면에서 썸네일 크기 조정 */
+    height: 40px;
+  }
+
+  .selectBox {
+    height: 40px; /* 작은 화면에서 선택 박스 크기 조정 */
+  }
+
+  .closeBtn {
+    font-size: 24px; /* 작은 화면에서 닫기 버튼 크기 조정 */
+  }
+}
+
+@media (max-width: 480px) {
+  .myModal {
+    width: 100%; /* 화면 너비의 100%로 조정 */
+    height: 100%; /* 화면 높이의 100%로 조정 */
+  }
+
+  .modal-content {
+    padding: 10px; /* 패딩을 더 줄여서 더 많은 화면 공간 활용 */
+  }
+
+  .thumbnail {
+    width: 30px; /* 아주 작은 화면에서 썸네일 크기 조정 */
+    height: 30px;
+  }
+
+  .selectBox {
+    height: 35px; /* 아주 작은 화면에서 선택 박스 크기 조정 */
+  }
+
+  .closeBtn {
+    font-size: 20px; /* 아주 작은 화면에서 닫기 버튼 크기 조정 */
+  }
+}
+
 /* 콘텐츠 스타일 */
 .content {
     margin: 20px 0; /* 상하 여백 */
@@ -269,5 +338,8 @@ body {
 .nextPage {
 	background: #1bbc9b;
 	color: white;
+}
+
+.saveBtn {
 	float: right;
 }
