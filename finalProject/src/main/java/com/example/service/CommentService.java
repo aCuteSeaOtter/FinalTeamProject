@@ -9,10 +9,10 @@ public interface CommentService {
 
 	// 댓글추가 
 	Integer insertComment(CommentVO vo);
+	
 	// 댓글목록보기
 	public List<Map<String, Object>> selectAllComment(Integer review_id);
+	
 	// 댓글삭제
 	Integer deleteComment(Integer comment_id);
-	
-	Integer getCommentCount(Integer review_id);
 }

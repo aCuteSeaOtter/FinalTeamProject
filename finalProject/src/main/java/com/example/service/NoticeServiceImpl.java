@@ -15,10 +15,12 @@ public class NoticeServiceImpl implements NoticeService{
 	@Autowired
     private NoticeDAO noticeDAO;
 
+	// 문의사항 목록보기
 	public List<NoticeVO> getNoticeList(HashMap<String, Object> map) {
         return noticeDAO.getNoticeList(map);
     }
 
+	// 문의사항 페이징
     public int getTotalCount(HashMap<String, Object> map) {
         return noticeDAO.getTotalCount(map);
     }

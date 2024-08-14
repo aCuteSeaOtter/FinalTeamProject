@@ -60,7 +60,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="sub-banner-inner-con padding-bottom">
-              <h1>비밀글 비밀번호 입력</h1>
+              <h2>비밀글 비밀번호 입력</h2>
               <!--<p class="font-size-20">비밀글에 대한 비밀번호를 작성🥵🥵<br>
 									  틀릴까봐 쫄린다면<br>
 									  ⬇️ 아래 링크 클릭</p>-->

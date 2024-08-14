@@ -62,14 +62,8 @@
               <div class="row">
                 <div class="col-lg-7">
                   <div class="sub-banner-inner-con padding-bottom">
-                    <h1>공지사항</h1>
-                      <p class="font-size-20">여기는 공지사항</p>
                       <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                        <ol class="breadcrumb mb-0">
-                          <li class="breadcrumb-item">
-						    <a href="/index">Home</a>
-						  </li>
-                        </ol>
+                        
                       </div>
                   <!-- sub banner inner con -->
                   </div>

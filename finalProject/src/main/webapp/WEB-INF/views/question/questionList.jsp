@@ -60,8 +60,7 @@
           <div class="col-lg-12">
             <div class="sub-banner-inner-con padding-bottom">
               <h1>문의사항</h1>
-              <p class="font-size-20">화끈한 문의를 작성해 보아요 🥵🥵<br>
-									  ⬇️ 아래 링크 클릭</p>
+              <p class="font-size-20">궁금한 게 있으시면 뭐든지 물어봐주세요</p>
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                 <ol class="breadcrumb mb-0">
                   <li class="breadcrumb-item"><a href="/question/questionWrite">⭐문의 작성하러 가기⭐</a></li>

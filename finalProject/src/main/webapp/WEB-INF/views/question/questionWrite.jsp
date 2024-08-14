@@ -59,11 +59,7 @@
     
     <div class="container wow bounceInUp" data-wow-duration="2s">
 		<div class="sub-banner-inner-con padding-bottom">
-          <h1>문의사항</h1>
-          <p class="font-size-20">화끈한 문의를 작성해 보아요🥵💦<br>
-								  다른 사람이 작성한 문의는<br>
-								  ⬇️ 아래 링크 클릭
-          </p>
+          <h1>문의 작성</h1>
           <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item"><a href="/question/questionList">⭐문의 목록 보기⭐</a></li>
@@ -73,8 +69,7 @@
         </div>
 		<div class="heading-title text-center">
 		  <h2 class="">질문이 있으신가요?<br>
-		        언제든지 문의를 남겨주세요.<br>
-				답장은 제가 원할 때 합니다.
+		        언제든지 문의를 남겨주세요.
 		  </h2>
 		  <!-- heading title -->
 		</div>
@@ -108,7 +103,7 @@
 					<div class="col-md-6">
 						<p>비밀글 여부</p>
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-8" id="secret">
 					  <input type="checkbox" id="secretCheckbox" name="secret"
 							 value="true"> <label for="secretCheckbox">비밀글로 설정하기</label>
 					</div>
@@ -129,9 +124,9 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                   <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" id="question-content-box">
                       <div class="form-group mb-0">
-                        <label>문의 내용</label>
+                        <label id="label-question-content">문의 내용</label>
                         <textarea class="form_style" placeholder="1000자 이내로 문의 내용을 입력해주세요." rows="5" name="que_content" required></textarea>
                       </div>
                     </div>

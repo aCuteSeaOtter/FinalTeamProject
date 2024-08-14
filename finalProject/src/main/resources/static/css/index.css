@@ -1,0 +1,8 @@
+/* 반응형에서 드롭다운이 상위 메뉴에 뜨도록 */
+.cursor-pointer {
+	z-index:0;
+}
+
+.navbar-collapse {
+	z-index:500;
+}

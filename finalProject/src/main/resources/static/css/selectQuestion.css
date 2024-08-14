@@ -1,134 +1,171 @@
-	.form_style {
-      /* width: 100%; */
-      padding: 10px;
-      margin: 5px 0;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      border: none;
-      resize: none;
-    }
+/* 스타일을 적용한 폼 요소 */
+.form_style {
+	padding: 10px;
+	margin: 5px 0;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	border: none;
+	resize: none;
+}
     
-    .form-group {
-      margin-bottom: 15px;
-    }
-    
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-    }
-    
-    .checkbox-container input[type="checkbox"] {
-      margin-right: 10px;
-    }
-    
-    #answerContentRow {
-      display: none;
-    }
-    
-    .right-margin {
-    	margin-left: 15px; /* 필요한 만큼 조절 */
-  	}
+/* 폼 그룹의 기본 마진 설정 */
+.form-group {
+	margin-bottom: 15px;
+}
+
+/* 체크박스 컨테이너의 기본 스타일 설정 */
+.checkbox-container {
+	display: flex;
+	align-items: center;
+}
+
+/* 체크박스와 레이블 간의 간격 설정 */
+.checkbox-container input[type="checkbox"] {
+	margin-right: 10px;
+}
+
+/* 답변 내용이 보이도록 설정 */
+#answerContentRow {
+	display: none;
+}
+
+/* 오른쪽 여백을 설정 */
+.right-margin {
+	margin-left: 15px; /* 필요한 만큼 조절 */
+}
+
+/* 좁은 여백 설정 */
+.right-margin1 {
+ 	margin-left: 1px; /* 필요한 만큼 조절 */
+}
   
-  	.right-margin1 {
-    	margin-left: 1px; /* 필요한 만큼 조절 */
-  	}
-  
-  	.short-label {
-	  display: inline-block;
-	  width: 150px; /* 원하는 너비로 설정 */
-	  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
-	  overflow: hidden; /* 너비를 넘는 텍스트 숨기기 */
+/* 짧은 레이블 스타일 설정 */
+.short-label {
+	display: inline-block;
+	width: 150px; /* 원하는 너비로 설정 */
+	white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+	overflow: hidden; /* 너비를 넘는 텍스트 숨기기 */
+}
+	
+/* 버튼 스타일 설정 - 수정 버튼 */
+#hidden_que_content_container {
+	margin-top: 450px; /* 원하는 만큼의 공간을 조정 */
+	position: absolute;
+}
+/* 버튼 스타일 설정 - 수정 버튼 */
+.btn-custom {
+	color: white !important;
+	background-color: #1ec28b !important;
+	padding: 7px 28px !important; /* 더 작은 내부 여백 */
+	width: 80px !important; /* 고정된 너비 */
+	height: 30px !important; /* 고정된 높이 */
+	cursor: pointer !important;
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 수정 버튼 호버 시 스타일 설정 */
+.btn-custom:hover{
+	background-color: #148f62;
+	transform: scale(1.05); /* 살짝 확대 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}
+
+/* 버튼 스타일 설정 - 삭제 버튼 */
+.btn-delete {
+	font-size: 14px;
+	color: white !important;
+	background-color: #1ec28b !important;
+	padding: 7px 29px !important; /* 더 작은 내부 여백 */
+	width: 80px !important; /* 고정된 너비 */
+	height: 30px !important; /* 고정된 높이 */
+	cursor: pointer !important;
+	text-decoration: none;
+	display: inline-block;
+	white-space: nowrap; /* 텍스트 줄바꿈 제거 */
+	line-height: normal; /* 버튼 높이와 동일하게 설정하여 텍스트 수직 중앙 정렬 */
+	text-align: center; /* 텍스트 중앙 정렬 */
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 삭제 버튼 호버 시 스타일 설정 */
+.btn-delete:hover{
+	background-color: #148f62;
+	transform: scale(1.05); /* 살짝 확대 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}
+
+/* 버튼 컨테이너 스타일 설정 */
+.button-container {
+	display: flex;
+	gap: 10px; /* 버튼 사이의 간격을 조절 */
+	margin-left: 61.5%;
+	margin-top: -3px;
+}
+
+/* 여행 관련 콘텐츠 배경 스타일 설정 */
+.about-travel-con {
+   	background: linear-gradient(to bottom, #b2f3de 0%, #ffffff 100%) !important;
+}
+
+/* 화면 너비가 850px 이하일 때 적용되는 스타일 */
+@media (max-width: 850px){
+	/* 문의 내용 영역의 마진 조정 */
+	.quesiton_content {
+		margin-top: -102%;
 	}
 	
-	/* wide-input 클래스 추가 */
-	/* .wide-input {
-	  padding : 19px 135px !important;
-	} */
-	
-	#hidden_que_content_container {
-  		margin-top: 450px; /* 원하는 만큼의 공간을 조정 */
-  		position: absolute;
+	/* 답변 확인 체크박스의 마진 조정 */
+	.answer_check {
+		margin-top: 90% !important;
+        margin-bottom: 6%;
+        z-index: 10;
 	}
 	
-	.btn-custom {
-	  color: white !important;
-	  background-color: #1ec28b !important;
-	  padding: 7px 28px !important; /* 더 작은 내부 여백 */
-	  width: 80px !important; /* 고정된 너비 */
-  	  height: 30px !important; /* 고정된 높이 */
-  	  cursor: pointer !important;
-  	  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
-	}
-	
-	.btn-custom:hover{
-		background-color: #148f62;
-		transform: scale(1.05); /* 살짝 확대 */
-    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
-	}
-	.btn-delete {
-	  font-size: 14px;
-	  color: white !important;
-	  background-color: #1ec28b !important;
-	  padding: 7px 29px !important; /* 더 작은 내부 여백 */
-	  width: 80px !important; /* 고정된 너비 */
-	  height: 30px !important; /* 고정된 높이 */
-	  cursor: pointer !important;
-	  text-decoration: none;
-	  display: inline-block;
-	  white-space: nowrap; /* 텍스트 줄바꿈 제거 */
-	  line-height: normal; /* 버튼 높이와 동일하게 설정하여 텍스트 수직 중앙 정렬 */
-	  text-align: center; /* 텍스트 중앙 정렬 */
-	  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
-	}
-	
-	.btn-delete:hover{
-		background-color: #148f62;
-		transform: scale(1.05); /* 살짝 확대 */
-    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
-	}
-	
+	/* 버튼 컨테이너의 마진 조정 */
 	.button-container {
-	  display: flex;
-	  gap: 10px; /* 버튼 사이의 간격을 조절 */
-	  margin-left: 61.5%;
-	  margin-top: -3px;
+	   display: flex;
+	   gap: 10px;
+	   margin-left: 29.5%;
+	   margin-top: -48%;
+	   z-index: 10;
 	}
 	
-	.about-travel-con {
-    	background: linear-gradient(to bottom, #b2f3de 0%, #ffffff 100%) !important;
+	/* 숨겨진 필드 표시 설정 */
+	.hidden-field.show {
+	   display: block;
+	   margin-top: 10px;
+	}
+		
+	/* 질문 내용 표시 설정 */
+	#question_content.show {
+	   margin-top: -227.5%;
+	}
+		
+	/* 버튼 컨테이너의 마진 조정 */
+	#button-container.show {
+	   margin-top: -173.2%;
 	}
 	
-	@media (max-width: 850px){
-		.quesiton_content {
-			margin-top: -102%;
-		}
+	/* 레지스터 박스 패딩 제거 */
+	.talk-width-our-team-con .register-box {
+		padding:0 !important;
+	}
 		
-		.answer_check {
-			margin-top: 90% !important;
-	        margin-bottom: 6%;
-	        z-index: 10;
-		}
-		
-		.button-container {
-		   display: flex;
-		   gap: 10px;
-		   margin-left: 29.5%;
-		   margin-top: -48%;
-		   z-index: 10;
-		}
-		
-		.hidden-field.show {
-		   display: block;
-		   margin-top: 10px; /* 원하는 여백 추가 */
-		  /* 다른 스타일 조정 가능 */
-		}
-		
-		#question_content.show {
-		   margin-top: -209.5%;
-		}
-		
-		#button-container.show {
-		   margin-top: -155.8%;
-		}
+	/* 텍스트 영역의 높이 및 너비 조정 */
+	.talk-width-our-team-con .register-box textarea {
+		height:93px !important;
+		width: 248px !important;
+		margin-left: 15px;
+	}
+	
+	/* 질문 내용 레이블의 왼쪽 여백 조정 */
+	#label-question-content {
+		margin-left:15px;
+	}
+	
+	/* 파트너 컨텐츠의 패딩 제거 */
+	.partner-con{
+		padding:0 !important;
+	}
 }

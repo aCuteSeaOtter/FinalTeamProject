@@ -1,151 +1,196 @@
-/* 체크박스 스타일링 */
-        input[type="checkbox"] {
-            display: none;
-        }
+/* 체크박스 기본 스타일 숨기기 */
+input[type="checkbox"] {
+    display: none;
+}
 
-        input[type="checkbox"] + label {
-            position: relative;
-            padding-left: 35px;
-            cursor: pointer;
-            font-size: 16px;
-            line-height: 24px;
-            display: inline-block;
-            color: #333;
-            margin-top: 30px;
-        }
+/* 체크박스와 연결된 레이블 스타일 */
+input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    display: inline-block;
+    color: #333;
+    margin-top: 30px;
+}
 
-        input[type="checkbox"] + label::before,
-        input[type="checkbox"] + label::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
+/* 체크박스 레이블의 before 가상 요소 스타일 */
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
 
-        input[type="checkbox"] + label::before {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #ddd;
-            border-radius: 3px;
-            background: #fff;
-        }
+/* 체크박스 레이블의 before 가상 요소: 체크박스 스타일 */
+input[type="checkbox"] + label::before {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+}
 
-        input[type="checkbox"]:checked + label::before {
-            background: #4CAF50;
-            border-color: #4CAF50;
-        }
+/* 체크박스가 선택되었을 때의 스타일 */
+input[type="checkbox"]:checked + label::before {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
 
-        input[type="checkbox"] + label::after {
-            content: "\2713"; /* 체크 표시 */
-            font-size: 18px;
-            color: white;
-            left: 4px;
-            display: none;
-        }
+/* 체크박스 레이블의 after 가상 요소: 체크 표시 스타일 */
+input[type="checkbox"] + label::after {
+	content: "\2713"; /* 체크 표시 */
+    font-size: 18px;
+    color: white;
+    left: 4px;
+    display: none;
+}
 
-        input[type="checkbox"]:checked + label::after {
-            display: block;
-        }
+/* 체크박스가 선택되었을 때의 체크 표시 표시 */
+input[type="checkbox"]:checked + label::after {
+    display: block;
+}
+ 
+/* 비밀글 여부 항목에 대한 설명을 포함한 p 요소의 스타일 */
+.col-md-6 p {
+	font-size: 18px;
+	color: var(--navy-color);
+	margin-left: 16px;
+}
+
+/* 비밀글 비밀번호 입력 필드를 설명하는 p 요소의 스타일 */
+.col-md-4 p {
+   	font-size: 18px;
+   	color: var(--navy-color);
+}
+		
+/* 비밀글 여부 체크박스와 관련된 항목의 스타일 및 여백 조정 */
+.col-md-6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* 비밀글 비밀번호 입력 필드와 비밀번호 텍스트 사이의 여백 조정 */
+.col-md-8 {
+    margin-bottom: 20px;
+}
+
+/* 입력 필드의 테두리와 크기 조절 핸들 제거 */
+.form_style {
+	border: none;
+	resize: none;
+}
+
+/* 비밀글 비밀번호 필드를 비밀번호 텍스트 아래로 배치 */
+#secretContentRow {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+		
+/* 비밀번호 필드와 텍스트 사이의 여백 제거 */
+#secretContentRow .col-md-8 {
+    margin-top: 0;
+}
+		
+/* 비밀번호 입력 필드를 컨테이너 너비에 맞춤 */
+#secretContentRow .col-md-12 input[type="password"] {
+    width: 100%;
+}
+		
+/* 비밀번호 입력 필드의 placeholder 텍스트 크기 설정 */
+.col-md-12 input[type="password"]::placeholder {
+    font-size: 14px; /* 기존 크기로 설정 */
+}
+
+/* 비밀번호 텍스트와 입력 필드 사이의 오른쪽 여백 설정 */
+#secretContentRow .col-md-4 {
+    white-space: nowrap;
+    margin-bottom: 0;
+    padding-right: 10px; /* 입력 필드와의 간격 조정 */
+}
+	
+/* 비밀번호 표시 토글 아이콘 위치 및 스타일 설정 */
+.password-toggle-icon {
+          position: absolute !important;
+          right: 30px !important;
+          top: 50% !important;
+          transform: translateY(-50%) !important;
+          cursor: pointer !important;
+}
+  
+/* 비밀번호 입력 필드의 폰트 패밀리 설정 */
+input#passwordInput.form-control {
+   font-family: auto;
+}
+      
+/* 비밀번호 유효성 검사 메시지 스타일 설정 */  
+.pwcheck-message {
+	display: block;
+	margin-top: 5px;
+	color: red;
+	position: absolute;
+	bottom: -28px; /* Adjust this value as necessary */
+	left: 16px;
+}
+		
+/* 내부 요소를 기준으로 하는 상대 위치 설정 */
+.position-relative {
+    position: relative;
+}
+		
+/* 제출 버튼의 부드러운 전환 효과 설정 */
+#submit{
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
+		
+/* 제출 버튼의 호버 상태 스타일 설정 */
+#submit:hover{
+	background:#148f62;
+	transform: scale(1.05); /* 살짝 확대 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}
+	
+/* 배경에 그라디언트 적용 */
+.about-travel-con {
+    background: linear-gradient(to bottom, #b2f3de 0%, #ffffff 100%) !important;
+}
+
+/* 화면 너비가 850px 이하일 때 스타일 조정 */
+@media (max-width: 850px){
+	.pwcheck-message {
+		display: block;
+	    margin-top: 5px;
+	    color: red;
+	    position: absolute;
+	    bottom: -28px;
+	    left: 16px;
+	    white-space: nowrap; /* 텍스트 줄 바꿈을 방지합니다 */
+}
+	
+	/* 파트너 섹션의 패딩 제거 */		
+	.partner-con{
+		padding:0 !important;
+	}
        
-        .col-md-6 p {
-		    font-size: 18px;
-		   	color: var(--navy-color);
-        	margin-left: 16px;
-        }
-
-		.col-md-4 p {
-		   	font-size: 18px;
-		   	color: var(--navy-color);
-		}
-		
-		/* 비밀글 여부 항목에 상하 공백 추가 */
-		.col-md-6 {
-		    margin-top: 20px;
-		    margin-bottom: 10px;
-		}
-		
-		.col-md-8 {
-		    margin-bottom: 20px;
-		}
-		
-		.form_style {
-			border: none;
-      		resize: none;
-		}
-		/* 비밀글 비밀번호 필드를 비밀글 비밀번호 텍스트 아래로 이동 */
-		#secretContentRow {
-		    display: flex;
-		    flex-direction: column;
-		    margin-top: 20px;
-		}
-		
-		#secretContentRow .col-md-8 {
-		    margin-top: 0;
-		}
-		
-		#secretContentRow .col-md-12 input[type="password"] {
-		    width: 100%;
-		    /* font-size: 30px; */
-		}
-		
-		/* placeholder 텍스트의 크기 유지 */
-		.col-md-12 input[type="password"]::placeholder {
-		    font-size: 14px; /* 기존 크기로 설정 */
-		}
-		/* 비밀글 비밀번호 텍스트와 입력 필드 사이의 간격 조정 */
-		#secretContentRow .col-md-4 {
-		    white-space: nowrap;
-		    margin-bottom: 0;
-		    padding-right: 10px; /* 입력 필드와의 간격 조정 */
-		}
-		
-		.password-toggle-icon {
-            position: absolute !important;
-            right: 30px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            cursor: pointer !important;
-        }
-        
-        input#passwordInput.form-control {
-           font-family: auto;
-        }
-        
-        .pwcheck-message {
-		    display: block;
-		    margin-top: 5px;
-		    color: red;
-		    position: absolute;
-		    bottom: -28px; /* Adjust this value as necessary */
-		    left: 16px;
-		}
-		
-		.position-relative {
-		    position: relative;
-		}
-		
-		#submit{
-			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
-		}
-		
-		#submit:hover{
-			background:#148f62;
-			transform: scale(1.05); /* 살짝 확대 */
-    		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
-		}
-		
-		.about-travel-con {
-		    background: linear-gradient(to bottom, #b2f3de 0%, #ffffff 100%) !important;
-		}
-		@media (max-width: 850px){
-			.pwcheck-message {
-				display: block;
-			    margin-top: 5px;
-			    color: red;
-			    position: absolute;
-			    bottom: -28px;
-			    left: 16px;
-			    white-space: nowrap; /* 텍스트 줄 바꿈을 방지합니다 */
-			}
-		}
+    /* 등록 박스의 패딩 제거 */
+    .talk-width-our-team-con .register-box {
+       padding:0 !important;
+    }
+    
+    /* 텍스트 영역의 크기 및 여백 조정 */
+	.talk-width-our-team-con .register-box textarea {
+       height:93px !important;
+       width: 248px !important;
+       margin-left: 15px;
+    }
+         
+    /* 레이블의 여백 조정 */
+    #label-question-content {
+       margin-left:15px;
+       margin-top:-15px;
+    }
+}
