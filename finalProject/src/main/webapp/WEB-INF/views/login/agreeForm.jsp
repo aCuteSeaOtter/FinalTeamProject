@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
   <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png"> 
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
   <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
@@ -67,13 +67,12 @@
 	
     <!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
-      <img alt="vector" class="vector1  img-fluid position-absolute" src="/assets/images/vector1.png">
-      <img alt="vector" class="vector2 img-fluid position-absolute" src="/assets/images/vector2.png">
+     
       <div class="container">
         <div class="row">
           <div class="col-lg-7">
             <div class="sub-banner-inner-con padding-bottom">
-              <h2>다음 내용에 동의해주세요</h2>
+              <h3>다음 내용에 동의해주세요</h3>
          <!--     <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
                 incididunt
                 ut labore et dolore.
@@ -115,7 +114,7 @@
  <div class="row">
         <div class="col-12">
           <div class="agree-box">
-            <form action="regist"method="POST">
+            <form id="myForm" action="registForm"method="POST">
               <div class="row">
                 <div class="col-lg-15 col-md-15 col-sm-20 col-20">
 					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
@@ -123,69 +122,53 @@
 				  <div class="row">
 				
 					<div class="col-12"><!--12-->
-										  <div class="agree_Form">
-											<input type="checkbox"id="agree_terms0" required>
-											<label>모두 동의합니다</label>
-											<br/>
-											이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
-											안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
-											<!--<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="이용약관" rows="5" name="msg">
-											이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
-											 안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
-											</textarea> -->
-										  </div>
-										</div>
+		  <div class="agree_Form">
+	<input type="checkbox"id="agree_terms0" required>
+	<label>모두 동의합니다</label>
+	<br/>
+		이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
+		안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
+		 </div>
+		</div>
 					
 					
-					<div class="col-12"><!--12-->
-					  <div class="agree_Form">
-						<input type="checkbox"id="agree_terms" required>
-						<label>[필수]이용약관</label>
-					  	
-						<br/>
-						이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
-						안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
-						<!--<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="이용약관" rows="5" name="msg">
-						</textarea>-->
-					  </div>
-					</div>
+		<div class="col-12"><!--12-->
+		 <div class="agree_Form">
+		<input type="checkbox"id="agree_terms" required>
+		<label>[필수]이용약관</label>
+	<br/>
+	이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
+	안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
+  </div>
+ </div>
 					<!--///////////////-->
-					<div class="col-12"><!--12-->
-					  <div class="agree_Form">
-					   <input type="checkbox"id="agree_terms1"required>
-					   <label>[필수]개인정보보호</label>
-					   	<br/>
-						당사는 이용자의 개인정보 수집 시 서비스 제공을 위해 필요한 범위에서 최소한의 개인정보를 수집합니다.
-						당사는 이용자의 개인정보를 수집 이용하는 때에는 이용자에게 그 목적을 고지하고 동의받습니다.
-						  </div>
-							</div>
+		<div class="col-12"><!--12-->
+	 <div class="agree_Form">
+	 <input type="checkbox"id="agree_terms1"required>
+	<label>[필수]개인정보보호</label>
+	<br/>
+	당사는 이용자의 개인정보 수집 시 서비스 제공을 위해 필요한 범위에서 최소한의 개인정보를 수집합니다.
+	당사는 이용자의 개인정보를 수집 이용하는 때에는 이용자에게 그 목적을 고지하고 동의받습니다.
+	</div>
+	</div>
 							
-							<!--///////////////-->
-						<div class="col-12"><!--12-->
-				  <div class="agree_Form">
-				  	<input type="checkbox"id="agree_terms2" name="agree_terms2" required>
-					<label>[선택]제3자정보제공</label>
-					<br/>
-					당사에서 개인정보의 제3자 제공이 발생하는 경우는 주로 서비스 이용 도중 다른 회사에서 제공하는 부가 서비스를 이용할 경우입니다.
-					<!--<textarea class="form_style" style="margin:20px; padding:20px;"placeholder="선택사항" rows="5" name="msg">
-							
-						</textarea> -->
-						  </div>
-						</div>
-						<button	></button>
-												
-				
-				
-				</div><!-- row -->
-		
-				</div>
-                
-              </div>
-            </form>
-          </div>
-        </div>
-  
-    </section>
+		<!--///////////////-->
+	<div class="col-12"><!--12-->
+  <div class="agree_Form">
+<input type="checkbox"id="agree_terms2" name="agree_terms2" required>
+<label>[선택]제3자정보제공</label>
+	<br/>
+	당사에서 개인정보의 제3자 제공이 발생하는 경우는 주로 서비스 이용 도중 다른 회사에서 제공하는 부가 서비스를 이용할 경우입니다.
+  </div>
+</div>
+	<button	id="agreeCon"type="submit">확인</button>
+	</div><!-- row -->
+</div>
+   </div>
+     </form>
+ 		  </div>
+       		 </div>
+      </section>
 	  <!-- BACK TO TOP BUTTON -->
 	
   <button id="back-to-top-btn" title="Back to Top"></button>
@@ -226,7 +209,11 @@
 	    });
 	});	
 	</script>
-
+	<script>
+		document.getElementById('agreeCon').addEventListener('click', function() {
+		    document.getElementById('myForm').submit(); // 폼 제출
+		});
+	</script>
 </body>
 
 </html>

@@ -47,11 +47,50 @@ html {
     overflow-y:auto;
 }
 /*비밀번호찾기*/
+.processBtn{
+	
+		background-color:#2dca73; /* 배경색 설정 (예시) */
+         border: none;
+         cursor: pointer;	
+         border-radius:12px;
+         color:white;
+         width:50px;
+}
+.conFirmBtn{
+	background-color:#2dca73; /* 배경색 설정 (예시) */
+         border: none;
+         cursor: pointer;	
+         border-radius:12px;
+         color:white;
+         width:50px;
+}
 
-.d-flex{
-	display:flex;
-	align-items:center;
-	justify-content:center;
+.main-box h2.findpass{
+	  display: flex;
+      justify-content: center; /* 가로 중앙 정렬 */
+      align-items: center;     /* 세로 중앙 정렬 */
+       text-align: center;      /* 텍스트 중앙 정렬 */
+}
+@media (max-width: 768px) {
+    .processBtn {
+        width: 80px; /* 작은 화면에서는 버튼 크기 조정 */
+        font-size: 0.9rem; /* 작은 화면에서는 폰트 크기 조정 */
+    }
+
+    .main-box h2.findpass {
+        font-size: 1.5rem; /* 작은 화면에서는 제목 크기 조정 */
+    }
+}
+
+@media (max-width: 480px) {
+    .processBtn {
+        width: 60px; /* 더 작은 화면에서는 버튼 크기 조정 */
+        font-size: 0.8rem; /* 더 작은 화면에서는 폰트 크기 조정 */
+    }
+
+    .main-box h2.findpass {
+        font-size: 1.2rem; /* 더 작은 화면에서는 제목 크기 조정 */
+    }
 }
 
 .col-8{
@@ -60,9 +99,7 @@ html {
 	text-align:center;
 }
 
-#injeungbunho{
-margin-right: 10px; /* 버튼과의 간격을 설정 */
-}
+
 .align-items-right{
 	align-items:center;
 }
@@ -83,23 +120,6 @@ margin-right: 10px; /* 버튼과의 간격을 설정 */
 	text-align:center;
 }
 
-
-#injeungCheckBtn{
-		 background-color:#2dca73; /* 배경색 설정 (예시) */
-         border: none;
-         cursor: pointer;	
-         border-radius:12px;
-         color:white;
-         width:50px;
-}
-#emailCheckBtn{
-		 width:50px;	    
-	     background-color:#2dca73; /* 배경색 설정 (예시) */
-         border: none;
-         cursor: pointer;	
-         border-radius:12px;
-         color:white;
-}
 
 .col-lg-4, .col-md-4, .col-sm-6{
 	padding:15px;

@@ -117,17 +117,15 @@
 					   <input type="password" style="width:190px; height:30px;"class="form_control" placeholder="Enter Your passwords" name="member_pass"
 					   id="fname" minlength="6" required>
 					<span	id="password-error" class="error"></span>  
-					
-				       </div>
+									       </div>
 					  </div>
 					  <br/>
 					    <div class="col-12"><!--6--><!--12-->
 					    <div class="form-birth">
 					  	<label>생년월일</label>
-					  						
 					  	<select name="year" id="year1" style="width:50px; height:30px;" required></select>년
-					  	<select name="month"id="month1"style="width:35px; height:30px;"required></select>월
-					  	<select name="day"	id="day1"  style="width:30px; height:30px;"required></select>일
+					  	<select name="month"id="month1"style="width:40px; height:30px;"required></select>월
+					  	<select name="day"	id="day1"  style="width:40px; height:30px;"required></select>일
 					  	</div>
 					  	</div>
 						<br/>
@@ -147,40 +145,25 @@
 				<label for="female">여</label>
 				<input type="radio" style="width:20px; height:20px;" id="female" name="member_gender" value="F"required>
 				</div>
-			</div>
-					
-														
-														<!--<div class="col-lg-6 col-md-6 col-sm-12 col-12">-->
-															<br/>											        
-														             <div class="col-12"><!--12-->
-														                    <div class="form-agree">
-															<!--				  <textarea class="form_style" style="margin:10px; padding:10px;"placeholder="이용약관" rows="5" name="msg">
-																				이 서비스는 개인정보 보호를 위해 최선을 다하겠습니다. 사용자는 자신의 개인정보를
-																			  안전하게 보호하기 위해 필요한 조치를 취해야 합니다.
-																			  </textarea>-->
-																			  <br/>
-																			  <label for="agree_terms">
-																			<a	href="agreeForm" target="_blank">이용약관 바로가기</a></label>
-																			<input type="checkbox"id="agree_terms" name="agree_terms" required> 
-														                    </div> 
-														                  </div>
-				
-																	  
-																		  <div class="col-12"><!--12-->
-																		                      <div class="join">
-																		  						  <div class="join-button">
-																		                          <button type="submit" name="submit"
-																		                            class="join_now text-white text-decoration-none w-100">
-																		                           가입하기</button>
-																		  						 </div>
-																		                        </div>
-																		                      </div>
-																	  </div><!-- row -->
-		
-				
-				
+			</div>      
+		 <div class="col-12"><!--12-->
+			 <div class="form-agree">
+			 <br/>
+			  <label for="agree_terms">
+			<a	href="agreeForm" target="_blank">이용약관 바로가기</a></label>
+			<input type="checkbox"id="agree_terms" name="agree_terms" required> 
+			 </div> 
+			 </div>											  
+			 <div class="col-12"><!--12-->
+			<div class="join">
+			<div class="join-button">
+			 <button type="submit" name="submit"
+			class="join_now text-white text-decoration-none w-100">	가입하기</button>
+			 </div>
+			 </div>
+		  </div>
+	  </div><!-- row -->
                   </div>
-                
               </div>
             </form>
           </div>
@@ -260,11 +243,8 @@ function validatePassword()	{
 	errorSpan.textContent=''; // 오류메시지 지움
 	return true; // 폼 제출 막음
 
-}// end of function
-		
+}// end of function		
 </script>
-
-	
 	</body>
 
 </html>

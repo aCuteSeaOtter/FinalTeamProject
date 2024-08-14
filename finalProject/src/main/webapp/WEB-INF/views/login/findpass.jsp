@@ -55,7 +55,6 @@
   </div>
   <!-- OUTER BG WRAPPER -->
   <div class="bg-outer-wrapper sub-banner-outer-wrapper float-left w-100">
-   
    <div class="clearfix"></div>
    <!-- HEADER SECTION -->
   <jsp:include page="/WEB-INF/views/header.jsp" />
@@ -71,17 +70,9 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="sub-banner-inner-con padding-bottom">
-              <h2 class="flex-container">비밀번호찾기</h2>
+              <h2 class="findpass">비밀번호찾기</h2>
 			  
-         <!--     <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
-                incididunt
-                ut labore et dolore.
-              </p>-->
-              <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-               <!-- <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="index">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Contact</li>
-                </ol> -->
+			  <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
               </div>
               <!-- sub banner inner con -->
             </div>
@@ -103,46 +94,31 @@
  <div class="center-content"><!--row-->
       <!-- <div class="col-12">-->
           <div class="login-box">
-            <form action="loginForm" method="POST">
-				<div class="col-lg-10 col-md-10 col-sm-12 col-12">
-					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
-                			
-					<div class="col-12"><!--12-->
-					<div class="login-group">
-					 <p for="memberEmail">이메일</p>
-					 <h6>가입시 등록하신 이메일주소로 인증번호 보내드립니다.</h6>
-					 <br/>
-				 <input type="email" style="width:240px; height:40px;" name="member_email" placeholder="Enter Your Email Address"
-			id="emailText" required><span></span>
-			<button onClick="conFirm()" type="button" name="submit"
-				       id="emailCheckBtn" onclick="emailSned()" class="btn btn-outline-dark mb-3 btn-sm">인증번호받기</button>
-		 </div>
-		 <div class="mt-1 form-text" id="emailCheckWarn" style="font-weight: bolder;"></div>
-		 <br/>
-	</div> <!--class="col-12" -->
-	 <div class="mb-5">
-	<p>인증번호 입력</p>
-	 <div class="d-flex align-items-right"><!--border-bottom d-flex justify-content-between-->
-		<input type="password" style="width:240px; height:40px;" name="enteredCode" id="injeungbunho"required>
-		<button type="button" id="injeungCheckBtn" class="btn btn-outline-dark mb-3 btn-sm">인증하기</button>
-		<input type="hidden" id="certificationYN" value="false">
-	</div>
-	<div class="mt-1 form-text" id="injeungCheckWarn" style="font-weight: bolder;"></div>
-	 </div>
-		  <div class="col-8">
-		   <div class="checkbtn">
-		     <button onClick="check()" type="submit" name="submit"
-		     class="check_now text-white text-decoration-none w-100">확인</button>
-		    </div>
-		   </div>
-  </div><!-- row -->
-                  </div>
-                 </div>
-			  <p>${error}</p>
+			<div class="my-1">
+				
+		        <form action="loginForm" method="POST">
+					<div class="mt-4 group"> 
+					<label class="block text-xs text-gray-500 duration-200 group-focus-within:text-lightScheme-primary mb-0.5">	
+					이메일</label>
+					<div class="findflex">
+						<input type="email" id="email" class="flex-1 w-full px-2 py-2.5 text-black placeholder-gray-700 border border-gray-600 rounded-md focus:outline-none focus:border-lightScheme-primary"
+						name="member_email" placeholder="이메일 주소" style="border-radius:4px; width:280px;height:40px;">
+						<button class="processBtn" type="button" id="sendemail" style="width:60px;height:30px;">인증</button>
+					</div><!--findflex-->
+					<br/>
+					<div id="emailCheck"></div>
+					<input type="hidden" id="injeungbunho" value=""class="flex-1 w-full px-2 py-2.5 text-black placeholder-gray-700 border border-gray-600 rounded-md focus:outline-none focus:border-lightScheme-primary">
+					<input type="password" id="randnum" class="flex-1 w-full px-2 py-2.5 text-black placeholder-gray-700 border border-gray-600 rounded-md focus:outline-none focus:border-lightScheme-primary"
+					placeholder="인증번호" style="border-radius:4px; width:280px;height:40px;" value="${code}">
+				<button type="submit" id="conFirmrandnum" class="conFirmBtn" style="width:60px;height:30px;">확인</button>
+					</div><!--mt-4 group-->
+				<!--  <p>${error}</p>-->
 			  </form>
         <!-- </div>-->
         </div>
-  
+  	<p class="mt-4 text-sm">
+	<a class="font-medium hover:underline"href="/login/loginForm">로그인바로가기</a> 
+	</p>
     <!--</section>-->
 	 <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top-btn" title="Back to Top"></button>
@@ -157,64 +133,84 @@
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/search.js"></script>
-  
-  <script>
-	
-	function check(){
-		alert('성공');
-		window.location.href = '/login/loginForm';
-	}
-	
-  </script>
 
-  <script>
-  function emailSend(){ //이메일 보냄
-	let clientEmail = document.getElementById('emailText').value;
-	console.log('입력한 메일'+clientEmail);
+<!--<script>
 	
-	$.ajax({
-		type:"POST",
-		url:"/Checkmail",
-		data:{member_email:clientEmail},
-		success:function(data){
-			alert("인증번호 발송O");
-			console.log('성공'+data);
-		},error:function(e){
-			alert("인증번호 발송X")
-			console.log('실패'+e);
-		}
-	}) 
-}</script>
- 
+	processBtn.addEventListener("click",function(){
+		const randnum = documnet.getElementById('randnum').value; // 사용자 입력한 인증번호
+		const injeungbunho=document.getElementBtId('injeungbunho').value;//실제 발송된 인증번호
+	
+		if (injeungbunho == "") {
+		        	 injeungCheckWarn.innerText = "인증을 진행해주세요.";
+		        	 injeungCheckWarn.style.color = "red";
+		        	 check_email = false;
+			         } else {
+			            if (randnum == "") {
+			            	injeungCheckWarn.innerText = "인증번호를 입력해주세요.";
+			            	injeungCheckWarn.style.color = "red";
+			            	check_email = false;
+			         } else {
+			            if (randnum == injeungbunho) {
+			               // 인증 번호가 맞을때 실행할거
+			               injeungCheckWarn.innerText = "인증번호가 일치합니다.";
+			               injeungCheckWarn.style.color = "black";
+			               check_email = true;
+			         } else {
+			            // 인증 번호가 맞지 않을때 실행할거
+			            injeungCheckWarn.innerText = "인증번호가 일치하지 않습니다.";
+			            injeungCheckWarn.style.color = "red";
+			            check_email = false;
+			         }
+		           }
+		         }
+
+	});
+</script>-->
 <script>
-//이메일 인증
-function injeungCheckBtn(){
-	let clientEmail=document.getElementById('emailText').value;
-	let inputCode = document.getElementById('injeungbunho').value;
-	
-	console.log('이메일'+clientEmail);
-	console.log('인증코드'+inputCode);
-	
-	$.ajax({
-		type="POST",
-		data:{member_email:clientEmail,inputCode:inputCode},
-		success:function(data){
-			console.log(data);
-			if(data==true){
-				alert('완료')
-				documnet.getElementById('certificationYN').value="true";
-				clientEmail.onchange=function(){
-					document.getElementById('certificationYN').value="false";				}//onchange,function
-			}else{
-				alert('재시도');
-			}
-		},error:function(e){
-			alert('오류')
-			console.log('에러' + e)
-		}
-	})
-} 	
-	</script>
+	document.getElementById('sendemail').addEventListener('click', function() {
+	    const email = document.getElementById('email').value;
+	    fetch('/api/auth/send-email', {
+	        method: 'POST',
+	        headers: {
+	            'Content-Type': 'application/x-www-form-urlencoded'
+	        },
+	        body: new URLSearchParams({
+	            email: email
+	        })
+	    }).then(response => response.text())
+	      .then(data => {
+	          //console.log(data);
+			  // 이메일 전송 성공 알림
+			  alert("인증 이메일이 전송되었습니다.");
+		  }).catch(error=>{
+			//error
+			console.error('Error: ', error);
+			alert("실패");
+		  });
+	});
+</script>	
+
+<script>
+
+	document.getElementById('conFirmrandnum').addEventListener('click', function() {
+	    const email = document.getElementById('email').value;
+	    const code = document.getElementById('randnum').value;
+	    fetch('/api/auth/verify-code', {
+	        method: 'POST',
+	        headers: {
+	            'Content-Type': 'application/x-www-form-urlencoded'
+	        },
+	        body: new URLSearchParams({
+	            email: email,
+	            code: code
+	        })
+	    }).then(response => response.text())
+	      .then(data => {
+	          console.log(data);
+	      });
+	});
+
+</script>
 
 </body>
 

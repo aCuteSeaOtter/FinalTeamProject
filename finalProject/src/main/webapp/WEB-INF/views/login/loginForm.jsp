@@ -1,3 +1,4 @@
+
 <!-- src/main/webapp/WEB-INF/views/registForm.jsp -->
 <%@page contentType="text/html; charset=UTF-8"%>
 <!--loginForm-->
@@ -64,15 +65,13 @@
     <div class="clearfix"></div>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
     
-	
-	
-	
+		
 	<!-- BANNER SECTION -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
          <div class="container">
         <div class="row">
           <div class="col-lg-7">
-            <div class="sub-banner-inner-con padding-bottom">
+           <!-- <div class="sub-banner-inner-con padding-bottom">-->
               <h1>로그인</h1>
          <!--     <p class="font-size-20">Lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusm tempor
                 incididunt
@@ -83,7 +82,7 @@
                   <li class="breadcrumb-item"><a href="index">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Contact</li>
                 </ol> -->
-              </div>
+              <!--</div>-->
               <!-- sub banner inner con -->
             </div>
             <!-- col-lg-6 -->
@@ -99,65 +98,55 @@
   </div>
   <!-- TALK TO US SECTION -->
 
-   <div class="container wow bounceInUp" ><!--data-wow-duration="2s"-->
-     
- <div class="row">
-        <div class="col-12">
-          <div class="login-box">
-            <form id="loginForm" action="/login/" method="POST" onsubmit="return checkPassword(event)"><!--/login/logincheck-->
-				<div class="col-lg-10 col-md-10 col-sm-12 col-12 ">
-					<!--col-lg-10 col-md-10 col-sm-12 col-12-->
-                			
-					<div class="col-12"><!--12-->
-					<div class="login-group">
-					 <label for="memberEmail">이메일</label>
-				 <input type="email" style="width:250px; height:50px;" name="member_email" value=""placeholder="Enter Your Email Address"
-			id="email"required>
-		 </div> 
-	</div>
-	<div class="col-12">
-	<div class="login-group">
-	    <label for="memberPass">비밀번호</label>
-	<input type="password" style="width:250px;" placeholder="Enter Your passwords" name="member_pass"value=""
-	 id="password"required>
-	   </div>
-	   </div>
-   
-	   <ul>
-	<p id="findpass"><a href="/login/findpass">비밀번호 찾기</a></p>
-	<p id="regist"><a href="/login/registForm">회원가입</a></p>
-</ul>
-
- <div class="col-6">
-    <div class="manage-button">
-	      <button onClick="checkPassword()" type="submit" name="submit"
-	      class="login_now text-white text-decoration-none w-100">로그인</button>
-			<p id="error-msg" style="color:red; display:none;">비밀번호가 일치하지않습니다</p>
-	  </div>
-	 </div>
-	<hr/>
-		 <div class="col-4">
-	    <div class="kakao-btn" onclick="kakaoLogin()">
-			<a id="kakao-login-link" href="https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917
-					&redirect_uri=http://localhost:8081/login/oauth2/code/kakao&response_type=code">
-		<img id="'kakaoLoginBtn" src="/images/login/kakao_login_medium_narrow.png"></a>
-	 </div>
-	  </div>
-          </div>
-                <!--<p>${error}</p>-->
-			  </form>
-			  <!--error message-->
-			  <c:if test="${not empty errorMessage}">
-			<p style="color:red;">${errorMessage}</p>	
-		  
-		  </c:if>
-          </div>
-        </div>
-		</div>
-		</div>
-		
-    <!--</section>-->
-	 <!-- BACK TO TOP BUTTON -->
+  				<br/>
+  				<br/>
+  				<br/>
+  				<br/>
+ 
+ 		<!--<div class="inner-content w-full max-w-md p-8 m-auto bg-white rounded-md md:p-6">-->
+				
+	<div class="mt-7 text-center">
+	<div class="group"> 
+		<form id="loginForm" action="/login/">
+		<label class="block text-xs text-gray-500 duration-200 group-focus-within:text-lightScheme-primary mb-0.5 undefined">이메일</label>
+		<br/>
+		<input type="text" class="flex-1 mx-auto w-full px-2 py-2.5 text-black placeholder-gray-700 border border-gray-598 rounded-md 
+		focus:outline-none focus:border-lightScheme-primary undefined"name="member_email" placeholder="Enter your emailaddress" required>
+		</div> <!--group-->
+						
+		<div class="mt-4">
+		<div class="group">
+		<label class="block text-xs text-gray-500 duration-200 group-focus-within:text-lightScheme-primary mb-0.5 undefined">비밀번호</label>
+		<br/>
+		<input type="password" class="flex-1 w-full px-2 py-2.5 text-black placeholder-gray-700 border border-gray-600 rounded-md focus:outline-none focus:border-lightScheme-primary undefined"
+		name="member_pass" placeholder="Enter your password" required>
+		</div><!--group-->
+		<a class="text-xs text-gray-500 hover:underline" href="/login/findpass" 
+		style="color:#cccccc;font-size:11px;">비밀번호를 잊으셨나요?</a>
+		<br/>
+		<div class="manage-btn mt-8">
+		<button onClick="checkPassword()" type="submit" name="submit" class="login_now relative w-full px-4 py-2 h-[48px] text-white bg-lightScheme-primary-focus rounded-md">로그인</button>
+		</div><!--mt-8-->
+					</div><!--mt-4-->
+		</form> 
+		</div><!--mt-7-->
+						
+		<p class="mt-4 text-xs text-center text-gray-500" style="font-size:11px;">회원이 아니신가요?
+		 <a class="font-medium text-lightScheme-confirm hover:underline" href="/login/registForm" 
+		 style="font-size: 11px;">회원가입</a>
+		 </p>
+		<!--			 <div class="relative m-2 text-center">
+					 <div class="absolute top-1/2 translate-y-1/2 w-full bg-gray-700 h-[1px]">
+						<span class="w-[100px] relative inline-block bg-white text-gray-500">or</span>
+					 			</div>-absolute top-1/2
+					 	<h4 class="text-xs text-center text-gray-500" style="font-size:11px; color=#cccccc;">SNS 간편 로그인</h4>
+					<a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?
+					client_id=93f73b822defadc4b387046b57697917&redirect_uri=						
+					http://localhost:8081/login/oauth2/code/kakao&response_type=code">
+						<img src="/images/login/kakao_login_medium_narrow.png" alt="kakao_login" 
+						style="cursor:pointer;"></a>-->
+				<!--</div>--><!--relative m-2 text-center-->	
+	   <!-- BACK TO TOP BUTTON -->
 	  
 <button id="back-to-top-btn" title="Back to Top"></button>
   <script src="/assets/js/jquery.min.js"></script>
@@ -173,30 +162,13 @@
   <script src="/assets/js/search.js"></script>
   
   <!-- Kakao SDK -->
-  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+ <!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   
   
 	<script>
-/*	function checkPassword(event) {
-		    event.preventDefault(); // 폼 제출 기본 동작 방지
-
-		    // 사용자가 입력한 비밀번호
-		    var inputPassword = document.getElementById("password").value;
-		    var dbPassword = "expectedPassword"; // 테스트용 비밀번호
-
-		    // 비밀번호 비교
-		    if (inputPassword === dbPassword) {
-		        alert('성공');
-		    } else {
-		        // 비밀번호 불일치 시 메시지 표시
-		        var errorMsg = document.getElementById("error-msg");
-		        errorMsg.style.display = "block";
-		    }
-		}*/
-		
-		
-		function checkPassword(event) {
+	function checkPassword(event) {
 		        // 사용자가 입력한 비밀번호
 		        var inputPassword = document.getElementById("password").value;
 		        var errorMsg = document.getElementById("error-msg");
@@ -216,7 +188,25 @@
 		        }
 		    }
 </script>
-	  
+<script>
+	// 카카오 SDK 초기화
+	Kakao.init('dbfd3f5676767105c4d566dc441d47c2'); // YOUR_APP_KEY를 실제 카카오 앱 키로 교체
+//카카오 로그인 버튼 클릭 시
+Kakao.Auth.createLoginButton({
+	container:'#kakao-login-btn',
+	success:function(authObj){
+		//로그인 성공 시
+		console.log(authObj);
+	},fail:function(err){
+		console.error(err);//로그인 실패 시
+	}
+})
+
+
+</script>
+
+
+
 </body>
 
 </html>
