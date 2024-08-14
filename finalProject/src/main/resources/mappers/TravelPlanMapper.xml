@@ -82,4 +82,11 @@
 	    )
 	</insert>
 	
+	<!-- myPlan에서 순서 편집 시 업데이트 -->
+	<update id="updateSeq">
+		UPDATE	travel_plan
+		SET		plan_seq = #{plan_seq}
+		WHERE	info_id = #{info_id} AND plan_day = #{plan_day} AND attr_id = #{attr_id}
+	</update>
+	
 </mapper>
