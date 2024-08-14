@@ -41,6 +41,8 @@ Headings: "Jost", sans-serif;
     padding: 0;
     box-sizing: border-box;
 }
+
+
 /*input-field*/
 
 .heading-title .input-field{
@@ -64,7 +66,10 @@ Headings: "Jost", sans-serif;
 	width:200px;
 }
 
+
 /*loginForm */
+
+/*
 #loginForm{
 	display: flex;
     justify-content: center;
@@ -78,6 +83,9 @@ Headings: "Jost", sans-serif;
 	justify-content: center;
 	align-items: center;
 	margin:30px;
+	margin-bottom:15px;
+	width:100px;
+	
 }
 
 .login-box{
@@ -87,21 +95,16 @@ Headings: "Jost", sans-serif;
 	padding:20px;
 	
 }
-.login-group{
-	margin-bottom:15px;
-	width:100px;
-}
+
 .login-group label{
 	display:block;
 	margin-bottom:5px;
-}
-.login-group input{
 	width:100px;
 	height:40px;
 	padding:0 10px;
 }
-
-.manage-button .login_now {
+*/
+.manage-btn .login_now {
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
@@ -123,18 +126,38 @@ Headings: "Jost", sans-serif;
 background: linear-gradient(to bottom, rgb(178, 243, 222, 20%) 0%, #ffffff 100%);	   
 	   
  }
+ 
 .manage-button{
 	display:inline-block;
 	width:260px;
-
 }
+/*
 .kakao-btn img{
 	width:260px;
 	height:50px;
 
+}*/
+
+
+/* agreeForm */
+#agreeCon{
+	font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    padding: 21px 78px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    border-radius: 10px;
+    background: var(--primary--color);
+    box-shadow: 0 20px 50px 0 rgb(30 194 139 / 35%);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+    color:white;
+    
 }
-
-
 #regist > a{
 	margin-left:80px;
 	margin-right:auto;
@@ -442,12 +465,39 @@ button.join_now{
 		    border: 1px solid #ccc; 테두리 스타일 설정 (옵션)
 		    border-radius: 4px; 테두리의 둥근 정도 설정 (옵션)
 	} */
-html, body {
+html,body{
     scroll-behavior: smooth;
     height:100%;
+    margin:0;
+    overflow-y:auto;
 	
 }
 
+/* loginForm_myro */
+.manage-btn .login_now{
+	width:200px;
+}
+
+.flex-1{
+  width: 100%;
+  max-width: 400px; /* 원하는 최대 너비 설정 */
+  flex-grow: 0;
+}
+
+@media (max-width: 768px) {
+  .flex-1 {
+    width: 100%;
+    max-width:90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-1 {
+    width: 100%;
+	max-width:95%;
+  }
+}
+/*end of loginForm  */
 .agree_Form{
     width: 100%;
     max-width: 600px; /* Adjust as needed */
@@ -483,7 +533,6 @@ textarea.form_style {
 	margin:0;
 	top:50px;
 }
-
 
 .manage-button .login_now{
      width: 100%;

@@ -15,6 +15,7 @@ import org.hibernate.internal.build.AllowSysOut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import com.example.domain.LoginVO;
 import com.example.service.LoginService;
@@ -54,8 +56,6 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
-
-
 
 	//회원가입 화면 요청 처리
 	@RequestMapping("/registForm")
@@ -110,7 +110,7 @@ public class LoginController {
 	    
 	    System.out.println("서비스후");
 	    
-	    return "/loginForm"; // 등록 완료 후 로그인 폼 페이지로 이동
+	    return "/login/loginForm"; // 등록 완료 후 로그인 폼 페이지로 이동
 	}
 
 	// 로그인을 위해 아이디와 비밀번호를 입력하고 로그인 버튼을 눌렸을 때
@@ -131,29 +131,13 @@ public class LoginController {
 			modelAndView.setViewName("redirect:/"); 	// return "redirect:/";
 			
 		}else {
-			
 			// 로그인 실패 시 오류 메시지 추가
 			modelAndView.setViewName("login/loginForm");// 로그인창 뷰페이지 지정	return "redirect:/loginForm";
-			modelAndView.addObject("errorMessage", "Invalid email or password");
+			modelAndView.addObject("errorMessage", "유효하지 않습니다.");
 		}
 		return modelAndView;
 	}
 
-/*	@PostMapping("/loginForm")
-	public ResponseEntity<String>login(@RequestParam String member_email, @RequestParam String member_pass){
-		boolean isAuthenicated = loginService.authenticate(member_email, member_pass);
-		
-		if(!isAuthenicated) {
-
-			return ResponseEntity.ok("로그인 성공");
-		}else {
-			
-			return ResponseEntity.status(HttpStatus.SC_UNAUTHORIZED).body("비밀번호가 일치하지 않습니다");
-		}
-	}*/
-	
-	
-	
 	//로그아웃
 	@RequestMapping("/logout")
 
@@ -165,28 +149,8 @@ public class LoginController {
 	  return "redirect:/";
 	}
 
-		
-	//마이페이지 ( 예시 )
-/*	@RequestMapping("/mypage")
-	public String myPage(HttpSession session) {
-	    LoginVO member = (LoginVO) session.getAttribute("member");
-	    if (member != null) {
-	        // 사용자 정보를 세션에서 가져오고 페이지를 보여줍니다.
-	        return "/login/mypage";
-	    } else {
-	        // 비로그인 상태일 때 로그인 페이지로 리디렉션
-	        return "redirect:/loginForm";
-	    }
-	}*/
 	
-		//홈
-//    @RequestMapping("/")
-//    public String home() {
-//        return "/";
-//}
 
-	
-	
 	
 	@RequestMapping("/savecontact")
 	public String savecontact(@Valid  LoginVO loginVO, BindingResult bindingResult) {
@@ -199,7 +163,6 @@ public class LoginController {
 		return "/";
 }
 	
-
 	private boolean isValidDate(int year, int month, int day) {
         try {
             LocalDate.of(year, month, day);
@@ -207,21 +170,8 @@ public class LoginController {
         } catch (DateTimeException e) {
             return false;
         }
-    }
-	
-	
-	// kakaoLogin
-	// 카카오 로그인 기능이 처리되는 페이지
-	@RequestMapping("/loginForm/getKakaoAuthURl")
-	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception{
-		String reqUrl=
-				 "https://kauth.kakao.com/oauth/authorize?client_id=93f73b822defadc4b387046b57697917&redirect_uri=	"
-				 + "http://localhost:8081/login/oauth2/code/kakao&response_type=code";
-	return reqUrl;
 	}
 	
-	
 }//end of class
-
 
 
