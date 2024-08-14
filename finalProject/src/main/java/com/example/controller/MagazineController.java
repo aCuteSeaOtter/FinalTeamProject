@@ -110,10 +110,4 @@ public class MagazineController {
 
 	    return ResponseEntity.ok(response);
 	}
-
-
-
-
-
-
 }

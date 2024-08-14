@@ -41,5 +41,6 @@ public interface ReviewService {
    // 리뷰 조회수
    void incrementViewCount(ReviewVO vo);
    
+   // 리뷰 페이징
    int getCommentCount(int review_id);
 }

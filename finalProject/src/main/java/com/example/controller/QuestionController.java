@@ -36,17 +36,18 @@ public class QuestionController {
 	@RequestMapping("questionWrite")
 	public String insertQuestion(Model m, HttpSession session,
 								HttpServletResponse response) {
-		// 세션에서 사용자 닉네임 가져오기
+		// 세션에서 사용자 정보 가져오기
 		LoginVO member = (LoginVO) session.getAttribute("member");
 	    String id = (String) session.getAttribute("sess");
 	    
+	    // 사용자가 로그인한 경우
 	    if (member != null) {
 	           String nickname = member.getMember_nickname();
 	           m.addAttribute("nickname", nickname);
 	           return "question/questionWrite"; 
 	       } else {
-	           System.out.println("닉네임이 null입니다. 세션에 닉네임이 설정되지 않았습니다.");
-	           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/question/questionList");
+	    	   // 로그인하지 않은 경우, 로그인 페이지로 리다이렉트
+	           PopUp.popUpMove(response, "로그인 후 이용 바랍니다.", "/login/loginForm");
 	           return null;  // 팝업을 띄우고 리다이렉트가 처리되므로 null 반환
 	       }
 	   }
@@ -63,6 +64,7 @@ public class QuestionController {
         // 세션에서 사용자 정보 가져오기
         LoginVO member = (LoginVO) session.getAttribute("member");
         
+        // 사용자가 로그인한 경우
         if (member != null) {
             String member_email = member.getMember_email();
             // QuestionVO에 사용자 이메일 설정
@@ -85,10 +87,11 @@ public class QuestionController {
                 return null;
             }
             
+            // 문의글 저장
             questionService.insertQuestion(vo);
             out.println("<script>alert('작성이 완료되었습니다.'); location.href='/question/questionList';</script>");
             out.flush();
-            return null;
+            return null; // 작성 완료 후 문의글 목록 페이지로 이동
         } else {
             // 회원 정보가 세션에 없을 경우 로그인 페이지로 리다이렉트
             return "redirect:login/loginForm";
@@ -142,14 +145,17 @@ public class QuestionController {
 	@RequestMapping("selectQuestion")
 	public String selectQuestion(QuestionVO qvo, Model m, HttpSession session,
 								 AnswerVO avo) {
+		// 문의글 및 답변 조회
 		HashMap<String, Object> question = questionService.selectQuestion(qvo);
 		AnswerVO answer = answerService.selectAnswer(avo);
 		String id = (String) session.getAttribute("sess");
+		
+		// 모델에 문의글과 답변 정보 추가
 		m.addAttribute("id", id);
 		m.addAttribute("question", question);
 		m.addAttribute("answer", answer);
 		
-		return "question/selectQuestion";
+		return "question/selectQuestion"; // 문의글 상세보기 페이지로 이동
 	}
 	
 	// 문의글 수정
@@ -182,9 +188,10 @@ public class QuestionController {
 	    if (!isTitleChanged && !isContentChanged) {
 	        out.println("<script>alert('수정하지 않았습니다.'); history.go(-1);</script>");
 	        out.flush();
-	        return;
+	        return; // 제목과 내용이 변경되지 않은 경우, 이전 페이지로 돌아감
 	    }
 	    
+	    // 문의글 수정
 	    questionService.updateQuestion(vo);
 	    out.println("<script>alert('수정되었습니다.'); location.href='questionList';</script>");
 	    out.flush();
@@ -196,6 +203,7 @@ public class QuestionController {
 	    response.setContentType("text/html;charset=UTF-8");
 	    PrintWriter out = response.getWriter();
 	    
+	    // 문의글 삭제
 	    questionService.deleteQuestion(vo);
 	    
 	    out.println("<script>alert('삭제되었습니다.'); location.href='questionList';</script>");
@@ -206,11 +214,13 @@ public class QuestionController {
 	// 사용자의 문의글 비밀글 여부
 	@RequestMapping("checkSecretPassword")
 	public String checkSecretPassword(QuestionVO vo, Model m, HttpSession session) {
+		// 비밀글 여부 확인
 		HashMap<String, Object> result = questionService.selectQuestion(vo);
 		String id = (String) session.getAttribute("sess");
+		
+		// 모델에 비밀글 정보 추가
 		m.addAttribute("id", id);
 		m.addAttribute("question", result);
-		return "question/checkSecretPassword";
+		return "question/checkSecretPassword"; // 비밀글 비밀번호 확인 페이지로 이동
 	}
 }
-

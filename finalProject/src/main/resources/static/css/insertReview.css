@@ -1,239 +1,270 @@
 @charset "UTF-8";
+/* 전체 페이지의 기본 스타일 설정 */
 body {
-       font-family: Arial, sans-serif;
-       background-color: #f4f4f9;
-       margin: 0;
-       padding: 0;
-       color: #333;
-   }
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
 
-   h1, h3 {
-       text-align: center;
-       margin-top: 20px;
-   } 
+/* 제목 태그 h1, h3 스타일 설정 */
+h1, h3 {
+    text-align: center;
+    margin-top: 20px;
+} 
 
-   hr {
-       border: 0;
-       height: 1px;
-       background: #ddd;
-       margin: 20px 0;
-   }
+/* 구분선 스타일 설정 */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
 
-   table {
-       width: 100%;
-       /* max-width: 600px; */
-       margin-bottom: 20px;
-       border: 1px solid #ddd;
-   }
+/* 테이블 기본 스타일 설정 */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
    
-   th, td {
-           border: 1px solid #ddd;
-           padding: 12px;
-           text-align: left;
-       }
-       th {
-           background-color: #f2f2f2;
-           text-align: center;
-       }
-       td {
-           background-color: #fff;
-       }
+/* 테이블 헤더와 셀 기본 스타일 설정 */
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+td {
+    background-color: #fff;
+}
       
-   input[type="text"],
-   textarea,
-   .form-control {
-       width: calc(100% - 24px);
-       padding: 10px;
-       margin: 8px 0;
-       border: 1px solid #ccc;
-       border-radius: 4px;
-       box-sizing: border-box;
-   }
+/* 텍스트 입력과 텍스트 영역 기본 스타일 설정 */
+input[type="text"],
+textarea,
+.form-control {
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
-   input[type="file"] {
-       margin-top: 5px;
-   }
+/* 파일 입력 기본 스타일 설정 */
+input[type="file"] {
+    margin-top: 5px;
+}
 
-   input[type="submit"] {
-       background-color: #1ec28b;
-       color: #fff;
-       border: none;
-       padding: 10px 20px;
-       border-radius: 4px;
-       cursor: pointer;
-       transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
-   }
+/* 제출 버튼 스타일 설정 */
+input[type="submit"] {
+    background-color: #1ec28b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
 
-   input[type="submit"]:hover {
-       background-color: #148f62;
-       transform: scale(1.05); /* 살짝 확대 */
-    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
-   }
+/* 제출 버튼 호버 시 스타일 설정 */
+input[type="submit"]:hover {
+    background-color: #148f62;
+    transform: scale(1.05); /* 살짝 확대 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}
 
-   fieldset {
-       margin: 20px 0;
-       padding: 0;
-       border: none;
-   }
+/* 필드셋 기본 스타일 설정 */
+fieldset {
+    margin: 20px 0;
+    padding: 0;
+    border: none;
+}
 
-   fieldset span {
-       display: block;
-       margin-bottom: 10px;
-       font-weight: bold;
-       color: #333;
-   }
+/* 필드셋의 제목 스타일 설정 */
+fieldset span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
 
-   fieldset label {
-       font-size: 2rem;
-       color: #ccc;
-       cursor: pointer;
-       transition: color 0.3s ease;
-   }
+/* 별점 필드셋의 레이블 스타일 설정 */
+fieldset label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
 
-   fieldset input[type="radio"] {
-       display: none;
-   }
+/* 별점 필드셋의 라디오 버튼 숨기기 */
+fieldset input[type="radio"] {
+    display: none;
+}
 
-   fieldset input[type="radio"]:checked + label {
-       color: #f5c518;
-   }
+/* 선택된 별점의 레이블 색상 설정 */
+fieldset input[type="radio"]:checked + label {
+    color: #f5c518;
+}
 
-   .reply-form label {
-       display: block;
-       margin-top: 10px;
-   }
+/* 대댓글 작성 폼의 스타일 설정 */
+.reply-form label {
+    display: block;
+    margin-top: 10px;
+}
 
-   .reply-form input[type="text"],
-   .reply-form textarea {
-       width: calc(100% - 22px);
-       padding: 10px;
-       margin-top: 8px;
-       border: 1px solid #ccc;
-       border-radius: 4px;
-   }
+/* 대댓글 작성 폼의 입력 필드와 텍스트 영역 스타일 설정 */
+.reply-form input[type="text"],
+.reply-form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-   .reply-form input[type="button"] {
-       margin-top: 10px;
-       padding: 10px 20px;
-       background-color: #4CAF50;
-       color: white;
-       border: none;
-       border-radius: 4px;
-       cursor: pointer;
-   }
+/* 대댓글 작성 폼의 버튼 스타일 설정 */
+.reply-form input[type="button"] {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-   .reply-form input[type="button"]:hover {
-       background-color: #45a049;
-   }
+/* 대댓글 작성 폼의 버튼 호버 시 스타일 설정 */
+.reply-form input[type="button"]:hover {
+    background-color: #45a049;
+}
 
-   .action-links a {
-       margin-right: 20px;
-       text-decoration: none;
-       color: #0066cc;
-   }
+/* 링크 기본 스타일 설정 */
+.action-links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #0066cc;
+}
 
-   .action-links a:hover {
-       text-decoration: underline;
-   }
+/* 링크 호버 시 스타일 설정 */
+.action-links a:hover {
+    text-decoration: underline;
+}
 
-   textarea {
-       resize: vertical;
-   }
+/* 내용 영역 크기 조절 설정 */
+textarea {
+    resize: vertical;
+}
    
-	/* 미리보기 style */
-	.file-preview {
-    position: relative;
-    display: inline-block;
-    margin: 10px;
-	}
+/* 파일 미리보기 스타일 설정 */
+.file-preview {
+   position: relative;
+   display: inline-block;
+   margin: 10px;
+}
 	
-	.file-preview .delete-btn {
-	    position: absolute;
-	    top: 0;
-	    right: 0;
-	    background-color: #ff0000;
-	    color: #ffffff;
-	    border: none;
-	    border-radius: 50%;
-	    width: 20px;
-	    height: 20px;
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    cursor: pointer;
-	}
+/* 파일 미리보기 삭제 버튼 스타일 설정 */
+.file-preview .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* 파일 미리보기 삭제 버튼 호버 시 스타일 설정 */
+.file-preview .delete-btn:hover {
+    background-color: #cc0000;
+}
 	
-	.file-preview .delete-btn:hover {
-	    background-color: #cc0000;
-	}
+/* 이미지 미리보기 스타일 설정 */
+.preview-img {
+    max-width: 150px;
+    max-height: 150px;
+}
 	
-	.preview-img {
-	    max-width: 150px;
-	    max-height: 150px;
-	}
+/* 비디오 미리보기 스타일 설정 */
+.preview-video {
+    max-width: 150px;
+    max-height: 150px;
+}
 	
-	.preview-video {
-	    max-width: 150px;
-	    max-height: 150px;
-	}
+/* 글 목록 버튼 스타일 설정 */
+.reviewList-btn {
+    background-color: #1ec28b; /* 기본 배경색 */
+	color: #fff; /* 글자색 */
+	border: none; /* 테두리 제거 */
+	padding: 10px 20px; /* 여백 */
+	border-radius: 4px; /* 모서리 둥글게 */
+	cursor: pointer; /* 커서 모양 */
+	text-decoration: none; /* 기본 링크 장식 제거 */
+	display: inline-block; /* 인라인 블록 요소로 설정 */
+	transition: background-color 0.3s ease; /* 배경색 변화 효과 */
+	font-size: 16px; /* 글자 크기 */
+	text-align: center; /* 글자 중앙 정렬 */
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
 	
-	/* 글 목록 버튼 스타일 */
-	.reviewList-btn {
-	    background-color: #1ec28b; /* 기본 배경색 */
-	    color: #fff; /* 글자색 */
-	    border: none; /* 테두리 제거 */
-	    padding: 10px 20px; /* 여백 */
-	    border-radius: 4px; /* 모서리 둥글게 */
-	    cursor: pointer; /* 커서 모양 */
-	    text-decoration: none; /* 기본 링크 장식 제거 */
-	    display: inline-block; /* 인라인 블록 요소로 설정 */
-	    transition: background-color 0.3s ease; /* 배경색 변화 효과 */
-	    font-size: 16px; /* 글자 크기 */
-	    text-align: center; /* 글자 중앙 정렬 */
-	    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
-	}
+/* 글 목록 버튼 호버 시 스타일 설정 */
+.reviewList-btn:hover {
+    background-color: #148f62; /* 호버 시 배경색 */
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05); /* 살짝 확대 */
+   	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}
 	
-	.reviewList-btn:hover {
-	    background-color: #148f62; /* 호버 시 배경색 */
-	    color: white;
-	    text-decoration: none;
-	    transform: scale(1.05); /* 살짝 확대 */
-    	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
-	}
+/* Day Plan Item 스타일 설정 */
+.day-plan-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 	
-	/* Day Plan Item Styles */
-	.day-plan-item {
-	    background-color: #ffffff;
-	    border: 1px solid #ddd;
-	    border-radius: 8px;
-	    padding: 15px;
-	    margin-bottom: 20px;
-	    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-	}
+/* Day Plan 제목 스타일 설정 */
+.day-title {
+    font-size: 1.5rem;
+    color: #1ec28b;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #1ec28b;
+    padding-bottom: 5px;
+}
+
+/* 명소 리스트 스타일 설정 */	
+.attraction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 	
-	.day-title {
-	    font-size: 1.5rem;
-	    color: #1ec28b;
-	    margin-bottom: 10px;
-	    border-bottom: 2px solid #1ec28b;
-	    padding-bottom: 5px;
-	}
+/* 명소 항목 스타일 설정 */
+.attraction-item {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
 	
-	.attraction-list {
-	    list-style: none;
-	    padding: 0;
-	    margin: 0;
-	}
-	
-	.attraction-item {
-	    font-size: 1.1rem;
-	    color: #333;
-	    margin-bottom: 8px;
-	    display: flex;
-	    align-items: center;
-	}
-	
-	.attraction-item i {
-	    color: #1ec28b;
-	    margin-right: 10px;
-	}
+/* 명소 아이콘 스타일 설정 */
+.attraction-item i {
+    color: #1ec28b;
+    margin-right: 10px;
+}

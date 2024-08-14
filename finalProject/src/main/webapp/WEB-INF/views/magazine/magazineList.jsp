@@ -256,7 +256,7 @@
     <script src="/assets/js/wow.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/search.js"></script>
-    <script src="/js/magazine.js"></script>
+    <script src="/js/magazineList.js"></script>
 
 </body>
 

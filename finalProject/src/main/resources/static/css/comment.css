@@ -7,15 +7,15 @@
 
 /* 대댓글 컨테이너 스타일 설정 */
 .nested-reply-list {
-    margin-left: 20px; /* 들여쓰기 효과 */
+    margin-left: 20px;
 }
 
 /* 대댓글 스타일 설정 */
 .reply-comment-row td {
     padding: 8px;
     border-bottom: 1px solid #e0e0e0;
-    background-color: #fafafa; /* 대댓글 배경색 추가 */
-    border-radius: 4px; /* 둥근 모서리 추가 */
+    background-color: #fafafa;
+    border-radius: 4px;
 }
 
 .reply-comment-row {
@@ -68,6 +68,7 @@
     font-size:16px;
 }
 
+/* 댓글 내용 및 대댓글 내용의 공통 스타일 설정 */
 .reply-comment , .comment-text {
 	font-family: 'tway', sans-serif;
 	font-size:16px;
@@ -92,6 +93,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* 배경색과 크기 변화 효과 */
 }
 
+/* 대댓글 작성 버튼 호버 */
 .reply-submit:hover {
     background-color: #148f62; /* 호버 시 배경색 */
     transform: scale(1.05); /* 살짝 확대 */
@@ -106,6 +108,7 @@
     color: red;
 }
 
+/* 삭제 버튼 */
 .delete-btn {
     float: right; /* 삭제 버튼을 오른쪽으로 정렬 */
     margin-left: 10px; /* 버튼 사이의 간격 조절 */
@@ -136,15 +139,18 @@
     font-family: 'tway', sans-serif;
 }
 
+/* 댓글 작성자 이름 스타일 설정 */
 .comment-writer {
     font-weight: bold;
     font-size:16px;
 }
 
+/* 댓글 날짜 스타일 설정 */
 .comment-date {
     color: #999;
 }
 
+/* 댓글 정보의 내용 넘침 처리 */
 .comment-info2 {
     overflow: hidden;
 }

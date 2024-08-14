@@ -16,7 +16,7 @@ public class CommentDAOImpl implements CommentDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	// 뎃글 작성
+	// 댓글 작성
 	public Integer insertComment(CommentVO vo) {
 		return mybatis.insert("commentDAO.insertComment", vo);
 	}
@@ -31,8 +31,4 @@ public class CommentDAOImpl implements CommentDAO{
 	public int deleteComment(Integer comment_id) {
 		return mybatis.delete("commentDAO.deleteComment", comment_id);
 	}
-	
-	public Integer getCommentCount(Integer review_id) {
-        return mybatis.selectOne("CommentDAO.getCommentCount", review_id);
-    }
 }

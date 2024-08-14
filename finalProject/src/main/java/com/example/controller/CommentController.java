@@ -44,14 +44,9 @@ public class CommentController {
 	    // comment_id에 해당하는 댓글을 삭제하고 삭제 결과에 따라 문자열 반환
 	    Integer result = commentService.deleteComment(comment_id);
 	    if (result > 0) {
-	        return "success"; // 삭제 성공
+	        return "success";
 	    } else {
-	        return "fail"; // 삭제 실패
+	        return "fail"; 
 	    }
-	}
-	
-	@GetMapping("commentCount")
-	public Integer getCommentCount(Integer review_id) {
-	    return commentService.getCommentCount(review_id);
 	}
 }

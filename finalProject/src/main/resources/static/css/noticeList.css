@@ -16,10 +16,12 @@
 	cursor: default; /* 커서를 기본 포인터로 설정 */
 }
 
+/*  공지 리스트 기본 상태 */
 .card-header{
 	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 }
 
+/* 공지에 호버 시 */
 .card-header:hover{
 	background-color: #148f62;
     border-color: #148f62;
@@ -34,6 +36,7 @@
     margin: 20px 0; /* 상하 여백 조정 */
 }
 
+/* 각 페이지 링크 */
 .pagination a {
     display: inline-block; /* 인라인 블록 요소로 설정 */
     padding: 10px 15px; /* 버튼 크기 조절 */
@@ -46,22 +49,33 @@
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* 배경색과 크기 변화 효과 */
 }
 
+/* 활성화된 페이지 링크 */
 .pagination a.active {
     font-weight: bold; /* 글자 굵게 */
     background-color: #148f62; /* 활성화된 페이지 링크 색상 */
 }
 
+/* 페이지네이션 링크 호버 시 */
 .pagination a:hover {
     background-color: #148f62; /* 호버 시 배경색 */
     transform: scale(1.05); /* 살짝 확대 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 }
 
+/* 페이지네이션 링크 포커스 시 */
 .pagination a:focus {
     outline: none; /* 기본 포커스 테두리 제거 */
     box-shadow: 0 0 0 3px rgba(30, 194, 139, 0.5); /* 배경색에 맞춘 그림자 */
 }
 
+/* float-left 클래스가 적용된 요소를 float:none으로 설정하여 부동 효과 제거 */
 .float-left{
 	float:none !important;	
+}
+
+/* 화면 너비가 850px 이하일 때 */
+@media (max-width: 850px){
+	.partner-con{
+		padding:0 !important;
+	}
 }

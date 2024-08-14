@@ -52,13 +52,9 @@
             <div class="row wow fadeInUp">
                 <div id="blog" class="col-xl-12">
 					<div class="sub-banner-inner-con padding-bottom">
-                        <h1>리뷰 목록</h1>
-                        <p class="font-size-20">모두 함께 상세보기를 보아요🥵</p>
-                        <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="/index">Home</a></li>
-                            </ol>
-                        </div>
+                        <h1>여행 후기</h1>
+                        <p class="font-size-20">다른 사용자들이 다녀온 여행 후기</p>
+                        <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600"></div>
                     </div>
 
                     <div class="row">
