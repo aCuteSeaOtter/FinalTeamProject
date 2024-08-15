@@ -152,6 +152,7 @@
 </dependency>
 
 <!--카카오 로그인-->
+<!--
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
@@ -178,15 +179,31 @@
   <artifactId>jjwt-jackson</artifactId>
   <version>0.11.5</version>
 </dependency>
-<!-- Spring Security OAuth2 dependencies -->
-
-<!--<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-oauth2-client</artifactId>
-</dependency>
 -->
 
-		
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version> <!-- 최신 안정 버전으로 교체 -->
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <version>3.3.0</version> <!-- 최신 버전으로 교체 -->
+</dependency>
+
+<dependency>
+    <groupId>jakarta.mail</groupId>
+    <artifactId>jakarta.mail-api</artifactId>
+    <version>2.1.1</version> <!-- 또는 최신 버전 -->
+</dependency>
+
+
 	</dependencies>
 
 	<build>
