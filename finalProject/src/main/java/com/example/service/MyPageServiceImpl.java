@@ -41,6 +41,11 @@ public class MyPageServiceImpl implements MyPageService {
 		return myPageDAO.selectReportList(user_id);
 	}
 	
+	// 일정 삭제
+	public void deletePlan(int info_id) {
+		myPageDAO.deletePlan(info_id);
+    }
+	
 	// 신고한 게시글로 이동
 	public int selectReport(int report_id) {
 		return myPageDAO.selectReport(report_id);

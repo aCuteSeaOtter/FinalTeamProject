@@ -32,6 +32,9 @@ public interface MyPageDAO {
 	// 나의 신고
 	List<Map<String, Object>> selectReportList(String user_id);
 	
+	// 내 정보 수정
+	void deletePlan(int info_id);
+	
 	// 신고한 게시글로 이동
 	int selectReport(int report_id);
 }

@@ -13,14 +13,31 @@ h1 {
 	margin-bottom: 30px;
 }
 
+.map-content > div:nth-child(1) > span {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.review-btn {
+	background-color: #1bbc9b;
+	color: white;
+	margin-bottom: 10px;
+}
+
+.seq-img {
+	width: 25px;
+	height: 25px;
+	margin-right: 5px;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: -15px;
 }
 
 .col-lg-3 {
     padding: 15px;
+    margin-bottom: 20px;
 }
 
 .wrapper {
@@ -105,16 +122,14 @@ h1 {
 }
 
 .attr-edit-btn {
-	background-color: #1bbc9b;
+	background-color: pink;
 	color: white;
 	height: 35px;
 	float: right;
 	transform: translateY(-5px);
 }
 
-.edit-btn {
-	display: none;
-	height: 35px;
+.map-btn {
 	margin-top: 10px;
 }
 
@@ -176,8 +191,27 @@ h1 {
   height: 60%;
 }
 
+.mapModal {
+  display: none; /* 모달창 기본 숨김 */
+  margin-left: 5%;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 80%;
+  height: 60%;
+}
+
 /* 모달 내용 스타일 */
 .modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color: black;
+}
+
+.mapModal-content {
   background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
@@ -228,7 +262,14 @@ h1 {
 /* 모달 닫기 버튼 스타일 */
 .closeBtn {
   color: #aaa;
-  float: right;
+  float: left;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeBtn2 {
+  color: #aaa;
+  float: left;
   font-size: 28px;
   font-weight: bold;
 }
@@ -240,14 +281,30 @@ h1 {
   cursor: pointer;
 }
 
+.closeBtn2:hover,
+.closeBtn2:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* 반응형 디자인을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
   .myModal {
     width: 95%; /* 화면 너비의 95%로 조정 */
     height: 90%; /* 화면 높이의 90%로 조정 */
   }
+  
+  .mapModal {
+    width: 95%; /* 화면 너비의 95%로 조정 */
+    height: 90%; /* 화면 높이의 90%로 조정 */
+  }
 
   .modal-content {
+    padding: 15px; /* 패딩을 줄여서 더 많은 화면 공간 활용 */
+  }
+  
+  .mapModal-content {
     padding: 15px; /* 패딩을 줄여서 더 많은 화면 공간 활용 */
   }
 
@@ -263,6 +320,10 @@ h1 {
   .closeBtn {
     font-size: 24px; /* 작은 화면에서 닫기 버튼 크기 조정 */
   }
+  
+  .closeBtn2 {
+    font-size: 24px; /* 작은 화면에서 닫기 버튼 크기 조정 */
+  }
 }
 
 @media (max-width: 480px) {
@@ -270,8 +331,17 @@ h1 {
     width: 100%; /* 화면 너비의 100%로 조정 */
     height: 100%; /* 화면 높이의 100%로 조정 */
   }
+  
+  .mapModal {
+    width: 100%; /* 화면 너비의 100%로 조정 */
+    height: 100%; /* 화면 높이의 100%로 조정 */
+  }
 
   .modal-content {
+    padding: 10px; /* 패딩을 더 줄여서 더 많은 화면 공간 활용 */
+  }
+  
+  .mapModal-content {
     padding: 10px; /* 패딩을 더 줄여서 더 많은 화면 공간 활용 */
   }
 
@@ -287,10 +357,18 @@ h1 {
   .closeBtn {
     font-size: 20px; /* 아주 작은 화면에서 닫기 버튼 크기 조정 */
   }
+  
+  .closeBtn2 {
+    font-size: 20px; /* 아주 작은 화면에서 닫기 버튼 크기 조정 */
+  }
 }
 
 /* 콘텐츠 스타일 */
 .content {
+    margin: 20px 0; /* 상하 여백 */
+}
+
+.map-content {
     margin: 20px 0; /* 상하 여백 */
 }
 

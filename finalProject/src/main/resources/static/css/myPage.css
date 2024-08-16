@@ -8,12 +8,19 @@ body {
     padding: 0;
 }
 
-strong {
-	color: black;
+.trash {
+	width: 25px;
+	height: 25px;
+	float: right;
+	margin-right: 48px;
 }
 
-.content-1 {
-	
+.trash:hover {
+	content: url('/images/plan/trash_red.png');
+}
+
+strong {
+	color: black;
 }
 
 .content-2 {
@@ -94,11 +101,6 @@ strong {
 .profile-value:focus {
     outline: none;
     border-bottom: 2px solid #1877f2;
-}
-
-.pass {
-	font-family: Arial;
-	font-weight: bold;
 }
 
 .secret {

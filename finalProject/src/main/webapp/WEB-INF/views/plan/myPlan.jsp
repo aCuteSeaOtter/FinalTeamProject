@@ -69,6 +69,7 @@
   		
 	    <div class="container full-height-container">
 	    	<h1>일정 상세</h1>
+	    	<input type="button" class="review-btn btn" value="후기 작성">
 			<div class="row">
 				<h2></h2>
 				<c:forEach items="${myPlan}" var="list">
@@ -83,6 +84,8 @@
 			        				<ul class="sortable">
 			        				<c:forEach var="attr" items="${list.attr_name}">
 				        				<li>
+				        					<span><img class="seq-img" src="https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1738-blank-sequence_4x.png&highlight=7cb342&scale=4&color=ffffffff&psize=15&text=${attr.PLAN_SEQ}"></span>
+
 					        				<c:choose>
 							                    <c:when test="${fn:length(attr.ATTR_NAME) > 7}">
 							                        ${fn:substring(attr.ATTR_NAME, 0, 7)}...
@@ -94,19 +97,21 @@
 				        					<img src="/images/plan/sortable.png" class="sortable-png">
 				        					<input type="hidden" class="attr_id" value="${attr.ATTR_ID}">
 					        				<input type="hidden" class="info_id" value="${attr.INFO_ID}">
+					        				<input type="hidden" class="attr_name" value="${attr.ATTR_NAME}">
+					        				<input type="hidden" class="plan_seq" value="${attr.PLAN_SEQ}">
+					        				<input type="hidden" class="attr_lat" value="${attr.ATTR_LAT}">
+					        				<input type="hidden" class="attr_lon" value="${attr.ATTR_LON}">
 					        				<input type="hidden" class="trip_place" value="${attr.TRIP_PLACE}">
 				        				</li>
 				        			</c:forEach>
 				        			</ul>
 			        			</div>
-				        		
 			        		</div>
 			        	</div>
-					    <input type="button" class="edit-btn btn btn-primary" value="수정">
+						<input type="button" class="map-btn btn btn-primary" value="지도 보기">
 					<!-- col -->
 			        </div>
 				</c:forEach>
-				
 				
 				<div class="myModal">
 					<div class="modal-content">
@@ -127,6 +132,32 @@
 					        <input type="button" value="이전" class="prevPage btn"/>
 					        <input type="button" value="다음" class="nextPage btn"/>
 					        <input type="button" class="btn saveBtn" value="저장"/>
+			                
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="mapModal">
+					<div class="mapModal-content">
+						<span class="closeBtn2">&times;</span>
+						<div class="map-content">
+						<div>
+							<span></span><span>일차</span>
+						</div>
+						
+						
+							<!-- 내용 출력 -->
+							<!-- Tmap -->
+					        <div class="col-lg-12 mapBlock">
+						        	<p id="result"></p>
+						          	<div id="map_wrap" class="map_wrap">
+						          		<div id="map_div"></div>
+						          	</div>
+						          
+						     <!-- col -->
+						     </div>
 			                
 						</div>
 					</div>

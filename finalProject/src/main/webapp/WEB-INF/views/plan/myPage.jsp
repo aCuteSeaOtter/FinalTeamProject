@@ -113,37 +113,20 @@
 	        	<!-- 나의 일정 -->
 	        	<div class="content-2">
 				    <div class="t-left">
-			            <c:forEach items="${planList}" var="list">
-			                <div class="myPlan-wrapper wrap">
-			                <form action="/selectMyPlan" method="post" id="myPlanForm">
-			                    <div class="block">
-			                        <div class="left">
-			                            <div><i class="fas fa-calendar-alt"></i><strong>일정명:</strong> ${list.INFO_NAME}</div>
-			                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.MEMBER_EMAIL}</div>
-			                            <div><i class="fas fa-map-marker-alt"></i><strong>지역:</strong> ${list.TRIP_PLACE}</div>
-			                        </div>
-			                        <div class="right">
-			                            <div><i class="fas fa-plane-departure"></i><strong>시작일:</strong> ${list.START_DATE}</div>
-			                            <div><i class="fas fa-plane-arrival"></i><strong>종료일:</strong> ${list.END_DATE}</div>
-			                            <div><input type="hidden" name="info_id" class="info_id fas fa-plane-arrival" value="${list.INFO_ID}"></div>
-			                        </div>
-			                    </div>
-			                </form>
-			                </div>
-			            </c:forEach>
+			            
+			            <!-- 내용 출력 -->
+			            
 				    </div>
-				    <c:if test="${not empty planList}"> 
 				    <div class="pagination-container">
 				        <input type="button" value="이전" class="planPrevPage prevPage btn"/>
 				        <input type="button" value="다음" class="planNextPage nextPage btn"/>
 				    </div>
-				    </c:if>
 			    </div>
 			    
 			    <!-- 나의 후기 -->
 	        	<div class="content-3">
 			    	<div class="t-left">
-				    	<c:forEach items="${reviewList}" var="list">
+				    	<%-- <c:forEach items="${reviewList}" var="list">
 				    		<div class="review-wrapper wrap">
 				                <form action="/selectMyReview" method="post" id="myReviewForm">
 				                    <div class="block">
@@ -180,7 +163,7 @@
 				                    </div>
 				                </form>
 			                </div>
-		                </c:forEach>
+		                </c:forEach> --%>
 			    	</div>
 			    	<c:if test="${not empty reviewList}">
 			    	<div class="pagination-container">

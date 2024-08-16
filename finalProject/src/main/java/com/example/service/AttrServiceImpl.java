@@ -1,6 +1,8 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.dao.AttrDAO;
@@ -26,8 +28,8 @@ public class AttrServiceImpl implements AttrService {
         return attrDAO.editAttrList(trip_place);
     }
     
-    public AttrVO selectAttrListById(Integer id) {
-        return attrDAO.selectAttrListById(id);
+    public List<Map<String, Object>> selectAttrListById(Integer id, Integer info_id) {
+        return attrDAO.selectAttrListById(id, info_id);
     }
 	
  	// 검색어를 이용한 명소 검색

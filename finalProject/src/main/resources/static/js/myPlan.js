@@ -22,13 +22,27 @@ function updatePaginationButtons() {
     $('.nextPage').prop('disabled', currentPage === totalPages);
 }
 
+var map;
+var markers = [];
+var polylines = []; // polyline 객체를 저장할 배열
+var mapInitialized = false; // 지도 초기화 여부를 체크하는 변수
+
 // 날짜별로 선택된 장소 ID를 저장할 객체 생성
 var selectedAttrIdDataMap = {};
 let day;
+var modal;
+var mapModal;
 
 $(function() {
-	var modal;
 	let infoId;
+	
+	// 'X' 버튼을 눌렀을 때 모달 닫기
+	$(document).on('click', '.closeBtn2', closeModal);
+	
+	$('.review-btn').on('click', function() {
+		infoId = $('.info_id').val();
+		location.href = '/review/insertReview?info_id='+infoId;
+	});
 	
 	$('.sortable').sortable({
 		update: function(event, ui) {
@@ -37,14 +51,9 @@ $(function() {
 			infoId 			= $(this).find('.info_id').val();
 			day 			= $(this).closest('.block').find('span:nth-child(1)').html();
 			
-			$(this).closest('.col-lg-3').find('.edit-btn').css({'display': 'block'});
-			
 			$(this).find('li').each(function(index) {
 				var itemId = $(this).find('.attr_id').val();
 				itemIndices.push({ id: itemId, index: index+1, info_id: infoId, day: day });
-		    });
-			
-			$('.edit-btn').off('click').on('click', function() {
 				
 				$.ajax({
 	                url: '/updateSeq',
@@ -55,15 +64,78 @@ $(function() {
 	                }),
 	                success: function(response) {
 	                    console.log('/updateSeq success : ' + response);
-						alert('수정되었습니다.');
-						
 	                },
 	                error: function(xhr, status, error) {
 	                    console.log('/updateSeq error : ' + error);
 	                }
 	            });
-			});
+		    });
+			alert('수정되었습니다.');
 		}
+	});
+	
+
+	$('.map-btn').on('click', function() {
+		mapModal = $('.mapModal');
+		
+		mapModal.css({'display' : 'block'});
+		
+		// Tmap API 초기화
+	    initTmap();
+		
+		var block = $(this).closest('.col-lg-3').find('.block');
+        var attractions = [];
+    
+        // 기존 마커 제거
+        clearMarkers();
+        // 기존 polyline 제거
+        clearPolylines();
+
+        block.find('.sortable > li').each(function() {
+            var attrLat = $(this).find('.attr_lat').val();
+            var attrLon = $(this).find('.attr_lon').val();
+            var attrName = $(this).find('.attr_name').val();
+			var planSeq = $(this).find('.plan_seq').val();
+			
+            console.log("명소 데이터:", attrName, attrLat, attrLon);
+            
+            if (attrLat && attrLon) {
+                attractions.push({
+                    name: attrName,
+                    lat: attrLat,
+                    lon: attrLon,
+					seq: planSeq
+                });
+                addMarker(attrLat, attrLon, attrName, planSeq);
+            }
+        });
+
+        // 지도 중심 및 줌 레벨 조정
+        fitBoundsToMarkers();
+
+        // 경로 최적화 (2개 이상의 장소가 있을 때만 실행)
+        if (attractions.length > 1) {
+            optimizeRoute(attractions);
+        }
+		
+		
+		
+		// 모달 영역 밖을 클릭했을 때 모달 닫기
+		$(document).on('click', function(event) {
+	        if ($(event.target).hasClass('mapModal')) {
+	            closeModal();
+	        }
+	    });
+				
+		// ESC 키를 눌렀을 때 모달 닫기
+		$(document).on('keydown', function(event) {
+	        if (event.key === 'Escape' || event.keyCode === 27) {
+	            closeModal();
+	        }
+	    });
+		
+		let dayNum = block.find('span:nth-child(1)').html();
+		$('.map-content > div:nth-child(1) > span:nth-child(1)').html(dayNum);
 	});
 	
 	$('.attr-edit-btn').on('click', function() {
@@ -281,4 +353,151 @@ function renderAttractions(attractions) {
         $('.scrollBox').append(attractionHtml);
     });
 	initializePagination(); // 페이지네이션 초기화
+}
+
+
+function initTmap() {
+	if (mapInitialized) {
+        return; // 이미 초기화된 경우 함수를 종료
+    }
+	// 지도 객체 생성
+    map = new Tmapv2.Map("map_div", {
+        center: new Tmapv2.LatLng(37.56701114710962, 126.9973611831669),
+        width: "100%",
+        height: "610px",
+        zoom: 15,
+        zoomControl: true,
+        scrollwheel: true
+    });
+    console.log("Map initialized:", map);
+	
+	mapInitialized = true; // 지도가 초기화됨을 표시
+}
+
+// 모달 닫기 시 호출되는 함수
+function closeModal() {
+    if (map) {
+        map.destroy(); // 기존 지도를 제거
+        mapInitialized = false; // 지도 초기화 여부를 false로 설정
+    }
+    mapModal.css({'display' : 'none'});
+}
+
+function addMarker(lat, lon, title, seq) {
+    var marker = new Tmapv2.Marker({
+        position: new Tmapv2.LatLng(parseFloat(lat), parseFloat(lon)),
+        icon: `https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1738-blank-sequence_4x.png&highlight=7cb342&scale=4&color=ffffffff&psize=15&text=${seq}`,
+        iconSize: new Tmapv2.Size(25, 25),
+        title: title,
+        map: map
+    });
+    markers.push(marker);
+}
+
+function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers = [];
+}
+
+// 새로운 함수 추가: 기존 polyline 제거
+function clearPolylines() {
+    for (var i = 0; i < polylines.length; i++) {
+        polylines[i].setMap(null);
+    }
+    polylines = [];
+}
+
+function fitBoundsToMarkers() {
+    if (markers.length > 0) {
+        var bounds = new Tmapv2.LatLngBounds();
+        for (var i = 0; i < markers.length; i++) {
+            bounds.extend(markers[i].getPosition());
+        }
+        map.fitBounds(bounds);
+    }
+}
+
+function optimizeRoute(attractions) {
+    var headers = {}; 
+    headers["appKey"]="HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y";
+
+    var viaPoints = attractions.map((attr, index) => ({
+        viaPointId: `via${index}`,
+        viaPointName: attr.name,
+        viaX: attr.lon,
+        viaY: attr.lat
+    }));
+
+    $.ajax({
+        type:"POST",
+        headers : headers,
+        url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization10?version=1&format=json",
+        async:false,
+        contentType: "application/json",
+        data: JSON.stringify({
+            "reqCoordType": "WGS84GEO",
+            "resCoordType" : "EPSG3857",
+            "startName": "출발",
+            "startX": viaPoints[0].viaX,
+            "startY": viaPoints[0].viaY,
+            "startTime": "202108151314",
+            "endName": "도착",
+            "endX": viaPoints[viaPoints.length - 1].viaX,
+            "endY": viaPoints[viaPoints.length - 1].viaY,
+            "searchOption" : "0",
+            "viaPoints": viaPoints.slice(1, -1)
+        }),
+        success:function(response){
+            drawRoute(response);
+        },
+        error:function(request,status,error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+}
+
+function drawRoute(response) {
+    var resultData = response.properties;
+    var resultFeatures = response.features;
+    
+    // 결과 출력
+    var tDistance = "총 거리 : " + (resultData.totalDistance/1000).toFixed(1) + "km,  ";
+    
+    $("#result").text(tDistance+tTime+tFare);
+    
+    for(var i in resultFeatures) {
+        var geometry = resultFeatures[i].geometry;
+        var properties = resultFeatures[i].properties;
+        var polyline_;
+        
+        var drawInfoArr = [];
+        
+        if(geometry.type == "LineString") {
+            for(var j in geometry.coordinates){
+                var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
+                var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+                
+                drawInfoArr.push(convertChange);
+            }
+
+            // 기존 polyline 제거 후 새로운 polyline 추가
+            polyline_ = new Tmapv2.Polyline({
+                path : drawInfoArr,
+                strokeColor : "#FF0000",
+                strokeWeight: 6,
+                map : map
+            });
+            polylines.push(polyline_); // polyline 객체 배열에 추가
+        }
+    }
+}
+
+// Tmap API 로드 완료 후 실행
+function onTmapLoaded() {
+    console.log("Tmap API loaded");
+    initTmap();
+    initializePage();
 }
