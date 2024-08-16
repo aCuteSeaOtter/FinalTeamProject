@@ -65,9 +65,6 @@
 									  틀릴까봐 쫄린다면<br>
 									  ⬇️ 아래 링크 클릭</p>-->
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="/question/questionList">⭐문의 목록 보기⭐</a></li>
-                </ol>
               </div>
 			  
 			  <form id="passwordForm" method="get" action="selectQuestion" data-correct-secret="${question.QUE_SECRET}">

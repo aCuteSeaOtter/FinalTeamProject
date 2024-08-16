@@ -3,22 +3,10 @@ table {
      width: 100%;
      border-collapse: collapse;
 }
-    
-/* 무지개 색상 애니메이션 정의 */
-   @keyframes rainbow {
-    0% { color: red; }
-    16.7% { color: orange; }
-    33.4% { color: yellow; }
-    50.1% { color: green; }
-    66.8% { color: blue; }
-    83.5% { color: indigo; }
-    100% { color: violet; }
-}
 
 /* 테이블 셀의 링크 스타일 */
 td a {
     color: #1ec28b; /* 기본 색상 */
-    animation: rainbow 8s infinite; /* 애니메이션 적용 */
     text-decoration: none; /* 기본 링크 밑줄 제거 */
 }
     

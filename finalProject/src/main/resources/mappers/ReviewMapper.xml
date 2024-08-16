@@ -70,40 +70,26 @@
    
    <!-- 리뷰 상세보기 -->
    <select id="getReview" parameterType="ReviewVO" resultType="hashmap">
-    WITH review_images AS (
-        SELECT ri.review_id,
-               LISTAGG(ri.file_name, ',') WITHIN GROUP (ORDER BY ri.file_name) AS file_names
-        FROM review_img ri
-        GROUP BY ri.review_id
-    ),
-    review_comments AS (
-        SELECT review_id,
-               COUNT(*) AS comment_count
-        FROM comments
-        GROUP BY review_id
-    )
-    SELECT 
-        r.review_id AS review_id,
-        r.review_title AS review_title,
-        m.member_nickname AS member_nickname,
-        r.review_star AS review_star,
-        r.review_content AS review_content,
-        r.review_regdate AS review_regdate,
-        r.review_cnt AS review_cnt,
-        r.review_like AS review_like,
-        r.review_hate AS review_hate,
-        m.member_email AS member_email,
-        ri.file_names AS file_names,
-        COALESCE(rc.comment_count, 0) AS comment_count
-    FROM review r
-    LEFT JOIN review_images ri
-        ON r.review_id = ri.review_id
-    LEFT JOIN member m
-        ON r.member_email = m.member_email
-    LEFT JOIN review_comments rc
-        ON r.review_id = rc.review_id
-    WHERE r.review_id = #{review_id}
-</select>
+       SELECT 
+           r.review_id      review_id,
+           r.review_title  review_title,
+           m.member_nickname member_nickname,
+           r.review_star,
+           r.review_content,
+           r.review_regdate,
+           r.review_cnt,
+           r.review_like,
+           r.review_hate,
+           m.member_email      member_email,
+           ri.origin_file_name origin_file_name,
+           ri.file_name      file_name
+       FROM review r
+       LEFT OUTER JOIN review_img ri
+           ON r.review_id = ri.review_id
+       LEFT OUTER JOIN member m
+           ON r.member_email = m.member_email
+       WHERE r.review_id = #{review_id}
+   </select>
 
    
    <!-- 댓글 수 조회 -->
