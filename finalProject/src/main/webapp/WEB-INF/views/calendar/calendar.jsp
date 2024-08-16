@@ -5,10 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.List" %>
 
-<%
-	/* String userId = (String)session.getAttribute(""); */
-%>
-
 
 <!DOCTYPE html> 
 <html lang="zxx">

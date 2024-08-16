@@ -100,6 +100,7 @@ $(function() {
             var attrLat = $(this).find('.attr_lat').val();
             var attrLon = $(this).find('.attr_lon').val();
             var attrName = $(this).find('div:first').text();
+			var planSeq = $(this).find('.plan_seq').val();
 
             console.log("명소 데이터:", attrName, attrLat, attrLon);
             
@@ -107,9 +108,10 @@ $(function() {
                 attractions.push({
                     name: attrName,
                     lat: attrLat,
-                    lon: attrLon
+                    lon: attrLon,
+					seq: planSeq
                 });
-                addMarker(attrLat, attrLon, attrName);
+                addMarker(attrLat, attrLon, attrName, planSeq);
             }
         });
 
@@ -137,11 +139,11 @@ function initTmap() {
     console.log("Map initialized:", map);
 }
 
-function addMarker(lat, lon, title) {
+function addMarker(lat, lon, title, seq) {
     var marker = new Tmapv2.Marker({
         position: new Tmapv2.LatLng(parseFloat(lat), parseFloat(lon)),
-        icon: "/images/plan/mapMarker.png",
-        iconSize: new Tmapv2.Size(38, 38),
+        icon: `https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1738-blank-sequence_4x.png&highlight=7cb342&scale=4&color=ffffffff&psize=15&text=${seq}`,
+        iconSize: new Tmapv2.Size(25, 25),
         title: title,
         map: map
     });

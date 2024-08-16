@@ -97,42 +97,64 @@
       <!-- 배너 컨텐츠 -->
     </section>
     <!-- 우리가 제공하는 서비스 섹션 -->
-	<section class="float-left w-100 what-we-serve-con service-serve-con position-relative main-box padding-bottom">
-	  <div class="container">
-	    <div class="row">
-		  <!-- 여행 정보 리스트 -->
-	      <div class="col-xl-9 col-lg-8">
-	        <ul class="travel-info-list">
-	          <c:forEach items="${travelInfoList}" var="info">
-	            <li class="travel-info-item" onclick="window.location.href='selectPlan?info_id=${info.info_id}'">
-	              <div class="travel-info-details">
-	                <p><strong>장소:</strong> ${info.trip_place}</p>
-	                <p><strong>스타일:</strong> ${info.style_tag}</p>
-	                <p><strong>대상:</strong> ${info.who_tag}</p>
-	              </div>
-	              <div class="travel-info-hover">
-	                <p>${info.info_name}</p> <!-- 부제 표시 -->
-	              </div>
-	            </li>
-	          </c:forEach>
-	        </ul>
-	      </div>
-		  <div class="sidebar sticky-sidebar col-xl-3 col-lg-4">
-  			<!-- 사이드바 -->
-  			<div class="theiaStickySidebar">
-  	          <div class="widget widget-newsletter" data-aos="fade-up" data-aos-duration="700">
-  	            <form id="widget-search-form-sidebar" class="form-inline" method="get" action="planList">
-  	              <div class="input-group">
-  	                <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="검색어 입력...">
-  	                <div class="input-group-append">
-  	                  <button type="submit" id="widget-widget-search-form-button" class="btn">
-  	                    <i class="fa fa-search"></i>
-  	                  </button>
-  	                </div>
-  	              </div>
-  	            </form>
-  	          </div>
-			  <div class="widget">
+   <section class="float-left w-100 what-we-serve-con service-serve-con position-relative main-box padding-bottom">
+     <div class="container">
+       <div class="row">
+        <!-- 여행 정보 리스트 -->
+         <div class="col-xl-9 col-lg-8">
+           <ul class="travel-info-list">
+             <c:forEach items="${travelInfoList}" var="info">
+               <li class="travel-info-item" onclick="window.location.href='selectPlan?info_id=${info.info_id}'">
+                 <div class="travel-info-details">
+                   <p><strong>장소:</strong> ${info.trip_place}</p>
+                   <p>
+                  <strong>스타일:</strong>
+                  <c:choose>
+                      <c:when test="${info.style_tag != null}">
+                          ${info.style_tag}
+                      </c:when>
+                      <c:otherwise>
+                          없음
+                      </c:otherwise>
+                  </c:choose>
+               </p>
+                   <p>
+                  <strong>대상:</strong> 
+                  <c:choose>
+                      <c:when test="${info.who_tag != null}">
+                          ${info.who_tag}
+                      </c:when>
+                      <c:otherwise>
+                          없음
+                      </c:otherwise>
+                  </c:choose>
+               </p>
+                 </div>
+                 <div class="travel-info-hover">
+                   <p>${info.info_name}</p> <!-- 부제 표시 -->
+                 </div>
+               </li>
+             </c:forEach>
+           
+           
+           </ul>
+         </div>
+        <div class="sidebar sticky-sidebar col-xl-3 col-lg-4">
+           <!-- 사이드바 -->
+           <div class="theiaStickySidebar">
+               <div class="widget widget-newsletter" data-aos="fade-up" data-aos-duration="700">
+                 <form id="widget-search-form-sidebar" class="form-inline" method="get" action="planList">
+                   <div class="input-group">
+                     <input type="text" aria-required="true" name="searchKeyword" class="form-control widget-search-form" placeholder="검색어 입력...">
+                     <div class="input-group-append">
+                       <button type="submit" id="widget-widget-search-form-button" class="btn">
+                         <i class="fa fa-search"></i>
+                       </button>
+                     </div>
+                   </div>
+                 </form>
+               </div>
+           <div class="widget">
                   <div class="tabs">
                       <ul class="nav nav-tabs" id="tabs-posts" role="tablist" data-aos="fade-up" data-aos-duration="700">
                           <li class="nav-item">
@@ -145,94 +167,94 @@
                       <div class="tab-content" id="tabs-posts-content" data-aos="fade-up" data-aos-duration="700">
                           <div class="tab-pane fade show active" id="popular" role="tabpanel">
                               <div class="post-thumbnail-list">
-								<ul class="tag_list style_list js_one" id="styleList">
-								    <li id="style1"><button type="button" class="btn" data-value="역사">역사</button></li>
-								    <li id="style2"><button type="button" class="btn" data-value="음식">음식</button></li>
-								    <li id="style3"><button type="button" class="btn" data-value="자연">자연</button></li>
-								    <li id="style4"><button type="button" class="btn" data-value="체험">체험</button></li>
-								    <li id="style5"><button type="button" class="btn" data-value="관광">관광</button></li>
-								    <li id="style6"><button type="button" class="btn" data-value="문화">문화</button></li>
-								    <li id="style7"><button type="button" class="btn" data-value="쇼핑">쇼핑</button></li>
-								    <li id="style8"><button type="button" class="btn" data-value="드라이브">드라이브</button></li>
-								</ul>
+                        <ul class="tag_list style_list js_one" id="styleList">
+                            <li id="style1"><button type="button" class="btn" data-value="역사">역사</button></li>
+                            <li id="style2"><button type="button" class="btn" data-value="음식">음식</button></li>
+                            <li id="style3"><button type="button" class="btn" data-value="자연">자연</button></li>
+                            <li id="style4"><button type="button" class="btn" data-value="체험">체험</button></li>
+                            <li id="style5"><button type="button" class="btn" data-value="관광">관광</button></li>
+                            <li id="style6"><button type="button" class="btn" data-value="문화">문화</button></li>
+                            <li id="style7"><button type="button" class="btn" data-value="쇼핑">쇼핑</button></li>
+                            <li id="style8"><button type="button" class="btn" data-value="드라이브">드라이브</button></li>
+                        </ul>
                               </div>
                           </div>
                           <div class="tab-pane fade" id="featured" role="tabpanel">
                               <div class="post-thumbnail-list">
                                   <div class="post-thumbnail-list">
-									<ul class="tag_list js_one" id="whoList">
-									    <li id="who1"><button type="button" class="btn" data-value="혼자">혼자</button></li>
-									    <li id="who2"><button type="button" class="btn" data-value="친구">친구</button></li>
-									    <li id="who3"><button type="button" class="btn" data-value="연인">연인</button></li>
-									    <li id="who4"><button type="button" class="btn" data-value="가족">가족</button></li>
-									</ul>
+                           <ul class="tag_list js_one" id="whoList">
+                               <li id="who1"><button type="button" class="btn" data-value="혼자">혼자</button></li>
+                               <li id="who2"><button type="button" class="btn" data-value="친구">친구</button></li>
+                               <li id="who3"><button type="button" class="btn" data-value="연인">연인</button></li>
+                               <li id="who4"><button type="button" class="btn" data-value="가족">가족</button></li>
+                           </ul>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
-  	        </div>
-  	      </div>
-	    </div>
-	  </div>
-	</section>
+             </div>
+           </div>
+       </div>
+     </div>
+   </section>
 
-	<!-- 페이지네이션 링크 -->
-		   <div class="pagination">
-		       <!-- 이전 페이지 링크 -->
-		       <c:if test="${currentPage > 1}">
-		           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage - 1}" class="pagination-button">Previous</a>
-		       </c:if>
+   <!-- 페이지네이션 링크 -->
+         <div class="pagination">
+             <!-- 이전 페이지 링크 -->
+             <c:if test="${currentPage > 1}">
+                 <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage - 1}" class="pagination-button">Previous</a>
+             </c:if>
 
-		       <!-- 페이지 번호 링크 -->
-		       <c:choose>
-		           <c:when test="${totalPages <= 10}">
-		               <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
-		               <c:forEach var="i" begin="1" end="${totalPages}">
-		                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
-		                      class="${i == currentPage ? 'active' : ''}">${i}</a>
-		               </c:forEach>
-		           </c:when>
-		           <c:otherwise>
-		               <!-- 페이지가 10페이지 초과인 경우 -->
-		               <c:if test="${currentPage > 4}">
-		                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=1">1</a>
-		                   <span>...</span>
-		               </c:if>
+             <!-- 페이지 번호 링크 -->
+             <c:choose>
+                 <c:when test="${totalPages <= 10}">
+                     <!-- 페이지가 10페이지 이하인 경우 모두 표시 -->
+                     <c:forEach var="i" begin="1" end="${totalPages}">
+                         <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+                            class="${i == currentPage ? 'active' : ''}">${i}</a>
+                     </c:forEach>
+                 </c:when>
+                 <c:otherwise>
+                     <!-- 페이지가 10페이지 초과인 경우 -->
+                     <c:if test="${currentPage > 4}">
+                         <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=1">1</a>
+                         <span>...</span>
+                     </c:if>
 
-		               <c:set var="startPage" value="${currentPage - 3}" />
-		               <c:set var="endPage" value="${currentPage + 3}" />
-		               
-		               <!-- startPage가 1보다 작으면 1로 설정 -->
-		               <c:if test="${startPage < 1}">
-		                   <c:set var="startPage" value="1" />
-		               </c:if>
-		               
-		               <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
-		               <c:if test="${endPage > totalPages}">
-		                   <c:set var="endPage" value="${totalPages}" />
-		               </c:if>
+                     <c:set var="startPage" value="${currentPage - 3}" />
+                     <c:set var="endPage" value="${currentPage + 3}" />
+                     
+                     <!-- startPage가 1보다 작으면 1로 설정 -->
+                     <c:if test="${startPage < 1}">
+                         <c:set var="startPage" value="1" />
+                     </c:if>
+                     
+                     <!-- endPage가 totalPages보다 크면 totalPages로 설정 -->
+                     <c:if test="${endPage > totalPages}">
+                         <c:set var="endPage" value="${totalPages}" />
+                     </c:if>
 
-		               <c:forEach var="i" begin="${startPage}" end="${endPage}">
-		                   <c:if test="${i > 0 && i <= totalPages}">
-		                       <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
-		                          class="${i == currentPage ? 'active' : ''}">${i}</a>
-		                   </c:if>
-		               </c:forEach>
+                     <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                         <c:if test="${i > 0 && i <= totalPages}">
+                             <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${i}" 
+                                class="${i == currentPage ? 'active' : ''}">${i}</a>
+                         </c:if>
+                     </c:forEach>
 
-		               <c:if test="${currentPage < totalPages - 3}">
-		                   <span>...</span>
-		                   <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
-		               </c:if>
-		           </c:otherwise>
-		       </c:choose>
+                     <c:if test="${currentPage < totalPages - 3}">
+                         <span>...</span>
+                         <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${totalPages}">${totalPages}</a>
+                     </c:if>
+                 </c:otherwise>
+             </c:choose>
 
-		       <!-- 다음 페이지 링크 -->
-		       <c:if test="${currentPage < totalPages}">
-		           <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage + 1}" class="pagination-button">Next</a>
-		       </c:if>
-		   </div>
+             <!-- 다음 페이지 링크 -->
+             <c:if test="${currentPage < totalPages}">
+                 <a href="?searchCondition=${searchCondition}&searchKeyword=${searchKeyword}&page=${currentPage + 1}" class="pagination-button">Next</a>
+             </c:if>
+         </div>
 
     <jsp:include page="/WEB-INF/views/footer.jsp" />
 
@@ -249,7 +271,7 @@
     <script src="/assets/js/wow.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/search.js"></script>
-	<script src="/js/planList.js"></script>
+   <script src="/js/planList.js"></script>
     
   </body>
 

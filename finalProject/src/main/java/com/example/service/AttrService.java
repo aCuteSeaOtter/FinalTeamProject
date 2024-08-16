@@ -1,6 +1,8 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Map;
+
 import com.example.domain.AttrVO;
   
 public interface AttrService {
@@ -10,7 +12,7 @@ public interface AttrService {
 	
 	List<AttrVO> editAttrList(String trip_place);
 	
-	AttrVO selectAttrListById(Integer id);
+	List<Map<String, Object>> selectAttrListById(Integer id, Integer info_id);
 	
 	List<AttrVO> searchAttrByKeyword(String keyword);
 	

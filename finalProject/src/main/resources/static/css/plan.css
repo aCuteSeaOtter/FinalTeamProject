@@ -7,6 +7,13 @@
 }
 
 
+.seq-img {
+	width: 25px !important;
+	height: 25px !important;
+	margin-right: 5px !important;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -104,7 +111,23 @@
 }
 
 
-.inputData > div > div:nth-child(1) {
+.attr-box {
+	display: flex;
+	align-items: top; /* 수직 중앙 정렬 */
+}
+
+
+.seq-span {
+	display: inline-block;
+}
+
+
+.attr_div {
+	display: inline-block;
+}
+
+
+.attr_name {
 	color: black;
 	font-size: 18px;
 	font-weight: bold;

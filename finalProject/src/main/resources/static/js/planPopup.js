@@ -485,12 +485,16 @@ $(function() {
     // 추가한 일정을 부모 창에 출력
     function inputToParent(data, day) {
         let inputData = `
-            <div>
-                <div>${data.attr_name}</div>
-                <div>${data.attr_local}</div>
-                <input type="hidden" class="attr_id" value="${data.attr_id}"/>
-				<input type="hidden" class="attr_lat" value="${data.attr_lat}"/>
-				<input type="hidden" class="attr_lon" value="${data.attr_lon}"/>
+            <div class="attr-box">
+				<span class="seq-span"><img class="seq-img" src="https://mt.googleapis.com/vt/icon/name=icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1738-blank-sequence_4x.png&highlight=7cb342&scale=4&color=ffffffff&psize=15&text=${data.PLAN_SEQ}"></span>
+                <div class="attr_div">
+					<div class="attr_name">${data.ATTR_NAME}</div>
+	                <div class="attr_local">${data.ATTR_LOCAL}</div>
+                </div>
+				<input type="hidden" class="attr_id" value="${data.ATTR_ID}"/>
+				<input type="hidden" class="attr_lat" value="${data.ATTR_LAT}"/>
+				<input type="hidden" class="attr_lon" value="${data.ATTR_LON}"/>
+				<input type="hidden" class="plan_seq" value="${data.PLAN_SEQ}"/>
             </div>
         `;
 

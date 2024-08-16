@@ -31,7 +31,7 @@ public class TravelPlanController {
 	
 	// plan/plan 페이지에서 일정 등록
 	@PostMapping("/travelPlan")
-	public List<AttrVO> insertTravelPlan(HttpSession session, @RequestParam("day") int plan_day, @RequestParam(value="data[]") List<Integer> attr_id) {
+	public List<Map<String, Object>> insertTravelPlan(HttpSession session, @RequestParam("day") int plan_day, @RequestParam(value="data[]") List<Integer> attr_id) {
 		String info_id = (String)session.getAttribute("info_id");
 		
 		// 명소의 수 만큼 데이터 저장
@@ -48,7 +48,7 @@ public class TravelPlanController {
                 .map(TravelPlanVO::getPlan_id)
                 .collect(Collectors.toList());
 		
-		List<AttrVO> detailedAttr = new ArrayList<>();
+		List<Map<String, Object>> detailedAttr = new ArrayList<>();
 		
 		for(Integer id : plan_id) {
 			// plan_id로 plan을 가져옴
@@ -56,11 +56,11 @@ public class TravelPlanController {
 			
 			// plan의 attr_id로 attr을 가져옴
 			if (plan != null) {
-	            AttrVO attr = attrService.selectAttrListById(plan.getAttr_id());
+				List<Map<String, Object>> attr = attrService.selectAttrListById(plan.getAttr_id(), plan.getInfo_id());
 
 	            // attr을 리스트로 반환
 	            if (attr != null) {
-	                detailedAttr.add(attr);
+	                detailedAttr.addAll(attr);
 	            }
 	        }
 		}

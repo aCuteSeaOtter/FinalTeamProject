@@ -1,6 +1,8 @@
 package com.example.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import com.example.domain.AttrVO;
 
@@ -23,7 +25,7 @@ public interface AttrDAO {
 	// 검색어를 이용한 명소 검색
 	List<AttrVO> searchAttrByKeyword(String keyword);
 	
-	public AttrVO selectAttrListById(Integer id);
+	public List<Map<String, Object>> selectAttrListById(Integer id,  Integer info_id);
 	
 	public List<AttrVO> selectAttrInfo(int attr_id);
 }

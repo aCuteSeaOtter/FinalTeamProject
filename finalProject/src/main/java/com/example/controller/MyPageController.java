@@ -6,12 +6,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.LoginVO;
+import com.example.service.LoginService;
 import com.example.service.MyPageService;
 
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +22,9 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService myPageService;
+	
+	@Autowired
+	private LoginService loginService;
 	
 	@RequestMapping("/plan/myPage")
 	public String planList(Model m, HttpSession session) {
@@ -33,10 +37,6 @@ public class MyPageController {
 		// 내 정보
 		List<Map<String, Object>> myInfo = myPageService.selectMyInfo(user_id);
 		m.addAttribute("myInfo", myInfo);
-		
-		// 나의 일정
-		List<Map<String, Object>> planList = myPageService.selectPlanList(user_id);
-		m.addAttribute("planList", planList);
 		
 		// 나의 후기
 		List<Map<String, Object>> reviewList = myPageService.selectReviewList(user_id);
@@ -61,7 +61,50 @@ public class MyPageController {
 		// 내 정보 수정
 		myPageService.modifyMyInfo(user_id, pass, nickname, birth);
 		
+		// 수정된 정보를 다시 세션에 저장
+	    member.setMember_nickname(nickname); // 세션의 'member' 객체에 새로운 닉네임 반영
+	    session.setAttribute("member", member);
+		
 		return "plan/myPage";
+	}
+	
+	// 나의 일정
+	@PostMapping("/myPlan")
+	@ResponseBody
+	public List<Map<String, Object>> myPlan(HttpSession session) {
+		LoginVO member = (LoginVO)session.getAttribute("member");
+		
+		String user_id = member.getMember_email();
+		
+		// 나의 일정
+		List<Map<String, Object>> planList = myPageService.selectPlanList(user_id);
+		
+		return planList;
+	}
+	
+	// 나의 후기
+	@PostMapping("/myReview")
+	@ResponseBody
+	public List<Map<String, Object>> myReview(HttpSession session) {
+		LoginVO member = (LoginVO)session.getAttribute("member");
+		
+		String user_id = member.getMember_email();
+		
+		// 나의 일정
+		List<Map<String, Object>> reviewList = myPageService.selectReviewList(user_id);
+		
+		return reviewList;
+	}
+	
+	// 일정 삭제
+	@PostMapping("/deletePlan")
+	@ResponseBody
+	public String deletePlan(@RequestParam("info_id") int info_id) {
+		
+		// 일정 삭제
+		myPageService.deletePlan(info_id);
+		
+		return "/plan/myPage";
 	}
 	
 	// myPage 후기 상세보기

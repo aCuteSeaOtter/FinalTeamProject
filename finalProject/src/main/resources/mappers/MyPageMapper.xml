@@ -55,8 +55,14 @@
         LEFT JOIN	comments c 	ON 	r.comment_id = c.comment_id
         LEFT JOIN 	reply rp 	ON 	r.reply_id   = rp.reply_id
         WHERE  	r.member_email = #{user_id}
-        ORDER BY	r.report_id DESC
+        ORDER BY	r.report_regdate DESC
 	</select>
+	
+	<!-- myPage 일정 삭제 -->
+	<update id="deletePlan">
+		DELETE FROM travel_info
+		WHERE 	info_id = #{info_id}
+	</update>
 	
 	<!-- 신고한 게시글로 이동 -->
 	<select id="selectReport" resultType="int">

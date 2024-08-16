@@ -8,7 +8,7 @@
 	<select id="selectMyPlan" resultType="hashmap">
 		SELECT	tp.plan_id plan_id, tp.plan_day plan_day, tp.plan_seq plan_seq, 
 				ti.info_id info_id, ti.info_name info_name, ti.trip_place trip_place, ti.start_date start_date, ti.end_date end_date,
-				a.attr_id attr_id, a.attr_name attr_name
+				a.attr_id attr_id, a.attr_name attr_name, a.attr_lat attr_lat, a.attr_lon attr_lon
         FROM 	travel_plan tp
         JOIN	travel_info ti	ON tp.info_id = ti.info_id
         JOIN  	attr a 			ON tp.attr_id = a.attr_id

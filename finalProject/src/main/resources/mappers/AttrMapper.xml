@@ -19,10 +19,11 @@
     </select>
     
     <!-- attr_id로 attr 리스트 가져오기 -->
-    <select id="selectAttrListById" resultType="com.example.domain.AttrVO">
-        SELECT attr_id, attr_name, attr_local, attr_lat, attr_lon
-        FROM ATTR
-        WHERE attr_id = #{attd_id}
+    <select id="selectAttrListById" resultType="hashmap">
+        SELECT 	a.attr_id attr_id, a.attr_name attr_name, a.attr_local attr_local, a.attr_lat attr_lat, a.attr_lon attr_lon, tp.plan_seq plan_seq
+        FROM 	attr a
+        JOIN 	travel_plan tp	ON	a.attr_id = tp.attr_id
+        WHERE 	tp.attr_id = #{id} AND tp.info_id = #{info_id}
     </select>
     
     <!-- myPage attr 리스트 받아오기 -->
