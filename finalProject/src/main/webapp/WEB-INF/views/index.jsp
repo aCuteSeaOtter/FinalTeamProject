@@ -77,6 +77,7 @@
       const modalNameKor = document.getElementById("modalNameKor");
       const modalContent = document.getElementById("modalContent");
       const span = document.getElementsByClassName("close")[0];
+      var buttonCal = document.getElementById("buttonCal");
      
       document.querySelectorAll("#image .cursor-pointer").forEach(box => {
         box.onclick = function() {
@@ -89,6 +90,10 @@
           modalNameKor.textContent = nameKor;
           modalImg.src = imageUrl;
           modalContent.textContent = content || '내용이 없습니다.';
+          
+		  // 링크에 local_name_kor 쿼리 파라미터 추가
+          buttonCal.href = "/calendar/calendar?local=" + encodeURIComponent(nameKor);
+       		
           modal.style.display = "block";
         }
       });
@@ -182,7 +187,7 @@
         </div>
         <div class="plan items-center justify-center mt-4">
           <div class="w-full">
-            <a href="calendar/calendar" class="buttonCal">
+            <a id="buttonCal" href="calendar/calendar" class="buttonCal">
               <div class="font-bold">일정만들기</div>
               <i class="ml-2 text-lg fa-solid fa-chevron-right md:block"></i>
             </a>
