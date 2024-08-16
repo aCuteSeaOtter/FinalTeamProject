@@ -131,7 +131,7 @@
                         <div class="sidebar sticky-sidebar col-lg-3">
                             <div class="theiaStickySidebar">
                                 <div class="widget widget-newsletter" data-aos="fade-up" data-aos-duration="700">
-                                    <form id="widget-search-form-sidebar" class="form-inline" method="get" action="reviewList">
+                                    <form id="widget-search-form-sidebar" class="form-inline" method="post" action="reviewList">
                                         <div class="input-group">
                                             <select name="searchCondition" class="form-control">
                                                 <option value="review_title">제목</option>
