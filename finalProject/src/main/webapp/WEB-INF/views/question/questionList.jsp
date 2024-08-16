@@ -63,7 +63,7 @@
               <p class="font-size-20">궁금한 게 있으시면 뭐든지 물어봐주세요</p>
               <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
                 <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="/question/questionWrite">⭐문의 작성하러 가기⭐</a></li>
+                  <li class="breadcrumb-item"><a href="/question/questionWrite">문의 작성하러 가기</a></li>
                 </ol>
               </div>
 			  <div class="table-container">

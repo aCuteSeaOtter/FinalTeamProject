@@ -62,7 +62,7 @@
           <h1>문의 작성</h1>
           <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
             <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item"><a href="/question/questionList">⭐문의 목록 보기⭐</a></li>
+              <li class="breadcrumb-item"><a href="/question/questionList">문의 목록 보기</a></li>
             </ol>
           </div>
           <!-- sub banner inner con -->

@@ -63,12 +63,8 @@
                     <div class="col-lg-7">
                         <div class="sub-banner-inner-con padding-bottom">
                             <h1>매거진 리스트</h1>
-                            <p class="font-size-20">이건 또 언제 다 하냐
-                            </p>
+                            <p class="font-size-20">크롤링한 뉴스 기사를 보여주는 페이지</p>
                             <div class="breadcrumb-con d-inline-block" data-aos="fade-up" data-aos-duration="600">
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="/index">Home</a></li>
-                                </ol>
                             </div>
                             <!-- sub banner inner con -->
                         </div>
@@ -96,6 +92,7 @@
 								        <a href="${magazine.artl_link}">${magazine.artl_name}</a>
 								        <p>${magazine.artl_local}</p>
 								        <div class="magazine-tags">
+											<c:set var="magazineTag" value="${fn:split(magazine.artl_pri_tag, '#')}"/>
 								            <c:forEach items="${magazineTag}" var="tag">
 								                <span>#${tag}</span>
 								            </c:forEach>

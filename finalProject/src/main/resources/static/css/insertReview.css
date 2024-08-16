@@ -77,7 +77,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #148f62;
     transform: scale(1.05); /* 살짝 확대 */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 }
 
 /* 필드셋 기본 스타일 설정 */
@@ -168,7 +168,7 @@ textarea {
    display: inline-block;
    margin: 10px;
 }
-	
+   
 /* 파일 미리보기 삭제 버튼 스타일 설정 */
 .file-preview .delete-btn {
     position: absolute;
@@ -190,44 +190,44 @@ textarea {
 .file-preview .delete-btn:hover {
     background-color: #cc0000;
 }
-	
+   
 /* 이미지 미리보기 스타일 설정 */
 .preview-img {
     max-width: 150px;
     max-height: 150px;
 }
-	
+   
 /* 비디오 미리보기 스타일 설정 */
 .preview-video {
     max-width: 150px;
     max-height: 150px;
 }
-	
+   
 /* 글 목록 버튼 스타일 설정 */
 .reviewList-btn {
     background-color: #1ec28b; /* 기본 배경색 */
-	color: #fff; /* 글자색 */
-	border: none; /* 테두리 제거 */
-	padding: 10px 20px; /* 여백 */
-	border-radius: 4px; /* 모서리 둥글게 */
-	cursor: pointer; /* 커서 모양 */
-	text-decoration: none; /* 기본 링크 장식 제거 */
-	display: inline-block; /* 인라인 블록 요소로 설정 */
-	transition: background-color 0.3s ease; /* 배경색 변화 효과 */
-	font-size: 16px; /* 글자 크기 */
-	text-align: center; /* 글자 중앙 정렬 */
-	transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+   color: #fff; /* 글자색 */
+   border: none; /* 테두리 제거 */
+   padding: 10px 20px; /* 여백 */
+   border-radius: 4px; /* 모서리 둥글게 */
+   cursor: pointer; /* 커서 모양 */
+   text-decoration: none; /* 기본 링크 장식 제거 */
+   display: inline-block; /* 인라인 블록 요소로 설정 */
+   transition: background-color 0.3s ease; /* 배경색 변화 효과 */
+   font-size: 16px; /* 글자 크기 */
+   text-align: center; /* 글자 중앙 정렬 */
+   transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 }
-	
+   
 /* 글 목록 버튼 호버 시 스타일 설정 */
 .reviewList-btn:hover {
     background-color: #148f62; /* 호버 시 배경색 */
     color: white;
     text-decoration: none;
     transform: scale(1.05); /* 살짝 확대 */
-   	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
 }
-	
+   
 /* Day Plan Item 스타일 설정 */
 .day-plan-item {
     background-color: #ffffff;
@@ -237,7 +237,7 @@ textarea {
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-	
+   
 /* Day Plan 제목 스타일 설정 */
 .day-title {
     font-size: 1.5rem;
@@ -247,13 +247,13 @@ textarea {
     padding-bottom: 5px;
 }
 
-/* 명소 리스트 스타일 설정 */	
+/* 명소 리스트 스타일 설정 */   
 .attraction-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-	
+   
 /* 명소 항목 스타일 설정 */
 .attraction-item {
     font-size: 1.1rem;
@@ -262,9 +262,96 @@ textarea {
     display: flex;
     align-items: center;
 }
-	
+   
 /* 명소 아이콘 스타일 설정 */
 .attraction-item i {
     color: #1ec28b;
     margin-right: 10px;
+}
+
+/* 1200px 이하의 화면을 위한 스타일 조정 */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+    }
+}
+
+/* 992px 이하의 화면을 위한 스타일 조정 */
+@media (max-width: 992px) {
+    .day-title {
+        font-size: 1.2rem;
+    }
+    
+    .attraction-item {
+        font-size: 1rem;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+}
+
+/* 768px 이하의 화면을 위한 스타일 조정 */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    
+    .day-plan-item {
+        padding: 10px;
+    }
+    
+    .day-title {
+        font-size: 1rem;
+    }
+    
+    .attraction-item {
+        font-size: 0.9rem;
+    }
+    
+    table {
+        font-size: 0.8rem;
+    }
+    
+    input[type="text"], textarea {
+        width: 100%;
+    }
+    
+    .file-preview {
+        display: block;
+        margin: 10px auto;
+    }
+}
+
+/* 576px 이하의 화면을 위한 스타일 조정 */
+@media (max-width: 576px) {
+    .day-plan-item {
+        padding: 8px;
+    }
+    
+    .day-title {
+        font-size: 0.9rem;
+    }
+    
+    .attraction-item {
+        font-size: 0.8rem;
+    }
+    
+    table {
+        font-size: 0.7rem;
+    }
+    
+    input[type="text"], textarea {
+        width: 100%;
+    }
+    
+    .file-preview {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .file-preview img, .file-preview video {
+        max-width: 100%;
+        height: auto;
+    }
 }
