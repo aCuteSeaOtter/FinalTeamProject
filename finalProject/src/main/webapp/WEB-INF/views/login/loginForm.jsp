@@ -107,7 +107,7 @@
 				
 	<div class="mt-7 text-center">
 	<div class="group"> 
-		<form id="loginForm" action="/login/">
+		<form id="loginForm" action="/login/" method="post">
 		<label class="block text-xs text-gray-500 duration-200 group-focus-within:text-lightScheme-primary mb-0.5 undefined">이메일</label>
 		<br/>
 		<input type="text" class="flex-1 mx-auto w-full px-2 py-2.5 text-black placeholder-gray-700 border border-gray-598 rounded-md 
@@ -188,23 +188,6 @@
 		        }
 		    }
 </script>
-<script>
-	// 카카오 SDK 초기화
-	Kakao.init('dbfd3f5676767105c4d566dc441d47c2'); // YOUR_APP_KEY를 실제 카카오 앱 키로 교체
-//카카오 로그인 버튼 클릭 시
-Kakao.Auth.createLoginButton({
-	container:'#kakao-login-btn',
-	success:function(authObj){
-		//로그인 성공 시
-		console.log(authObj);
-	},fail:function(err){
-		console.error(err);//로그인 실패 시
-	}
-})
-
-
-</script>
-
 
 
 </body>
