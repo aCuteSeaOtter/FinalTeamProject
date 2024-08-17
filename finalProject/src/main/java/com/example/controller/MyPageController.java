@@ -38,6 +38,10 @@ public class MyPageController {
 		List<Map<String, Object>> myInfo = myPageService.selectMyInfo(user_id);
 		m.addAttribute("myInfo", myInfo);
 		
+		// 나의 일정
+		List<Map<String, Object>> planList = myPageService.selectPlanList(user_id);
+		m.addAttribute("planList", planList);
+		
 		// 나의 후기
 		List<Map<String, Object>> reviewList = myPageService.selectReviewList(user_id);
 		m.addAttribute("reviewList", reviewList);
@@ -90,10 +94,24 @@ public class MyPageController {
 		
 		String user_id = member.getMember_email();
 		
-		// 나의 일정
+		// 나의 후기
 		List<Map<String, Object>> reviewList = myPageService.selectReviewList(user_id);
 		
 		return reviewList;
+	}
+	
+	// 나의 신고
+	@PostMapping("/myReport")
+	@ResponseBody
+	public List<Map<String, Object>> myReport(HttpSession session) {
+		LoginVO member = (LoginVO)session.getAttribute("member");
+		
+		String user_id = member.getMember_email();
+		
+		// 나의 신고
+		List<Map<String, Object>> reportList = myPageService.selectReportList(user_id);
+		
+		return reportList;
 	}
 	
 	// 일정 삭제
