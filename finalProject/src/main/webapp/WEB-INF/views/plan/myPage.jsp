@@ -117,53 +117,20 @@
 			            <!-- 내용 출력 -->
 			            
 				    </div>
+				    <c:if test="${not empty planList}"> 
 				    <div class="pagination-container">
 				        <input type="button" value="이전" class="planPrevPage prevPage btn"/>
 				        <input type="button" value="다음" class="planNextPage nextPage btn"/>
 				    </div>
+				    </c:if>
 			    </div>
 			    
 			    <!-- 나의 후기 -->
 	        	<div class="content-3">
 			    	<div class="t-left">
-				    	<%-- <c:forEach items="${reviewList}" var="list">
-				    		<div class="review-wrapper wrap">
-				                <form action="/selectMyReview" method="post" id="myReviewForm">
-				                    <div class="block">
-				                        <div class="left">
-				                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.MEMBER_EMAIL}</div>
-				                            <div><i class="fas fa-magnifying-glass"></i><strong>제목:</strong> ${list.REVIEW_TITLE}</div>
-				                            <div><i class="fas fa-calendar-alt"></i><strong>등록일:</strong> ${list.REVIEW_REGDATE}</div>
-				                            <div><i class="fas fa-eye"></i><strong>조회수:</strong> ${list.REVIEW_CNT}</div>
-				                        </div>
-				                        <div class="right">
-				                            <div><i class="fas fa-star"></i><strong>별점:</strong> ${list.REVIEW_STAR}</div>
-				                            <div><i class="fas fa-thumbs-up"></i><strong>좋아요:</strong>
-				                            	<c:choose>
-											        <c:when test="${list.LIKE_STATE != null}">
-											            ${list.LIKE_STATE}
-											        </c:when>
-											        <c:otherwise>
-											            0
-											        </c:otherwise>
-											    </c:choose>
-				                            </div>
-				                            <div><i class="fas fa-thumbs-down"></i><strong>싫어요:</strong> 
-				                            	<c:choose>
-											        <c:when test="${list.HATE_STATE != null}">
-											            ${list.HATE_STATE}
-											        </c:when>
-											        <c:otherwise>
-											            0
-											        </c:otherwise>
-											    </c:choose>
-				                            </div>
-				                            <div><input type="hidden" name="review_id" class="review_id" value="${list.REVIEW_ID}"></div>
-				                        </div>
-				                    </div>
-				                </form>
-			                </div>
-		                </c:forEach> --%>
+				    	
+				    	<!-- 내용 출력 -->
+				    	
 			    	</div>
 			    	<c:if test="${not empty reviewList}">
 			    	<div class="pagination-container">
@@ -176,7 +143,7 @@
 			    <!-- 나의 신고 -->
 	        	<div class="content-4">
 			    	<div class="t-left">
-			    		<c:forEach items="${reportList}" var="list">
+			    		<%-- <c:forEach items="${reportList}" var="list">
 				    		<div class="report-wrapper wrap">
 				                <form action="/selectReport" method="post" id="reportForm">
 				                    <div class="block">
@@ -252,7 +219,7 @@
 				                    </div>
 				                </form>
 			                </div>
-		                </c:forEach>
+		                </c:forEach> --%>
 			    	</div>
 			    	<c:if test="${not empty reportList}">
 			    	<div class="pagination-container">
@@ -305,7 +272,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/js/wow.js"></script>
   <script src="/assets/js/search.js"></script>
-  <script src="/js/myPage.js"></script>
+  <script type="module" src="/js/myPage.js"></script>
   <!-- <script src="/js/tmap.js"></script> -->
   
   
