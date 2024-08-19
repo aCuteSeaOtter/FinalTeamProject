@@ -1,0 +1,135 @@
+body{
+  height: 100%;
+}
+.chat-room-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.chat-room-item:hover {
+    background-color: #f0f0f0;
+}
+
+.user{
+	border-bottom: 1px solid #716d6d;
+	padding: 10px;
+	width:95%;
+}
+.user_data{
+	background-color: #f8f9fa!important;
+	border-top: 5px solid #716d6d;
+	max-height: calc(100vh);
+    
+}
+.profile_name{
+	background-color: #f8f9fa!important;
+	width:100%;
+	padding: 10px;
+	border-bottom: 5px solid #716d6d;
+}
+.user a:hover{
+text-decoration: none;
+color: #212529;
+}
+.user a{
+	color: #212529;
+}
+
+.chat_section{
+	padding-top: 15px;
+}
+.incoming_msg_img {
+  display: inline-block;
+  width: 6%;
+}
+.received_msg {
+  display: block;
+  padding: 0 0 0 10px;
+  /* vertical-align: top; */
+  width: 80%;
+ }
+ .received_withd_msg p {
+  background: #d9d9d9 none repeat scroll 0 0;
+  border-radius: 6px;
+  color: #000000;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+}
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 10px;
+  margin: 8px 0 0;
+}
+.received_withd_msg { width: 57%; margin-bottom: 20px;}
+.mesgs {
+  float: left;
+  padding: 30px 15px 0 25px;
+  width: 60%;
+}
+
+ .sent_msg p {
+  background: #1bbc9b none repeat scroll 0 0;
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 0; color:#fff;
+  padding: 5px 10px 5px 12px;
+  width:100%;
+}
+.outgoing_msg{ overflow:hidden; margin:20px 0 20px;}
+.sent_msg {
+  float: right;
+  width: 50%;
+}
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* .type_msg {border-top: 1px solid #c4c4c4; position: relative;} */
+/* style.css 파일이나 페이지의 <style> 태그에 추가 */
+.type_msg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* 필요에 따라 배경색을 지정하세요 */
+    z-index: 1000; /* 다른 요소들보다 위에 위치하도록 설정 */
+    padding: 10px 10px; /* 위아래 패딩 추가 */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* 상단 그림자 추가 */
+    border-top: 1px solid #c4c4c4;
+}
+.chat_section {
+    margin-bottom: 80px; /* 입력창 높이에 맞게 여백 설정 */
+}
+
+.msg_send_btn {
+  background: #05728f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+  margin-top: 10px;
+  margin-right: 18px;
+  transform: translateY(-18px);
+}
+.messaging { padding: 0 0 50px 0;}
+.msg_history {
+  height: 516px;
+  overflow-y: auto;
+}

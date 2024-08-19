@@ -53,24 +53,30 @@
   <!-- 외부 배경 래퍼 -->
   <div class="bg-outer-wrapper booking-wrapper float-left w-100">
     <!-- 상단 바 섹션 -->
-    <div class="w-100 float-left top-bar-con main-box">
       <div class="container">
         <div class="top-bar-inner-con d-flex align-items-center justify-content-between">
-          <div class="left-con">
-            <a href="mailto:help@traveltrek.com"><i class="fa-solid fa-envelope"></i> help@traveltrek.com</a>
-            <!-- left con -->
-          </div>
-          <div class="right-con"><a href="tel:+1(0800)123456"><i class="fa-solid fa-square-phone"></i> +1 (0800) 123 456</a>
-            <!-- right con -->
-          </div>
           <!-- 상단 바 내부 컨텐츠 -->
         </div>
         <!-- container -->
       </div>
       <!-- 상단 바 컨텐츠 -->
-    </div>
     <div class="clearfix"></div>
     <jsp:include page="/WEB-INF/views/header.jsp" />
+    <!-- 채팅 열기 버튼 -->
+    <div id="chat-toggle" class="chat-toggle">
+        <i class="fa fa-comment"></i>
+    </div>
+    <!-- 숨겨진 팝업 창 -->
+    <div id="small-chat-box" class="small-chat-box">
+        <div class="chat-box-header">
+            <span>채팅</span>
+            <button id="close-chat" class="close-chat">&times;</button>
+        </div>
+        <div id="chat-box" class="chat-box">
+            <!-- JSP 파일을 로드할 iframe -->
+            <iframe id="chat-iframe" class="chat-iframe" src=""></iframe>
+        </div>
+    </div>
     <!-- 배너 섹션 -->
     <section class="float-left w-100 banner-con sub-banner-con position-relative main-box">
       <img alt="vector" class="vector1 img-fluid position-absolute" src="/assets/images/vector1.png">
@@ -258,8 +264,6 @@
 
     <jsp:include page="/WEB-INF/views/footer.jsp" />
 
-    <!-- 상단으로 이동 버튼 -->
-    <button id="back-to-top-btn" title="상단으로 이동"></button>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>

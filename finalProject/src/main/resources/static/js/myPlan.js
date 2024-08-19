@@ -34,6 +34,27 @@ var modal;
 var mapModal;
 
 $(function() {
+	// 채팅 열기 버튼 클릭 시 팝업 창 열기
+    $('#chat-toggle').click(function () {
+		// #small-chat-box의 현재 상태를 확인하여 show() 또는 hide()를 호출
+	    $('#small-chat-box').toggle();  // 현재 상태에 따라 보이거나 숨김
+	    if ($('#small-chat-box').is(':visible')) {
+	        $('#chat-iframe').attr('src', '/chat');  // 열고 싶은 JSP 파일의 경로 설정
+	    }
+    });
+
+    // 닫기 버튼 클릭 시 팝업 창 닫기
+    $('#close-chat').click(function () {
+        $('#small-chat-box').hide();
+    });
+	
+	// ESC 키를 눌렀을 때 팝업 창 닫기
+    $(document).keydown(function(e) {
+        if (e.key === "Escape") {  // ESC 키가 눌렸을 때
+            $('#small-chat-box').hide();  // #small-chat-box를 숨김
+        }
+    });
+	
 	let infoId;
 	
 	// 'X' 버튼을 눌렀을 때 모달 닫기
@@ -89,7 +110,7 @@ $(function() {
         // 기존 마커 제거
         clearMarkers();
         // 기존 polyline 제거
-        clearPolylines();
+        //clearPolylines();
 
         block.find('.sortable > li').each(function() {
             var attrLat = $(this).find('.attr_lat').val();
@@ -402,12 +423,12 @@ function clearMarkers() {
 }
 
 // 새로운 함수 추가: 기존 polyline 제거
-function clearPolylines() {
+/*function clearPolylines() {
     for (var i = 0; i < polylines.length; i++) {
         polylines[i].setMap(null);
     }
     polylines = [];
-}
+}*/
 
 function fitBoundsToMarkers() {
     if (markers.length > 0) {
@@ -462,10 +483,6 @@ function drawRoute(response) {
     var resultData = response.properties;
     var resultFeatures = response.features;
     
-    // 결과 출력
-    var tDistance = "총 거리 : " + (resultData.totalDistance/1000).toFixed(1) + "km,  ";
-    
-    $("#result").text(tDistance+tTime+tFare);
     
     for(var i in resultFeatures) {
         var geometry = resultFeatures[i].geometry;

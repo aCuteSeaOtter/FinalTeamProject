@@ -45,6 +45,22 @@
         <div class="clearfix"></div>
         <jsp:include page="/WEB-INF/views/header.jsp" />
     </div>
+    
+    <!-- 채팅 열기 버튼 -->
+    <div id="chat-toggle" class="chat-toggle">
+        <i class="fa fa-comment"></i>
+    </div>
+    <!-- 숨겨진 팝업 창 -->
+    <div id="small-chat-box" class="small-chat-box">
+        <div class="chat-box-header">
+            <span>채팅</span>
+            <button id="close-chat" class="close-chat">&times;</button>
+        </div>
+        <div id="chat-box" class="chat-box">
+            <!-- JSP 파일을 로드할 iframe -->
+            <iframe id="chat-iframe" class="chat-iframe" src=""></iframe>
+        </div>
+    </div>
 
     <!-- MAIN SECTION -->
     <section class="blog-posts blogpage-section three-column-con w-100 float-left">
@@ -305,9 +321,6 @@
 	   </div>
     
     <jsp:include page="/WEB-INF/views/footer.jsp" />
-
-    <!-- BACK TO TOP BUTTON -->
-    <button id="back-to-top-btn" title="Back to Top"></button>
 
     <!-- JavaScript files -->
     <script src="/assets/js/jquery.min.js"></script>

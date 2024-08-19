@@ -1,3 +1,39 @@
+$(document).ready(function() {
+	// 채팅 열기 버튼 클릭 시 팝업 창 열기
+    $('#chat-toggle').click(function () {
+		// #small-chat-box의 현재 상태를 확인하여 show() 또는 hide()를 호출
+	    $('#small-chat-box').toggle();  // 현재 상태에 따라 보이거나 숨김
+	    if ($('#small-chat-box').is(':visible')) {
+	        $('#chat-iframe').attr('src', '/chat');  // 열고 싶은 JSP 파일의 경로 설정
+	    }
+    });
+
+    // 닫기 버튼 클릭 시 팝업 창 닫기
+    $('#close-chat').click(function () {
+        $('#small-chat-box').hide();
+    });
+	
+	// ESC 키를 눌렀을 때 팝업 창 닫기
+    $(document).keydown(function(e) {
+        if (e.key === "Escape") {  // ESC 키가 눌렸을 때
+            $('#small-chat-box').hide();  // #small-chat-box를 숨김
+        }
+    });
+	
+    // 파일 업로드 input에 change 이벤트 추가
+    $('input[name="review_file"]').on('change', function() {
+        var file = this.files[0];
+        var fileType = file.type.toLowerCase(); // 파일의 MIME 타입
+
+        // 이미지 파일 또는 동영상 파일인지 확인
+        if (fileType.indexOf('image') === -1 && fileType.indexOf('video') === -1) {
+            alert('이미지나 동영상 파일만 업로드 가능합니다.');
+            $(this).val(''); // 파일 선택 초기화
+        }
+    });
+});
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const fileInput = document.getElementById('fileInput');
     const previewContainer = document.getElementById('filePreviewContainer');
@@ -80,19 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-$(document).ready(function() {
-    // 파일 업로드 input에 change 이벤트 추가
-    $('input[name="review_file"]').on('change', function() {
-        var file = this.files[0];
-        var fileType = file.type.toLowerCase(); // 파일의 MIME 타입
 
-        // 이미지 파일 또는 동영상 파일인지 확인
-        if (fileType.indexOf('image') === -1 && fileType.indexOf('video') === -1) {
-            alert('이미지나 동영상 파일만 업로드 가능합니다.');
-            $(this).val(''); // 파일 선택 초기화
-        }
-    });
-});
 
 document.addEventListener("DOMContentLoaded", function() {
     const titleInput = document.querySelector('input[name="review_title"]');

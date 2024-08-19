@@ -3,6 +3,28 @@ var markers = [];
 var polylines = []; // polyline 객체를 저장할 배열
 
 $(function() {
+	
+	// 채팅 열기 버튼 클릭 시 팝업 창 열기
+    $('#chat-toggle').click(function () {
+		// #small-chat-box의 현재 상태를 확인하여 show() 또는 hide()를 호출
+	    $('#small-chat-box').toggle();  // 현재 상태에 따라 보이거나 숨김
+	    if ($('#small-chat-box').is(':visible')) {
+	        $('#chat-iframe').attr('src', '/chat');  // 열고 싶은 JSP 파일의 경로 설정
+	    }
+    });
+
+    // 닫기 버튼 클릭 시 팝업 창 닫기
+    $('#close-chat').click(function () {
+        $('#small-chat-box').hide();
+    });
+	
+	// ESC 키를 눌렀을 때 팝업 창 닫기
+    $(document).keydown(function(e) {
+        if (e.key === "Escape") {  // ESC 키가 눌렸을 때
+            $('#small-chat-box').hide();  // #small-chat-box를 숨김
+        }
+    });
+		
     // 로컬스토리지에서 선택된 날짜 목록을 가져와 배열로 변환
     var selectedDates = localStorage.getItem('selectedDates') ? localStorage.getItem('selectedDates').split(',') : [];
     
@@ -18,7 +40,8 @@ $(function() {
                 <div> 
                     <div>
                         <span class="dayNum">DAY ${i+1}</span>
-                        <span class="date">&nbsp;&nbsp;${selectedDates[i]}</span> 
+                        <span class="date">&nbsp;&nbsp;${selectedDates[i]}</span>
+						
                         <input type="button" class="btn mappingBtn" value="맵핑"/>
                     </div>
                 </div>
@@ -94,7 +117,7 @@ $(function() {
         clearMarkers();
     
         // 기존 polyline 제거
-        clearPolylines();
+        //clearPolylines();
 
         dayBlock.find('.inputData > div').each(function() {
             var attrLat = $(this).find('.attr_lat').val();
@@ -158,12 +181,12 @@ function clearMarkers() {
 }
 
 // 새로운 함수 추가: 기존 polyline 제거
-function clearPolylines() {
+/*function clearPolylines() {
     for (var i = 0; i < polylines.length; i++) {
         polylines[i].setMap(null);
     }
     polylines = [];
-}
+}*/
 
 function fitBoundsToMarkers() {
     if (markers.length > 0) {
@@ -177,7 +200,7 @@ function fitBoundsToMarkers() {
 
 function optimizeRoute(attractions) {
     var headers = {}; 
-    headers["appKey"]="HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y";
+    headers["appKey"] = "HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y";
 
     var viaPoints = attractions.map((attr, index) => ({
         viaPointId: `via${index}`,
@@ -186,7 +209,7 @@ function optimizeRoute(attractions) {
         viaY: attr.lat
     }));
 
-    $.ajax({
+	$.ajax({
         type:"POST",
         headers : headers,
         url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization10?version=1&format=json",
@@ -214,26 +237,17 @@ function optimizeRoute(attractions) {
     });
 }
 
+
 function drawRoute(response) {
-    var resultData = response.properties;
     var resultFeatures = response.features;
     
-    // 결과 출력
-    var tDistance = "총 거리 : " + (resultData.totalDistance/1000).toFixed(1) + "km,  ";
-    var tTime = "총 시간 : " + (resultData.totalTime/60).toFixed(0) + "분,  ";
-    var tFare = "총 요금 : " + resultData.totalFare + "원";
-    
-    $("#result").text(tDistance+tTime+tFare);
-    
-    for(var i in resultFeatures) {
+    for (var i in resultFeatures) {
         var geometry = resultFeatures[i].geometry;
-        var properties = resultFeatures[i].properties;
-        var polyline_;
         
-        var drawInfoArr = [];
-        
-        if(geometry.type == "LineString") {
-            for(var j in geometry.coordinates){
+        if (geometry.type == "LineString") {
+            var drawInfoArr = [];
+
+            for (var j in geometry.coordinates) {
                 var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
                 var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
                 var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
@@ -241,13 +255,13 @@ function drawRoute(response) {
                 drawInfoArr.push(convertChange);
             }
 
-            // 기존 polyline 제거 후 새로운 polyline 추가
-            polyline_ = new Tmapv2.Polyline({
-                path : drawInfoArr,
-                strokeColor : "#FF0000",
+            var polyline_ = new Tmapv2.Polyline({
+                path: drawInfoArr,
+                strokeColor: "#FF0000",
                 strokeWeight: 6,
-                map : map
+                map: map
             });
+
             polylines.push(polyline_); // polyline 객체 배열에 추가
         }
     }

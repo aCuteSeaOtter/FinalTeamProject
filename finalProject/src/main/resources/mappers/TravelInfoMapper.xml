@@ -22,27 +22,28 @@
    	</select>
    	
    	<!-- 모든 데이터를 가져오는 쿼리 -->
-	<select id="getAllTravelInfo" parameterType="map" resultType="com.example.domain.TravelInfoVO">
-	    WITH distinct_info AS (
-	        SELECT DISTINCT ti.*
-	        FROM TRAVEL_INFO ti
-	        INNER JOIN TRAVEL_PLAN tp ON ti.INFO_ID = tp.INFO_ID
-	    ),
-	    paginated_info AS (
-	        SELECT ti.*,
-	               ROW_NUMBER() OVER (ORDER BY ti.INFO_ID) AS rn
-	        FROM distinct_info ti
-	        <where>
-	            <if test="searchKeyword != null and searchKeyword != ''">
-	                LOWER(ti.info_name) LIKE '%' || LOWER(#{searchKeyword}) || '%' 
-	                OR LOWER(ti.trip_place) LIKE '%' || LOWER(#{searchKeyword}) || '%'
-	            </if>
-	        </where>
-	    )
-	    SELECT *
-	    FROM paginated_info
-	    WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
-	</select>
+   <select id="getAllTravelInfo" parameterType="map" resultType="com.example.domain.TravelInfoVO">
+        WITH distinct_info AS (
+            SELECT DISTINCT ti.*
+            FROM TRAVEL_INFO ti
+            INNER JOIN TRAVEL_PLAN tp ON ti.INFO_ID = tp.INFO_ID
+        ),
+        paginated_info AS (
+            SELECT ti.*,
+                   ROW_NUMBER() OVER (ORDER BY ti.INFO_ID) AS rn
+            FROM distinct_info ti
+            <where>
+                <if test="searchKeyword != null and searchKeyword != ''">
+                    LOWER(ti.info_name) LIKE '%' || LOWER(#{searchKeyword}) || '%' 
+                    OR LOWER(ti.trip_place) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+                </if>
+            </where>
+        )
+        SELECT *
+        FROM paginated_info
+        WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
+   </select>
+
 
     <!-- 특정 info_id를 기준으로 데이터를 가져오는 쿼리 -->
     <select id="getTravelInfoById" resultType="com.example.domain.TravelInfoVO">
@@ -82,51 +83,49 @@
 	</select>
 	
 	<!-- 페이징을 위한 총 카운트 -->
-	<select id="getTotalCount" parameterType="map" resultType="int">
-	    SELECT COUNT(DISTINCT ti.INFO_ID)
-	    FROM TRAVEL_INFO ti
-	    INNER JOIN TRAVEL_PLAN tp ON ti.INFO_ID = tp.INFO_ID
-	    <where>
-	        <if test="searchKeyword != null and searchKeyword != ''">
-	            (LOWER(ti.info_name) LIKE '%' || LOWER(#{searchKeyword}) || '%'
-	            OR LOWER(ti.trip_place) LIKE '%' || LOWER(#{searchKeyword}) || '%')
-	        </if>
-	    </where>
-	</select>
+   	<select id="getTotalCount" parameterType="map" resultType="int">
+       WITH distinct_info AS (
+           SELECT DISTINCT ti.*
+           FROM TRAVEL_INFO ti
+           INNER JOIN TRAVEL_PLAN tp ON ti.INFO_ID = tp.INFO_ID
+       ),
+       filtered_info AS (
+           SELECT ti.*
+           FROM distinct_info ti
+           <where>
+               <if test="searchKeyword != null and searchKeyword != ''">
+                   LOWER(ti.info_name) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+                   OR LOWER(ti.trip_place) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+               </if>
+           </where>
+       )
+       SELECT COUNT(*)
+       FROM filtered_info
+   </select>
 	
 	<!-- 스타일 필터링 -->
     <select id="filterByStyle" parameterType="map" resultType="com.example.domain.TravelInfoVO">
-        WITH distinct_info AS (
-            SELECT DISTINCT ti.INFO_ID, ti.STYLE_TAG, ti.TRIP_PLACE, ti.WHO_TAG, ti.INFO_NAME
-            FROM TRAVEL_INFO ti
-            INNER JOIN TRAVEL_PLAN tp ON ti.INFO_ID = tp.INFO_ID
-        ),
-        filtered_info AS (
-            SELECT di.INFO_ID, di.STYLE_TAG, di.TRIP_PLACE, di.WHO_TAG, di.INFO_NAME,
-                   ROW_NUMBER() OVER (ORDER BY di.INFO_ID) AS rn
-            FROM distinct_info di
-            WHERE TRIM(di.STYLE_TAG) LIKE '%' || #{style} || '%'
-        )
-        SELECT *
-        FROM filtered_info
+       	WITH filtered_info AS (
+		    SELECT INFO_ID, STYLE_TAG, TRIP_PLACE, WHO_TAG, INFO_NAME,
+			    ROW_NUMBER() OVER (ORDER BY INFO_ID) AS rn
+		    FROM TRAVEL_INFO
+		    WHERE TRIM(STYLE_TAG) LIKE '%' || #{style} || '%'
+			)
+		SELECT *
+		FROM filtered_info
         WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
     </select>
 
     <!-- 대상 필터링 -->
     <select id="filterByWho" parameterType="map" resultType="com.example.domain.TravelInfoVO">
-        WITH distinct_info AS (
-            SELECT DISTINCT ti.INFO_ID, ti.WHO_TAG, ti.TRIP_PLACE, ti.STYLE_TAG, ti.INFO_NAME
-            FROM TRAVEL_INFO ti
-            INNER JOIN TRAVEL_PLAN tp ON ti.INFO_ID = tp.INFO_ID
-        ),
-        paginated_info AS (
-            SELECT di.INFO_ID, di.WHO_TAG, di.TRIP_PLACE, di.STYLE_TAG, di.INFO_NAME,
-                   ROW_NUMBER() OVER (ORDER BY di.INFO_ID) AS rn
-            FROM distinct_info di
-            WHERE di.WHO_TAG LIKE '%' || #{who} || '%'
-        )
-        SELECT *
-        FROM paginated_info
+       	WITH filtered_info AS (
+		    SELECT INFO_ID, WHO_TAG, TRIP_PLACE, STYLE_TAG, INFO_NAME,
+		    	ROW_NUMBER() OVER (ORDER BY INFO_ID) AS rn
+		    FROM TRAVEL_INFO
+		    WHERE WHO_TAG LIKE '%' || #{who} || '%'
+		)
+		SELECT *
+		FROM filtered_info
         WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
     </select>
     

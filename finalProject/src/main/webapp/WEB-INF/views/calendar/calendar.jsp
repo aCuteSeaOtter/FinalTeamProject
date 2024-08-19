@@ -78,6 +78,22 @@
     <!-- 외부 배경 래퍼 -->
   </div>
   
+  <!-- 채팅 열기 버튼 -->
+            <div id="chat-toggle" class="chat-toggle">
+                <i class="fa fa-comment"></i>
+            </div>
+            <!-- 숨겨진 팝업 창 -->
+            <div id="small-chat-box" class="small-chat-box">
+                <div class="chat-box-header">
+                    <span>채팅</span>
+                    <button id="close-chat" class="close-chat">&times;</button>
+                </div>
+                <div id="chat-box" class="chat-box">
+                    <!-- JSP 파일을 로드할 iframe -->
+                    <iframe id="chat-iframe" class="chat-iframe" src=""></iframe>
+                </div>
+            </div>
+  
   <!-- 주요 목적지 섹션 -->
   <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 	    <div class="container full-height-container">
@@ -164,8 +180,6 @@
     <!-- 여행 정보 -->
   </section>
   <jsp:include page="/WEB-INF/views/footer.jsp" />
-  <!-- 상단으로 이동 버튼 -->
-  <button id="back-to-top-btn" title="Back to Top"></button>
   
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=HfsADugOlL7V9xem6QOFx5WtuGp7oNzpa9QxyY7Y"></script>
