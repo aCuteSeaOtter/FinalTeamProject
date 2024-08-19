@@ -76,6 +76,23 @@
             </div>
             <!-- banner con -->
         </section>
+        
+        <!-- 채팅 열기 버튼 -->
+        <div id="chat-toggle" class="chat-toggle">
+            <i class="fa fa-comment"></i>
+        </div>
+        <!-- 숨겨진 팝업 창 -->
+        <div id="small-chat-box" class="small-chat-box">
+            <div class="chat-box-header">
+                <span>채팅</span>
+                <button id="close-chat" class="close-chat">&times;</button>
+            </div>
+            <div id="chat-box" class="chat-box">
+                <!-- JSP 파일을 로드할 iframe -->
+                <iframe id="chat-iframe" class="chat-iframe" src=""></iframe>
+            </div>
+        </div>
+        
         <!-- WHAT WE SERVE SECTION -->
         <section class="float-left w-100 what-we-serve-con service-serve-con position-relative main-box padding-bottom">
             <div class="container">
@@ -240,8 +257,6 @@
 
     <jsp:include page="/WEB-INF/views/footer.jsp" />
 
-    <!-- BACK TO TOP BUTTON -->
-    <button id="back-to-top-btn" title="Back to Top"></button>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>

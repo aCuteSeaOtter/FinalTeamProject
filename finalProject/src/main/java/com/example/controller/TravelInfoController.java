@@ -87,7 +87,6 @@ public class TravelInfoController {
 
         // 검색 조건 및 키워드를 위한 맵 생성
         HashMap<String, Object> map = new HashMap<>();
-        map.put("searchCondition", searchCondition);
         map.put("searchKeyword", searchKeyword);
         map.put("offset", offset);
         map.put("pageSize", pageSize);

@@ -40,8 +40,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link rel="stylesheet" href="/css/insertReview.css" type="text/css">
     <link rel="stylesheet" href="/css/star.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/insertReview.js"></script>
+    
 
 </head>
 
@@ -63,6 +62,22 @@
 
         <!-- bg outer wrapper -->
     </div>
+    <!-- 채팅 열기 버튼 -->
+    <div id="chat-toggle" class="chat-toggle">
+        <i class="fa fa-comment"></i>
+    </div>
+    <!-- 숨겨진 팝업 창 -->
+    <div id="small-chat-box" class="small-chat-box">
+        <div class="chat-box-header">
+            <span>채팅</span>
+            <button id="close-chat" class="close-chat">&times;</button>
+        </div>
+        <div id="chat-box" class="chat-box">
+            <!-- JSP 파일을 로드할 iframe -->
+            <iframe id="chat-iframe" class="chat-iframe" src=""></iframe>
+        </div>
+    </div>
+    
     <!-- TOP DESTINATIONS SECTION -->
     <section class="float-left w-100 about-travel-con position-relative main-box padding-top padding-bottom">
 
@@ -138,7 +153,8 @@
     <jsp:include page="/WEB-INF/views/footer.jsp" />
 
     <!-- BACK TO TOP BUTTON -->
-    <button id="back-to-top-btn" title="Back to Top"></button>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
@@ -151,7 +167,7 @@
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/search.js"></script>
     <script src="/js/plan.js"></script>
-
+	<script src="/js/insertReview.js"></script>
 
 </body>
 
