@@ -303,6 +303,12 @@
 }
 
 
+#tempavg {
+	color: black;
+	font-size: 15px;
+}
+
+
 .mapBlock > div:nth-child(1) {
 	margin-bottom: 12px;
 }

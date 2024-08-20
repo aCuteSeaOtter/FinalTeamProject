@@ -3,6 +3,9 @@ var markers = [];
 var polylines = []; // polyline 객체를 저장할 배열
 
 $(function() {
+	$('.save-btn').on('click', function() {
+		location.href='/plan/myPage';
+	});
 	
 	// 채팅 열기 버튼 클릭 시 팝업 창 열기
     $('#chat-toggle').click(function () {
@@ -30,31 +33,47 @@ $(function() {
     
     // 날짜별로 선택된 장소 ID를 저장할 객체 생성
     var selectedAttrIdDataMap = {};
+	
+	$.ajax({
+		url: '/weather',
+		type: 'POST',
+		data: {date: selectedDates},
+		success: function(response) {
+			console.log(response);
+			
+			// 응답 데이터가 배열 형태일 것으로 가정
+			        let weatherData = response; 
 
-    // 각 날짜에 대한 dayBlock 요소를 생성하고 추가
-    for (let i = 0; i < selectedDates.length; i++) {
-        selectedAttrIdDataMap[i+1] = []; // 초기화
+			        // 각 날짜에 대한 dayBlock 요소를 생성하고 추가
+			        for (let i = 0; i < weatherData.length; i++) {
+			            let dayData = weatherData[i];
+			            let dayBlockData = `
+			                <div class="dayBlock"> 
+			                    <div> 
+			                        <div>
+			                            <span class="dayNum">DAY ${i+1}</span>
+			                            <span class="date">&nbsp;&nbsp;${dayData.WEATHER_DATE}</span>
+			                            <span id="tempavg">${dayData.WEATHER_TEMPAVG}°C</span>
+			                            <input type="button" class="btn mappingBtn" value="출력"/>
+			                        </div>
+			                    </div>
+			                    <div class="inputData" id="inputData-${i+1}">
+			                        <!-- 선택한 일정이 추가되는 영역 -->
+			                    </div>
+			                    <input type="button" class="add-btn btn" data-day="${i+1}" value="장소 추가">
+			                </div>
+			            `;
+			            
+			            // 선택한 날짜 만큼 일정 선택란 추가
+			            $('.dayBlockWrapper').append(dayBlockData);
+			        } // end for
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
 
-        let dayBlockData = `
-            <div class="dayBlock"> 
-                <div> 
-                    <div>
-                        <span class="dayNum">DAY ${i+1}</span>
-                        <span class="date">&nbsp;&nbsp;${selectedDates[i]}</span>
-						
-                        <input type="button" class="btn mappingBtn" value="맵핑"/>
-                    </div>
-                </div>
-                <div class="inputData" id="inputData-${i+1}">
-                    <!-- 선택한 일정이 추가되는 영역 -->
-                </div>
-                <input type="button" class="add-btn btn" data-day="${i+1}" value="장소 추가">
-            </div>
-        `;
-        
-        // 선택한 날짜 만큼 일정 선택란 추가
-        $('.dayBlockWrapper').append(dayBlockData);
-    } // end for
+    
 
     // Tmap API 초기화
     initTmap();
@@ -232,7 +251,7 @@ function optimizeRoute(attractions) {
             drawRoute(response);
         },
         error:function(request,status,error){
-            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            console.log("error:"+error);
         }
     });
 }
