@@ -101,8 +101,6 @@ public class QuestionController {
 	// 문의글 검색 및 목록 출력
     @RequestMapping("questionList")
     public String questionList(HttpServletResponse response, Model m,
-                               @RequestParam(required = false) String searchCondition,
-                               @RequestParam(required = false) String searchKeyword,
                                @RequestParam(defaultValue = "1") int page,
                                HttpSession session) {
         String id = (String) session.getAttribute("sess");
@@ -112,8 +110,6 @@ public class QuestionController {
 
         // 검색 조건 및 키워드를 위한 맵 생성
         HashMap<String, Object> map = new HashMap<>();
-        map.put("searchCondition", searchCondition);
-        map.put("searchKeyword", searchKeyword);
         map.put("offset", offset);
         map.put("pageSize", pageSize);
 
@@ -133,8 +129,6 @@ public class QuestionController {
 
         // 모델에 문의글 목록 및 페이지 정보 추가
         m.addAttribute("question", list);
-        m.addAttribute("searchCondition", searchCondition);
-        m.addAttribute("searchKeyword", searchKeyword);
         m.addAttribute("currentPage", page);
         m.addAttribute("totalPages", totalPages);
 

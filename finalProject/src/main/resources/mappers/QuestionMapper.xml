@@ -15,11 +15,6 @@
             SELECT q.*, m.member_nickname, ROW_NUMBER() OVER (ORDER BY q.que_id DESC) AS rn
             FROM QUESTION q 
             INNER JOIN MEMBER m ON q.member_email = m.member_email
-            <where>
-                <if test="searchKeyword != null and searchKeyword != ''">
-                    ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
-                </if>
-            </where>
         )
         WHERE rn BETWEEN #{offset} + 1 AND #{offset} + #{pageSize}
     </select>
@@ -28,11 +23,6 @@
     <select id="getTotalCount" parameterType="map" resultType="int">
         SELECT COUNT(*)
         FROM QUESTION q
-        <where>
-            <if test="searchKeyword != null and searchKeyword != ''">
-                ${searchCondition} LIKE '%' || #{searchKeyword} || '%'
-            </if>
-        </where>
     </select>
 	
 	<!-- sql 문의글 update문 -->

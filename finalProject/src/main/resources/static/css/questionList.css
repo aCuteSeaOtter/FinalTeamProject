@@ -60,6 +60,9 @@ a:hover {
 	float:none !important;	
 }
 
+.breadcrumb-item a{
+	color:#1ec28b !important;
+}
 /* 화면 너비가 850px 이하일 때 적용되는 스타일 */
 @media (max-width: 850px){
 	.partner-con{
