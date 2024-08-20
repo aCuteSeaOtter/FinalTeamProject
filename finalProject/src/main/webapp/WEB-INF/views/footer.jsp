@@ -17,7 +17,6 @@
                 <img src="/assets/images/logo-icon.png" class="img-fluid" alt="">
               </figure>
             </a>
-            <p class="text-size-16 footer-text">꿈을 쫓아봐야 실체가 없으나 기묘하게도 늘 곁에 아른거린다. -강성욱-</p>
           </div>
           <div class="col-lg-1 col-md-1 col-sm-6 col-12 d-lg-block d-none">
 
