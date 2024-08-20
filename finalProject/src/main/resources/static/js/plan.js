@@ -3,7 +3,7 @@ var markers = [];
 var polylines = []; // polyline 객체를 저장할 배열
 
 $(function() {
-	$('.save-btn').on('click', function() {
+	$('.ssave').on('click', function() {
 		location.href='/plan/myPage';
 	});
 	
@@ -84,7 +84,7 @@ $(function() {
     });
 
     // '장소추가' 버튼 클릭 시 팝업창 열기
-    $(".add-btn").on("click", function() {
+    $(document).on('click', '.add-btn', function() {
         var dayBlock = $(this).closest('.dayBlock');
         var dayNum   = dayBlock.find('.dayNum').text().trim();
         var date     = dayBlock.find('.date').text().trim();
@@ -127,7 +127,7 @@ $(function() {
     }); // end $(".add-btn").on("click", function()
     
     // 맵핑버튼 클릭 시 선택한 명소 맵핑
-    $('.mappingBtn').on('click', function() {
+    $(document).on('click', '.mappingBtn', function() {
         var dayBlock = $(this).closest('.dayBlock');
         var dayNum = dayBlock.find('.dayNum').text().trim();
         var attractions = [];
@@ -231,7 +231,7 @@ function optimizeRoute(attractions) {
 	$.ajax({
         type:"POST",
         headers : headers,
-        url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization10?version=1&format=json",
+        url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization20?version=1&format=json",
         async:false,
         contentType: "application/json",
         data: JSON.stringify({
@@ -258,15 +258,19 @@ function optimizeRoute(attractions) {
 
 
 function drawRoute(response) {
+    var resultData = response.properties;
     var resultFeatures = response.features;
     
-    for (var i in resultFeatures) {
+    
+    for(var i in resultFeatures) {
         var geometry = resultFeatures[i].geometry;
+        var properties = resultFeatures[i].properties;
+        var polyline_;
         
-        if (geometry.type == "LineString") {
-            var drawInfoArr = [];
-
-            for (var j in geometry.coordinates) {
+        var drawInfoArr = [];
+        
+        if(geometry.type == "LineString") {
+            for(var j in geometry.coordinates){
                 var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
                 var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
                 var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
@@ -274,13 +278,13 @@ function drawRoute(response) {
                 drawInfoArr.push(convertChange);
             }
 
-            var polyline_ = new Tmapv2.Polyline({
-                path: drawInfoArr,
-                strokeColor: "#FF0000",
+            // 기존 polyline 제거 후 새로운 polyline 추가
+            polyline_ = new Tmapv2.Polyline({
+                path : drawInfoArr,
+                strokeColor : "#FF0000",
                 strokeWeight: 6,
-                map: map
+                map : map
             });
-
             polylines.push(polyline_); // polyline 객체 배열에 추가
         }
     }
