@@ -454,7 +454,7 @@ function optimizeRoute(attractions) {
     $.ajax({
         type:"POST",
         headers : headers,
-        url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization10?version=1&format=json",
+        url:"https://apis.openapi.sk.com/tmap/routes/routeOptimization20?version=1&format=json",
         async:false,
         contentType: "application/json",
         data: JSON.stringify({
