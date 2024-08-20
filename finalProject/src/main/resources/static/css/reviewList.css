@@ -234,7 +234,6 @@
 /* 리뷰 박스의 조회수 및 날짜 텍스트 스타일링 */
 .blog-box .views, .blog-box .date {
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 }
 
