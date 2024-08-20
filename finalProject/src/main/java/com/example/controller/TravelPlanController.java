@@ -31,7 +31,8 @@ public class TravelPlanController {
 	
 	// plan/plan 페이지에서 일정 등록
 	@PostMapping("/travelPlan")
-	public List<Map<String, Object>> insertTravelPlan(HttpSession session, @RequestParam("day") int plan_day, @RequestParam(value="data[]") List<Integer> attr_id) {
+	public List<Map<String, Object>> insertTravelPlan(HttpSession session, @RequestParam("day") int plan_day, 
+													  @RequestParam(value="data[]") List<Integer> attr_id) {
 		String info_id = (String)session.getAttribute("info_id");
 		
 		// 명소의 수 만큼 데이터 저장
@@ -111,7 +112,9 @@ public class TravelPlanController {
 	
 	// 선택한 명소 불러오기
 	@GetMapping("/getSelectedAttractions")
-	public List<Map<String, Object>> selectedAttr(@RequestParam("day") int plan_day, @RequestParam("attrIds") List<Integer> selectedAttrIds, @RequestParam("infoId") int info_id) {
+	public List<Map<String, Object>> selectedAttr(@RequestParam("day") int plan_day, 
+												  @RequestParam("attrIds") List<Integer> selectedAttrIds, 
+												  @RequestParam("infoId") int info_id) {
 		List<Map<String, Object>> selectedAttrList = new ArrayList<>();
 		
 		for (Integer attr_id : selectedAttrIds) {

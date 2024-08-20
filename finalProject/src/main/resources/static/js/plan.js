@@ -129,22 +129,16 @@ $(function() {
     // 맵핑버튼 클릭 시 선택한 명소 맵핑
     $(document).on('click', '.mappingBtn', function() {
         var dayBlock = $(this).closest('.dayBlock');
-        var dayNum = dayBlock.find('.dayNum').text().trim();
         var attractions = [];
     
         // 기존 마커 제거
         clearMarkers();
-    
-        // 기존 polyline 제거
-        //clearPolylines();
 
         dayBlock.find('.inputData > div').each(function() {
             var attrLat = $(this).find('.attr_lat').val();
             var attrLon = $(this).find('.attr_lon').val();
             var attrName = $(this).find('div:first').text();
 			var planSeq = $(this).find('.plan_seq').val();
-
-            console.log("명소 데이터:", attrName, attrLat, attrLon);
             
             if (attrLat && attrLon) {
                 attractions.push({
@@ -198,14 +192,6 @@ function clearMarkers() {
     }
     markers = [];
 }
-
-// 새로운 함수 추가: 기존 polyline 제거
-/*function clearPolylines() {
-    for (var i = 0; i < polylines.length; i++) {
-        polylines[i].setMap(null);
-    }
-    polylines = [];
-}*/
 
 function fitBoundsToMarkers() {
     if (markers.length > 0) {

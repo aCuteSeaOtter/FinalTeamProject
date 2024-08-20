@@ -143,4 +143,15 @@
 	    WHERE WHO_TAG LIKE '%' || #{who} || '%'
 	</select>
 	
+	<!-- travel_info 테이블에 일정 넣기 -->
+    <insert id="insertTravelInfoNew" parameterType="TravelInfoVO" useGeneratedKeys="true" keyProperty="info_id">
+	    INSERT INTO travel_info (info_id, member_email, info_name, trip_place, start_date, end_date, who_tag, style_tag)
+	    VALUES (info_id_seq.NEXTVAL, #{member_email}, #{info_name}, #{trip_place}, #{start_date}, #{end_date}, #{who_tag}, #{style_tag})
+	    RETURNING info_id INTO #{info_id}
+	</insert>
+	
+	<select id="getNextInfoId" resultType="int">
+        SELECT info_id_seq.NEXTVAL FROM DUAL
+    </select>
+	
 </mapper>

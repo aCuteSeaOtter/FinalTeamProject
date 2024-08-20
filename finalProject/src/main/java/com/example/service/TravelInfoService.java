@@ -34,5 +34,9 @@ public interface TravelInfoService {
 
     // 대상 필터링에 대한 총 항목 수 조회
     int getTotalCountForWho(String who);
+    
+    int insertTravelInfoNew(String member_email, String info_name, String trip_place, String start_date, String end_date, String who_tag, String style_tag);
+    
+    int getNextInfoId();
 } 
  

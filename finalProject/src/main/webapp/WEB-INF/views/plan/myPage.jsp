@@ -157,83 +157,9 @@
 			    <!-- 나의 신고 -->
 	        	<div class="content-4">
 			    	<div class="t-left">
-			    		<%-- <c:forEach items="${reportList}" var="list">
-				    		<div class="report-wrapper wrap">
-				                <form action="/selectReport" method="post" id="reportForm">
-				                    <div class="block">
-				                    	<c:choose>
-				                    		
-				                    		<c:when test="${list.CATEGORY eq '게시글'}">
-				                    			<div class="left">
-						                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.RV_MEMBER_EMAIL}</div>
-						                            <div><i class="fas fa-magnifying-glass"></i><strong>게시글 제목:</strong> ${list.REVIEW_TITLE}</div>
-						                        	<div><i class="fas fa-book"></i><strong>게시글 내용:</strong> 
-						                            	<c:choose>
-										                    <c:when test="${fn:length(list.REVIEW_CONTENT) > 8}">
-										                        ${fn:substring(list.REVIEW_CONTENT, 0, 8)}...
-										                    </c:when>
-										                    <c:otherwise>
-										                        ${list.REVIEW_CONTENT}
-										                    </c:otherwise>
-										                </c:choose>
-									                </div>
-						                        </div>
-						                        <div class="right">
-						                            <div><i class="fas fa-magnifying-glass"></i><strong>신고 유형:</strong> ${list.REPORT_TYPE}</div>
-						                            <div><i class="fas fa-calendar-alt"></i><strong>신고일:</strong> ${list.REPORT_REGDATE}</div>
-						                            <div><input type="hidden" name="report_id" class="report_id" value="${list.REPORT_ID}"></div>
-						                        </div>
-				                    		</c:when>
-				                    		
-				                    		<c:when test="${list.CATEGORY eq '댓글'}">
-				                    			<div class="left">
-						                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.C_MEMBER_EMAIL}</div>
-						                            <div><i class="fas fa-magnifying-glass"></i><strong>게시글 제목:</strong> ${list.REVIEW_TITLE}</div>
-						                        	<div><i class="fas fa-comment"></i><strong>댓글 내용:</strong>
-						                            	<c:choose>
-										                    <c:when test="${fn:length(list.COMMENT_CONTENT) > 8}">
-										                        ${fn:substring(list.COMMENT_CONTENT, 0, 8)}...
-										                    </c:when>
-										                    <c:otherwise>
-										                        ${list.COMMENT_CONTENT}
-										                    </c:otherwise>
-										                </c:choose>
-						                            </div>
-						                        </div>
-						                        <div class="right">
-						                            <div><i class="fas fa-magnifying-glass"></i><strong>신고 유형:</strong> ${list.REPORT_TYPE}</div>
-						                            <div><i class="fas fa-calendar-alt"></i><strong>신고일:</strong> ${list.REPORT_REGDATE}</div>
-						                            <div><input type="hidden" name="report_id" class="report_id" value="${list.REPORT_ID}"></div>
-						                        </div>
-				                    		</c:when>
-				                    		
-				                    		<c:when test="${list.CATEGORY eq '대댓글'}">
-				                    			<div class="left">
-						                            <div><i class="fas fa-user"></i><strong>작성자:</strong> ${list.RP_MEMBER_EMAIL}</div>
-						                            <div><i class="fas fa-magnifying-glass"></i><strong>게시글 제목:</strong> ${list.REVIEW_TITLE}</div>
-						                        	<div><i class="fas fa-reply"></i><strong>대댓글 내용:</strong>
-						                            	<c:choose>
-										                    <c:when test="${fn:length(list.REPLY_CONTENT) > 8}">
-										                        ${fn:substring(list.REPLY_CONTENT, 0, 8)}...
-										                    </c:when>
-										                    <c:otherwise>
-										                        ${list.REPLY_CONTENT}
-										                    </c:otherwise>
-										                </c:choose>
-						                            </div>
-						                        </div>
-						                        <div class="right">
-						                            <div><i class="fas fa-magnifying-glass"></i><strong>신고 유형:</strong> ${list.REPORT_TYPE}</div>
-						                            <div><i class="fas fa-calendar-alt"></i><strong>신고일:</strong> ${list.REPORT_REGDATE}</div>
-						                            <div><input type="hidden" name="report_id" class="report_id" value="${list.REPORT_ID}"></div>
-						                        </div>
-				                    		</c:when>
-				                        	
-			                        	</c:choose>
-				                    </div>
-				                </form>
-			                </div>
-		                </c:forEach> --%>
+			    	
+			    		<!-- 내용 출력 -->
+			    		
 			    	</div>
 			    	<c:if test="${not empty reportList}">
 			    	<div class="pagination-container">

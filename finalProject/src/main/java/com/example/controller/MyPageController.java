@@ -55,7 +55,9 @@ public class MyPageController {
 	
 	// 내 정보 수정
 	@PostMapping("/modifyMyInfo")
-	public String modifyMyInfo(HttpSession session, @RequestParam("pass") String pass, @RequestParam("nickname") String nickname, @RequestParam("birth") String birth) {
+	public String modifyMyInfo(HttpSession session, @RequestParam("pass") String pass, 
+													@RequestParam("nickname") String nickname, 
+													@RequestParam("birth") String birth) {
 		LoginVO member = (LoginVO)session.getAttribute("member");
 		if(member == null) {
 			return "redirect:/login/loginForm";

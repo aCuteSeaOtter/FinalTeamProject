@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.LoginVO;
 import com.example.domain.TravelInfoVO;
+import com.example.domain.TravelPlanVO;
 import com.example.service.TravelInfoService;
+import com.example.service.TravelPlanService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -28,6 +31,9 @@ public class TravelInfoController {
     
     @Autowired
     private TravelInfoService travelInfoService;
+    
+    @Autowired
+    private TravelPlanService travelPlanService;
     
     // calendar -> plan 이동 
     // calendar/calendar 페이지에서 일정 등록
@@ -189,6 +195,38 @@ public class TravelInfoController {
         response.put("totalPages", totalPages);
 
         return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/getPlan")
+    @ResponseBody
+    public void getPlan(HttpSession session, @RequestParam("info_id") int info_id) {
+    	LoginVO member = (LoginVO)session.getAttribute("member");
+        String member_email = member.getMember_email();
+        
+        TravelInfoVO result = travelInfoService.getTravelInfoById(info_id);
+        
+        // 가져온 여행 정보의 member_email을 현재 로그인한 사용자의 이메일로 변경합니다.
+        result.setMember_email(member_email);
+        // 변경된 내용을 데이터베이스에 저장합니다.
+        travelInfoService.insertTravelInfo(result.getMember_email(), result.getInfo_name(), result.getTrip_place(), result.getStart_date(), result.getEnd_date(), result.getWho_tag(), result.getStyle_tag());
+        
+        int new_id = travelInfoService.getNextInfoId() -1;
+        System.out.println(new_id);
+        
+        // 해당 info_id로 여러 개의 TravelPlanVO 객체를 가져옵니다.
+        List<TravelPlanVO> travelPlans = travelPlanService.getTravelPlanByInfoId(result.getInfo_id());
+        
+        // 가져온 TravelPlanVO 리스트를 반복하면서 각각을 처리합니다.
+        for (TravelPlanVO vo : travelPlans) {
+            // 각 TravelPlanVO를 저장하거나 처리할 수 있습니다.
+            travelPlanService.insertTravelPlan(
+                Integer.toString(new_id), 
+                vo.getAttr_id(), 
+                vo.getPlan_day(), 
+                vo.getPlan_seq()
+            );
+            System.out.println("Inserted TravelPlanVO: " + vo);
+        }
     }
 
 }
