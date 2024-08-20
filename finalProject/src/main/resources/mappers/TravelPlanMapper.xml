@@ -89,4 +89,11 @@
 		WHERE	info_id = #{info_id} AND plan_day = #{plan_day} AND attr_id = #{attr_id}
 	</update>
 	
+	<!-- info_id로 plan 가져옴 -->
+	<select id="getTravelPlanByInfoId" resultType="com.example.domain.TravelPlanVO">
+		SELECT *
+		FROM travel_plan
+		WHERE info_id = #{info_id}
+	</select>
+	
 </mapper>

@@ -75,4 +75,12 @@ public class TravelInfoServiceImpl implements TravelInfoService {
     public int getTotalCountForWho(String who) {
         return travelInfoDAO.getTotalCountForWho(who);
     }
+    
+    public int insertTravelInfoNew(String member_email, String info_name, String trip_place, String start_date, String end_date, String who_tag, String style_tag) {
+    	return travelInfoDAO.insertTravelInfoNew(member_email, info_name, trip_place, start_date, end_date, who_tag, style_tag);
+    }
+
+    public int getNextInfoId() {
+    	return travelInfoDAO.getNextInfoId();
+    }
 } 

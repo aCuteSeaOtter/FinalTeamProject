@@ -17,5 +17,6 @@ public interface TravelPlanService {
 	void updateTravelPlan(int info_id, int attr_id, int plan_day, int plan_seq);
 	void delPlan(int info_id, int plan_day);
 	void updateSeq(String attr_id, int plan_seq, String info_id, String plan_day);
+	List<TravelPlanVO> getTravelPlanByInfoId(int info_id);
 } 
  

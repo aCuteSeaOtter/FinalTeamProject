@@ -60,4 +60,8 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 	public void updateSeq(String attr_id, int plan_seq, String info_id, String plan_day) {
 		travelPlanDAO.updateSeq(attr_id, plan_seq, info_id, plan_day);
 	}
+	
+	public List<TravelPlanVO> getTravelPlanByInfoId(int info_id) {
+		return travelPlanDAO.getTravelPlanByInfoId(info_id);
+	}
 } 

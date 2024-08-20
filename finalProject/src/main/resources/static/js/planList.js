@@ -20,6 +20,22 @@ $(document).ready(function() {
         }
     });
 	
+	$('.review-btn').on('click', function() {
+		let info_id = $('.info_id').val();
+		
+		$.ajax({
+			url: '/getPlan',
+			type: 'POST',
+			data: {info_id: info_id},
+			susccess: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log('error: ' + error);	
+			}
+		});
+	});
+	
     var currentPage = 1; // 초기 페이지 번호
     var totalPages = 1; // 총 페이지 수 (초기값 설정)
     var currentFilterType = ''; // 현재 필터 타입

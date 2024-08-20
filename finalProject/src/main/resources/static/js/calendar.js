@@ -94,8 +94,10 @@ $(function() {
         // 이번 달의 날짜를 추가, 선택한 날짜 추가
         for (let i = 1; i <= lastDateOfMonth; i++) {
             let currentDateObj = new Date(viewYear, viewMonth - 1, i, 12);
-            let isToday        = (i === currentDate.getDate() && viewMonth === currentDate.getMonth() + 1 && viewYear === currentDate.getFullYear()) ? 'activ' : '';
-            let isSelected     = (startDate && endDate && currentDateObj >= startDate && currentDateObj <= endDate) ? 'selected-range' : '';
+            let isToday        = (i === currentDate.getDate() && viewMonth === currentDate.getMonth() + 1 
+								  && viewYear === currentDate.getFullYear()) ? 'activ' : '';
+            let isSelected     = (startDate && endDate && currentDateObj >= startDate && currentDateObj <= endDate)
+								  ? 'selected-range' : '';
             
             liTag += `<li class="${isToday} ${isSelected}">${i}</li>`;
         }
