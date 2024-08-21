@@ -7,7 +7,7 @@
 	<!-- popup에 모든 attr 리스트 가져오기 (attr_id를 받았다면 맞는 값 가져오기) -->
     <select id="weather" resultType="hashmap">
         SELECT 	*
-        FROM	weather
+        FROM	WEATHER
         WHERE	weather_date = #{date} AND weather_local = #{local}
     </select>
     

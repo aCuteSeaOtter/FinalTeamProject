@@ -11,7 +11,6 @@ import java.util.Date;
 import javax.validation.Valid;
 
 import org.apache.http.HttpStatus;
-import org.hibernate.internal.build.AllowSysOut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

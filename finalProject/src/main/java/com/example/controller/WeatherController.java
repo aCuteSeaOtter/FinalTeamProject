@@ -35,7 +35,7 @@ public class WeatherController {
 		}
 
 		System.out.println(formattedDates);  // 모든 formattedDate를 출력
-
+		
 		List<Map<String, Object>> vo = new ArrayList<>();
 
 		for(int i = 0; i < formattedDates.size(); i++) {

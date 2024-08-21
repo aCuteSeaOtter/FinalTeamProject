@@ -85,7 +85,7 @@
 		<div class="container full-height-container">
 			<!-- 리뷰 쓰러 가기 버튼을 추가 -->
 			<div class="review-button-container" style="top: 10px; left: 10px; margin-bottom: 20px; z-index: 1000;">
-		      <a href="/review/insertReview?info_id=${param.info_id}" class="btn btn-primary review-btn">리뷰 쓰러 가기</a>
+		      <a href="/plan/myPage" class="btn btn-primary review-btn">일정 가져오기</a>
 		      <input type="hidden" class="info_id" value="${param.info_id}"/>
 		  	</div>    
 			<div class="row">

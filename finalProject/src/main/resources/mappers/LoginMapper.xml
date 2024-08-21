@@ -42,13 +42,13 @@ VALUES(
 
 
 
-<select	id="findkakao" resultType="com.example.domain.LoginVO" parameterType="HashMap">
+<!-- <select	id="findkakao" resultType="com.example.domain.LoginVO" parameterType="HashMap">
 	SELECT *
 	FROM MEMBER
 	WHERE member_email=#{member_email}
 	AND member_nickname=#{member_nickname} 
 
-</select>
+</select> -->
 
    <!-- 회원 로그인 확인 -->  
 <select id="checkLogin" parameterType="com.example.domain.LoginVO" resultType="com.example.domain.LoginVO">

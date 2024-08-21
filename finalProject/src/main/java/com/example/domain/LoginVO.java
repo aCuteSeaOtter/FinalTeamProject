@@ -3,8 +3,6 @@ package com.example.domain;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
-
-import jakarta.persistence.Entity;
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
